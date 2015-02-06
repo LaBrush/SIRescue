@@ -12,7 +12,6 @@ public abstract class AbstractView {
 	@SuppressWarnings({ "rawtypes" })
 	protected Observer binder ;
 
-	@SuppressWarnings("unused")
 	private Observer<DrawRequest> graphicsListener = new Observer<DrawRequest>() {
 		@Override
 		public void update(DrawRequest req) {
@@ -21,5 +20,21 @@ public abstract class AbstractView {
 	};
 
 	protected abstract void draw(DrawRequest req);
+
+	public Observer getBinder() {
+		return binder;
+	}
+
+	public void setBinder(Observer binder) {
+		this.binder = binder;
+	}
+
+	public Observer<DrawRequest> getGraphicsListener() {
+		return graphicsListener;
+	}
+
+	public void setGraphicsListener(Observer<DrawRequest> graphicsListener) {
+		this.graphicsListener = graphicsListener;
+	}
 
 }

@@ -42,7 +42,7 @@ public class DrawRequest {
 
 	
 	public void rect(int x, int y, int width, int height){
-		this.g.drawRect(this.height - x, y, width, height);
+		this.g.drawRect(x, this.height - y - height, width, height);
 	}
 	
 	public void image(BufferedImage img, int x, int y, int angle){

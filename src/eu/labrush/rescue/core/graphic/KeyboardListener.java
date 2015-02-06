@@ -27,6 +27,9 @@ public class KeyboardListener extends JPanel implements Observable<KeyEvent>,
 	// dans un autre package
 	KeyboardListener() {
 		super();
+		
+		this.setFocusable(true);
+		this.addKeyListener(this);
 	}
 
 	@Override

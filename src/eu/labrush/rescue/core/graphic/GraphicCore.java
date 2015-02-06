@@ -11,10 +11,10 @@ import eu.labrush.rescue.utils.Observer;
 
 @SuppressWarnings("serial")
 public class GraphicCore extends JFrame {
-	public static final int FRAMERATE = 120;
+	public static final int FRAMERATE = 60;
 	
 	private Panel pan = new Panel();
-	private KeyboardListener keyboard = new KeyboardListener();
+	private static  KeyboardListener keyboard = new KeyboardListener();
 	
 	private GraphicCore() {
 		this.setTitle("Segui Rescue");
@@ -25,12 +25,8 @@ public class GraphicCore extends JFrame {
 		this.setVisible(true);
 		
 		this.setFocusable(false);
-		pan.add(this.keyboard);
-		
-		//this.setContentPane(this.keyboard);
-		this.keyboard.setFocusable(true);
-		this.keyboard.addKeyListener(this.keyboard);
-		this.keyboard.requestFocus();
+		pan.add(keyboard);
+		keyboard.requestFocus();
 		
 	}
 
@@ -81,7 +77,7 @@ public class GraphicCore extends JFrame {
 		return pan;
 	}
 
-	public KeyboardListener getKeyboard() {
+	public static KeyboardListener getKeyboard() {
 		return keyboard;
 	}
 

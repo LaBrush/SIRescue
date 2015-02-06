@@ -15,7 +15,22 @@ public class PersonnageView extends AbstractView {
 
 	int x = 0;
 	int y = 0;
+	int width = 0 ;
+	int height = 0 ;
 
+	public PersonnageView(Personnage model) {
+		binder = new Observer<Personnage>() {
+			@Override
+			public void update(Personnage model) {
+				bindModel(model);
+			}
+		};
+		
+		model.addObserver(binder);
+		model.notifyObservers();
+	}
+
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -23,23 +38,14 @@ public class PersonnageView extends AbstractView {
 	 */
 	@Override
 	protected void draw(DrawRequest req) {
-		// TODO Auto-generated method stub
-
-	}
-
-	PersonnageView() {
-		binder = new Observer<Personnage>() {
-			@Override
-			public void update(Personnage model) {
-				bindModel(model);
-			}
-		};
+		req.rect(this.x, this.y, this.width, this.height);
 	}
 
 	protected void bindModel(Personnage model) {
-
-		this.x = model.getX();
-		this.y = model.getY();
+		this.x = (int)model.getX();
+		this.y = (int)model.getY();
+		this.width = (int)model.getWidth();
+		this.height = (int)model.getHeight();
 	}
 
 }

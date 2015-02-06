@@ -7,57 +7,45 @@ package eu.labrush.rescue.core.physics;
  * @author adrienbocquet
  *
  */
-public class Vecteur {
+public class Vecteur{
 
-	private int x ;
-	private int y ;
-
+	private double x ;
+	private double y ;
 	
-	/**
-	 * Default constructor
-	 */
-	public Vecteur() {
-		this.x = 0 ;
-		this.y = 0 ;
-	}
-
 	/**
 	 * @param x
 	 * @param y
 	 */
-	public Vecteur(int x, int y) {
+	public Vecteur(double x, double y) {
+		super();
 		this.x = x;
+		this.y = y;
+	}
+	
+	public Vecteur() {
+		super();
+		this.x = 0.0;
+		this.y = 0.0;
+	}
+
+	public double getX() {
+		return x;
+	}
+
+	public void setX(double x) {
+		this.x = x;
+	}
+
+	public double getY() {
+		return y;
+	}
+
+	public void setY(double y) {
 		this.y = y;
 	}
 
-	public Vecteur add(Vecteur other){
-		return new Vecteur(this.x + other.getX(), this.y + other.getY());
+	public double norme(){
+		return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
 	}
-	
-	/**
-	 * @return the x
-	 */
-	public int getX() {
-		return x;
-	}
-	/**
-	 * @param x the x to set
-	 */
-	public void setX(int x) {
-		this.x = x;
-	}
-	/**
-	 * @return the y
-	 */
-	public int getY() {
-		return y;
-	}
-	/**
-	 * @param y the y to set
-	 */
-	public void setY(int y) {
-		this.y = y;
-	}
-	
-	
+		
 }
