@@ -5,11 +5,11 @@ package eu.labrush.rescue.utils;
 
 /**
  * Interface générique d'EventListener utilisant la génétricité
- * Cette interface est à utliser conjointement avec Observable<T>
+ * Cette interface est à utliser conjointement avec Listenable<T>
  * 
  * @author adrienbocquet
  */
-public interface Observer<T> {
+public interface Listener<T> {
 
 	public void update(T req);
 	

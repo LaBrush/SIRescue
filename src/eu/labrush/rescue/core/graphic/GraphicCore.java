@@ -2,7 +2,7 @@ package eu.labrush.rescue.core.graphic;
 
 import javax.swing.JFrame;
 
-import eu.labrush.rescue.utils.Observer;
+import eu.labrush.rescue.utils.Listener;
 
 /**
  * @author adrienbocquet
@@ -10,11 +10,13 @@ import eu.labrush.rescue.utils.Observer;
  */
 
 @SuppressWarnings("serial")
-public class GraphicCore extends JFrame {
-	public static final int FRAMERATE = 60;
+final public class GraphicCore extends JFrame {
+	public static  int FRAMERATE = 60;
 	
 	private Panel pan = new Panel();
 	private static  KeyboardListener keyboard = new KeyboardListener();
+	
+	private boolean running = false ;
 	
 	private GraphicCore() {
 		this.setTitle("Segui Rescue");
@@ -47,7 +49,10 @@ public class GraphicCore extends JFrame {
 	}
 
 	public void start() {
-		new Thread(new Play()).start();
+		if(!running){
+			new Thread(new Play()).start();
+			running = true ;
+		}
 	}
 
 	class Play implements Runnable {
@@ -57,7 +62,7 @@ public class GraphicCore extends JFrame {
 	}
 
 	private void go() {
-		while (true) {
+		while (running) {
 			// On redessine notre Panneau
 			pan.repaint();
 
@@ -69,7 +74,7 @@ public class GraphicCore extends JFrame {
 		}
 	}
 
-	public void suscribe(Observer<DrawRequest> obs){
+	public void suscribe(Listener<DrawRequest> obs){
 		this.getPan().addObserver(obs);
 	}
 	

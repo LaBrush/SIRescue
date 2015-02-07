@@ -3,9 +3,10 @@
  */
 package eu.labrush.rescue.view;
 
+import java.util.Observable;
+
 import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.model.Personnage;
-import eu.labrush.rescue.utils.Observer;
 
 /**
  * @author adrienbocquet
@@ -13,23 +14,9 @@ import eu.labrush.rescue.utils.Observer;
  */
 public class PersonnageView extends AbstractView {
 
-	int x = 0;
-	int y = 0;
-	int width = 0 ;
-	int height = 0 ;
-
 	public PersonnageView(Personnage model) {
-		binder = new Observer<Personnage>() {
-			@Override
-			public void update(Personnage model) {
-				bindModel(model);
-			}
-		};
-		
-		model.addObserver(binder);
-		model.notifyObservers();
+		super(model);
 	}
-
 	
 	/*
 	 * (non-Javadoc)
@@ -41,11 +28,14 @@ public class PersonnageView extends AbstractView {
 		req.rect(this.x, this.y, this.width, this.height);
 	}
 
-	protected void bindModel(Personnage model) {
-		this.x = (int)model.getX();
-		this.y = (int)model.getY();
-		this.width = (int)model.getWidth();
-		this.height = (int)model.getHeight();
+	@Override
+	protected void bindModel(Observable model) {
+		Personnage p = (Personnage)model ;
+		
+		this.x = (int)p.getTrajectoire().getPosition().getX();
+		this.y = (int)p.getTrajectoire().getPosition().getY();
+		this.width = (int)p.getWidth();
+		this.height = (int)p.getHeight();		
 	}
 
 }

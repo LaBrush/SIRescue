@@ -1,34 +1,38 @@
-/**
- * 
- */
 package eu.labrush.rescue.model;
 
-import java.util.ArrayList;
-
-import eu.labrush.rescue.utils.Observable;
-import eu.labrush.rescue.utils.Observer;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
+ * Défini un modèle abstrait de donnée et fournit les outils nécessaire pour 
+ * utiliser le pattern observer à tous les niveaux de chaque modèle
+ * 
+ * TODO: Expliciter la description
+ * 
+ * NB: Chaque setter d'objets héritants d'AbstractModel dans des AbstractModel
+ * faire souscrire l'objet au nouvel arrivants
+ * 
  * @author adrienbocquet
- *
  */
-public abstract class AbstractModel implements Observable<AbstractModel> {
+ abstract class AbstractModel extends Observable implements Observer {	
 	
-	ArrayList<Observer<AbstractModel>> observers = new ArrayList<Observer<AbstractModel>>();
-	
-	@Override
-	public void addObserver(Observer<AbstractModel> obs) {
-		this.observers.add(obs);
-	}
-	@Override
-	public void delObserver(Observer<AbstractModel> obs) {
-		this.observers.remove(obs);
-	}
-	@Override
-	public void notifyObservers() {
-		for(Observer<AbstractModel> obs: this.observers){
-			obs.update(this);
-		}
+	AbstractModel() {
+		//TODO: Try to add AbstractModel instance suscribe automation
+		/*for(Field field : this.getClass().getFields()){
+			System.out.println(field);
+			try {
+				if (field.get(this) instanceof AbstractModel) {
+					((Observable) field.get(this)).addObserver(this);
+				}
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		}*/
+		setChanged();
 	}
 	
+	public void update(Observable obs, Object obj) {
+		this.setChanged();
+		this.notifyObservers();
+	}
 }

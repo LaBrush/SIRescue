@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import eu.labrush.rescue.utils.Observable;
-import eu.labrush.rescue.utils.Observer;
+import eu.labrush.rescue.utils.Listenable;
+import eu.labrush.rescue.utils.Listener;
 
 /**
  * @author adrienbocquet
@@ -19,9 +19,9 @@ import eu.labrush.rescue.utils.Observer;
  */
 
 @SuppressWarnings("serial")
-public class Panel extends JPanel implements Observable<DrawRequest> {
+public class Panel extends JPanel implements Listenable<DrawRequest> {
 
-	private ArrayList<Observer<DrawRequest>> observers = new ArrayList<Observer<DrawRequest>>();
+	private ArrayList<Listener<DrawRequest>> observers = new ArrayList<Listener<DrawRequest>>();
 	private Graphics2D g;
 
 	public void paintComponent(Graphics g) {
@@ -37,20 +37,20 @@ public class Panel extends JPanel implements Observable<DrawRequest> {
 	}
 
 	@Override
-	public void addObserver(Observer<DrawRequest> obs) {
+	public void addObserver(Listener<DrawRequest> obs) {
 		this.observers.add(obs);
 
 	}
 
 	@Override
-	public void delObserver(Observer<DrawRequest> obs) {
+	public void delObserver(Listener<DrawRequest> obs) {
 		this.observers.remove(obs);
 
 	}
 
 	@Override
 	public void notifyObservers() {
-		for (Observer<DrawRequest> obs : this.observers) {
+		for (Listener<DrawRequest> obs : this.observers) {
 			obs.update(new DrawRequest(this.g, this.getWidth() , this.getHeight()));
 		}
 	}

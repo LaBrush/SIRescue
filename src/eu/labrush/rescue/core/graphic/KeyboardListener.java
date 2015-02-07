@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import eu.labrush.rescue.utils.Observable;
-import eu.labrush.rescue.utils.Observer;
+import eu.labrush.rescue.utils.Listenable;
+import eu.labrush.rescue.utils.Listener;
 
 /**
  * Cette classe a pour but de propager les événements liés au clavier en les
@@ -17,10 +17,10 @@ import eu.labrush.rescue.utils.Observer;
  */
 
 @SuppressWarnings("serial")
-public class KeyboardListener extends JPanel implements Observable<KeyEvent>,
+public class KeyboardListener extends JPanel implements Listenable<KeyEvent>,
 		KeyListener {
 
-	private ArrayList<Observer<KeyEvent>> observers = new ArrayList<Observer<KeyEvent>>();
+	private ArrayList<Listener<KeyEvent>> observers = new ArrayList<Listener<KeyEvent>>();
 	private KeyEvent keyEvent = null;
 
 	// Ne pas mettre le constructeur public pour éviter d'instancier la classe
@@ -33,18 +33,18 @@ public class KeyboardListener extends JPanel implements Observable<KeyEvent>,
 	}
 
 	@Override
-	public void addObserver(Observer<KeyEvent> obs) {
-		this.observers.add(obs);
+	public void addObserver(Listener<KeyEvent> obs) {
+		this.observers.add((Listener<KeyEvent>) obs);
 	}
 
 	@Override
-	public void delObserver(Observer<KeyEvent> obs) {
+	public void delObserver(Listener<KeyEvent> obs) {
 		this.observers.remove(obs);
 	}
 
 	@Override
 	public void notifyObservers() {
-		for (Observer<KeyEvent> obs : this.observers) {
+		for (Listener<KeyEvent> obs : this.observers) {
 			obs.update(this.keyEvent);
 		}
 	}

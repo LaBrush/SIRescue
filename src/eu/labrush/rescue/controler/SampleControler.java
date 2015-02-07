@@ -8,7 +8,8 @@ import java.awt.event.KeyEvent;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.graphic.KeyboardListener;
 import eu.labrush.rescue.model.Personnage;
-import eu.labrush.rescue.utils.Observer;
+import eu.labrush.rescue.model.Trajectoire;
+import eu.labrush.rescue.utils.Listener;
 
 /**
  * @author adrienbocquet
@@ -27,60 +28,60 @@ public class SampleControler {
 
 		KeyboardListener keyboard = GraphicCore.getKeyboard();
 
-		keyboard.addObserver(new Observer<KeyEvent>() {
+		keyboard.addObserver(new Listener<KeyEvent>() {
 
 			@Override
 			public void update(KeyEvent req) {
+				final Trajectoire t = model.getTrajectoire() ;
+				
 				if (req.getID() == KeyEvent.KEY_PRESSED) {
-
 					if (!moving) {
-						moving = true ;
-												
+						moving = true;
+
 						new Thread(new Runnable() {
 							public void run() {
 								while (moving) {
 									
-									//Traitement sur x
-									if((model.getX() < 0 && model.getVX() < 0)|| ( model.getX() + model.getWidth() > 600 && model.getVY() > 0))
-									{
-										model.setVX(0);
+									// Traitement sur x
+									if ((t.getVitesse().getX() < 0 && t.getPosition().getX() < 0)
+									||  (t.getVitesse().getX() > 0 && t.getPosition().getX() + personnage.getWidth() > 600)) {
+										t.getVitesse().setX(-t.getVitesse().getX());
 									}
-									
-									model.setX(model.getX()
-											+ model.getVX());
-									
+
 									// traitement sur Y
-									if(model.getY() > 10){
-										model.setVY( model.getVY() - 0.3 );
+									if (t.getPosition().getY() > 10 && t.getAcceleration().getY() == 0) {
+										t.getAcceleration().setY(-0.003);
 									}
-									model.setY(model.getY() + model.getVY());
-									
-									if(model.getY() < 10){
-										model.setY(10);
-										model.setVY(0);
+
+									if (t.getPosition().getY() < 10) {
+										t.getAcceleration().setY(0);
+										t.getPosition().setY(10);
+										t.getVitesse().setY(0);
 									}
-									
-									
+
 									try {
 										Thread.sleep(20);
 									} catch (InterruptedException e) {
 										e.printStackTrace();
 									}
 								}
-							}
+						}
 						}).start();
 					}
 
 					switch (req.getKeyCode()) {
 						case KeyEvent.VK_UP:
-							model.setVY(10);
+							if (t.getVitesse().getY() == 0)
+								t.getVitesse().setY(1);
 							break;
 						case KeyEvent.VK_LEFT:
-							model.setVX(-5);
+							t.getAcceleration().setX(-0.0005);
 							break;
 						case KeyEvent.VK_RIGHT:
-							model.setVX(5);
+							t.getAcceleration().setX(0.0005);
 							break;
+						case KeyEvent.VK_DOWN:
+							t.getVitesse().setX(0);
 					}
 				}
 
@@ -89,12 +90,12 @@ public class SampleControler {
 					switch (req.getKeyCode()) {
 						case KeyEvent.VK_LEFT:
 						case KeyEvent.VK_RIGHT:
-							model.setVX(0);
+							t.getAcceleration().setX(0);
 							break;
 					}
 				}
 
-				moving = model.normeVitesse() != 0;
+				moving = !(t.getVitesse().norme() == 0 && t.getAcceleration().norme() == 0);
 			}
 
 		});
