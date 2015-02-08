@@ -11,13 +11,13 @@ import eu.labrush.rescue.utils.Listener;
 
 @SuppressWarnings("serial")
 final public class GraphicCore extends JFrame {
-	public static  int FRAMERATE = 60;
-	
+	public static int FRAMERATE = 60;
+
 	private Panel pan = new Panel();
-	private static  KeyboardListener keyboard = new KeyboardListener();
-	
-	private boolean running = false ;
-	
+	private static KeyboardListener keyboard = new KeyboardListener();
+
+	private boolean running = false;
+
 	private GraphicCore() {
 		this.setTitle("Segui Rescue");
 		this.setSize(600, 400);
@@ -25,17 +25,20 @@ final public class GraphicCore extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setContentPane(this.pan);
 		this.setVisible(true);
+		this.setResizable(false);
 		
 		this.setFocusable(false);
 		pan.add(keyboard);
 		keyboard.requestFocus();
-		
+
 	}
 
-	/** Holder 
-	 *  
-	 *  on utilise un holder afin de permettre le multithreading
-	 *  http://thecodersbreakfast.net/index.php?post/2008/02/25/26-de-la-bonne-implementation-du-singleton-en-java
+	/**
+	 * Holder
+	 * 
+	 * on utilise un holder afin de permettre le multithreading
+	 * http://thecodersbreakfast.net/index.php
+	 * ?post/2008/02/25/26-de-la-bonne-implementation-du-singleton-en-java
 	 * 
 	 */
 	private static class GraphicCoreHolder {
@@ -49,9 +52,9 @@ final public class GraphicCore extends JFrame {
 	}
 
 	public void start() {
-		if(!running){
+		if (!running) {
 			new Thread(new Play()).start();
-			running = true ;
+			running = true;
 		}
 	}
 
@@ -74,10 +77,10 @@ final public class GraphicCore extends JFrame {
 		}
 	}
 
-	public void suscribe(Listener<DrawRequest> obs){
+	public void suscribe(Listener<DrawRequest> obs) {
 		this.getPan().addObserver(obs);
 	}
-	
+
 	public Panel getPan() {
 		return pan;
 	}

@@ -19,6 +19,7 @@ public abstract class AbstractView extends Observable {
 	
 	AbstractView(Observable model){
 		model.addObserver(binder);
+		this.bindModel(model);
 	}
 	
 	//Hydratation depuis le modèle

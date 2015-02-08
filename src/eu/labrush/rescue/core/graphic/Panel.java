@@ -51,7 +51,7 @@ public class Panel extends JPanel implements Listenable<DrawRequest> {
 	@Override
 	public void notifyObservers() {
 		for (Listener<DrawRequest> obs : this.observers) {
-			obs.update(new DrawRequest(this.g, this.getWidth() , this.getHeight()));
+			obs.update(new DrawRequest(this.g, this.getWidth(), this.getHeight()));
 		}
 	}
 

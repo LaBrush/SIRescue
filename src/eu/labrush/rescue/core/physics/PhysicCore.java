@@ -29,7 +29,7 @@ final public class PhysicCore implements Listenable<PhysicCore> {
 
 	public PhysicCore(int framerate) throws IllegalArgumentException{
 		if(framerate == 0){
-			throw new IllegalArgumentException("You can't set a null framerate value");
+			throw new IllegalArgumentException("Cannot set a null framerate value");
 		}
 		
 		this.framerate = framerate;
