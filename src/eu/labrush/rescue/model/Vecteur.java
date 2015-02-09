@@ -22,10 +22,19 @@ public class Vecteur extends AbstractModel {
 		this.y = y;
 	}
 
+	/**
+	 * @param other
+	 * 		A vecteur to clone
+	 */
+	public Vecteur(Vecteur other) {
+		this.x = other.getX();
+		this.y = other.getY();
+	}
+
 	public Vecteur() {
 		super();
-		this.x = 0.0;
-		this.y = 0.0;
+		this.x = .0;
+		this.y = .0;
 	}
 
 	public String toString() {
@@ -33,8 +42,8 @@ public class Vecteur extends AbstractModel {
 	}
 
 	/**
-	 * Fait correspondre les coordonées cartésiennes du vecteur aux coordonées
-	 * polaires données en argument
+	 * Fait correspondre les coordonées cartésiennes du vecteur aux coordonées polaires données en
+	 * argument
 	 * 
 	 * @param norme
 	 * @param angle

@@ -13,22 +13,12 @@ import java.util.Observer;
  * l'objet au nouvel arrivants
  * 
  * NB2: Tout setter modifiant un type primitif doit appeler la méthode <i>throwUpdate</i> afin de
- * faire remonter la modification aux objets parents
+ * faire remonter la modification aux objets parents (sauf pour les consctructeurs puisque les
+ * objets n'ont pas encore de listener)
  * 
  * @author adrienbocquet
  */
 abstract class AbstractModel extends Observable implements Observer {
-
-	AbstractModel() {
-		// TODO: Try to add AbstractModel instance suscribe automation
-		/*
-		 * for(Field field : this.getClass().getFields()){ System.out.println(field); try { if
-		 * (field.get(this) instanceof AbstractModel) { ((Observable)
-		 * field.get(this)).addObserver(this); } } catch (IllegalArgumentException |
-		 * IllegalAccessException e) { e.printStackTrace(); } }
-		 */
-		setChanged();
-	}
 
 	protected void throwUpdate() {
 		setChanged();

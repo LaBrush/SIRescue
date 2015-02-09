@@ -43,11 +43,11 @@ public class Level {
 		this.graphics = graphics;
 		this.physics = physics;
 
-		Personnage p = new Personnage(200, 40);
+		Personnage p = new Personnage(200, 150);
 		this.addPersonnage(p);
 		
 		this.addBorders();
-		this.addBloc(new Bloc(100, 100, 200, 100));
+		this.addBloc(new Bloc(300, 100, 200, 100));
 		
 		SampleControler controler = new SampleControler(p);
 		PersonnagePhysicBehaviour pb = new PersonnagePhysicBehaviour(p);
@@ -68,9 +68,9 @@ public class Level {
 		int width = this.graphics.getPan().getWidth(), height = this.graphics.getPan().getHeight();
 
 		this.addBloc(new Bloc(0, height - 10, width, 10)); // mur en haut
+		this.addBloc(new Bloc(0, 0, 10, height)); // mur à gauche
 		this.addBloc(new Bloc(width - 10, 0, 10, height)); // mur à droite
 		this.addBloc(new Bloc(0, 0, width, 10)); // mur en bas
-		this.addBloc(new Bloc(0, 0, 10, height)); // mur à gauche
 	}
 
 	/**

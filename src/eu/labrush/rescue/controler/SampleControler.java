@@ -23,9 +23,10 @@ public class SampleControler {
 	public SampleControler(Personnage personnage) {
 		super();
 		this.model = personnage;
-
+		
 		KeyboardListener keyboard = GraphicCore.getKeyboard();
-
+		double v = 1.3 ;
+		
 		keyboard.addObserver(new Listener<KeyEvent>() {
 
 			@Override
@@ -36,16 +37,16 @@ public class SampleControler {
 					switch (req.getKeyCode()) {
 						case KeyEvent.VK_UP:
 							if(t.getVitesse().getY() == 0)
-							t.getVitesse().setY(0.9);
+							t.getVitesse().setY(v);
 							break;
 						case KeyEvent.VK_LEFT:
-							t.getVitesse().setX(-.1);
+							t.getVitesse().setX(-v/4);
 							break;
 						case KeyEvent.VK_RIGHT:
-							t.getVitesse().setX(.1);
+							t.getVitesse().setX(v/4);
 							break;
 						case KeyEvent.VK_DOWN:
-							t.getVitesse().setY(-.1);
+							t.getVitesse().setY(-v);
 					}
 				}
 

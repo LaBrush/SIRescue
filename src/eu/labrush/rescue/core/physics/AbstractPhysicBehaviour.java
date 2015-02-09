@@ -11,41 +11,19 @@ import eu.labrush.rescue.model.AbstractObject;
 public abstract class AbstractPhysicBehaviour {
 
 	public class LibertyDegree {
-		public boolean top = true, bottom = true, left = true, right = true;
-
-		public boolean equals(LibertyDegree other) {
-			// Vérification de l'égalité des références
-			if (other == this) {
-				return true;
-			}
-
-			return this.top == other.top && this.bottom == other.bottom && this.left == other.left && this.right == other.right;
-		}
+		public double top = Double.POSITIVE_INFINITY, bottom = Double.POSITIVE_INFINITY, left = Double.POSITIVE_INFINITY,
+				right = Double.POSITIVE_INFINITY;
 	}
 
 	private AbstractObject target;
-	protected LibertyDegree moves, previous;
+	protected LibertyDegree moves;
 
 	AbstractPhysicBehaviour(AbstractObject obj) {
 		this.setTarget(obj);
 		this.moves = new LibertyDegree();
 	}
 
-	abstract LibertyDegree calcDegrees(HashSet<? extends AbstractObject> obstacles);
-	abstract public void adaptToDegrees();
-	
-	public void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, int delta_t) {
-		
-		//On calcul les degrés de liberté possibles
-		this.moves = this.calcDegrees(obstacles);
-				
-		//On les rapporte sur la trajectoire
-		this.adaptToDegrees();
-		this.getTarget().getTrajectoire().update(delta_t);
-
-		//TODO: Systeme de détection et de correction des changements de position trop importants entrainant la collsition d'un objet dans un autre
-		
-	}
+	public abstract void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, int delta_t);
 
 	/**
 	 * @return the target

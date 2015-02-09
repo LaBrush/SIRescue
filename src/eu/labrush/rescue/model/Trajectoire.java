@@ -3,7 +3,6 @@
  */
 package eu.labrush.rescue.model;
 
-
 /**
  * @author adrienbocquet
  *
@@ -11,13 +10,13 @@ package eu.labrush.rescue.model;
 public class Trajectoire extends AbstractModel {
 
 	Vecteur acceleration, vitesse, position;
-	boolean gravity = false ;
+	boolean gravity = false;
 
 	public Trajectoire(Vecteur a, Vecteur v, Vecteur p, boolean gravity) {
 		this(a, v, p);
 		setGravity(gravity);
 	}
-	
+
 	public Trajectoire(Vecteur a, Vecteur v, Vecteur p) {
 		this.setAcceleration(a);
 		this.setVitesse(v);
@@ -53,6 +52,23 @@ public class Trajectoire extends AbstractModel {
 			setPosition(position.add(acceleration.k(1 / 2 * Math.pow(delta_t, 2))).add(vitesse.k(delta_t)));
 			throwUpdate();
 		}
+	}
+
+	/**
+	 * Retourne la distance parcourue lors du prochain déplacement sans modifier l'objet
+	 * 
+	 * @param delta_t
+	 * @return vecteur
+	 */
+	public Vecteur distanceParcourue(double delta_t){
+		Vecteur p = new Vecteur();
+		
+		if (this.getAcceleration().norme() != 0 || this.getVitesse().norme() != 0) {
+			Vecteur v = this.getVitesse().add(acceleration.k(delta_t)); 
+			p = p.add(this.getAcceleration().k(1 / 2 * Math.pow(delta_t, 2))).add(v.k(delta_t));
+		}		
+		
+		return p;
 	}
 
 	/**
@@ -129,7 +145,8 @@ public class Trajectoire extends AbstractModel {
 	}
 
 	/**
-	 * @param gravity the gravity to set
+	 * @param gravity
+	 *            the gravity to set
 	 */
 	public void setGravity(boolean gravity) {
 		this.gravity = gravity;
