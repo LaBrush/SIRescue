@@ -13,7 +13,7 @@ public class Personnage extends AbstractObject {
 
 	public Personnage(double x, double y) {
 		super(x, y);
-		this.getTrajectoire().setGravity(true);
+		//this.getTrajectoire().setGravity(true);
 	}
 
 	/**
