@@ -18,7 +18,7 @@ import java.util.Observer;
  * 
  * @author adrienbocquet
  */
-abstract class AbstractModel extends Observable implements Observer {
+abstract public class AbstractModel extends Observable implements Observer {
 
 	protected void throwUpdate() {
 		setChanged();

@@ -1,5 +1,6 @@
 package eu.labrush.rescue.model;
 
+
 /**
  * 
  * Défini un modèle abstrait pour les objets physiques (personnage, bloc, tir...) Tout modèle
@@ -11,7 +12,7 @@ package eu.labrush.rescue.model;
 public abstract class AbstractObject extends AbstractModel {
 
 	protected Trajectoire trajectoire;
-
+	
 	protected double width = 50;
 	protected double height = 50;
 	protected boolean movable = true ;

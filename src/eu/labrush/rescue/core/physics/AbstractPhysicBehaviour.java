@@ -20,11 +20,15 @@ public abstract class AbstractPhysicBehaviour {
 		}
 	}
 
-	private AbstractObject target;
+	protected AbstractObject target;
 	protected LibertyDegree moves;
 
 	AbstractPhysicBehaviour(AbstractObject obj) {
 		this.setTarget(obj);
+		this.moves = new LibertyDegree();
+	}
+	
+	AbstractPhysicBehaviour() {
 		this.moves = new LibertyDegree();
 	}
 

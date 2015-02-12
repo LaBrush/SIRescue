@@ -40,7 +40,7 @@ public class BlocView extends AbstractView {
 	 * @see eu.labrush.rescue.view.AbstractView#draw(eu.labrush.rescue.core.graphic.DrawRequest)
 	 */
 	@Override
-	protected void draw(DrawRequest req) {
+	public void draw(DrawRequest req) {
 		req.rect(this.x, this.y, this.width, this.height, Color.RED);
 	}
 

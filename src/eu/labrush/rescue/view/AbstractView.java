@@ -17,7 +17,7 @@ public abstract class AbstractView extends Observable {
 	protected int width = 0 ;
 	protected int height = 0 ;
 	
-	AbstractView(Observable model){
+	public AbstractView(Observable model){
 		model.addObserver(binder);
 		this.bindModel(model);
 	}
@@ -42,7 +42,7 @@ public abstract class AbstractView extends Observable {
 		}
 	};
 
-	protected abstract void draw(DrawRequest req);
+	public abstract void draw(DrawRequest req);
 
 	public Listener<DrawRequest> getGraphicsListener() {
 		return graphicsListener;

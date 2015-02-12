@@ -1,16 +1,14 @@
 package eu.labrush.rescue.level;
 
-import java.util.HashSet;
-
+import eu.labrush.rescue.controler.BlocControler;
+import eu.labrush.rescue.controler.HeroControler;
+import eu.labrush.rescue.controler.PersonnageControler;
 import eu.labrush.rescue.core.graphic.GraphicCore;
-import eu.labrush.rescue.core.physics.AbstractPhysicBehaviour;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.core.physics.RebondPhysicBehaviour;
 import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Personnage;
-import eu.labrush.rescue.utils.Listener;
-import eu.labrush.rescue.view.BlocView;
-import eu.labrush.rescue.view.PersonnageView;
+import eu.labrush.rescue.model.arme.Arme;
 
 /**
  *
@@ -27,13 +25,9 @@ public class Level {
 	GraphicCore graphics;
 	PhysicCore physics;
 
-	HashSet<Personnage> personnages = new HashSet<Personnage>();
-	HashSet<Bloc> blocs = new HashSet<Bloc>();
-
-	HashSet<AbstractPhysicBehaviour> behaviours = new HashSet<AbstractPhysicBehaviour>();
-
-	HashSet<PersonnageView> personnagesView = new HashSet<PersonnageView>();
-	HashSet<BlocView> blocsView = new HashSet<BlocView>();
+	private PersonnageControler personnageControler;
+	private BlocControler blocControler;
+	private HeroControler heroControler;
 
 	/**
 	 * @param graphics
@@ -44,28 +38,23 @@ public class Level {
 		this.graphics = graphics;
 		this.physics = physics;
 
-		for (int i = 0; i < 3; i++) {
-			Personnage p = new Personnage(10 + (Math.random() * 500), 10 + (Math.random() * (300)));
-			this.addPersonnage(p);
-			behaviours.add(new RebondPhysicBehaviour(p));
-		}
+		blocControler = new BlocControler(this);
+		personnageControler = new PersonnageControler(this, blocControler);
+		heroControler = new HeroControler(this);
+
+		Personnage hero = new Personnage(15, 15);
+		heroControler.setPersonnage(hero);
 
 		this.addBorders();
-		this.addBloc(new Bloc(100, 110, 100, 155));
-		this.addBloc(new Bloc(300, 250, 200, 10));
-		this.addBloc(new Bloc(300, 50, 10, 80));
-
-		// SampleControler controler = new SampleControler(p);
-		// AbstractPhysicBehaviour pb = new PersonnagePhysicBehaviour(p);
-
-		physics.addObserver(new Listener<PhysicCore>() {
-			@Override
-			public void update(PhysicCore req) {
-				for (AbstractPhysicBehaviour b : behaviours) {
-					b.updateTrajectoire(blocs, req.getDelta());
-				}
-			}
-		});
+		blocControler.add(new Bloc(100, 100, 80, 20));
+		blocControler.add(new Bloc(200, 140, 80, 20));
+		blocControler.add(new Bloc(300, 180, 80, 20));
+		blocControler.add(new Bloc(430, 80, 20, 20));
+		
+		personnageControler.add(hero);
+		personnageControler.add(new Personnage(200, 20), new RebondPhysicBehaviour());
+		
+		hero.addArme(new Arme(10, 10));
 	}
 
 	/**
@@ -75,36 +64,24 @@ public class Level {
 
 		int width = this.graphics.getPan().getWidth(), height = this.graphics.getPan().getHeight();
 
-		this.addBloc(new Bloc(0, height - 10, width, 10)); // mur en haut
-		this.addBloc(new Bloc(0, 0, 10, height)); // mur à gauche
-		this.addBloc(new Bloc(width - 10, 0, 10, height)); // mur à droite
-		this.addBloc(new Bloc(0, 0, width, 10)); // mur en bas
+		blocControler.add(new Bloc(0, height - 10, width, 10)); // mur en haut
+		blocControler.add(new Bloc(0, 0, 10, height)); // mur à gauche
+		blocControler.add(new Bloc(width - 10, 0, 10, height)); // mur à droite
+		blocControler.add(new Bloc(0, 0, width, 10)); // mur en bas
 	}
 
 	/**
-	 * Ajoute un modèle de type pesonnage et la vue qui lui est associée
-	 * 
-	 * @param personnage
+	 * @return the graphic core
 	 */
-	private void addPersonnage(Personnage personnage) {
-		PersonnageView v = new PersonnageView(personnage);
-		this.graphics.suscribe(v.getGraphicsListener());
-
-		this.personnages.add(personnage);
-		this.personnagesView.add(v);
+	public GraphicCore getGraphics() {
+		return graphics;
 	}
 
 	/**
-	 * Ajoute un modèle de type bloc à l'objet et la vue qui lui est associée
-	 * 
-	 * @param bloc
+	 * @return the physic core
 	 */
-	private void addBloc(Bloc bloc) {
-		BlocView v = new BlocView(bloc);
-		this.graphics.suscribe(v.getGraphicsListener());
-
-		this.blocs.add(bloc);
-		this.blocsView.add(v);
+	public PhysicCore getPhysics() {
+		return physics;
 	}
 
 }

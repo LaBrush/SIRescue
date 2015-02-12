@@ -13,7 +13,7 @@ public class Bloc extends AbstractObject {
 		super(x, y);
 		this.setWidth(width);
 		this.setHeight(height);
-		this.setMovable(false);
+		this.setMovable(false);		
 	}
 	
 }

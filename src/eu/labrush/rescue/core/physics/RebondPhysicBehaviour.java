@@ -17,8 +17,10 @@ public class RebondPhysicBehaviour extends AbstractPhysicBehaviour {
 	
 	public RebondPhysicBehaviour(AbstractObject obj) {
 		super(obj);
-		obj.getTrajectoire().getVitesse().setY(speed);
-		obj.getTrajectoire().getVitesse().setX(speed);
+	}
+	
+	public RebondPhysicBehaviour() {
+		super();
 	}
 
 	/*
@@ -29,7 +31,12 @@ public class RebondPhysicBehaviour extends AbstractPhysicBehaviour {
 	 * int)
 	 */
 	@Override
-	public void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, int delta_t) {
+	public void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, int delta_t) throws NullPointerException {
+		
+		if(this.getTarget() == null){
+			throw new NullPointerException();
+		}
+		
 		this.moves = new LibertyDegree();
 		Trajectoire t = this.getTarget().getTrajectoire();
 		Vecteur deplacement = t.distanceParcourue(delta_t);
@@ -78,6 +85,12 @@ public class RebondPhysicBehaviour extends AbstractPhysicBehaviour {
 		
 		// Enfin on met à jour la trajectoire
 		t.update(delta_t);
+	}
+	
+	public void setTarget(AbstractObject obj){
+		this.target = obj ;
+		obj.getTrajectoire().getVitesse().setY(speed);
+		obj.getTrajectoire().getVitesse().setX(speed);
 	}
 
 }
