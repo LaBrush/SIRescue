@@ -19,36 +19,34 @@ public class PersonnageControler extends AbstractControler {
 
 	HashSet<Personnage> personnages = new HashSet<Personnage>();
 	HashSet<PersonnageView> views = new HashSet<PersonnageView>();
-	HashSet<AbstractPhysicBehaviour> behaviours = new  HashSet<AbstractPhysicBehaviour>();
-	
-	BlocControler blocControler ;
-	
+	HashSet<AbstractPhysicBehaviour> behaviours = new HashSet<AbstractPhysicBehaviour>();
+
+	BlocControler blocControler;
+
 	/**
 	 * @param level
 	 */
 	public PersonnageControler(Level level, BlocControler blocControler) {
 		super(level);
 
-		this.blocControler = blocControler ;
-		
+		this.blocControler = blocControler;
+
 		this.graphics.suscribe(new Listener<DrawRequest>() {
 			@Override
 			public void update(DrawRequest req) {
-				for(PersonnageView v: views){
+				for (PersonnageView v : views) {
 					v.draw(req);
 				}
 			}
-
 		});
-		
+
 		this.physics.addObserver(new Listener<PhysicCore>() {
 			@Override
 			public void update(PhysicCore req) {
-				for(AbstractPhysicBehaviour b: behaviours){
+				for (AbstractPhysicBehaviour b : behaviours) {
 					b.updateTrajectoire(blocControler.getBlocs(), req.getDelta());
 				}
 			}
-
 		});
 	}
 
@@ -60,7 +58,7 @@ public class PersonnageControler extends AbstractControler {
 	public void add(Personnage personnage) {
 		add(personnage, new PersonnagePhysicBehaviour(personnage));
 	}
-	
+
 	/**
 	 * @param personnage
 	 * @param behaviour
@@ -68,10 +66,17 @@ public class PersonnageControler extends AbstractControler {
 	public void add(Personnage personnage, AbstractPhysicBehaviour behaviour) {
 		PersonnageView v = new PersonnageView(personnage);
 		behaviour.setTarget(personnage);
-		
+
 		this.personnages.add(personnage);
 		this.views.add(v);
 		this.behaviours.add(behaviour);
+	}
+
+	/**
+	 * @return the personnages
+	 */
+	public HashSet<Personnage> getPersonnages() {
+		return personnages;
 	}
 
 }

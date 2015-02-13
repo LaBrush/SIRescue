@@ -1,6 +1,3 @@
-/**
- * 
- */
 package eu.labrush.rescue.view;
 
 import java.awt.Color;

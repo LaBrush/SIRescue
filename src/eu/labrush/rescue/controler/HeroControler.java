@@ -1,6 +1,3 @@
-/**
- * 
- */
 package eu.labrush.rescue.controler;
 
 import java.awt.event.KeyEvent;
@@ -16,7 +13,9 @@ import eu.labrush.rescue.utils.Listener;
  * @author adrienbocquet
  *
  */
-public class HeroControler extends AbstractControler {
+public final class HeroControler extends AbstractControler {
+
+	TirControler tirControler;
 
 	private Personnage model;
 	boolean moving;
@@ -42,7 +41,24 @@ public class HeroControler extends AbstractControler {
 					case KeyEvent.VK_RIGHT:
 						t.getVitesse().setX(vx);
 						break;
+				}
 
+				switch (req.getKeyChar()) {
+					case 'd':
+						tirControler.shoot(model, 0);
+						break;
+					case 'e':
+						tirControler.shoot(model, 45);
+						break;
+					case 'z':
+						tirControler.shoot(model, 90);
+						break;
+					case 'a':
+						tirControler.shoot(model, 135);
+						break;
+					case 'q':
+						tirControler.shoot(model, 180);
+						break;
 				}
 			}
 
@@ -61,8 +77,10 @@ public class HeroControler extends AbstractControler {
 
 	};
 
-	public HeroControler(Level level) {
+	public HeroControler(Level level, TirControler tirContoler) {
 		super(level);
+
+		this.tirControler = tirContoler;
 	}
 
 	/**

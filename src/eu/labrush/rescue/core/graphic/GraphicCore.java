@@ -26,7 +26,9 @@ final public class GraphicCore extends JFrame {
 		this.setContentPane(this.pan);
 		this.setVisible(true);
 		this.setResizable(false);
-		
+
+		// On donne le focus au panel principal pour intercepter les appuis sur les touches du
+		// clavier
 		this.setFocusable(false);
 		pan.add(keyboard);
 		keyboard.requestFocus();

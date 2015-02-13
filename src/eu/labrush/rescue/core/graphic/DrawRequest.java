@@ -39,16 +39,60 @@ public class DrawRequest {
 		this.height = height;
 	}
 
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 */
 	public void rect(int x, int y, int width, int height) {
 		this.g.drawRect(x, this.height - y - height, width, height);
 	}
 
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param color
+	 */
 	public void rect(int x, int y, int width, int height, Color c) {
 		this.g.setColor(c);
 		rect(x, y, width, height);
 		this.g.setColor(Color.BLACK);
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param angle
+	 */
+	public void rect(int x, int y, int width, int height, int angle) {
+
+		// on ajoute un décalage sur x et y en fonction de l'angle de rotation
+		// afin d'obtenir une rotation par raport au coins inférieur gauche
+		y = (int) (this.height - y - height * Math.cos(Math.toRadians(angle)));
+		x = (int) (x - height * Math.sin(Math.toRadians(angle)));
+
+		this.g.translate(x, y);
+		this.g.rotate(Math.toRadians(-angle));
+		this.g.drawRect(0, 0, width, height);
+		this.g.rotate(Math.toRadians(angle));
+		this.g.translate(-x, -y);
+
+	}
+
+	/**
+	 * 
+	 * @param img
+	 * @param x
+	 * @param y
+	 * @param angle
+	 */
 	public void image(BufferedImage img, int x, int y, int angle) {
 
 		// on ajoute un décalage sur x et y en fonction de l'angle de rotation

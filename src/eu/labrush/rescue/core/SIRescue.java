@@ -1,6 +1,3 @@
-/**
- * 
- */
 package eu.labrush.rescue.core;
 
 import eu.labrush.rescue.core.graphic.GraphicCore;
@@ -13,9 +10,6 @@ import eu.labrush.rescue.level.Level;
  */
 public class SIRescue {
 
-	/**
-	 * @param args
-	 */
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		GraphicCore graphics = GraphicCore.getInstance();

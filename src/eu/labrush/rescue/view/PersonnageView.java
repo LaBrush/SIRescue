@@ -17,20 +17,6 @@ public class PersonnageView extends AbstractView {
 
 	public PersonnageView(Personnage model) {
 		super(model);
-		// arme = new ArmeView(model.getCurrentArme());
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see eu.segui.view.AbstractView#draw(eu.segui.core.graphic.DrawRequest)
-	 */
-	@Override
-	public void draw(DrawRequest req) {
-		req.rect(this.x, this.y, this.width, this.height);
-
-		if (armeView != null)
-			armeView.draw(req);
 	}
 
 	@Override
@@ -51,4 +37,11 @@ public class PersonnageView extends AbstractView {
 
 	}
 
+	@Override
+	public void draw(DrawRequest req) {
+		req.rect(this.x, this.y, this.width, this.height);
+
+		if (armeView != null)
+			armeView.draw(req);
+	}
 }

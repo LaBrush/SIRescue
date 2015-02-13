@@ -46,6 +46,8 @@ public class ArmeControler extends AbstractControler {
 
 		this.armes.add(arme);
 		this.views.add(v);
+		
+		owner.addArme(arme);
 	}
 
 }

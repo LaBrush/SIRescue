@@ -34,6 +34,10 @@ public class Panel extends JPanel implements Listenable<DrawRequest> {
 
 		this.g.setColor(Color.BLACK);
 		this.notifyObservers();
+		
+		//On libère les ressources système manuellement
+		//http://docs.oracle.com/javase/7/docs/api/java/awt/Graphics.html#dispose()
+		g.dispose();
 	}
 
 	@Override
