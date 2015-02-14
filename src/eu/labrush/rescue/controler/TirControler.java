@@ -1,6 +1,7 @@
 package eu.labrush.rescue.controler;
 
 import java.util.HashSet;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.physics.AbstractPhysicBehaviour;
@@ -16,10 +17,7 @@ import eu.labrush.rescue.view.TirView;
 /**
  * TODO: supprimer les tirs lorsqu'ils percutent un bloc ou personnage
  * 
- * TODO: implémenter les dégats aux personnages
- * 
- * TODO: régler le problème d'ajout asynchrone (Exception in thread "Thread-1"
- * java.util.ConcurrentModificationException) voir <i>synchronized</i>
+ * TODO: implémenter les dégats infligés aux personnages
  * 
  * @author adrienbocquet
  */
@@ -27,7 +25,8 @@ public class TirControler extends AbstractControler {
 
 	HashSet<Tir> tirs = new HashSet<Tir>();
 	HashSet<TirView> views = new HashSet<TirView>();
-	HashSet<TirPhysicBehaviour> behaviours = new HashSet<TirPhysicBehaviour>();
+	// permet une lecture et écriture simultanée avec les evenements graphiques et physiques
+	CopyOnWriteArraySet<TirPhysicBehaviour> behaviours = new CopyOnWriteArraySet<TirPhysicBehaviour>();
 
 	BlocControler blocControler;
 	PersonnageControler personnageControler;
@@ -62,6 +61,7 @@ public class TirControler extends AbstractControler {
 				for (AbstractPhysicBehaviour b : behaviours) {
 					b.updateTrajectoire(obstacles, req.getDelta());
 				}
+
 			}
 		});
 

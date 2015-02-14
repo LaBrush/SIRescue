@@ -15,7 +15,6 @@ import eu.labrush.rescue.utils.Listener;
 
 /**
  * @author adrienbocquet
- *
  */
 
 @SuppressWarnings("serial")
