@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package eu.labrush.rescue.core.physics;
 
 import java.awt.Dimension;
@@ -11,32 +14,26 @@ import eu.labrush.rescue.model.Vecteur;
 /**
  * @author adrienbocquet
  *
+ *         Décrit la trajectoire d'un objet de facon linéaire ou parabolique (en fonction de sa
+ *         réactioin à la gravité)
+ *
  */
-public class RebondPhysicBehaviour extends AbstractPhysicBehaviour {
-
-	private double speed = .3 ;
+public class ClassicPhysicBehaviour extends AbstractPhysicBehaviour {
 
 	/**
 	 * @param t
 	 * @param dim
 	 */
-	public RebondPhysicBehaviour(Trajectoire t, Dimension dim) {
+	public ClassicPhysicBehaviour(Trajectoire t, Dimension dim) {
 		super(t, dim);
-		this.trajectoire.setVitesse(new Vecteur(speed, speed));
 	}
 
+	public ClassicPhysicBehaviour() {
+	}
 
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * eu.labrush.rescue.core.physics.AbstractPhysicBehaviour#updateTrajectoire(java.util.HashSet,
-	 * int)
-	 */
 	@Override
 	public void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, int delta_t) {
-		
+
 		this.moves = new LibertyDegree();
 		Vecteur deplacement = trajectoire.distanceParcourue(delta_t);
 
@@ -67,22 +64,14 @@ public class RebondPhysicBehaviour extends AbstractPhysicBehaviour {
 			trajectoire.getVitesse().setY(-this.moves.bottom / delta_t);
 			trajectoire.getAcceleration().setY(0);
 		}
+		else if (this.moves.bottom > 0 && trajectoire.hasGravity()) { // Si on est en l'air, on
+																		// rajoute la
+			// gravité
+			trajectoire.getAcceleration().setY(PhysicCore.GRAVITY);
+		}
 
-		if(this.moves.top == 0 && trajectoire.getVitesse().getY() == 0){
-			trajectoire.getVitesse().setY(-speed);
-		}
-		else if(this.moves.bottom == 0 && trajectoire.getVitesse().getY() == 0){
-			trajectoire.getVitesse().setY(speed);
-		}
-		
-		if(this.moves.right == 0 && trajectoire.getVitesse().getX() == 0){
-			trajectoire.getVitesse().setX(-speed);
-		}
-		else if(this.moves.left == 0 && trajectoire.getVitesse().getX() == 0){
-			trajectoire.getVitesse().setX(speed);
-		}
-		
 		// Enfin on met à jour la trajectoire
 		trajectoire.update(delta_t);
 	}
+
 }

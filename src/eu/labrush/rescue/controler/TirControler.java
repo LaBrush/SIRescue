@@ -1,15 +1,14 @@
 package eu.labrush.rescue.controler;
 
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 import eu.labrush.rescue.core.graphic.DrawRequest;
-import eu.labrush.rescue.core.physics.AbstractPhysicBehaviour;
 import eu.labrush.rescue.core.physics.PhysicCore;
-import eu.labrush.rescue.core.physics.TirPhysicBehaviour;
 import eu.labrush.rescue.level.Level;
 import eu.labrush.rescue.model.AbstractObject;
 import eu.labrush.rescue.model.Personnage;
+import eu.labrush.rescue.model.arme.Resistance;
 import eu.labrush.rescue.model.arme.Tir;
 import eu.labrush.rescue.utils.Listener;
 import eu.labrush.rescue.view.TirView;
@@ -23,18 +22,16 @@ import eu.labrush.rescue.view.TirView;
  */
 public class TirControler extends AbstractControler {
 
-	HashSet<Tir> tirs = new HashSet<Tir>();
-	HashSet<TirView> views = new HashSet<TirView>();
-	// permet une lecture et écriture simultanée avec les evenements graphiques et physiques
-	CopyOnWriteArraySet<TirPhysicBehaviour> behaviours = new CopyOnWriteArraySet<TirPhysicBehaviour>();
+	// On associe dans un même Map les modèles et la vue qui leur est associée
+	HashMap<Tir, TirView> tirs = new HashMap<Tir, TirView>();
 
 	BlocControler blocControler;
 	PersonnageControler personnageControler;
 
 	/**
 	 * @param level
+	 * @param blocControler
 	 * @param personnageControler
-	 * @param blocControler2
 	 */
 	public TirControler(Level level, BlocControler blocControler, PersonnageControler personnageControler) {
 		super(level);
@@ -44,7 +41,7 @@ public class TirControler extends AbstractControler {
 		this.graphics.suscribe(new Listener<DrawRequest>() {
 			@Override
 			public void update(DrawRequest req) {
-				for (TirView v : views) {
+				for (TirView v : tirs.values()) {
 					v.draw(req);
 				}
 			}
@@ -58,8 +55,10 @@ public class TirControler extends AbstractControler {
 				obstacles.addAll(personnageControler.getPersonnages());
 				obstacles.addAll(blocControler.getBlocs());
 
-				for (AbstractPhysicBehaviour b : behaviours) {
-					b.updateTrajectoire(obstacles, req.getDelta());
+				for (Tir t : tirs.keySet()) {
+					if (t instanceof AbstractObject) {
+						((AbstractObject) t).getBehaviour().updateTrajectoire(obstacles, req.getDelta());
+					}
 				}
 
 			}
@@ -68,13 +67,10 @@ public class TirControler extends AbstractControler {
 	}
 
 	public void shoot(Personnage personnage, int angle) {
-		Tir tir = new Tir(personnage.getTrajectoire().getPosition(), 10, angle);
+		Resistance tir = new Resistance(personnage.getTrajectoire().getPosition(), 10, angle);
 		TirView v = new TirView(tir);
-		TirPhysicBehaviour behaviour = new TirPhysicBehaviour(tir);
 
-		this.tirs.add(tir);
-		this.views.add(v);
-		this.behaviours.add(behaviour);
+		this.tirs.put(tir, v);
 	}
 
 }

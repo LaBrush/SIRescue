@@ -1,5 +1,9 @@
 package eu.labrush.rescue.model;
 
+import java.awt.Dimension;
+
+import eu.labrush.rescue.core.physics.AbstractPhysicBehaviour;
+import eu.labrush.rescue.core.physics.ClassicPhysicBehaviour;
 
 /**
  * 
@@ -12,18 +16,36 @@ package eu.labrush.rescue.model;
 public abstract class AbstractObject extends AbstractModel {
 
 	protected Trajectoire trajectoire;
-	
-	protected double width = 50;
-	protected double height = 50;
-	protected boolean movable = true ;
+	protected AbstractPhysicBehaviour behaviour;
+	protected Dimension dim;
+
+	protected boolean movable = true;
 
 	/**
 	 * @param x
 	 * @param y
+	 * @param width
+	 * @param height
+	 * @param behaviour
 	 */
-	public AbstractObject(double x, double y) {
+	public AbstractObject(double x, double y, int width, int height, AbstractPhysicBehaviour behaviour) {
 		super();
 		this.setTrajectoire(new Trajectoire(x, y));
+		this.dim = new Dimension(width, height);
+
+		this.behaviour = behaviour;
+		this.behaviour.setTrajectoire(this.trajectoire);
+		this.behaviour.setDimension(this.dim);
+	}
+
+	/**
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 */
+	public AbstractObject(double x, double y, int width, int height) {
+		this(x, y, width, height, new ClassicPhysicBehaviour());
 	}
 
 	public AbstractObject() {
@@ -32,21 +54,23 @@ public abstract class AbstractObject extends AbstractModel {
 	}
 
 	public double getWidth() {
-		return width;
-	}
-
-	public void setWidth(double width) {
-		this.width = width;
-		setChanged();
+		return dim.getWidth();
 	}
 
 	public double getHeight() {
-		return height;
+		return dim.getHeight();
 	}
 
-	public void setHeight(double height) {
-		this.height = height;
-		setChanged();
+	public double getX(){
+		return this.getTrajectoire().getPosition().getX();
+	}
+	
+	public double getY(){
+		return this.getTrajectoire().getPosition().getY();
+	}
+
+	public Dimension getDimension() {
+		return dim;
 	}
 
 	/**
@@ -79,10 +103,27 @@ public abstract class AbstractObject extends AbstractModel {
 	}
 
 	/**
-	 * @param movable the movable to set
+	 * @param movable
+	 *            the movable to set
 	 */
 	public void setMovable(boolean movable) {
 		this.movable = movable;
+		throwUpdate();
+	}
+
+	/**
+	 * @return the behaviour
+	 */
+	public AbstractPhysicBehaviour getBehaviour() {
+		return behaviour;
+	}
+
+	/**
+	 * @param behaviour
+	 *            the behaviour to set
+	 */
+	public void setBehaviour(AbstractPhysicBehaviour behaviour) {
+		this.behaviour = behaviour;
 		throwUpdate();
 	}
 

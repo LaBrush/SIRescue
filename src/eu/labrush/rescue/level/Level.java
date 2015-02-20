@@ -48,15 +48,23 @@ public class Level {
 		heroControler.setPersonnage(hero);
 
 		this.addBorders();
-		blocControler.add(new Bloc(100, 100, 80, 20));
+		blocControler.add(new Bloc(60, 100, 800, 20));
 		blocControler.add(new Bloc(200, 140, 80, 20));
 		blocControler.add(new Bloc(300, 180, 80, 20));
 		blocControler.add(new Bloc(430, 80, 20, 20));
 
 		personnageControler.add(hero);
-		// personnageControler.add(new Personnage(200, 20), new RebondPhysicBehaviour());
 
 		hero.addArme(new Arme(10, 10));
+	}
+	
+	/**
+	 * TODO: tmp
+	 * 
+	 * @return the blocControler
+	 */
+	public BlocControler getBlocControler() {
+		return blocControler;
 	}
 
 	/**
@@ -67,8 +75,8 @@ public class Level {
 		int width = this.graphics.getPan().getWidth(), height = this.graphics.getPan().getHeight();
 
 		blocControler.add(new Bloc(0, height - 10, width, 10)); // mur en haut
-		blocControler.add(new Bloc(0, 0, 10, height)); // mur à gauche
-		blocControler.add(new Bloc(width - 10, 0, 10, height)); // mur à droite
+		blocControler.add(new Bloc(0, 0, 10, height + 100)); // mur à gauche
+		blocControler.add(new Bloc(width - 10, 0, 10, height + 100)); // mur à droite
 		blocControler.add(new Bloc(0, 0, width, 10)); // mur en bas
 	}
 

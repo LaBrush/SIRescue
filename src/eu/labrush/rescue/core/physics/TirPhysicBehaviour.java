@@ -1,10 +1,10 @@
 package eu.labrush.rescue.core.physics;
 
+import java.awt.Dimension;
 import java.util.HashSet;
 
 import eu.labrush.rescue.model.AbstractObject;
 import eu.labrush.rescue.model.Trajectoire;
-import eu.labrush.rescue.model.arme.Tir;
 
 /**
  * @author adrienbocquet
@@ -12,8 +12,9 @@ import eu.labrush.rescue.model.arme.Tir;
  */
 public class TirPhysicBehaviour extends AbstractPhysicBehaviour {
 
-	public TirPhysicBehaviour(Tir obj) {
-		super(obj);
+
+	public TirPhysicBehaviour(Trajectoire t, Dimension dim) {
+		super(t, dim);
 	}
 
 	/*
@@ -25,8 +26,7 @@ public class TirPhysicBehaviour extends AbstractPhysicBehaviour {
 	 */
 	@Override
 	public void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, int delta_t) {
-		Trajectoire t = this.getTarget().getTrajectoire();
-		t.update(delta_t);
+		trajectoire.update(delta_t);
 	}
 
 }

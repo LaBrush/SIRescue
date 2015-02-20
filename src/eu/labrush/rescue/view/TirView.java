@@ -3,7 +3,7 @@ package eu.labrush.rescue.view;
 import java.util.Observable;
 
 import eu.labrush.rescue.core.graphic.DrawRequest;
-import eu.labrush.rescue.model.arme.Tir;
+import eu.labrush.rescue.model.arme.Resistance;
 
 /**
  * @author adrienbocquet
@@ -27,8 +27,8 @@ public class TirView extends AbstractView {
 	 */
 	@Override
 	protected void bindModel(Observable model) {
-		if (model instanceof Tir) {
-			Tir t = (Tir) model;
+		if (model instanceof Resistance) {
+			Resistance t = (Resistance) model;
 
 			width = (int) t.getWidth();
 			height = (int) t.getHeight();
@@ -36,7 +36,7 @@ public class TirView extends AbstractView {
 			x = (int) (t.getTrajectoire().getPosition().getX());
 			y = (int) (t.getTrajectoire().getPosition().getY());
 
-			angle = t.getAngle();
+			angle = t.getAngle() % 180;
 		}
 	}
 

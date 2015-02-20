@@ -15,8 +15,8 @@ public class Personnage extends AbstractObject {
 	Arme currentArme = null ;
 	
 	public Personnage(double x, double y) {
-		super(x, y);
-		this.getTrajectoire().setGravity(true);
+		super(x, y, 20, 20);
+		this.getTrajectoire().setGravity(true);		
 	}
 
 	/**
@@ -95,5 +95,4 @@ public class Personnage extends AbstractObject {
 		setCurrentArme(e);
 		return armes.add(e);
 	}
-
 }

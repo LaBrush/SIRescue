@@ -1,8 +1,10 @@
 package eu.labrush.rescue.core.physics;
 
+import java.awt.Dimension;
 import java.util.HashSet;
 
 import eu.labrush.rescue.model.AbstractObject;
+import eu.labrush.rescue.model.Trajectoire;
 import eu.labrush.rescue.model.Vecteur;
 
 /**
@@ -20,16 +22,16 @@ public abstract class AbstractPhysicBehaviour {
 		}
 	}
 
-	protected AbstractObject target;
+	protected Trajectoire trajectoire;
 	protected LibertyDegree moves;
+	protected Dimension dim;
 
-	AbstractPhysicBehaviour(AbstractObject obj) {
-		this.setTarget(obj);
-		this.moves = new LibertyDegree();
-	}
-	
 	AbstractPhysicBehaviour() {
-		this.moves = new LibertyDegree();
+	}
+
+	AbstractPhysicBehaviour(Trajectoire t, Dimension dim) {
+		this.trajectoire = t;
+		this.dim = dim;
 	}
 
 	public abstract void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, int delta_t);
@@ -42,11 +44,11 @@ public abstract class AbstractPhysicBehaviour {
 	 */
 	protected final void calcMargin(AbstractObject bloc, Vecteur next_pos) {
 
-		double tw = this.getTarget().getWidth();
-		double th = this.getTarget().getHeight();
+		double th = dim.getHeight();
+		double tw = dim.getWidth();
 
-		double tx = this.getTarget().getTrajectoire().getPosition().getX();
-		double ty = this.getTarget().getTrajectoire().getPosition().getY();
+		double tx = this.trajectoire.getPosition().getX();
+		double ty = this.trajectoire.getPosition().getY();
 
 		double bw = bloc.getWidth();
 		double bh = bloc.getHeight();
@@ -108,18 +110,18 @@ public abstract class AbstractPhysicBehaviour {
 	}
 
 	/**
-	 * @return the target
+	 * @param trajectoire
+	 *            the trajectoire to set
 	 */
-	public AbstractObject getTarget() {
-		return target;
+	public void setTrajectoire(Trajectoire trajectoire) {
+		this.trajectoire = trajectoire;
 	}
 
 	/**
-	 * @param target
-	 *            the target to set
+	 * @param dim
 	 */
-	public void setTarget(AbstractObject target) {
-		this.target = target;
+	public void setDimension(Dimension dim) {
+		this.dim = dim;
 	}
 
 }

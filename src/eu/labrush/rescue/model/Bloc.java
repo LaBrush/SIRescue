@@ -1,7 +1,5 @@
-/**
- * 
- */
 package eu.labrush.rescue.model;
+
 
 /**
  * @author adrienbocquet
@@ -9,10 +7,8 @@ package eu.labrush.rescue.model;
  */
 public class Bloc extends AbstractObject {
 
-	public Bloc(double x, double y, int width, int height){
-		super(x, y);
-		this.setWidth(width);
-		this.setHeight(height);
+	public Bloc(double x, double y, int w, int h){
+		super(x, y, w, h);
 		this.setMovable(false);		
 	}
 	

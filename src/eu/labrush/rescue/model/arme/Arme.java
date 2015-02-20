@@ -11,7 +11,7 @@ public class Arme extends AbstractModel {
 
 	protected int recharge; // temps de rechargement
 
-	private HashSet<Tir> tirs = new HashSet<Tir>();
+	private HashSet<Resistance> tirs = new HashSet<Resistance>();
 
 	/**
 	 * 
@@ -75,7 +75,7 @@ public class Arme extends AbstractModel {
 	/**
 	 * @return the tirs
 	 */
-	public HashSet<Tir> getTirs() {
+	public HashSet<Resistance> getTirs() {
 		return tirs;
 	}
 }
