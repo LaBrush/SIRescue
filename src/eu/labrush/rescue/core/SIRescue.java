@@ -27,30 +27,21 @@ public class SIRescue {
 		physics.start();
 
 		AStar star = new AStar(level.getBlocControler().getBlocs(), graphics.getWidth(), graphics.getHeight(), 10);
+		ArrayList<Point> trajet = star.findPath(new Point(5, 5), new Point(44,30));
 
+		for (Point p : trajet) {
+			System.out.println(p);
+		}
+
+		
 		graphics.suscribe(new Listener<DrawRequest>() {
 			@Override
 			public void update(DrawRequest req) {
-				for (Point p : star.getPoints()) {
-					req.rect(p.x, p.y, 1, 1, Color.GREEN);
+				for (Point p : trajet) {
+					req.rect(p.x * 10, p.y * 10, 1, 1, Color.BLACK);
 				}
 			}
 		});
 
-		try {
-			ArrayList<Point> trajet = star.process(new Point(17, 17), new Point(20, 20));
-			System.out.println(trajet);
-
-			graphics.suscribe(new Listener<DrawRequest>() {
-				@Override
-				public void update(DrawRequest req) {
-					for (Point p : trajet) {
-						req.rect(p.x * 10, p.y * 10, 1, 1, Color.BLACK);
-					}
-				}
-			});
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 }

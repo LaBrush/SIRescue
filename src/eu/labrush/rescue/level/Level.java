@@ -48,7 +48,7 @@ public class Level {
 		heroControler.setPersonnage(hero);
 
 		this.addBorders();
-		blocControler.add(new Bloc(60, 100, 800, 20));
+		blocControler.add(new Bloc(60, 100, 80, 20));
 		blocControler.add(new Bloc(200, 140, 80, 20));
 		blocControler.add(new Bloc(300, 180, 80, 20));
 		blocControler.add(new Bloc(430, 80, 20, 20));

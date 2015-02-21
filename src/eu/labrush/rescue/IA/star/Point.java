@@ -14,7 +14,29 @@ public class Point implements Cloneable {
 		this.y = y;
 	}
 
-	/* (non-Javadoc)
+	public Point[] getVoisins() {
+		Point[] voisins = new Point[8];
+		int c = 0 ;
+		
+		for (int i = x - 1; i <= x + 1; i++) {
+			for (int j = y - 1; j <= y + 1; j++) {
+
+				// si le point considéré est hors de la grille ou qu'il s'agit du point lui-même, on
+				// saute
+				if (i < 0 || j < 0 || (i == x && j == y))
+					continue;
+				
+				voisins[c] = new Point(i, j);
+				c++;
+			}
+		}
+				
+		return voisins ;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -26,7 +48,9 @@ public class Point implements Cloneable {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -42,8 +66,6 @@ public class Point implements Cloneable {
 			return false;
 		return true;
 	}
-	
-	
 
 	public String toString() {
 		return this.x + " " + this.y;
