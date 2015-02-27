@@ -1,12 +1,14 @@
 package eu.labrush.rescue.level;
 
 import eu.labrush.rescue.controler.BlocControler;
+import eu.labrush.rescue.controler.BotControler;
 import eu.labrush.rescue.controler.HeroControler;
 import eu.labrush.rescue.controler.PersonnageControler;
 import eu.labrush.rescue.controler.TirControler;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.model.Bloc;
+import eu.labrush.rescue.model.Bot;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
 import eu.labrush.rescue.model.arme.Arme;
@@ -30,6 +32,7 @@ public class Level {
 	private BlocControler blocControler;
 	private HeroControler heroControler;
 	private TirControler tirControler;
+	private BotControler botControler;
 
 	/**
 	 * @param graphics
@@ -44,11 +47,15 @@ public class Level {
 		personnageControler = new PersonnageControler(this, blocControler);
 		tirControler = new TirControler(this, blocControler, personnageControler);
 		heroControler = new HeroControler(this, tirControler);
+		botControler = new BotControler(this, personnageControler);
 
 		Personnage hero = new Personnage(15, 15);
 		hero.setVitesseNominale(new Vecteur(.3, .9));
 		heroControler.setPersonnage(hero);
 
+		Bot ennemi = new Bot(50, 15);
+		botControler.add(ennemi);
+		
 		this.addBorders();
 		blocControler.add(new Bloc(60, 100, 80, 20));
 		blocControler.add(new Bloc(200, 140, 80, 20));
@@ -56,6 +63,8 @@ public class Level {
 		blocControler.add(new Bloc(430, 80, 20, 20));
 
 		personnageControler.add(hero);
+		personnageControler.add(ennemi);
+		
 
 		hero.addArme(new Arme(10, 10));
 	}
