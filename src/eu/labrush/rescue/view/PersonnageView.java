@@ -29,7 +29,7 @@ public class PersonnageView extends AbstractView {
 		height = (int) p.getHeight();
 
 		Arme previous = arme;
-
+		
 		arme = p.getCurrentArme();
 		if (arme != null && !arme.equals(previous)) {
 			armeView = new ArmeView(model, p);

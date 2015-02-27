@@ -57,7 +57,7 @@ public class TirControler extends AbstractControler {
 
 				for (Tir t : tirs.keySet()) {
 					if (t instanceof AbstractObject) {
-						((AbstractObject) t).getBehaviour().updateTrajectoire(obstacles, req.getDelta());
+						((AbstractObject) t).getPhysicBehaviour().updateTrajectoire(obstacles, req.getDelta());
 					}
 				}
 

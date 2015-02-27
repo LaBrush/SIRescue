@@ -8,6 +8,7 @@ import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Personnage;
+import eu.labrush.rescue.model.Vecteur;
 import eu.labrush.rescue.model.arme.Arme;
 
 /**
@@ -45,6 +46,7 @@ public class Level {
 		heroControler = new HeroControler(this, tirControler);
 
 		Personnage hero = new Personnage(15, 15);
+		hero.setVitesseNominale(new Vecteur(.3, .9));
 		heroControler.setPersonnage(hero);
 
 		this.addBorders();
@@ -57,7 +59,7 @@ public class Level {
 
 		hero.addArme(new Arme(10, 10));
 	}
-	
+
 	/**
 	 * TODO: tmp
 	 * 
@@ -65,6 +67,13 @@ public class Level {
 	 */
 	public BlocControler getBlocControler() {
 		return blocControler;
+	}
+
+	/**
+	 * @return the heroControler
+	 */
+	public HeroControler getHeroControler() {
+		return heroControler;
 	}
 
 	/**

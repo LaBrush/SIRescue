@@ -20,7 +20,7 @@ public final class HeroControler extends AbstractControler {
 	private Personnage model;
 	boolean moving;
 
-	private double vx = .3, vy = .9;
+	private double vx, vy ;
 
 	KeyboardListener keyboard = GraphicCore.getKeyboard();
 	Listener<KeyEvent> listener = new Listener<KeyEvent>() {
@@ -93,5 +93,13 @@ public final class HeroControler extends AbstractControler {
 		if (this.model != null) {
 			keyboard.addObserver(listener);
 		}
+		
+
+		this.vx = model.getVitesseNominale().getX() ;
+		this.vy = model.getVitesseNominale().getY();
+	}
+	
+	public Personnage getPersonnage(){
+		return model ;
 	}
 }

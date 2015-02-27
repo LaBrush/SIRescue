@@ -114,7 +114,7 @@ public abstract class AbstractObject extends AbstractModel {
 	/**
 	 * @return the behaviour
 	 */
-	public AbstractPhysicBehaviour getBehaviour() {
+	public AbstractPhysicBehaviour getPhysicBehaviour() {
 		return behaviour;
 	}
 
@@ -122,7 +122,7 @@ public abstract class AbstractObject extends AbstractModel {
 	 * @param behaviour
 	 *            the behaviour to set
 	 */
-	public void setBehaviour(AbstractPhysicBehaviour behaviour) {
+	public void setPhysicBehaviour(AbstractPhysicBehaviour behaviour) {
 		this.behaviour = behaviour;
 		throwUpdate();
 	}

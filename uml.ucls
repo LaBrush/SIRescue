@@ -3,7 +3,7 @@
   associations="true" dependencies="true" nesting-relationships="true">  
   <class id="1" language="java" name="eu.labrush.rescue.controler.HeroControler" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/controler/HeroControler.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="98" width="194" x="1590" y="60"/>    
+    <position height="206" width="210" x="1331" y="301"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="eu.labrush.rescue.core.graphic.Panel" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/core/graphic/Panel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="170" width="264" x="1892" y="678"/>    
+    <position height="170" width="264" x="1371" y="991"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="eu.labrush.rescue.model.AbstractObject" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/model/AbstractObject.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="296" width="192" x="755" y="342"/>    
+    <position height="368" width="363" x="214" y="583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <interface id="4" language="java" name="eu.labrush.rescue.utils.Listener" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/utils/Listener.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="80" width="114" x="1892" y="1314"/>    
+    <position height="80" width="114" x="1371" y="1717"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </interface>  
   <class id="5" language="java" name="eu.labrush.rescue.model.Personnage" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/model/Personnage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="188" width="180" x="828" y="678"/>    
+    <position height="332" width="201" x="844" y="991"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="eu.labrush.rescue.model.Trajectoire" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/model/Trajectoire.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="314" width="272" x="757" y="960"/>    
+    <position height="332" width="272" x="281" y="991"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="eu.labrush.rescue.model.AbstractModel" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/model/AbstractModel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="116" width="199" x="216" y="60"/>    
+    <position height="116" width="199" x="45" y="301"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="eu.labrush.rescue.core.physics.PhysicCore" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/core/physics/PhysicCore.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="242" width="252" x="2410" y="678"/>    
+    <position height="260" width="252" x="2344" y="991"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <interface id="9" language="java" name="eu.labrush.rescue.utils.Listenable" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/utils/Listenable.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="116" width="196" x="1932" y="960"/>    
+    <position height="116" width="196" x="1665" y="1363"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </interface>  
   <class id="10" language="java" name="eu.labrush.rescue.view.AbstractView" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/view/AbstractView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="242" width="302" x="1227" y="60"/>    
+    <position height="242" width="302" x="989" y="301"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="eu.labrush.rescue.model.Bloc" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/model/Bloc.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="80" width="169" x="1297" y="678"/>    
+    <position height="80" width="169" x="635" y="991"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="eu.labrush.rescue.view.PersonnageView" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/view/PersonnageView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="116" width="195" x="1029" y="342"/>    
+    <position height="152" width="195" x="831" y="583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -111,7 +111,7 @@
   </class>  
   <class id="13" language="java" name="eu.labrush.rescue.core.graphic.GraphicCore" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/core/graphic/GraphicCore.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="224" width="239" x="1845" y="342"/>    
+    <position height="224" width="239" x="1675" y="583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -120,7 +120,7 @@
   </class>  
   <class id="14" language="java" name="eu.labrush.rescue.core.graphic.GraphicCore.GraphicCoreHolder" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/core/graphic/GraphicCore.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="80" width="155" x="1866" y="60"/>    
+    <position height="80" width="155" x="1956" y="991"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -129,7 +129,7 @@
   </class>  
   <class id="15" language="java" name="eu.labrush.rescue.core.graphic.DrawRequest" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/core/graphic/DrawRequest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="278" width="222" x="1265" y="960"/>    
+    <position height="296" width="222" x="1067" y="1363"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -138,7 +138,7 @@
   </class>  
   <class id="16" language="java" name="eu.labrush.rescue.model.Vecteur" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/model/Vecteur.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="296" width="159" x="757" y="1314"/>    
+    <position height="314" width="159" x="281" y="1363"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -147,7 +147,7 @@
   </class>  
   <class id="17" language="java" name="eu.labrush.rescue.core.graphic.GraphicCore.Play" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/core/graphic/GraphicCore.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="98" width="153" x="2217" y="678"/>    
+    <position height="98" width="153" x="2151" y="991"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -156,7 +156,7 @@
   </class>  
   <class id="18" language="java" name="eu.labrush.rescue.core.graphic.KeyboardListener" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/core/graphic/KeyboardListener.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="206" width="241" x="1611" y="678"/>    
+    <position height="206" width="241" x="1675" y="991"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -165,7 +165,7 @@
   </class>  
   <class id="19" language="java" name="eu.labrush.rescue.view.BlocView" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/view/BlocView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="116" width="181" x="1264" y="342"/>    
+    <position height="116" width="181" x="1066" y="583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -175,7 +175,7 @@
   <class id="20" language="java" name="eu.labrush.rescue.core.physics.AbstractPhysicBehaviour" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/core/physics/AbstractPhysicBehaviour.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="170" width="324" x="478" y="-150"/>    
+    <position height="224" width="312" x="617" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -185,7 +185,7 @@
   <class id="21" language="java" name="eu.labrush.rescue.core.physics.AbstractPhysicBehaviour.LibertyDegree" 
     project="SIRescue" file="/SIRescue/src/eu/labrush/rescue/core/physics/AbstractPhysicBehaviour.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="170" width="197" x="476" y="342"/>    
+    <position height="170" width="153" x="617" y="583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -194,7 +194,7 @@
   </class>  
   <class id="22" language="java" name="eu.labrush.rescue.level.Level" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/level/Level.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="134" width="215" x="1590" y="-150"/>    
+    <position height="224" width="267" x="1675" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -203,7 +203,7 @@
   </class>  
   <class id="23" language="java" name="eu.labrush.rescue.core.physics.ClassicPhysicBehaviour" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/core/physics/ClassicPhysicBehaviour.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="152" width="324" x="602" y="60"/>    
+    <position height="116" width="312" x="284" y="301"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -212,7 +212,7 @@
   </class>  
   <class id="24" language="java" name="eu.labrush.rescue.core.physics.PhysicCore.Play" project="SIRescue" 
     file="/SIRescue/src/eu/labrush/rescue/core/physics/PhysicCore.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="98" width="153" x="2410" y="960"/>    
+    <position height="98" width="153" x="2344" y="1363"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -220,226 +220,219 @@
     </display>  
   </class>  
   <dependency id="25">    
-    <bendpoint x="1080" y="678"/>    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <nesting id="26">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="24"/>  
-  </nesting>  
-  <dependency id="27">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <association id="28">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="29" name="acceleration">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="30" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="31">    
-    <bendpoint x="1622" y="342"/>    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="18"/>  
-  </dependency>  
-  <dependency id="32">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <generalization id="33">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="20"/>  
-  </generalization>  
-  <dependency id="34">    
-    <bendpoint x="1601" y="342"/>    
-    <bendpoint x="1559" y="678"/>    
-    <bendpoint x="1559" y="960"/>    
+    <bendpoint x="1340" y="583"/>    
+    <bendpoint x="1340" y="991"/>    
+    <bendpoint x="1340" y="1363"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="4"/>  
   </dependency>  
-  <association id="35">    
-    <bendpoint x="1901" y="960"/>    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="36" name="observers">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="37" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="38">    
-    <bendpoint x="424" y="678"/>    
-    <bendpoint x="424" y="342"/>    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <association id="39">    
-    <bendpoint x="1538" y="342"/>    
-    <bendpoint x="1538" y="678"/>    
-    <bendpoint x="1538" y="960"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="40" name="graphicsListener">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="41" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="42">    
-    <bendpoint x="2114" y="60"/>    
-    <bendpoint x="2114" y="342"/>    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="43" name="physics">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="44" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="45">    
-    <bendpoint x="765" y="678"/>    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="46" name="trajectoire">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="47" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="48">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <dependency id="49">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <dependency id="50">    
-    <bendpoint x="703" y="342"/>    
-    <bendpoint x="703" y="678"/>    
-    <bendpoint x="703" y="960"/>    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="16"/>  
-  </dependency>  
-  <generalization id="51">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <dependency id="52">    
-    <bendpoint x="1814" y="60"/>    
-    <bendpoint x="1814" y="342"/>    
+  <dependency id="26">    
+    <bendpoint x="1571" y="301"/>    
+    <bendpoint x="1571" y="583"/>    
     <end type="SOURCE" refId="22"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  
-  <association id="53">    
-    <bendpoint x="998" y="342"/>    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="54" name="model">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="55" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="56">    
+  <generalization id="27">    
     <end type="SOURCE" refId="19"/>    
     <end type="TARGET" refId="10"/>  
   </generalization>  
-  <nesting id="57">    
-    <bendpoint x="487" y="60"/>    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="21"/>  
-  </nesting>  
-  <generalization id="58">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="10"/>  
+  <generalization id="28">    
+    <bendpoint x="141" y="583"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="7"/>  
   </generalization>  
-  <generalization id="59">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <dependency id="60">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="13"/>  
-  </dependency>  
-  <dependency id="61">    
-    <bendpoint x="1580" y="342"/>    
-    <bendpoint x="1517" y="678"/>    
-    <bendpoint x="1517" y="960"/>    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="16"/>  
-  </dependency>  
-  <association id="62">    
-    <bendpoint x="466" y="60"/>    
-    <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="63" name="moves">        
+  <association id="29">    
+    <bendpoint x="1891" y="1363"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="30" name="observers">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="64" minimum="0" maximum="1">        
+      <multiplicity id="31" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="32">    
+    <bendpoint x="1592" y="583"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <realization id="33">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="20"/>  
+  </generalization>  
+  <dependency id="35">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <association id="36">    
+    <bendpoint x="647" y="301"/>    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="37" name="moves">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="38" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="21" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="65">    
-    <bendpoint x="1835" y="60"/>    
+  <dependency id="39">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="40">    
+    <bendpoint x="1684" y="301"/>    
     <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="66" name="graphics">        
+      <attribute id="41" name="graphics">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="67" minimum="0" maximum="1">        
+      <multiplicity id="42" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="68">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <association id="69">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="70" name="position">        
+  <nesting id="43">    
+    <bendpoint x="626" y="301"/>    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="21"/>  
+  </nesting>  
+  <association id="44">    
+    <bendpoint x="1277" y="583"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="45" name="model">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="71" minimum="0" maximum="1">        
+      <multiplicity id="46" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="72">    
-    <bendpoint x="2207" y="960"/>    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="73" name="observers">        
+  <dependency id="47">    
+    <bendpoint x="604" y="991"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="48">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <association id="49">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="50" name="instance">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="74" minimum="0" maximum="2147483647">        
+      <multiplicity id="51" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="52">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <dependency id="53">    
+    <bendpoint x="1096" y="991"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <association id="54">    
+    <bendpoint x="1380" y="1363"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="55" name="observers">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="56" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="57">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="58" name="pan">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="59" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="60">    
+    <bendpoint x="162" y="583"/>    
+    <bendpoint x="162" y="991"/>    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <generalization id="61">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <dependency id="62">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <generalization id="63">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <realization id="64">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <nesting id="65">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="24"/>  
+  </nesting>  
+  <association id="66">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="67" name="trajectoire">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="68" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="69">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <dependency id="70">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="71">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="72">    
+    <bendpoint x="1298" y="583"/>    
+    <bendpoint x="1319" y="991"/>    
+    <bendpoint x="1319" y="1363"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="73" name="graphicsListener">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="74" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
@@ -447,144 +440,140 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <dependency id="75">    
+    <bendpoint x="800" y="583"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="76">    
     <end type="SOURCE" refId="19"/>    
     <end type="TARGET" refId="11"/>  
   </dependency>  
-  <dependency id="76">    
-    <bendpoint x="1059" y="678"/>    
-    <bendpoint x="1059" y="960"/>    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="16"/>  
-  </dependency>  
   <association id="77">    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="78" name="pan">        
+      <attribute id="78" name="keyboard">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="79" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="80">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="81" name="keyboard">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="82" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
     <end type="TARGET" refId="18" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="83">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <dependency id="84">    
-    <bendpoint x="1517" y="342"/>    
-    <bendpoint x="1245" y="678"/>    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="6"/>  
+  <dependency id="80">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="4"/>  
   </dependency>  
-  <generalization id="85">    
-    <bendpoint x="403" y="960"/>    
-    <bendpoint x="403" y="678"/>    
-    <bendpoint x="403" y="342"/>    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <dependency id="86">    
-    <bendpoint x="1122" y="678"/>    
-    <bendpoint x="1122" y="960"/>    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="16"/>  
-  </dependency>  
-  <dependency id="87">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="15"/>  
-  </dependency>  
-  <dependency id="88">    
-    <bendpoint x="1038" y="678"/>    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <dependency id="89">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
-  <dependency id="90">    
-    <bendpoint x="1266" y="678"/>    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="15"/>  
-  </dependency>  
-  <association id="91">    
-    <bendpoint x="1761" y="960"/>    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="92" name="observers">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="93" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="94">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <dependency id="95">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="21"/>  
-  </dependency>  
-  <nesting id="96">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="17"/>  
-  </nesting>  
-  <association id="97">    
+  <association id="81">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="98" name="vitesse">        
+      <attribute id="82" name="acceleration">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="99" minimum="0" maximum="1">        
+      <multiplicity id="83" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="100">    
-    <bendpoint x="724" y="342"/>    
-    <bendpoint x="724" y="678"/>    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <dependency id="101">    
-    <bendpoint x="1101" y="678"/>    
+  <dependency id="84">    
+    <bendpoint x="583" y="991"/>    
     <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="15"/>  
+    <end type="TARGET" refId="16"/>  
   </dependency>  
-  <association id="102">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="103" name="instance">        
+  <dependency id="85">    
+    <bendpoint x="1075" y="991"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <association id="86">    
+    <bendpoint x="2018" y="301"/>    
+    <bendpoint x="2018" y="583"/>    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="87" name="physics">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="104" minimum="0" maximum="1">        
+      <multiplicity id="88" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="105">    
+  <dependency id="89">    
+    <bendpoint x="1319" y="583"/>    
+    <bendpoint x="1298" y="991"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <dependency id="90">    
+    <bendpoint x="183" y="583"/>    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <nesting id="91">    
     <end type="SOURCE" refId="13"/>    
     <end type="TARGET" refId="14"/>  
   </nesting>  
+  <association id="92">    
+    <bendpoint x="1532" y="1363"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="93" name="observers">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="94" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="95">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <nesting id="96">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="17"/>  
+  </nesting>  
+  <generalization id="97">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <association id="98">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="99" name="position">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="100" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="101">    
+    <bendpoint x="120" y="991"/>    
+    <bendpoint x="120" y="583"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <dependency id="102">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <association id="103">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="104" name="vitesse">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="105" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

@@ -41,7 +41,7 @@ public class PersonnageControler extends AbstractControler {
 			@Override
 			public void update(PhysicCore req) {
 				for (Personnage p : personnages) {
-					p.getBehaviour().updateTrajectoire(blocControler.getBlocs(), req.getDelta());
+					p.getPhysicBehaviour().updateTrajectoire(blocControler.getBlocs(), req.getDelta());
 				}
 			}
 		});

@@ -20,7 +20,7 @@ public class SIRescue {
 	public static void main(String[] args) {
 		GraphicCore graphics = GraphicCore.getInstance();
 		PhysicCore physics = new PhysicCore(GraphicCore.FRAMERATE * 2);
-
+		
 		Level level = new Level(graphics, physics);
 
 		graphics.start();

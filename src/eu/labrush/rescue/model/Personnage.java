@@ -12,7 +12,9 @@ public class Personnage extends AbstractObject {
 
 	protected int life = 100, maxLife = 100;
 	HashSet<Arme> armes = new HashSet<Arme>();
+	
 	Arme currentArme = null ;
+	Vecteur vitesse_nominale = new Vecteur(5, 5);
 	
 	public Personnage(double x, double y) {
 		super(x, y, 20, 20);
@@ -26,6 +28,20 @@ public class Personnage extends AbstractObject {
 		return this.life <= 0 ;
 	}
 	
+	/**
+	 * @return the vitesse_nominale
+	 */
+	public Vecteur getVitesseNominale() {
+		return vitesse_nominale;
+	}
+
+	/**
+	 * @param vitesse_nominale the vitesse_nominale to set
+	 */
+	public void setVitesseNominale(Vecteur vitesse_nominale) {
+		this.vitesse_nominale = vitesse_nominale;
+	}
+
 	/**
 	 * @return the life
 	 */

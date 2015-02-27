@@ -25,7 +25,7 @@ public class Arme extends AbstractModel {
 	}
 
 	/**
-	 * @return the cartouches
+	 * @return the number of cartouches
 	 */
 	public int getCartouches() {
 		return cartouches;
