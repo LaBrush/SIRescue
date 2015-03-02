@@ -1,6 +1,7 @@
 package eu.labrush.rescue.controler;
 
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Set;
 
 import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.physics.PhysicCore;
@@ -15,8 +16,7 @@ import eu.labrush.rescue.view.PersonnageView;
  */
 public class PersonnageControler extends AbstractControler {
 
-	HashSet<Personnage> personnages = new HashSet<Personnage>();
-	HashSet<PersonnageView> views = new HashSet<PersonnageView>();
+	HashMap<Personnage, PersonnageView> personnages = new HashMap<Personnage, PersonnageView>();
 
 	BlocControler blocControler;
 
@@ -31,7 +31,7 @@ public class PersonnageControler extends AbstractControler {
 		this.graphics.suscribe(new Listener<DrawRequest>() {
 			@Override
 			public void update(DrawRequest req) {
-				for (PersonnageView v : views) {
+				for (PersonnageView v : personnages.values()) {
 					v.draw(req);
 				}
 			}
@@ -40,7 +40,7 @@ public class PersonnageControler extends AbstractControler {
 		this.physics.addObserver(new Listener<PhysicCore>() {
 			@Override
 			public void update(PhysicCore req) {
-				for (Personnage p : personnages) {
+				for (Personnage p : personnages.keySet()) {
 					p.getPhysicBehaviour().updateTrajectoire(blocControler.getBlocs(), req.getDelta());
 				}
 			}
@@ -54,15 +54,14 @@ public class PersonnageControler extends AbstractControler {
 	public void add(Personnage personnage) {
 		PersonnageView v = new PersonnageView(personnage);
 
-		this.personnages.add(personnage);
-		this.views.add(v);
+		this.personnages.put(personnage, v);
 	}
 
 	/**
 	 * @return the personnages
 	 */
-	public HashSet<Personnage> getPersonnages() {
-		return personnages;
+	public Set<Personnage> getPersonnages() {
+		return personnages.keySet();
 	}
 
 }

@@ -8,7 +8,6 @@ import eu.labrush.rescue.controler.TirControler;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.model.Bloc;
-import eu.labrush.rescue.model.Bot;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
 import eu.labrush.rescue.model.arme.Arme;
@@ -51,22 +50,21 @@ public class Level {
 
 		Personnage hero = new Personnage(15, 15);
 		hero.setVitesseNominale(new Vecteur(.3, .9));
+		hero.addArme(new Arme(10, 10));
+		
 		heroControler.setPersonnage(hero);
+		personnageControler.add(hero);
+		
+		//Bot ennemi = new Bot(50, 15);
+		//botControler.add(ennemi);
+		//personnageControler.add(ennemi);
 
-		Bot ennemi = new Bot(50, 15);
-		botControler.add(ennemi);
 		
 		this.addBorders();
 		blocControler.add(new Bloc(60, 100, 80, 20));
 		blocControler.add(new Bloc(200, 140, 80, 20));
 		blocControler.add(new Bloc(300, 180, 80, 20));
 		blocControler.add(new Bloc(430, 80, 20, 20));
-
-		personnageControler.add(hero);
-		personnageControler.add(ennemi);
-		
-
-		hero.addArme(new Arme(10, 10));
 	}
 
 	/**

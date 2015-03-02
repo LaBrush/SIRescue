@@ -1,4 +1,4 @@
-package eu.labrush.rescue.IA.star;
+package eu.labrush.rescue.IA.path;
 
 import java.util.ArrayList;
 import java.util.Comparator;

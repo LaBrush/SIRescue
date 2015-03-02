@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<racine>
+	<tronc>
+		<branche/>
+		<branche/>
+		<branche/>
+	</tronc>
+	<tronc>
+		<branche>bye</branche>
+		<branche name="hop"/>
+	</tronc>
+</racine>

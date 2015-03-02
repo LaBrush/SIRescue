@@ -7,4 +7,4 @@
  * 
  * http://en.wikipedia.org/wiki/A*_search_algorithm
  */
-package eu.labrush.rescue.IA.star;
+package eu.labrush.rescue.IA.path;

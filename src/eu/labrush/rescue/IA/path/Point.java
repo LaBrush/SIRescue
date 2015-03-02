@@ -1,4 +1,4 @@
-package eu.labrush.rescue.IA.star;
+package eu.labrush.rescue.IA.path;
 
 public class Point implements Cloneable {
 
