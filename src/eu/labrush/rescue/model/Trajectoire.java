@@ -5,6 +5,9 @@ package eu.labrush.rescue.model;
 
 /**
  * @author adrienbocquet
+ * 
+ *         Stocke les composantes de la trajectoire d'un objet (accélération, vitesse, position) et
+ *         met à jour leur valeurs en fonction du temps
  *
  */
 public class Trajectoire extends AbstractModel {
@@ -33,6 +36,10 @@ public class Trajectoire extends AbstractModel {
 
 	/**
 	 * Met à jour la position et la vitesse du composant en fonction du temps
+	 * 
+	 * @param delta_t
+	 *            la durée (en ms) séparant deux mises à jour de la position
+	 * 
 	 */
 	public void update(int delta_t) {
 		// Si la vitesse et l'acceleration sont nulles, il n'est pas la peine de recalculer la
@@ -57,17 +64,17 @@ public class Trajectoire extends AbstractModel {
 	/**
 	 * Retourne la distance parcourue lors du prochain déplacement sans modifier l'objet
 	 * 
-	 * @param delta_t
-	 * @return vecteur
+	 * @param delta_t l'intervalle de temps séparant deux calculs
+	 * @return la distance parcourue durant l'intervalle de temps donné
 	 */
-	public Vecteur distanceParcourue(double delta_t){
+	public Vecteur distanceParcourue(double delta_t) {
 		Vecteur p = new Vecteur();
-		
+
 		if (this.getAcceleration().norme() != 0 || this.getVitesse().norme() != 0) {
-			Vecteur v = this.getVitesse().add(acceleration.k(delta_t)); 
+			Vecteur v = this.getVitesse().add(acceleration.k(delta_t));
 			p = p.add(this.getAcceleration().k(1 / 2 * Math.pow(delta_t, 2))).add(v.k(delta_t));
-		}		
-		
+		}
+
 		return p;
 	}
 
@@ -75,12 +82,12 @@ public class Trajectoire extends AbstractModel {
 	 * @param acceleration
 	 *            the acceleration to set
 	 */
-	public void setAcceleration(Vecteur a) {
+	public void setAcceleration(Vecteur acceleration) {
 		if (this.acceleration != null) {
 			this.acceleration.deleteObserver(this);
 		}
 
-		this.acceleration = a;
+		this.acceleration = acceleration;
 		this.acceleration.addObserver(this);
 
 		throwUpdate();
@@ -90,12 +97,12 @@ public class Trajectoire extends AbstractModel {
 	 * @param vitesse
 	 *            the vitesse to set
 	 */
-	public void setVitesse(Vecteur v) {
+	public void setVitesse(Vecteur vitesse) {
 		if (this.vitesse != null) {
 			this.vitesse.deleteObserver(this);
 		}
 
-		this.vitesse = v;
+		this.vitesse = vitesse;
 		this.vitesse.addObserver(this);
 
 		throwUpdate();
@@ -105,12 +112,12 @@ public class Trajectoire extends AbstractModel {
 	 * @param position
 	 *            the position to set
 	 */
-	public void setPosition(Vecteur p) {
+	public void setPosition(Vecteur position) {
 		if (this.position != null) {
 			this.position.deleteObserver(this);
 		}
 
-		this.position = p;
+		this.position = position;
 		this.position.addObserver(this);
 
 		throwUpdate();

@@ -103,8 +103,8 @@ public class Personnage extends AbstractObject {
 	}
 
 	/**
-	 * @param e
-	 * @return
+	 * @param l'arme à ajouter
+	 * @return l'arme passée en argument
 	 * @see java.util.HashSet#add(java.lang.Object)
 	 */
 	public boolean addArme(Arme e) {

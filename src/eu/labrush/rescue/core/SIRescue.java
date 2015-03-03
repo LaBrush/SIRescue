@@ -1,15 +1,8 @@
 package eu.labrush.rescue.core;
 
-import java.awt.Color;
-import java.util.ArrayList;
-
-import eu.labrush.rescue.IA.path.AStar;
-import eu.labrush.rescue.IA.path.Point;
-import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.level.Level;
-import eu.labrush.rescue.utils.Listener;
 import eu.labrush.rescue.utils.Matrix;
 
 /**
@@ -40,14 +33,6 @@ public class SIRescue {
 				}
 			}
 		});*/
-		
-		// TEST MATRICES
-		
-		Matrix I = new Matrix(new int[][]{{1, 0, 0},{0, 1, 0}, {0, 0, 1}});
-		Matrix A = new Matrix(new int[][]{{6, 2, 3}, {4, 5, 6}, {9, 8, 14}});
-		Matrix B = new Matrix(new int[][]{{3, 2, 1}, {1, 1, 1}, {3, 2, 2}});
-		
-		System.out.println(Matrix.multiply(A, B));
-
+	
 	}
 }
