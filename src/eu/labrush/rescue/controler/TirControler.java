@@ -1,7 +1,7 @@
 package eu.labrush.rescue.controler;
 
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.concurrent.ConcurrentHashMap;
 
 import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.physics.PhysicCore;
@@ -11,6 +11,7 @@ import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.arme.Resistance;
 import eu.labrush.rescue.model.arme.Tir;
 import eu.labrush.rescue.utils.Listener;
+import eu.labrush.rescue.utils.Matrix;
 import eu.labrush.rescue.view.TirView;
 
 /**
@@ -23,7 +24,7 @@ import eu.labrush.rescue.view.TirView;
 public class TirControler extends AbstractControler {
 
 	// On associe dans un même Map les modèles et la vue qui leur est associée
-	HashMap<Tir, TirView> tirs = new HashMap<Tir, TirView>();
+	ConcurrentHashMap<Tir, TirView> tirs = new ConcurrentHashMap<Tir, TirView>();
 
 	BlocControler blocControler;
 	PersonnageControler personnageControler;
@@ -55,12 +56,22 @@ public class TirControler extends AbstractControler {
 				obstacles.addAll(personnageControler.getPersonnages());
 				obstacles.addAll(blocControler.getBlocs());
 
+				
 				for (Tir t : tirs.keySet()) {
-					if (t instanceof AbstractObject) {
+					if (t instanceof Resistance) {
+						//On met à jour la position des tirs
 						((AbstractObject) t).getPhysicBehaviour().updateTrajectoire(obstacles, req.getDelta());
+						
+						//Puis on regarde s'ils entre en collision avec d'autres objets
+						Resistance tir = (Resistance) t ;
+						
+						for(AbstractObject o: obstacles){
+							if(tir.cross(o)){
+								//System.out.println("bip");
+							}
+						}
 					}
 				}
-
 			}
 		});
 

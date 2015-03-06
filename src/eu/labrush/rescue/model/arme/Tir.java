@@ -1,12 +1,11 @@
 package eu.labrush.rescue.model.arme;
 
-import eu.labrush.rescue.model.Bloc;
-import eu.labrush.rescue.model.Personnage;
+import eu.labrush.rescue.model.AbstractObject;
 
 public interface Tir {
 
+	public int getAngle();
 	public int getDegat();
-	public void cross(Personnage p);
-	public void cross(Bloc b);
+	public boolean cross(AbstractObject o);
 	
 }

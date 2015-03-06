@@ -1,6 +1,7 @@
 package eu.labrush.rescue.IA.behaviour;
 
 import eu.labrush.rescue.model.Bot;
+import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
 
 /**
@@ -9,7 +10,7 @@ import eu.labrush.rescue.model.Vecteur;
  */
 public class AbstractBotBehaviour {
 
-	public void update(Bot b) {
+	public void update(Bot b, Personnage hero) {
 		
 		Vecteur v = b.getTrajectoire().getVitesse() ;
 		if(v.getX() == 0)

@@ -33,7 +33,7 @@ public class BotControler extends AbstractControler {
 			@Override
 			public void update(PhysicCore req) {
 				for (Bot b : bots) {
-					generalBehaviour.update(b);
+					generalBehaviour.update(b, hero);
 				}
 			}
 		});

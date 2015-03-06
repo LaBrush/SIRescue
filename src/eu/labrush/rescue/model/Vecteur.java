@@ -7,7 +7,7 @@ package eu.labrush.rescue.model;
  * @author adrienbocquet
  *
  */
-public class Vecteur extends AbstractModel {
+public class Vecteur extends AbstractModel implements Cloneable {
 
 	private double x;
 	private double y;
@@ -56,6 +56,17 @@ public class Vecteur extends AbstractModel {
 		throwUpdate();
 	}
 
+	public Vecteur set(double x, double y){
+		this.x = x ;
+		this.y = y ;
+		
+		return this ;
+	}
+	
+	public Vecteur clone() {
+		return new Vecteur(x, y);
+	}
+	
 	public double getX() {
 		return x;
 	}

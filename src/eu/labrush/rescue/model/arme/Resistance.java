@@ -4,8 +4,6 @@ import java.awt.Dimension;
 
 import eu.labrush.rescue.core.physics.TirPhysicBehaviour;
 import eu.labrush.rescue.model.AbstractObject;
-import eu.labrush.rescue.model.Bloc;
-import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
 
 public class Resistance extends AbstractObject implements Tir {
@@ -14,27 +12,43 @@ public class Resistance extends AbstractObject implements Tir {
 	int angle;
 	double vitesse = .1;
 
+	// ces trois vecteurs représentent les points en haut, gauche et droite, et en bas gauche et
+	// droite du rectangle
+	public Vecteur hg, hd, bg, bd;
+
 	public Resistance(Vecteur position, int degat, int angle) {
-		
+
 		this.getTrajectoire().setPosition(position);
 		this.getTrajectoire().getVitesse().setPolar(this.vitesse, angle);
-		
-		this.dim = new Dimension(5,5);
-		
+
+		this.dim = new Dimension(5, 5);
+
 		this.degat = degat;
 		this.angle = angle;
-		
+
 		this.behaviour = new TirPhysicBehaviour(this.getTrajectoire(), this.dim);
+		
+		throwUpdate();
 	}
-	
-	@Override
-	public void cross(Personnage p) {
-		// TODO Auto-generated method stub		
+
+	//on met à jour coordonées des points à tout changment de position
+	protected void throwUpdate() {
+		this.bg = this.getTrajectoire().getPosition().clone();
+		this.bd = new Vecteur(bg.getX() + this.getWidth() * Math.cos(angle), bg.getY() + this.getHeight() * Math.sin(angle));
+		this.hg = new Vecteur(bg.getX() + this.getWidth() * Math.sin(angle), bg.getY() + this.getHeight() * Math.cos(angle));
+		
+		double angle_hd = Math.atan(this.getHeight() / this.getWidth());
+		
+		this.hd = new Vecteur(bg.getX() + Math.cos(angle_hd) * this.getWidth(), bg.getY() + Math.sin(angle_hd) *  this.getWidth());
+		
+		setChanged();
+		notifyObservers();
 	}
 
 	@Override
-	public void cross(Bloc b) {
-		// TODO Auto-generated method stub	
+	public boolean cross(AbstractObject o) {
+
+		return false;
 	}
 
 	/**

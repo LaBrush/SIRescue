@@ -22,7 +22,7 @@ final public class PhysicCore implements Listenable<PhysicCore> {
 	int delta_t; // Le temps écoulé entre deux cycles
 
 	static int ECHELLE = 100; // ECHELLE = PIXELS / METRES
-	static double GRAVITY = -.003;
+	static double GRAVITY = -.0015;
 
 	private ArrayList<Listener<PhysicCore>> observers = new ArrayList<Listener<PhysicCore>>();
 	private boolean running = false;

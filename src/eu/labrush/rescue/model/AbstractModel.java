@@ -7,8 +7,7 @@ import java.util.Observer;
  * Défini un modèle abstrait de donnée et fournit les outils nécessaire pour utiliser le pattern
  * observer à tous les niveaux de chaque modèle
  * 
- * TODO: Expliciter la description
- * 
+ *   
  * NB: Chaque setter d'objets héritants d'AbstractModel dans des AbstractModel faire souscrire
  * l'objet au nouvel arrivants
  * 

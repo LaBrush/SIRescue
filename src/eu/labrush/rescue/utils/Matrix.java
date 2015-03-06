@@ -65,8 +65,8 @@ public class Matrix implements Cloneable {
 	 * @return the product of both matrix
 	 */
 	public static Matrix multiply(Matrix m1, Matrix m2) {
-		if (m1.getWidth() != m2.getHeight()) {
-			throw new IllegalArgumentException("The first matrix column number must be the same as the second matrix row number");
+		if (m1.getHeight() != m2.getWidth()) {
+			throw new IllegalArgumentException("The first matrix row number must be the same as the second matrix column number");
 		}
 
 		Matrix m = new Matrix(m1.width, m2.height);
