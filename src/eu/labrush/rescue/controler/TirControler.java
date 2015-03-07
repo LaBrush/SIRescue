@@ -11,7 +11,6 @@ import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.arme.Resistance;
 import eu.labrush.rescue.model.arme.Tir;
 import eu.labrush.rescue.utils.Listener;
-import eu.labrush.rescue.utils.Matrix;
 import eu.labrush.rescue.view.TirView;
 
 /**
@@ -61,7 +60,7 @@ public class TirControler extends AbstractControler {
 					if (t instanceof Resistance) {
 						//On met à jour la position des tirs
 						((AbstractObject) t).getPhysicBehaviour().updateTrajectoire(obstacles, req.getDelta());
-						
+
 						//Puis on regarde s'ils entre en collision avec d'autres objets
 						Resistance tir = (Resistance) t ;
 						

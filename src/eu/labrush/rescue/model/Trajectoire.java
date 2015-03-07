@@ -57,6 +57,7 @@ public class Trajectoire extends AbstractModel {
 
 			// Idem pour la position
 			setPosition(position.add(acceleration.k(1 / 2 * Math.pow(delta_t, 2))).add(vitesse.k(delta_t)));
+
 			throwUpdate();
 		}
 	}
