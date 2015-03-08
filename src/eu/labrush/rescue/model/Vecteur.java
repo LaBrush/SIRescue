@@ -90,7 +90,9 @@ public class Vecteur extends AbstractModel implements Cloneable {
 	}
 
 	public Vecteur add(Vecteur other) {
-		return new Vecteur(this.x + other.x, this.y + other.y);
+		this.x += other.x ;
+		this.y += other.y ;
+		return this ;
 	}
 
 	public Vecteur k(double k) {

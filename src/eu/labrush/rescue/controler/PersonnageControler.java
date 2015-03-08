@@ -63,5 +63,9 @@ public class PersonnageControler extends AbstractControler {
 	public Set<Personnage> getPersonnages() {
 		return personnages.keySet();
 	}
+	
+	public void removePersonnage(Personnage p){
+		personnages.remove(p);
+	}
 
 }

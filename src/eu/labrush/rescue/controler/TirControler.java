@@ -8,6 +8,7 @@ import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.level.Level;
 import eu.labrush.rescue.model.AbstractObject;
 import eu.labrush.rescue.model.Personnage;
+import eu.labrush.rescue.model.Vecteur;
 import eu.labrush.rescue.model.arme.Resistance;
 import eu.labrush.rescue.model.arme.Tir;
 import eu.labrush.rescue.utils.Listener;
@@ -66,7 +67,15 @@ public class TirControler extends AbstractControler {
 						
 						for(AbstractObject o: obstacles){
 							if(tir.cross(o)){
-								//System.out.println("bip");
+								if(o instanceof Personnage){
+									Personnage p = (Personnage)o;
+									p.prendreDegats(tir.getDegat());
+									if(p.isDead()){
+										personnageControler.removePersonnage(p);
+									}
+								}
+								
+								deleteTir(tir);
 							}
 						}
 					}
@@ -77,10 +86,19 @@ public class TirControler extends AbstractControler {
 	}
 
 	public void shoot(Personnage personnage, int angle) {
-		Resistance tir = new Resistance(personnage.getTrajectoire().getPosition(), 10, angle);
+		Vecteur position = new Vecteur();
+		
+		position.setX(30 * Math.cos(angle) + personnage.getX());
+		position.setY(30 * Math.sin(angle % 90) + personnage.getY() + personnage.getHeight()/2) ;
+		
+		Resistance tir = new Resistance(position, 10, angle);
 		TirView v = new TirView(tir);
 
 		this.tirs.put(tir, v);
 	}
 
+	private void deleteTir(Tir tir){
+		tirs.remove(tir);
+	}
+	
 }

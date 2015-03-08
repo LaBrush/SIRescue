@@ -12,22 +12,22 @@ public class Personnage extends AbstractObject {
 
 	protected int life = 100, maxLife = 100;
 	HashSet<Arme> armes = new HashSet<Arme>();
-	
-	Arme currentArme = null ;
+
+	Arme currentArme = null;
 	Vecteur vitesse_nominale = new Vecteur(5, 5);
-	
+
 	public Personnage(double x, double y) {
 		super(x, y, 20, 20);
-		this.getTrajectoire().setGravity(true);		
+		this.getTrajectoire().setGravity(true);
 	}
 
 	/**
 	 * @return si le personnage est mort
 	 */
-	public boolean isDead(){
-		return this.life <= 0 ;
+	public boolean isDead() {
+		return this.life <= 0;
 	}
-	
+
 	/**
 	 * @return the vitesse_nominale
 	 */
@@ -36,10 +36,20 @@ public class Personnage extends AbstractObject {
 	}
 
 	/**
-	 * @param vitesse_nominale the vitesse_nominale to set
+	 * @param vitesse_nominale
+	 *            the vitesse_nominale to set
 	 */
 	public void setVitesseNominale(Vecteur vitesse_nominale) {
 		this.vitesse_nominale = vitesse_nominale;
+	}
+
+	/**
+	 * Retranche à la vie du personnage les dégats infligés
+	 * 
+	 * @param degats
+	 */
+	public void prendreDegats(int degats) {
+		this.life -= degats;
 	}
 
 	/**
@@ -82,7 +92,8 @@ public class Personnage extends AbstractObject {
 	}
 
 	/**
-	 * @param armes the armes to set
+	 * @param armes
+	 *            the armes to set
 	 */
 	public void setArmes(HashSet<Arme> armes) {
 		this.armes = armes;
@@ -96,16 +107,17 @@ public class Personnage extends AbstractObject {
 	}
 
 	/**
-	 * @param currentArme the currentArme to set
+	 * @param currentArme
+	 *            the currentArme to set
 	 */
 	public void setCurrentArme(Arme currentArme) {
 		this.currentArme = currentArme;
 	}
 
 	/**
-	 * @param l'arme à ajouter
+	 * @param e
+	 *            l'arme à ajouter
 	 * @return l'arme passée en argument
-	 * @see java.util.HashSet#add(java.lang.Object)
 	 */
 	public boolean addArme(Arme e) {
 		setCurrentArme(e);

@@ -53,10 +53,10 @@ public class Trajectoire extends AbstractModel {
 			 * http://www.kartable.fr/terminale-s/physique/1109/cours/cinematique-vecteurs
 			 * -et-mouvements,TS05029
 			 */
-			setVitesse(vitesse.add(acceleration.k(delta_t)));
+			setVitesse((new Vecteur()).add(vitesse).add(acceleration.k(delta_t)));
 
 			// Idem pour la position
-			setPosition(position.add(acceleration.k(1 / 2 * Math.pow(delta_t, 2))).add(vitesse.k(delta_t)));
+			setPosition((new Vecteur()).add(position).add(acceleration.k(1 / 2 * Math.pow(delta_t, 2))).add(vitesse.k(delta_t)));
 
 			throwUpdate();
 		}

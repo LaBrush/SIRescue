@@ -38,14 +38,14 @@ public class Resistance extends AbstractObject implements Tir {
 		
 		double angle = Math.toRadians(this.angle);
 		
-		this.bg = this.getTrajectoire().getPosition().clone();
-		this.bd = new Vecteur(bg.getX() + this.getWidth() * Math.cos(angle), bg.getY() + this.getHeight() * Math.sin(angle));
-		this.hg = new Vecteur(bg.getX() + this.getWidth() * Math.sin(angle), bg.getY() + this.getHeight() * Math.cos(angle));
+		bg = this.getTrajectoire().getPosition().clone();
+		bd = new Vecteur(this.getWidth() * Math.cos(angle), this.getWidth() * Math.sin(angle));
+		hg = new Vecteur(this.getHeight() * Math.cos(angle + Math.PI/2), this.getWidth() * Math.sin(angle + Math.PI/2));		
+		hd = new Vecteur().add(bd).add(hg);
 		
-		double angle_hd = Math.atan(this.getHeight() / this.getWidth());
-		double hypo = Math.sqrt(Math.pow(this.getWidth(), 2) + Math.pow(this.getHeight(), 2));
-		
-		this.hd = new Vecteur(bg.getX() + Math.cos(angle_hd) * hypo, bg.getY() + Math.sin(angle_hd) *  hypo);
+		bd.add(bg);
+		hg.add(bg);
+		hd.add(bg);
 		
 		setChanged();
 		notifyObservers();
@@ -57,7 +57,7 @@ public class Resistance extends AbstractObject implements Tir {
 	}
 	
 	private boolean pointIn(AbstractObject o, Vecteur p){
-		return o.getX() >= p.getX() && o.getX()+o.getWidth() <= p.getX() &&  o.getY() >= p.getY() && o.getY()+o.getHeight() <= p.getY() ;
+		return o.getX() <= p.getX() && o.getX()+o.getWidth() >= p.getX() && o.getY() <= p.getY() && o.getY()+o.getHeight() >= p.getY() ;
 	}
 
 	/**
