@@ -1,5 +1,7 @@
 package eu.labrush.rescue.level;
 
+import java.util.ArrayList;
+
 import eu.labrush.rescue.controler.BlocControler;
 import eu.labrush.rescue.controler.BotControler;
 import eu.labrush.rescue.controler.HeroControler;
@@ -62,9 +64,16 @@ public class Level {
 		blocControler.add(new Bloc(430, 80, 20, 20));
 		
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
-		Bot ennemi = new Bot(200, 15);
-		botControler.add(ennemi);
-		personnageControler.add(ennemi);
+		ArrayList<Bot> ennemis = new ArrayList<Bot>();
+		
+		ennemis.add(new Bot(50,15));
+		ennemis.add(new Bot(350,215));
+		
+		for(Bot ennemi : ennemis){
+			botControler.add(ennemi);
+			personnageControler.add(ennemi);
+		}
+		
 	}
 
 	/**
