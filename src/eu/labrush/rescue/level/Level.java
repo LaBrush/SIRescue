@@ -58,16 +58,17 @@ public class Level {
 		personnageControler.add(hero);
 		
 		this.addBorders();
-		blocControler.add(new Bloc(60, 100, 80, 20));
-		blocControler.add(new Bloc(200, 140, 80, 20));
+		blocControler.add(new Bloc(60, 100, 30, 20));
+		blocControler.add(new Bloc(200, 140, 30, 20));
 		blocControler.add(new Bloc(300, 180, 80, 20));
 		blocControler.add(new Bloc(430, 80, 20, 20));
 		
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
 		ArrayList<Bot> ennemis = new ArrayList<Bot>();
 		
-		ennemis.add(new Bot(50,15));
-		ennemis.add(new Bot(350,215));
+		ennemis.add(new Bot(200,15));
+		ennemis.add(new Bot(340,215));
+		ennemis.add(new Bot(100,135));
 		
 		for(Bot ennemi : ennemis){
 			botControler.add(ennemi);

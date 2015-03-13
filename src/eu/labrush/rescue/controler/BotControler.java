@@ -34,14 +34,14 @@ public class BotControler extends AbstractControler {
 			@Override
 			public void update(PhysicCore req) {
 				for (Bot b : bots.keySet()) {
-					bots.get(b).update(b, hero);
+					bots.get(b).update(hero);
 				}
 			}
 		});
 	}
 	
 	public void add(Bot ennemi) {
-		bots.put(ennemi, new AbstractBotBehaviour());
+		bots.put(ennemi, new AbstractBotBehaviour(ennemi));
 		ennemi.setTirManager(tirControler.getTirInterface());
 		personnageControler.add(ennemi);
 	}
