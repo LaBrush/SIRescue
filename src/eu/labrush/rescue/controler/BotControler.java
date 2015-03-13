@@ -22,10 +22,10 @@ public class BotControler extends AbstractControler {
 	PersonnageControler personnageControler ;
 	TirControler tirControler ;
 	
-	public BotControler(Level level, PersonnageControler personnageControler, TirControler tirControler) {
+	public BotControler(Level level, PersonnageControler personnageControler, TirControler tirControler, HeroControler heroControler) {
 		super(level);
 	
-		this.hero = level.getHeroControler().getPersonnage();
+		this.hero = heroControler.getPersonnage();
 		this.personnageControler = personnageControler;
 		this.tirControler = tirControler ;
 		

@@ -47,7 +47,6 @@ public class Level {
 		personnageControler = new PersonnageControler(this, blocControler);
 		tirControler = new TirControler(this, blocControler, personnageControler);
 		heroControler = new HeroControler(this, tirControler);
-		botControler = new BotControler(this, personnageControler, tirControler);
 
 		Personnage hero = new Personnage(15, 15);
 		hero.setVitesseNominale(new Vecteur(.3, .9));
@@ -66,22 +65,8 @@ public class Level {
 		blocControler.add(new Bloc(200, 140, 80, 20));
 		blocControler.add(new Bloc(300, 180, 80, 20));
 		blocControler.add(new Bloc(430, 80, 20, 20));
-	}
-
-	/**
-	 * TODO: tmp
-	 * 
-	 * @return the blocControler
-	 */
-	public BlocControler getBlocControler() {
-		return blocControler;
-	}
-
-	/**
-	 * @return the heroControler
-	 */
-	public HeroControler getHeroControler() {
-		return heroControler;
+		
+		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
 	}
 
 	/**
