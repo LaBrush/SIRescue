@@ -26,6 +26,7 @@ public class BotControler extends AbstractControler {
 		super(level);
 	
 		this.hero = heroControler.getPersonnage();
+		System.out.println(hero);
 		this.personnageControler = personnageControler;
 		this.tirControler = tirControler ;
 		

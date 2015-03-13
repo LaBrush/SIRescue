@@ -55,11 +55,6 @@ public class Level {
 		heroControler.setPersonnage(hero);
 		personnageControler.add(hero);
 		
-		Bot ennemi = new Bot(200, 15);
-		botControler.add(ennemi);
-		personnageControler.add(ennemi);
-
-		
 		this.addBorders();
 		blocControler.add(new Bloc(60, 100, 80, 20));
 		blocControler.add(new Bloc(200, 140, 80, 20));
@@ -67,6 +62,9 @@ public class Level {
 		blocControler.add(new Bloc(430, 80, 20, 20));
 		
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
+		Bot ennemi = new Bot(200, 15);
+		botControler.add(ennemi);
+		personnageControler.add(ennemi);
 	}
 
 	/**
