@@ -6,7 +6,7 @@ import eu.labrush.rescue.model.Vecteur;
 
 /**
  * @author adrienbocquet
- *
+ * @author solineducousso
  */
 public class AbstractBotBehaviour {
 

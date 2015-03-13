@@ -3,7 +3,7 @@ package eu.labrush.rescue.core;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.level.Level;
-import eu.labrush.rescue.utils.Matrix;
+import eu.labrush.rescue.level.LevelLoader;
 
 /**
  * @author adrienbocquet
@@ -19,6 +19,9 @@ public class SIRescue {
 
 		graphics.start();
 		physics.start();
+		
+		LevelLoader loader = new LevelLoader();
+		loader.load();
 
 		//TEST ASTAR
 		

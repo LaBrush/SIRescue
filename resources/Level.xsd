@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="level">
+		<xs:complexType>
+			<xs:sequence minOccurs="1" maxOccurs="1">
+				<xs:element name="hero">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="position" type="position"></xs:element>
+							<xs:element name="arme">
+								<xs:complexType>
+									<xs:attribute name="type" type="xs:string" use="required"></xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="bots">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="bot">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="position" type="position"></xs:element>
+										<xs:element name="arme">
+											<xs:complexType>
+												<xs:attribute name="type" type="xs:string" use="required"></xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="comportement" type="xs:string"></xs:element>
+										<xs:element name="type" type="xs:string"></xs:element>
+										<xs:element name="bloc_id" type="xs:integer"></xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="blocs">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="bloc" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="id" type="xs:integer" minOccurs="0"
+											maxOccurs="1"></xs:element>
+										<xs:element name="position" type="position"></xs:element>
+										<xs:element name="dimensions">
+											<xs:complexType>
+												<xs:attribute name="width" type="xs:int" use="required"></xs:attribute>
+												<xs:attribute name="height" type="xs:int" use="required"></xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="armes">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="arme">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="position" type="position"></xs:element>
+										<xs:element name="type" type="xs:string"></xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="position">
+		<xs:attribute name="x" type="xs:int" use="required"></xs:attribute>
+		<xs:attribute name="y" type="xs:int" use="required"></xs:attribute>
+	</xs:complexType>
+</xs:schema>

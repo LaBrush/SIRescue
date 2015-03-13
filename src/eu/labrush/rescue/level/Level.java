@@ -30,11 +30,11 @@ public class Level {
 	GraphicCore graphics;
 	PhysicCore physics;
 
-	private PersonnageControler personnageControler;
-	private BlocControler blocControler;
-	private HeroControler heroControler;
-	private TirControler tirControler;
-	private BotControler botControler;
+	PersonnageControler personnageControler;
+	BlocControler blocControler;
+	HeroControler heroControler;
+	TirControler tirControler;
+	BotControler botControler;
 
 	/**
 	 * @param graphics
