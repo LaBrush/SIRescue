@@ -1,6 +1,6 @@
 package eu.labrush.rescue.controler;
 
-import java.util.HashSet;
+import java.util.HashMap;
 
 import eu.labrush.rescue.IA.behaviour.AbstractBotBehaviour;
 import eu.labrush.rescue.core.physics.PhysicCore;
@@ -15,7 +15,7 @@ import eu.labrush.rescue.utils.Listener;
  */
 public class BotControler extends AbstractControler {
 
-	HashSet<Bot> bots = new HashSet<Bot>();
+	HashMap<Bot, AbstractBotBehaviour> bots = new HashMap<Bot, AbstractBotBehaviour>();
 	AbstractBotBehaviour generalBehaviour ;
 	
 	Personnage hero ;
@@ -29,21 +29,19 @@ public class BotControler extends AbstractControler {
 		System.out.println(hero);
 		this.personnageControler = personnageControler;
 		this.tirControler = tirControler ;
-		
-		generalBehaviour = new AbstractBotBehaviour();
-		
+				
 		this.physics.addObserver(new Listener<PhysicCore>() {
 			@Override
 			public void update(PhysicCore req) {
-				for (Bot b : bots) {
-					generalBehaviour.update(b, hero);
+				for (Bot b : bots.keySet()) {
+					bots.get(b).update(b, hero);
 				}
 			}
 		});
 	}
 	
 	public void add(Bot ennemi) {
-		bots.add(ennemi);
+		bots.put(ennemi, new AbstractBotBehaviour());
 		ennemi.setTirManager(tirControler.getTirInterface());
 		personnageControler.add(ennemi);
 	}
