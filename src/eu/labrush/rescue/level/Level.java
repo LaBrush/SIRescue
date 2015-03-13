@@ -55,7 +55,7 @@ public class Level {
 		heroControler.setPersonnage(hero);
 		personnageControler.add(hero);
 		
-		Bot ennemi = new Bot(50, 15);
+		Bot ennemi = new Bot(200, 15);
 		botControler.add(ennemi);
 		personnageControler.add(ennemi);
 
