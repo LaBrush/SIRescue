@@ -20,12 +20,14 @@ public class BotControler extends AbstractControler {
 	
 	Personnage hero ;
 	PersonnageControler personnageControler ;
+	TirControler tirControler ;
 	
-	public BotControler(Level level, PersonnageControler personnageControler) {
+	public BotControler(Level level, PersonnageControler personnageControler, TirControler tirControler) {
 		super(level);
 	
 		this.hero = level.getHeroControler().getPersonnage();
 		this.personnageControler = personnageControler;
+		this.tirControler = tirControler ;
 		
 		generalBehaviour = new AbstractBotBehaviour();
 		
@@ -38,9 +40,10 @@ public class BotControler extends AbstractControler {
 			}
 		});
 	}
-
+	
 	public void add(Bot ennemi) {
 		bots.add(ennemi);
+		ennemi.setTirManager(tirControler.getTirInterface());
 		personnageControler.add(ennemi);
 	}
 }

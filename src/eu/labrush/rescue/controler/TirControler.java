@@ -23,11 +23,28 @@ import eu.labrush.rescue.view.TirView;
  */
 public class TirControler extends AbstractControler {
 
+	/**
+	 * @author adrienbocquet
+	 * 
+	 * Fourni une interface aux bots pour tirer depuis ce controler
+	 */
+	public interface TirInterface {
+
+		public void commandShoot(Personnage p, int angle);
+
+	}
+
 	// On associe dans un même Map les modèles et la vue qui leur est associée
 	ConcurrentHashMap<Tir, TirView> tirs = new ConcurrentHashMap<Tir, TirView>();
 
 	BlocControler blocControler;
 	PersonnageControler personnageControler;
+
+	private TirInterface tirInterface = new TirInterface() {
+		public void commandShoot(Personnage p, int angle) {
+			shoot(p, angle);
+		}
+	};
 
 	/**
 	 * @param level
@@ -56,25 +73,24 @@ public class TirControler extends AbstractControler {
 				obstacles.addAll(personnageControler.getPersonnages());
 				obstacles.addAll(blocControler.getBlocs());
 
-				
 				for (Tir t : tirs.keySet()) {
 					if (t instanceof Resistance) {
-						//On met à jour la position des tirs
+						// On met à jour la position des tirs
 						((AbstractObject) t).getPhysicBehaviour().updateTrajectoire(obstacles, req.getDelta());
 
-						//Puis on regarde s'ils entre en collision avec d'autres objets
-						Resistance tir = (Resistance) t ;
-						
-						for(AbstractObject o: obstacles){
-							if(tir.cross(o)){
-								if(o instanceof Personnage){
-									Personnage p = (Personnage)o;
+						// Puis on regarde s'ils entre en collision avec d'autres objets
+						Resistance tir = (Resistance) t;
+
+						for (AbstractObject o : obstacles) {
+							if (tir.cross(o)) {
+								if (o instanceof Personnage) {
+									Personnage p = (Personnage) o;
 									p.prendreDegats(tir.getDegat());
-									if(p.isDead()){
+									if (p.isDead()) {
 										personnageControler.removePersonnage(p);
 									}
 								}
-								
+
 								deleteTir(tir);
 							}
 						}
@@ -87,18 +103,25 @@ public class TirControler extends AbstractControler {
 
 	public void shoot(Personnage personnage, int angle) {
 		Vecteur position = new Vecteur();
-		
+
 		position.setX(30 * Math.cos(angle) + personnage.getX());
-		position.setY(30 * Math.sin(angle % 90) + personnage.getY() + personnage.getHeight()/2) ;
-		
+		position.setY(30 * Math.sin(angle % 90) + personnage.getY() + personnage.getHeight() / 2);
+
 		Resistance tir = new Resistance(position, 10, angle);
 		TirView v = new TirView(tir);
 
 		this.tirs.put(tir, v);
 	}
 
-	private void deleteTir(Tir tir){
+	private void deleteTir(Tir tir) {
 		tirs.remove(tir);
 	}
-	
+
+	/**
+	 * @return the tirInterface
+	 */
+	public TirInterface getTirInterface() {
+		return tirInterface;
+	}
+
 }

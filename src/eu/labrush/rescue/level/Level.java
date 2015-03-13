@@ -47,7 +47,7 @@ public class Level {
 		personnageControler = new PersonnageControler(this, blocControler);
 		tirControler = new TirControler(this, blocControler, personnageControler);
 		heroControler = new HeroControler(this, tirControler);
-		botControler = new BotControler(this, personnageControler);
+		botControler = new BotControler(this, personnageControler, tirControler);
 
 		Personnage hero = new Personnage(15, 15);
 		hero.setVitesseNominale(new Vecteur(.3, .9));
