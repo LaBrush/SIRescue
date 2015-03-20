@@ -1,5 +1,6 @@
 package eu.labrush.rescue.IA.behaviour;
 
+import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Bot;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
@@ -7,21 +8,36 @@ import eu.labrush.rescue.model.Vecteur;
 /**
  * @author adrienbocquet
  * @author solineducousso
+ * 
+ * Définit le comportement d'un bot assigné à un bloc et attaquant
+ * en allant au contact du héro
+ * 
  */
-public class AbstractBotBehaviour {
+public class ToucherBotBehaviour implements BotBehaviour {
 
 	private Bot b;
-
+	private Bloc bloc ;
+	
 	double botInitialX, botInitialY;
 	boolean attack ;
 
-	public AbstractBotBehaviour(Bot b) {
-		this.b = b;
+	public ToucherBotBehaviour(Bot b) {
+		setBot(b);
+	}
+
+	
+	public ToucherBotBehaviour(Bloc bloc) {
+		this.bloc = bloc ;
+	}
+	
+	@Override
+	public void setBot(Bot bot) {
+		this.b = bot;
 		botInitialX = b.getX();
 		botInitialY = b.getY();
 		attack = false;
 	}
-
+	
 	public void update(Personnage hero) {
 
 		Vecteur v = b.getTrajectoire().getVitesse();
@@ -54,5 +70,4 @@ public class AbstractBotBehaviour {
 		}
 		
 	}
-
 }

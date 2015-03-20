@@ -1,47 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<level xs:noNamespaceSchemaLocation="Level.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" >
+<level xs:noNamespaceSchemaLocation="Level.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" >
 	<hero>
-		<position x="15" y="20"/>
-		<arme type="resistance"/>
+		<position x="15" y="20" />
+		<arme type="resistance" />
 	</hero>
-	
+
 	<bots>
 		<bot>
-			<position x="15" y="20"/>
-			<arme type="resistance"/>
+			<position x="15" y="20" />
+			<arme type="resistance" />
 			<comportement>abstractbehaviour</comportement>
 			<type>Soso</type>
 			<bloc_id>1</bloc_id>
 		</bot>
 	</bots>
-	
+
 	<blocs>
 		<bloc>
-			<position x="0" y="390"/>
-			<dimensions width="400" height="10"/>
+			<position x="0" y="390" />
+			<dimensions width="400" height="10" />
 		</bloc>
 		<bloc>
-			<position x="0" y="0"/>
-			<dimensions width="10" height="500"/>
+			<position x="0" y="0" />
+			<dimensions width="10" height="500" />
 		</bloc>
 		<bloc>
-			<position x="390" y="0"/>
-			<dimensions width="10" height="500"/>
+			<position x="390" y="0" />
+			<dimensions width="10" height="500" />
 		</bloc>
 		<bloc>
-			<position x="0" y="0"/>
-			<dimensions width="400" height="10"/>
+			<position x="0" y="0" />
+			<dimensions width="400" height="10" />
 		</bloc>
 		<bloc>
 			<id>1</id>
-			<position x="50" y="100"/>
-			<dimensions width="50" height="100"/>
+			<position x="50" y="100" />
+			<dimensions width="50" height="100" />
 		</bloc>
 	</blocs>
-	
+
 	<armes>
 		<arme>
-			<position x="200" y="300"/>
+			<position x="200" y="300" />
 			<type>resistance</type>
 		</arme>
 	</armes>

@@ -16,6 +16,7 @@ public class LevelLoader {
 
 	public void load() {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
+        //factory.setValidating(true);
 		
 		try {
 			SAXParser parser = factory.newSAXParser();

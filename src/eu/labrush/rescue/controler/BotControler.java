@@ -2,7 +2,8 @@ package eu.labrush.rescue.controler;
 
 import java.util.HashMap;
 
-import eu.labrush.rescue.IA.behaviour.AbstractBotBehaviour;
+import eu.labrush.rescue.IA.behaviour.BotBehaviour;
+import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.level.Level;
 import eu.labrush.rescue.model.Bot;
@@ -15,8 +16,8 @@ import eu.labrush.rescue.utils.Listener;
  */
 public class BotControler extends AbstractControler {
 
-	HashMap<Bot, AbstractBotBehaviour> bots = new HashMap<Bot, AbstractBotBehaviour>();
-	AbstractBotBehaviour generalBehaviour ;
+	HashMap<Bot, BotBehaviour> bots = new HashMap<Bot, BotBehaviour>();
+	ToucherBotBehaviour generalBehaviour ;
 	
 	Personnage hero ;
 	PersonnageControler personnageControler ;
@@ -26,7 +27,6 @@ public class BotControler extends AbstractControler {
 		super(level);
 	
 		this.hero = heroControler.getPersonnage();
-		System.out.println(hero);
 		this.personnageControler = personnageControler;
 		this.tirControler = tirControler ;
 				
@@ -41,7 +41,16 @@ public class BotControler extends AbstractControler {
 	}
 	
 	public void add(Bot ennemi) {
-		bots.put(ennemi, new AbstractBotBehaviour(ennemi));
+		bots.put(ennemi, new ToucherBotBehaviour(ennemi));
+		
+		ennemi.setTirManager(tirControler.getTirInterface());
+		personnageControler.add(ennemi);
+	}
+	
+	public void add(Bot ennemi, BotBehaviour behaviour) {
+		behaviour.setBot(ennemi);
+		bots.put(ennemi, behaviour);
+		
 		ennemi.setTirManager(tirControler.getTirInterface());
 		personnageControler.add(ennemi);
 	}
