@@ -64,9 +64,9 @@ public class Level {
 		
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
 		
-		botControler.add(new Bot(200,15), new ToucherBotBehaviour(blocControler.getBloc(1)));
-		botControler.add(new Bot(340,215), new ToucherBotBehaviour(blocControler.getBloc(2)));
-		botControler.add(new Bot(100,135), new ToucherBotBehaviour(blocControler.getBloc(3)));	
+		botControler.add(new Bot(70,135), new ToucherBotBehaviour(blocControler.getBloc(1)));
+		botControler.add(new Bot(260,175), new ToucherBotBehaviour(blocControler.getBloc(2)));
+		botControler.add(new Bot(320,215), new ToucherBotBehaviour(blocControler.getBloc(3)));	
 	}
 
 	/**
