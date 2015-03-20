@@ -9,6 +9,10 @@ public class Bloc extends AbstractObject {
 
 	private int id ;
 	
+	public Bloc(){
+		this(0, 0, 0, 0);
+	}
+	
 	public Bloc(double x, double y, int w, int h){
 		this(x, y, w, h, 0);
 	}

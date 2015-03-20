@@ -72,6 +72,10 @@ public abstract class AbstractObject extends AbstractModel {
 	public Dimension getDimension() {
 		return dim;
 	}
+	
+	public void setDimension(Dimension dim) {
+		this.dim = dim ;
+	}
 
 	/**
 	 * @return the trajectoire

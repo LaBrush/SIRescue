@@ -1,6 +1,8 @@
 package eu.labrush.rescue.controler;
 
 import java.util.HashMap;
+import java.util.Observable;
+import java.util.Observer;
 
 import eu.labrush.rescue.IA.behaviour.BotBehaviour;
 import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
@@ -29,7 +31,14 @@ public class BotControler extends AbstractControler {
 		this.hero = heroControler.getPersonnage();
 		this.personnageControler = personnageControler;
 		this.tirControler = tirControler ;
-				
+		
+		heroControler.addObserver(new Observer(){
+			@Override
+			public void update(Observable o, Object arg) {
+				hero = ((HeroControler) o).getPersonnage();
+			}
+		});
+		
 		this.physics.addObserver(new Listener<PhysicCore>() {
 			@Override
 			public void update(PhysicCore req) {

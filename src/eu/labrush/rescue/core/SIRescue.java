@@ -3,6 +3,7 @@ package eu.labrush.rescue.core;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.level.Level;
+import eu.labrush.rescue.level.LevelLoader;
 
 /**
  * @author adrienbocquet
@@ -14,14 +15,15 @@ public class SIRescue {
 		GraphicCore graphics = GraphicCore.getInstance();
 		PhysicCore physics = new PhysicCore(GraphicCore.FRAMERATE * 2);
 		
+		//SampleLevel level = new SampleLevel(graphics, physics);
+		
 		Level level = new Level(graphics, physics);
-
+		LevelLoader loader = new LevelLoader();
+		loader.load(level, "level.xml");
+		
 		graphics.start();
 		physics.start();
 		
-		/*LevelLoader loader = new LevelLoader();
-		loader.load();*/
-
 		//TEST ASTAR
 		
 		/*AStar star = new AStar(level.getBlocControler().getBlocs(), graphics.getWidth(), graphics.getHeight(), 10);

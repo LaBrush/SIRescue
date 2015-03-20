@@ -14,13 +14,14 @@ import org.xml.sax.SAXException;
  */
 public class LevelLoader {
 
-	public void load() {
+	public void load(Level level, String file) {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
         //factory.setValidating(true);
 		
 		try {
 			SAXParser parser = factory.newSAXParser();
-	         parser.parse("resources/level.xml", new XMLHandler());
+	         parser.parse("resources/"+file, new XMLHandler(level));
+
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		} catch (SAXException e) {

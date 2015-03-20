@@ -3,6 +3,8 @@
  */
 package eu.labrush.rescue.controler;
 
+import java.util.Observable;
+
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.level.Level;
@@ -11,7 +13,7 @@ import eu.labrush.rescue.level.Level;
  * @author adrienbocquet
  *
  */
-public abstract class AbstractControler {
+public abstract class AbstractControler extends Observable {
 
 	Level level ;
 	
@@ -23,6 +25,11 @@ public abstract class AbstractControler {
 		
 		this.graphics = level.getGraphics() ;
 		this.physics = level.getPhysics() ;
+	}
+	
+	protected void throwUpdate() {
+		setChanged();
+		notifyObservers();
 	}
 	
 }

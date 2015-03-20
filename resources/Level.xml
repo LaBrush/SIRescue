@@ -8,7 +8,7 @@
 
 	<bots>
 		<bot>
-			<position x="15" y="20" />
+			<position x="150" y="20" />
 			<arme type="resistance" />
 			<comportement>abstractbehaviour</comportement>
 			<type>Soso</type>
@@ -18,20 +18,20 @@
 
 	<blocs>
 		<bloc>
-			<position x="0" y="390" />
-			<dimensions width="400" height="10" />
+			<position x="0" y="370" />
+			<dimensions width="600" height="10" />
+		</bloc>
+		<bloc>
+			<position x="590" y="0" />
+			<dimensions width="10" height="400" />
 		</bloc>
 		<bloc>
 			<position x="0" y="0" />
-			<dimensions width="10" height="500" />
-		</bloc>
-		<bloc>
-			<position x="390" y="0" />
-			<dimensions width="10" height="500" />
+			<dimensions width="600" height="10" />
 		</bloc>
 		<bloc>
 			<position x="0" y="0" />
-			<dimensions width="400" height="10" />
+			<dimensions width="10" height="400" />
 		</bloc>
 		<bloc>
 			<id>1</id>
@@ -40,10 +40,11 @@
 		</bloc>
 	</blocs>
 
-	<armes>
+	<!-- <armes>
 		<arme>
 			<position x="200" y="300" />
 			<type>resistance</type>
 		</arme>
 	</armes>
+	-->
 </level>

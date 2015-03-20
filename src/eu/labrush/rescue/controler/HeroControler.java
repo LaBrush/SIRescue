@@ -16,7 +16,8 @@ import eu.labrush.rescue.utils.Listener;
 public final class HeroControler extends AbstractControler {
 
 	TirControler tirControler;
-
+	PersonnageControler personnageControler ;
+	
 	private Personnage model;
 	boolean moving;
 
@@ -77,26 +78,31 @@ public final class HeroControler extends AbstractControler {
 
 	};
 
-	public HeroControler(Level level, TirControler tirContoler) {
+	public HeroControler(Level level, TirControler tirContoler, PersonnageControler personnageControler) {
 		super(level);
 
 		this.tirControler = tirContoler;
+		this.personnageControler = personnageControler ;
 	}
 
 	/**
 	 * @param hero
 	 */
 	public void setPersonnage(Personnage hero) {
+		personnageControler.removePersonnage(hero);
 		keyboard.delObserver(listener);
+		
 		this.model = hero;
 
 		if (this.model != null) {
 			keyboard.addObserver(listener);
 		}
-		
 
 		this.vx = model.getVitesseNominale().getX() ;
 		this.vy = model.getVitesseNominale().getY();
+		
+		personnageControler.add(model);
+		throwUpdate();
 	}
 	
 	public Personnage getPersonnage(){
