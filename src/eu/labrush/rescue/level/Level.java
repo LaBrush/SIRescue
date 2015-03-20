@@ -1,5 +1,6 @@
 package eu.labrush.rescue.level;
 
+import eu.labrush.rescue.IA.behaviour.FlyBotBehaviour;
 import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
 import eu.labrush.rescue.controler.BlocControler;
 import eu.labrush.rescue.controler.BotControler;
@@ -64,7 +65,7 @@ public class Level {
 		
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
 		
-		botControler.add(new Bot(70,135), new ToucherBotBehaviour(blocControler.getBloc(1)));
+		botControler.add(new Bot(300,300), new FlyBotBehaviour());
 		botControler.add(new Bot(260,175), new ToucherBotBehaviour(blocControler.getBloc(2)));
 		botControler.add(new Bot(320,215), new ToucherBotBehaviour(blocControler.getBloc(3)));	
 	}
