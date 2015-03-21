@@ -1,17 +1,13 @@
 package eu.labrush.rescue.level;
 
+import eu.labrush.rescue.IA.behaviour.FlyBotBehaviour;
 import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
-import eu.labrush.rescue.controler.BlocControler;
 import eu.labrush.rescue.controler.BotControler;
-import eu.labrush.rescue.controler.HeroControler;
-import eu.labrush.rescue.controler.PersonnageControler;
-import eu.labrush.rescue.controler.TirControler;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Bot;
 import eu.labrush.rescue.model.Personnage;
-import eu.labrush.rescue.model.Vecteur;
 import eu.labrush.rescue.model.arme.Arme;
 
 /**
@@ -34,7 +30,6 @@ public class SampleLevel extends Level {
 		super(graphics, physics);
 		
 		Personnage hero = new Personnage(15, 15);
-		hero.setVitesseNominale(new Vecteur(.3, .9));
 		hero.addArme(new Arme(10, 10));
 		
 		heroControler.setPersonnage(hero);
@@ -48,9 +43,9 @@ public class SampleLevel extends Level {
 		
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
 		
-		botControler.add(new Bot(200,15), new ToucherBotBehaviour(blocControler.getBloc(1)));
-		botControler.add(new Bot(340,215), new ToucherBotBehaviour(blocControler.getBloc(2)));
-		botControler.add(new Bot(100,135), new ToucherBotBehaviour(blocControler.getBloc(3)));	
+		botControler.add(new Bot(300,300), new FlyBotBehaviour());
+		botControler.add(new Bot(260,175), new ToucherBotBehaviour(blocControler.getBloc(2)));
+		botControler.add(new Bot(320,215), new ToucherBotBehaviour(blocControler.getBloc(3)));	
 	}
 
 	/**

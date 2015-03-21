@@ -7,6 +7,7 @@ import eu.labrush.rescue.core.graphic.KeyboardListener;
 import eu.labrush.rescue.level.Level;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Trajectoire;
+import eu.labrush.rescue.model.Vecteur;
 import eu.labrush.rescue.utils.Listener;
 
 /**
@@ -89,6 +90,8 @@ public final class HeroControler extends AbstractControler {
 	 * @param hero
 	 */
 	public void setPersonnage(Personnage hero) {
+		hero.setVitesseNominale(new Vecteur(.3, .9));
+		
 		personnageControler.removePersonnage(hero);
 		keyboard.delObserver(listener);
 		

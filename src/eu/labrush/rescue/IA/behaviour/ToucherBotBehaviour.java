@@ -15,15 +15,16 @@ import eu.labrush.rescue.model.Vecteur;
  */
 public class ToucherBotBehaviour implements BotBehaviour {
 
-	private Bot b;
+	private Bot bot;
 	private Bloc bloc ;
 	
 	double  vitesse;
 	boolean attack ;
 	
 
-	public ToucherBotBehaviour(Bot b) {
-		setBot(b);
+	public ToucherBotBehaviour(Bot bot, Bloc bloc) {
+		setBot(bot);
+		this.bloc = bloc ;
 	}
 
 	
@@ -33,7 +34,7 @@ public class ToucherBotBehaviour implements BotBehaviour {
 	
 	@Override
 	public void setBot(Bot bot) {
-		this.b = bot;		
+		this.bot = bot;		
 		attack = false;		
 		vitesse = 0.02;
 		
@@ -41,10 +42,10 @@ public class ToucherBotBehaviour implements BotBehaviour {
 	
 	public void update(Personnage hero) {
 
-		Vecteur v = b.getTrajectoire().getVitesse();
+		Vecteur v = bot.getTrajectoire().getVitesse();
 
-		double botX = b.getX();
-		double botY = b.getY();
+		double botX = bot.getX();
+		double botY = bot.getY();
 
 		double heroX = hero.getX();
 		double heroY = hero.getY();
@@ -53,7 +54,7 @@ public class ToucherBotBehaviour implements BotBehaviour {
 			if (v.getX() == 0) {
 				v.setX(vitesse);
 				
-			} else if ((b.getX() >= (bloc.getX()+bloc.getWidth() - b.getWidth()) && v.getX() > 0) || (b.getX() <= (bloc.getX()) && v.getX() < 0)) {
+			} else if ((bot.getX() >= (bloc.getX()+bloc.getWidth() - bot.getWidth()) && v.getX() > 0) || (bot.getX() <= (bloc.getX()) && v.getX() < 0)) {
 				v.setX(-v.getX());
 			}
 			

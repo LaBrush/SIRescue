@@ -15,36 +15,39 @@ import eu.labrush.rescue.model.Vecteur;
 
 public class XMLHandler extends DefaultHandler {
 
-	AbstractObject current ;
-	Level level ;
-	
-	XMLHandler(Level level){
-		this.level = level ;
+	private AbstractObject current;
+	private int id;
+
+	Level level;
+
+	XMLHandler(Level level) {
+		this.level = level;
 	}
-	
+
 	/**
 	 * Redéfinition de la méthode pour intercepter les événements
 	 */
 	public void startElement(String namespaceURI, String lName, String qName, Attributes attrs) throws SAXException {
 
-		switch (qName){
+		switch (qName) {
 			case "bloc":
-				current = new Bloc();				
-				break ;
+				current = new Bloc();
+				String attr =  attrs.getValue("id");
+				id = (attr == null ? 0 : Integer.parseInt(attr));
+				break;
 			case "hero":
 				current = new Personnage(0, 0);
-				break ;
+				break;
 			case "bot":
-				current = new Bot(0, 0);				
-				break ;
+				current = new Bot(0, 0);
+				break;
 
-				
 			case "position":
 				setPosition(attrs);
-				break ;
+				break;
 			case "dimensions":
 				setDimension(attrs);
-				break ;
+				break;
 		}
 	}
 
@@ -56,25 +59,39 @@ public class XMLHandler extends DefaultHandler {
 
 	private void setPosition(Attributes attrs) {
 		Vecteur pos = new Vecteur();
-		
+
 		pos.setX(Integer.parseInt(attrs.getValue(0)));
 		pos.setY(Integer.parseInt(attrs.getValue(1)));
-		
+
 		current.getTrajectoire().setPosition(pos);
 	}
 
 	public void endElement(String uri, String localName, String qName) throws SAXException {
-		
-		switch (qName){
+
+		switch (qName) {
 			case "bloc":
-				level.blocControler.add((Bloc)current);
-				break ;
+				if(id > 0){
+					((Bloc) current).setId(id);
+				}
+				level.blocControler.add((Bloc) current);
+				current = null; // on place l'élément courant à null afin d'éviter des modifications
+								// après que la balise soit fermée
+				break;
 			case "hero":
-				level.heroControler.setPersonnage((Personnage)current);
-				break ;
+				level.heroControler.setPersonnage((Personnage) current);
+				current = null;
+				break;
 			case "bot":
-				level.botControler.add((Bot)current);
-				break ;
+				Bloc bloc = level.blocControler.getBloc(id);
+				Bot bot = (Bot) current ;
+				
+				if(bloc == null){ throw new SAXException("a bloc is poiting on a non existant bloc") ; }
+				
+				bot.getTrajectoire().setPosition(new Vecteur(bloc.getX(), bloc.getY()+bloc.getHeight()));
+				
+				level.botControler.add(bot, bloc);
+				current = null;
+				break;
 		}
 	}
 

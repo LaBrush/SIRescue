@@ -8,6 +8,7 @@ import eu.labrush.rescue.IA.behaviour.BotBehaviour;
 import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.level.Level;
+import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Bot;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.utils.Listener;
@@ -49,8 +50,8 @@ public class BotControler extends AbstractControler {
 		});
 	}
 	
-	public void add(Bot ennemi) {
-		bots.put(ennemi, new ToucherBotBehaviour(ennemi));
+	public void add(Bot ennemi, Bloc bloc) {
+		bots.put(ennemi, new ToucherBotBehaviour(ennemi, bloc));
 		
 		ennemi.setTirManager(tirControler.getTirInterface());
 		personnageControler.add(ennemi);

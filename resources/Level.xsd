@@ -16,6 +16,26 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+				<xs:element name="blocs">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="bloc" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="position" type="position"></xs:element>
+										<xs:element name="dimensions">
+											<xs:complexType>
+												<xs:attribute name="width" type="xs:int" use="required"></xs:attribute>
+												<xs:attribute name="height" type="xs:int" use="required"></xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="id" type="xs:integer"></xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
 				<xs:element name="bots">
 					<xs:complexType>
 						<xs:sequence>
@@ -37,31 +57,10 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="blocs">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="bloc" maxOccurs="unbounded">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="id" type="xs:integer" minOccurs="0"
-											maxOccurs="1"></xs:element>
-										<xs:element name="position" type="position"></xs:element>
-										<xs:element name="dimensions">
-											<xs:complexType>
-												<xs:attribute name="width" type="xs:int" use="required"></xs:attribute>
-												<xs:attribute name="height" type="xs:int" use="required"></xs:attribute>
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
 				<xs:element name="armes">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="arme">
+							<xs:element name="arme" minOccurs="0">
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="position" type="position"></xs:element>

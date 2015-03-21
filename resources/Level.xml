@@ -6,16 +6,6 @@
 		<arme type="resistance" />
 	</hero>
 
-	<bots>
-		<bot>
-			<position x="150" y="20" />
-			<arme type="resistance" />
-			<comportement>abstractbehaviour</comportement>
-			<type>Soso</type>
-			<bloc_id>1</bloc_id>
-		</bot>
-	</bots>
-
 	<blocs>
 		<bloc>
 			<position x="0" y="370" />
@@ -33,18 +23,27 @@
 			<position x="0" y="0" />
 			<dimensions width="10" height="400" />
 		</bloc>
-		<bloc>
-			<id>1</id>
+		<bloc id="1">
 			<position x="50" y="100" />
-			<dimensions width="50" height="100" />
+			<dimensions width="250" height="50" />
 		</bloc>
 	</blocs>
 
-	<!-- <armes>
-		<arme>
+	<bots>
+		<bot>
+			<position x="150" y="20" />
+			<arme type="resistance" />
+			<comportement>abstractbehaviour</comportement>
+			<type>Soso</type>
+			<bloc_id>1</bloc_id>
+		</bot>
+	</bots>
+
+	<armes>
+		<!-- <arme>
 			<position x="200" y="300" />
 			<type>resistance</type>
-		</arme>
+		</arme>-->
 	</armes>
-	-->
+
 </level>
