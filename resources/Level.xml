@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <level xs:noNamespaceSchemaLocation="Level.xsd"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" >
+	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
 	<hero>
 		<position x="15" y="20" />
-		<arme type="resistance" />
+		<arme>Resistance</arme>
 	</hero>
 
 	<blocs>
@@ -32,18 +32,15 @@
 	<bots>
 		<bot>
 			<position x="150" y="20" />
-			<arme type="resistance" />
-			<comportement>abstractbehaviour</comportement>
+			<arme>Resistance</arme>
+			<comportement>ToucherBotBehaviour</comportement>
 			<type>Soso</type>
 			<bloc_id>1</bloc_id>
 		</bot>
 	</bots>
 
 	<armes>
-		<!-- <arme>
-			<position x="200" y="300" />
-			<type>resistance</type>
-		</arme>-->
+		<!-- <arme> <position x="200" y="300" /> <type>resistance</type> </arme> -->
 	</armes>
 
 </level>

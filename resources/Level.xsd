@@ -8,11 +8,7 @@
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="position" type="position"></xs:element>
-							<xs:element name="arme">
-								<xs:complexType>
-									<xs:attribute name="type" type="xs:string" use="required"></xs:attribute>
-								</xs:complexType>
-							</xs:element>
+							<xs:element name="arme" type="arme"></xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -43,12 +39,15 @@
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="position" type="position"></xs:element>
-										<xs:element name="arme">
-											<xs:complexType>
-												<xs:attribute name="type" type="xs:string" use="required"></xs:attribute>
-											</xs:complexType>
+										<xs:element name="arme" type="arme"></xs:element>
+										<xs:element name="comportement">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="FlyBotBehaviour" />
+													<xs:enumeration value="ToucherBotBehaviour" />
+												</xs:restriction>
+											</xs:simpleType>
 										</xs:element>
-										<xs:element name="comportement" type="xs:string"></xs:element>
 										<xs:element name="type" type="xs:string"></xs:element>
 										<xs:element name="bloc_id" type="xs:integer"></xs:element>
 									</xs:sequence>
@@ -79,4 +78,10 @@
 		<xs:attribute name="x" type="xs:int" use="required"></xs:attribute>
 		<xs:attribute name="y" type="xs:int" use="required"></xs:attribute>
 	</xs:complexType>
+
+	<xs:simpleType name="arme">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Resistance" />
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>
