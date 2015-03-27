@@ -3,6 +3,7 @@
  */
 package eu.labrush.rescue.core.graphic;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -59,11 +60,25 @@ public class DrawRequest {
 	 * @param color
 	 */
 	public void rect(int x, int y, int width, int height, Color c) {
+		this.rect(x, y, width, height, 1, c);
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param border
+	 * @param c
+	 */
+	public void rect(int x, int y, int width, int height, int border, Color c) {
 		this.g.setColor(c);
+		this.g.setStroke(new BasicStroke(border));
 		rect(x, y, width, height);
 		this.g.setColor(Color.BLACK);
 	}
-
+	
 	/**
 	 * @param x
 	 * @param y
@@ -110,6 +125,19 @@ public class DrawRequest {
 		image(img, x, y, 0);
 	}
 
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param c
+	 */
+	public void fillRect(int x, int y, int width, int height, Color c) {
+		this.g.setColor(c);
+		this.g.fillRect(x, this.getHeight() - y, width, height);
+	}
+	
 	public int getHeight() {
 		return height;
 	}

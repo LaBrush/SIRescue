@@ -14,9 +14,11 @@ public class PersonnageView extends AbstractView {
 
 	ArmeView armeView;
 	Arme arme;
-
+	
 	public PersonnageView(Personnage model) {
 		super(model);
+		width = (int) model.getWidth();
+		height = (int) model.getHeight();
 	}
 
 	@Override
@@ -25,9 +27,7 @@ public class PersonnageView extends AbstractView {
 
 		x = (int) p.getTrajectoire().getPosition().getX();
 		y = (int) p.getTrajectoire().getPosition().getY();
-		width = (int) p.getWidth();
-		height = (int) p.getHeight();
-
+		
 		Arme previous = arme;
 		
 		arme = p.getCurrentArme();
@@ -40,7 +40,7 @@ public class PersonnageView extends AbstractView {
 	@Override
 	public void draw(DrawRequest req) {
 		req.rect(this.x, this.y, this.width, this.height);
-
+		
 		if (armeView != null)
 			armeView.draw(req);
 	}

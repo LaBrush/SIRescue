@@ -2,6 +2,7 @@ package eu.labrush.rescue.controler;
 
 import java.awt.event.KeyEvent;
 
+import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.graphic.KeyboardListener;
 import eu.labrush.rescue.level.Level;
@@ -9,6 +10,7 @@ import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Trajectoire;
 import eu.labrush.rescue.model.Vecteur;
 import eu.labrush.rescue.utils.Listener;
+import eu.labrush.rescue.view.HeroInfoView;
 
 /**
  * @author adrienbocquet
@@ -18,6 +20,8 @@ public final class HeroControler extends AbstractControler {
 
 	TirControler tirControler;
 	PersonnageControler personnageControler ;
+	
+	HeroInfoView heroView ;
 	
 	private Personnage model;
 	boolean moving;
@@ -84,6 +88,13 @@ public final class HeroControler extends AbstractControler {
 
 		this.tirControler = tirContoler;
 		this.personnageControler = personnageControler ;
+		
+		this.graphics.addObserver(new Listener<DrawRequest>() {
+			@Override
+			public void update(DrawRequest req) {
+				heroView.draw(req);
+			}
+		});
 	}
 
 	/**
@@ -96,7 +107,9 @@ public final class HeroControler extends AbstractControler {
 		keyboard.delObserver(listener);
 		
 		this.model = hero;
-
+		
+		heroView = new HeroInfoView(hero);
+		
 		if (this.model != null) {
 			keyboard.addObserver(listener);
 		}

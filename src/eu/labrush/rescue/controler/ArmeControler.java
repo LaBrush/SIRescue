@@ -26,7 +26,7 @@ public class ArmeControler extends AbstractControler {
 	public ArmeControler(Level level) {
 		super(level);
 
-		this.graphics.suscribe(new Listener<DrawRequest>() {
+		this.graphics.addObserver(new Listener<DrawRequest>() {
 			@Override
 			public void update(DrawRequest req) {
 				for (ArmeView v : views) {

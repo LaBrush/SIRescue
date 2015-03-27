@@ -28,7 +28,7 @@ public class PersonnageControler extends AbstractControler {
 
 		this.blocControler = blocControler;
 
-		this.graphics.suscribe(new Listener<DrawRequest>() {
+		this.graphics.addObserver(new Listener<DrawRequest>() {
 			@Override
 			public void update(DrawRequest req) {
 				for (PersonnageView v : personnages.values()) {

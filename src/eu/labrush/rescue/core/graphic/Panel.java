@@ -6,6 +6,8 @@ package eu.labrush.rescue.core.graphic;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -38,7 +40,7 @@ public class Panel extends JPanel implements Listenable<DrawRequest> {
 		//http://docs.oracle.com/javase/7/docs/api/java/awt/Graphics.html#dispose()
 		g.dispose();
 	}
-
+	
 	@Override
 	public void addObserver(Listener<DrawRequest> obs) {
 		this.observers.add(obs);

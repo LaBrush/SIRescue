@@ -1,0 +1,44 @@
+package eu.labrush.rescue.view;
+
+import java.awt.Color;
+import java.util.Observable;
+
+import eu.labrush.rescue.core.graphic.DrawRequest;
+import eu.labrush.rescue.model.Personnage;
+
+/**
+ * @author adrienbocquet
+ *
+ */
+public class HeroInfoView extends AbstractView {
+
+	int maxLife, life ;
+	
+	public HeroInfoView(Observable model) {
+		super(model);
+		maxLife = ((Personnage)model).getMaxLife();
+	}
+
+	/* (non-Javadoc)
+	 * @see eu.labrush.rescue.view.AbstractView#bindModel(java.util.Observable)
+	 */
+	@Override
+	protected void bindModel(Observable model) {
+		life = ((Personnage)model).getLife();
+	}
+
+	/* (non-Javadoc)
+	 * @see eu.labrush.rescue.view.AbstractView#draw(eu.labrush.rescue.core.graphic.DrawRequest)
+	 */
+	@Override
+	public void draw(DrawRequest req) {
+		int width = 200 * life / maxLife;
+		
+		int r = 255 * (maxLife - life) / maxLife ;
+		int v = 255 * life / maxLife;
+		
+		req.fillRect(18, req.getHeight()-30, width, 20, new Color(r, v, 0));
+		req.rect(15, req.getHeight()-50, 205, 20, 5, new Color(0, 0, 0));
+	}
+
+}

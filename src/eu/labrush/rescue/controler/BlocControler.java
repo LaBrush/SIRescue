@@ -23,7 +23,7 @@ public class BlocControler extends AbstractControler {
 	public BlocControler(Level level) {
 		super(level);
 		
-		this.graphics.suscribe(new Listener<DrawRequest>() {
+		this.graphics.addObserver(new Listener<DrawRequest>() {
 			@Override
 			public void update(DrawRequest req) {
 				for(BlocView v: views){

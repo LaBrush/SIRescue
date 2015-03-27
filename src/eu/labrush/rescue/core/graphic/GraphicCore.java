@@ -1,5 +1,8 @@
 package eu.labrush.rescue.core.graphic;
 
+import java.awt.Rectangle;
+import java.awt.event.ComponentEvent;
+
 import javax.swing.JFrame;
 
 import eu.labrush.rescue.utils.Listener;
@@ -34,7 +37,7 @@ final public class GraphicCore extends JFrame {
 		keyboard.requestFocus();
 
 	}
-
+	
 	/**
 	 * Holder
 	 * 
@@ -79,7 +82,7 @@ final public class GraphicCore extends JFrame {
 		}
 	}
 
-	public void suscribe(Listener<DrawRequest> obs) {
+	public void addObserver(Listener<DrawRequest> obs) {
 		this.getPan().addObserver(obs);
 	}
 

@@ -56,7 +56,7 @@ public class TirControler extends AbstractControler {
 		this.blocControler = blocControler;
 		this.personnageControler = personnageControler;
 
-		this.graphics.suscribe(new Listener<DrawRequest>() {
+		this.graphics.addObserver(new Listener<DrawRequest>() {
 			@Override
 			public void update(DrawRequest req) {
 				for (TirView v : tirs.values()) {
