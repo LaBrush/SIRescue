@@ -37,8 +37,7 @@ public class HeroInfoView extends AbstractView {
 		int r = 255 * (maxLife - life) / maxLife ;
 		int v = 255 * life / maxLife;
 		
-		req.fillRect(18, req.getHeight()-30, width, 20, new Color(r, v, 0));
-		req.rect(15, req.getHeight()-50, 205, 20, 5, new Color(0, 0, 0));
+		req.fillRect(11, req.getHeight()-10, width, 20, new Color(r, v, 0));
 	}
 
 }

@@ -30,7 +30,7 @@ public class SampleLevel extends Level {
 		super(graphics, physics);
 		
 		Personnage hero = new Personnage(15, 15);
-		hero.addArme(new Arme(10, 10));
+		hero.addArme(new Arme("Resistance", 10, 10));
 		
 		heroControler.setPersonnage(hero);
 		personnageControler.add(hero);
@@ -55,10 +55,10 @@ public class SampleLevel extends Level {
 
 		int width = this.graphics.getPan().getWidth(), height = this.graphics.getPan().getHeight();
 
-		blocControler.add(new Bloc(0, height - 10, width, 10)); // mur en haut
-		blocControler.add(new Bloc(0, 0, 10, height + 100)); // mur à gauche
-		blocControler.add(new Bloc(width - 10, 0, 10, height + 100)); // mur à droite
-		blocControler.add(new Bloc(0, 0, width, 10)); // mur en bas
+		blocControler.add(new Bloc(0, height+1, width, 10)); // mur en haut
+		blocControler.add(new Bloc(-1, 0, 0, height + 100)); // mur à gauche
+		blocControler.add(new Bloc(width, 0, 10, height + 100)); // mur à droite
+		blocControler.add(new Bloc(-1, 0, width+1, 10)); // mur en bas
 	}
 
 	/**
