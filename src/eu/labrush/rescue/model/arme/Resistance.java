@@ -7,26 +7,19 @@ import eu.labrush.rescue.core.physics.TirPhysicBehaviour;
 import eu.labrush.rescue.model.AbstractObject;
 import eu.labrush.rescue.model.Vecteur;
 
-public class Resistance extends AbstractObject implements Tir {
-
-	int degat = 0;
-	int angle;
-	double vitesse = .1;
+public class Resistance extends Tir {
 
 	// ces trois vecteurs représentent les points en haut, gauche et droite, et en bas gauche et
 	// droite du rectangle
 	public Vecteur hg, hd, bg, bd;
 
-	public Resistance(Vecteur position, int degat, int angle) {	
-		super();
+	public Resistance(Vecteur position, int angle, int degat) {	
+		super(position, angle, degat);
 		
 		this.dim = new Dimension(5, 5);
 		
 		this.getTrajectoire().setPosition(position);
 		this.getTrajectoire().getVitesse().setPolar(this.vitesse, angle);
-		
-		this.degat = degat;
-		this.angle = angle;
 
 		this.behaviour = new TirPhysicBehaviour(this.getTrajectoire(), this.dim);
 		
@@ -60,34 +53,5 @@ public class Resistance extends AbstractObject implements Tir {
 		return o.getX() <= p.getX() && o.getX()+o.getWidth() >= p.getX() && o.getY() <= p.getY() && o.getY()+o.getHeight() >= p.getY() ;
 	}
 
-	/**
-	 * @return the degat
-	 */
-	public int getDegat() {
-		return degat;
-	}
-
-	/**
-	 * @param degat
-	 *            the degat to set
-	 */
-	public void setDegat(int degat) {
-		this.degat = degat;
-	}
-
-	/**
-	 * @return the angle
-	 */
-	public int getAngle() {
-		return angle;
-	}
-
-	/**
-	 * @param angle
-	 *            the angle to set
-	 */
-	public void setAngle(int angle) {
-		this.angle = angle;
-	}
 
 }

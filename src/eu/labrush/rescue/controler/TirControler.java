@@ -26,7 +26,7 @@ public class TirControler extends AbstractControler {
 	/**
 	 * @author adrienbocquet
 	 * 
-	 * Fourni une interface aux bots pour tirer depuis ce controler
+	 *         Fourni une interface aux bots pour tirer depuis ce controler
 	 */
 	public interface TirInterface {
 
@@ -74,27 +74,26 @@ public class TirControler extends AbstractControler {
 				obstacles.addAll(blocControler.getBlocs());
 
 				for (Tir t : tirs.keySet()) {
-					if (t instanceof Resistance) {
-						// On met à jour la position des tirs
-						((AbstractObject) t).getPhysicBehaviour().updateTrajectoire(obstacles, req.getDelta());
+					// On met à jour la position des tirs
+					((AbstractObject) t).getPhysicBehaviour().updateTrajectoire(obstacles, req.getDelta());
 
-						// Puis on regarde s'ils entre en collision avec d'autres objets
-						Resistance tir = (Resistance) t;
+					// Puis on regarde s'ils entre en collision avec d'autres objets
+					Resistance tir = (Resistance) t;
 
-						for (AbstractObject o : obstacles) {
-							if (tir.cross(o)) {
-								if (o instanceof Personnage) {
-									Personnage p = (Personnage) o;
-									p.prendreDegats(tir.getDegat());
-									if (p.isDead()) {
-										personnageControler.removePersonnage(p);
-									}
+					for (AbstractObject o : obstacles) {
+						if (tir.cross(o)) {
+							if (o instanceof Personnage) {
+								Personnage p = (Personnage) o;
+								p.prendreDegats(tir.getDegat());
+								if (p.isDead()) {
+									personnageControler.removePersonnage(p);
 								}
-
-								deleteTir(tir);
 							}
+
+							deleteTir(tir);
 						}
 					}
+
 				}
 			}
 		});
@@ -107,10 +106,16 @@ public class TirControler extends AbstractControler {
 		position.setX(30 * Math.cos(angle) + personnage.getX());
 		position.setY(30 * Math.sin(angle % 90) + personnage.getY() + personnage.getHeight() / 2);
 
-		Resistance tir = new Resistance(position, 10, angle);
-		TirView v = new TirView(tir);
-
-		this.tirs.put(tir, v);
+		Tir tir = null ;
+		
+		if(personnage.getCurrentArme() != null)
+		tir = personnage.getCurrentArme().shoot(position, angle);
+		
+		//Resistance tir = new Resistance(position, 10, angle);
+		if(tir != null){
+			TirView v = new TirView(tir);
+			this.tirs.put(tir, v);
+		}
 	}
 
 	private void deleteTir(Tir tir) {

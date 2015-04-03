@@ -1,42 +1,102 @@
 package eu.labrush.rescue.model.arme;
 
-import java.util.HashSet;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 import eu.labrush.rescue.model.AbstractModel;
+import eu.labrush.rescue.model.Vecteur;
 
 public class Arme extends AbstractModel {
 
-	protected int cartouches = 0;
-	protected int degats;
+	private int cartouchesLeft = 0;
+	private int degats;
 
-	protected int recharge; // temps de rechargement
+	private int reloadTime; // temps de rechargement
+	private long lastShootTime = 0; // Date UNIX du dernier tir
 
-	private HashSet<Resistance> tirs = new HashSet<Resistance>();
-
+	private String tirClass ;
+	
 	/**
 	 * 
+	 * @param tirClass
+	 * 		La classe dont l'instance du Tir va hériter (pattern factory)
 	 * @param degats
-	 * @param recharge
+	 * @param reloadTime
 	 */
-	public Arme(int degats, int recharge) {
+	public Arme(String tirClass, int degats, int reloadTime) {
 		super();
+		this.tirClass = "eu.labrush.rescue.model.arme." + tirClass ;
 		this.degats = degats;
-		this.recharge = recharge;
+		this.reloadTime = reloadTime;
+	}
+
+	public Tir shoot(Vecteur position, int angle) {
+		if(System.currentTimeMillis() - lastShootTime < reloadTime){
+			return null ;
+		}
+		
+		Tir tir = null;
+
+		try {
+			// On crée un objet Class
+			Class<?> cl = Class.forName(tirClass);
+
+			// On crée les paramètres du constructeur
+			Class<?>[] types = new Class[] { Vecteur.class, int.class, int.class };
+			
+			// On récupère le constructeur avec les deux paramètres
+			Constructor<?> ct = cl.getConstructor(types);
+
+			// On instancie l'objet avec le constructeur surchargé !
+			tir = (Tir) ct.newInstance(new Object[] { position, angle, degats});
+
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+
+		lastShootTime = System.currentTimeMillis();
+		return tir;
 	}
 
 	/**
-	 * @return the number of cartouches
+	 * @return the reloadTime
 	 */
-	public int getCartouches() {
-		return cartouches;
+	public long getReloadTime() {
+		return reloadTime;
+	}
+
+	/**
+	 * @return the lastShootTime
+	 */
+	public long getLastShootTime() {
+		return lastShootTime;
+	}
+
+	/**
+	 * @return le nombre de cartouches restantes
+	 */
+	public int getCartouchesLeft() {
+		return cartouchesLeft;
 	}
 
 	/**
 	 * @param cartouches
-	 *            le nombre de cartouches
+	 *            le nombre de cartouches restantes
 	 */
-	public void setCartouches(int cartouches) {
-		this.cartouches = cartouches;
+	public void setCartouchesLeft(int nb) {
+		this.cartouchesLeft = nb;
 		throwUpdate();
 	}
 
@@ -54,28 +114,5 @@ public class Arme extends AbstractModel {
 	public void setDegats(int degats) {
 		this.degats = degats;
 		throwUpdate();
-	}
-
-	/**
-	 * @param recharge
-	 *            : le temps de rechargement, en millisecondes
-	 */
-	public void setRecharge(int recharge) {
-		this.recharge = recharge;
-		throwUpdate();
-	}
-
-	/**
-	 * @return the recharge
-	 */
-	public int getRecharge() {
-		return recharge;
-	}
-
-	/**
-	 * @return the tirs
-	 */
-	public HashSet<Resistance> getTirs() {
-		return tirs;
 	}
 }

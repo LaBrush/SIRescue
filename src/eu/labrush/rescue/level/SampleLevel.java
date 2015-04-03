@@ -30,7 +30,7 @@ public class SampleLevel extends Level {
 		super(graphics, physics);
 		
 		Personnage hero = new Personnage(15, 15);
-		hero.addArme(new Arme("Resistance", 10, 10));
+		hero.addArme(new Arme("Resistance", 10, 200));
 		
 		heroControler.setPersonnage(hero);
 		personnageControler.add(hero);
@@ -43,7 +43,11 @@ public class SampleLevel extends Level {
 		
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
 		
-		botControler.add(new Bot(300,300), new FlyBotBehaviour());
+		Bot aerien = new Bot(300,300);
+		aerien.addArme(new Arme("Resistance", 50, 5000));
+		botControler.add(aerien, new FlyBotBehaviour());
+		
+		
 		botControler.add(new Bot(260,175), new ToucherBotBehaviour(blocControler.getBloc(2)));
 		botControler.add(new Bot(320,215), new ToucherBotBehaviour(blocControler.getBloc(3)));	
 	}
