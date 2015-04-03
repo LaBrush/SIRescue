@@ -48,7 +48,7 @@ public class SampleLevel extends Level {
 		botControler.add(aerien, new FlyBotBehaviour());
 		
 		
-		botControler.add(new Bot(260,175), new ToucherBotBehaviour(blocControler.getBloc(2)));
+		botControler.add(new Bot(260,50), new ToucherBotBehaviour(blocControler.getBloc(2)));
 		botControler.add(new Bot(320,215), new ToucherBotBehaviour(blocControler.getBloc(3)));	
 	}
 

@@ -85,9 +85,7 @@ public class TirControler extends AbstractControler {
 							if (o instanceof Personnage) {
 								Personnage p = (Personnage) o;
 								p.prendreDegats(tir.getDegat());
-								if (p.isDead()) {
-									personnageControler.removePersonnage(p);
-								}
+								p.checkIfDead();
 							}
 
 							deleteTir(tir);
@@ -106,13 +104,13 @@ public class TirControler extends AbstractControler {
 		position.setX(30 * Math.cos(angle) + personnage.getX());
 		position.setY(30 * Math.sin(angle % 90) + personnage.getY() + personnage.getHeight() / 2);
 
-		Tir tir = null ;
-		
-		if(personnage.getCurrentArme() != null)
-		tir = personnage.getCurrentArme().shoot(position, angle);
-		
-		//Resistance tir = new Resistance(position, 10, angle);
-		if(tir != null){
+		Tir tir = null;
+
+		if (personnage.getCurrentArme() != null)
+			tir = personnage.getCurrentArme().shoot(position, angle);
+
+		// Resistance tir = new Resistance(position, 10, angle);
+		if (tir != null) {
 			TirView v = new TirView(tir);
 			this.tirs.put(tir, v);
 		}
