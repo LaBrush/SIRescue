@@ -1,5 +1,6 @@
 package eu.labrush.rescue.level;
 
+import eu.labrush.rescue.IA.behaviour.BossBehaviour;
 import eu.labrush.rescue.IA.behaviour.FlyBotBehaviour;
 import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
 import eu.labrush.rescue.controler.BotControler;
@@ -44,11 +45,11 @@ public class SampleLevel extends Level {
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
 		
 		Bot aerien = new Bot(300,300);
-		aerien.addArme(new Arme("Resistance", 50, 5000));
+		aerien.addArme(new Arme("Resistance", 10, 750));
 		botControler.add(aerien, new FlyBotBehaviour());
 		
 		
-		botControler.add(new Bot(260,175), new ToucherBotBehaviour(blocControler.getBloc(2)));
+		botControler.add(new Bot(260,175), new BossBehaviour(blocControler.getBlocs()));
 		botControler.add(new Bot(320,215), new ToucherBotBehaviour(blocControler.getBloc(3)));	
 	}
 

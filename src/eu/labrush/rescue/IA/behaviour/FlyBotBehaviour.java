@@ -67,19 +67,13 @@ public class FlyBotBehaviour implements BotBehaviour {
 		if (((Math.pow(heroX - botX, 2) < 100000) && (Math.pow(heroY - botY, 2) < 62500)) && attack == true) {
 
 			double angle, alpha;
+			
+			alpha = Math.atan((botX - heroX) / (botY - heroY));			
 
-			alpha = Math.atan(Math.abs(botX - heroX) / Math.abs(botY - heroY));
-			angle = -90;
-
-			if (botX > heroX) {
-				angle -= alpha;
-			}
-			else if (botX < heroX) {
-				angle += alpha;
-			}
-
+			angle = -Math.toDegrees(alpha)-90;
+			
 			b.shoot((int) angle);
-
+			
 			if (botX <= extremiteG) {
 
 				v.setX(0.06);
