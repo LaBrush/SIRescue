@@ -5,7 +5,6 @@ import java.util.Observable;
 
 import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.model.Personnage;
-import eu.labrush.rescue.model.arme.Arme;
 
 /**
  * @author adrienbocquet
@@ -13,6 +12,8 @@ import eu.labrush.rescue.model.arme.Arme;
  */
 public class ArmeView extends AbstractView {
 
+	Color c ;
+	
 	/**
 	 * @param model
 	 * @param owner
@@ -20,11 +21,13 @@ public class ArmeView extends AbstractView {
 	public ArmeView(Observable model, Personnage owner) {
 		super(model);
 
-		owner.addObserver(binder);
-		this.bindModel(owner);
-
 		this.width = 20;
 		this.height = 10;
+		
+		owner.addObserver(binder);
+		this.bindModel(owner);
+		
+		c = owner.getCurrentArme().getC();
 	}
 
 	/*
@@ -39,9 +42,6 @@ public class ArmeView extends AbstractView {
 			x = (int) (p.getTrajectoire().getPosition().getX() + (p.getWidth() - width) / 2);
 			y = (int) (p.getTrajectoire().getPosition().getY() + (p.getHeight() - height) / 2);
 		}
-		else if (model instanceof Arme) {
-
-		}
 	}
 
 	/*
@@ -51,7 +51,7 @@ public class ArmeView extends AbstractView {
 	 */
 	@Override
 	public void draw(DrawRequest req) {
-		req.rect(this.x, this.y, this.width, this.height, Color.BLUE);
+		req.rect(this.x, this.y, this.width, this.height, c);
 	}
 
 }

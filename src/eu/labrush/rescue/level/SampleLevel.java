@@ -1,5 +1,7 @@
 package eu.labrush.rescue.level;
 
+import java.awt.Color;
+
 import eu.labrush.rescue.IA.behaviour.BossBehaviour;
 import eu.labrush.rescue.IA.behaviour.FlyBotBehaviour;
 import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
@@ -29,7 +31,8 @@ public class SampleLevel extends Level {
 		super(graphics, physics);
 		
 		Personnage hero = new Personnage(15, 15);
-		hero.addArme(new Arme("Transistor", 10, 200));
+		hero.addArme(new Arme("Transistor", 34, 200, Color.GRAY));
+		hero.addArme(new Arme("Resistance", 10, 200, Color.BLUE));
 		
 		heroControler.setPersonnage(hero);
 		personnageControler.add(hero);
@@ -43,7 +46,7 @@ public class SampleLevel extends Level {
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
 		
 		Bot aerien = new Bot(300,300);
-		aerien.addArme(new Arme("Resistance", 10, 750));
+		aerien.addArme(new Arme("Resistance", 10, 750, Color.BLUE));
 		botControler.add(aerien, new FlyBotBehaviour());
 		
 		

@@ -6,6 +6,7 @@ package eu.labrush.rescue.core.graphic;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
@@ -38,6 +39,8 @@ public class DrawRequest {
 		this.g = g;
 		this.width = width;
 		this.height = height;
+
+		this.g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 	}
 
 	/**
@@ -62,7 +65,7 @@ public class DrawRequest {
 	public void rect(int x, int y, int width, int height, Color c) {
 		this.rect(x, y, width, height, 1, c);
 	}
-	
+
 	/**
 	 * 
 	 * @param x
@@ -78,7 +81,7 @@ public class DrawRequest {
 		rect(x, y, width, height);
 		this.g.setColor(Color.BLACK);
 	}
-	
+
 	/**
 	 * @param x
 	 * @param y
@@ -138,7 +141,17 @@ public class DrawRequest {
 		this.g.fillRect(x, this.getHeight() - y, width, height);
 		this.g.setColor(Color.BLACK);
 	}
+
+	public void drawString(String s, int x, int y) {
+		this.g.drawString(s, x, this.height - y);
+	}
 	
+	public void drawString(String s, int x, int y, Color c) {
+		this.g.setColor(c);
+		this.g.drawString(s, x, this.height - y);
+		this.g.setColor(Color.BLACK);
+	}
+
 	public int getHeight() {
 		return height;
 	}

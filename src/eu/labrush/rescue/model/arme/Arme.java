@@ -1,5 +1,6 @@
 package eu.labrush.rescue.model.arme;
 
+import java.awt.Color;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
@@ -15,6 +16,8 @@ public class Arme extends AbstractModel {
 	private long lastShootTime = 0; // Date UNIX du dernier tir
 
 	private String tirClass ;
+
+	Color c ;
 	
 	/**
 	 * 
@@ -23,11 +26,21 @@ public class Arme extends AbstractModel {
 	 * @param degats
 	 * @param reloadTime
 	 */
-	public Arme(String tirClass, int degats, int reloadTime) {
+	public Arme(String tirClass, int degats, int reloadTime, Color c) {
 		super();
 		this.tirClass = "eu.labrush.rescue.model.arme." + tirClass ;
 		this.degats = degats;
 		this.reloadTime = reloadTime;
+		this.c = c; 
+	}
+
+	/**
+	 * TODO: tmp
+	 * 
+	 * @return the c
+	 */
+	public Color getC() {
+		return c;
 	}
 
 	public Tir shoot(Vecteur position, int angle) {
@@ -107,6 +120,13 @@ public class Arme extends AbstractModel {
 		return degats;
 	}
 
+	/**
+	 * @return the tirClass
+	 */
+	public String getTirClass() {
+		return tirClass;
+	}
+	
 	/**
 	 * @param degats
 	 *            the degats to set

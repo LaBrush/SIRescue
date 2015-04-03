@@ -1,6 +1,6 @@
 package eu.labrush.rescue.model;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 
 import eu.labrush.rescue.model.arme.Arme;
 
@@ -11,9 +11,9 @@ import eu.labrush.rescue.model.arme.Arme;
 public class Personnage extends AbstractObject {
 
 	protected int life = 100, maxLife = 100;
-	HashSet<Arme> armes = new HashSet<Arme>();
+	ArrayList<Arme> armes = new ArrayList<Arme>();
 
-	Arme currentArme = null;
+	int currentArme = -1 ;
 	Vecteur vitesse_nominale = new Vecteur(5, 5);
 
 	public Personnage(double x, double y) {
@@ -90,15 +90,20 @@ public class Personnage extends AbstractObject {
 	/**
 	 * @return the armes
 	 */
-	public HashSet<Arme> getArmes() {
+	public ArrayList<Arme> getArmes() {
 		return armes;
 	}
 
+	public void nextArme(){
+		currentArme = currentArme < armes.size() - 1 ? currentArme+1 : 0   ;
+		throwUpdate();
+	}
+	
 	/**
 	 * @param armes
 	 *            the armes to set
 	 */
-	public void setArmes(HashSet<Arme> armes) {
+	public void setArmes(ArrayList<Arme> armes) {
 		this.armes = armes;
 	}
 
@@ -106,15 +111,16 @@ public class Personnage extends AbstractObject {
 	 * @return the currentArme
 	 */
 	public Arme getCurrentArme() {
-		return currentArme;
+		if(currentArme < 0){return null;}
+		return this.armes.get(currentArme) ;
 	}
 
 	/**
 	 * @param currentArme
 	 *            the currentArme to set
 	 */
-	public void setCurrentArme(Arme currentArme) {
-		this.currentArme = currentArme;
+	public void setCurrentArme(Arme arme) {
+		this.currentArme = this.armes.indexOf(arme);
 	}
 
 	/**
@@ -122,8 +128,8 @@ public class Personnage extends AbstractObject {
 	 *            l'arme à ajouter
 	 * @return l'arme passée en argument
 	 */
-	public boolean addArme(Arme e) {
+	public void addArme(Arme e) {
+		armes.add(e);
 		setCurrentArme(e);
-		return armes.add(e);
 	}
 }

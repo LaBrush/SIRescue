@@ -47,6 +47,9 @@ public final class HeroControler extends AbstractControler {
 					case KeyEvent.VK_RIGHT:
 						t.getVitesse().setX(vx);
 						break;
+					case KeyEvent.VK_TAB:
+						model.nextArme();
+						break;
 				}
 
 				switch (req.getKeyChar()) {

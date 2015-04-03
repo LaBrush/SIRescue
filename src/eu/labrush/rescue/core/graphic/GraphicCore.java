@@ -29,10 +29,10 @@ final public class GraphicCore extends JFrame {
 
 		// On donne le focus au panel principal pour intercepter les appuis sur les touches du
 		// clavier
-		this.setFocusable(false);
+		setFocusable(false);
 		pan.add(keyboard);
 		keyboard.requestFocus();
-
+		keyboard.setFocusTraversalKeysEnabled(false); //touche tabulation
 	}
 	
 	/**
