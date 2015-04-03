@@ -9,7 +9,6 @@ import eu.labrush.rescue.level.Level;
 import eu.labrush.rescue.model.AbstractObject;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
-import eu.labrush.rescue.model.arme.Resistance;
 import eu.labrush.rescue.model.arme.Tir;
 import eu.labrush.rescue.utils.Listener;
 import eu.labrush.rescue.view.TirView;
@@ -73,12 +72,11 @@ public class TirControler extends AbstractControler {
 				obstacles.addAll(personnageControler.getPersonnages());
 				obstacles.addAll(blocControler.getBlocs());
 
-				for (Tir t : tirs.keySet()) {
+				for (Tir tir : tirs.keySet()) {
 					// On met à jour la position des tirs
-					((AbstractObject) t).getPhysicBehaviour().updateTrajectoire(obstacles, req.getDelta());
+					((AbstractObject) tir).getPhysicBehaviour().updateTrajectoire(obstacles, req.getDelta());
 
 					// Puis on regarde s'ils entre en collision avec d'autres objets
-					Resistance tir = (Resistance) t;
 
 					for (AbstractObject o : obstacles) {
 						if (tir.cross(o)) {
