@@ -27,6 +27,13 @@ public class Personnage extends AbstractObject {
 	public boolean isDead() {
 		return this.life <= 0;
 	}
+	
+	public void checkIfDead(){
+		if(this.life <= 0){
+			setChanged();
+			this.notifyObservers("dead");
+		}
+	}
 
 	/**
 	 * @return the vitesse_nominale

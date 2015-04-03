@@ -1,6 +1,8 @@
 package eu.labrush.rescue.controler;
 
 import java.util.HashMap;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Set;
 
 import eu.labrush.rescue.core.graphic.DrawRequest;
@@ -20,6 +22,16 @@ public class PersonnageControler extends AbstractControler {
 
 	BlocControler blocControler;
 
+	Observer deadObserver = new Observer(){
+
+		@Override
+		public void update(Observable o, Object arg) {
+			if("dead".equals(arg)){
+				removePersonnage((Personnage) o);
+			}
+		}
+	};
+	
 	/**
 	 * @param level
 	 */
@@ -53,7 +65,8 @@ public class PersonnageControler extends AbstractControler {
 	 */
 	public void add(Personnage personnage) {
 		PersonnageView v = new PersonnageView(personnage);
-
+		personnage.addObserver(this.deadObserver);
+		
 		this.personnages.put(personnage, v);
 	}
 

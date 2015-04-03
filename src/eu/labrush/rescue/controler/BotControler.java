@@ -26,6 +26,18 @@ public class BotControler extends AbstractControler {
 	PersonnageControler personnageControler ;
 	TirControler tirControler ;
 	
+	Observer deadObserver = new Observer(){
+
+		@Override
+		public void update(Observable o, Object arg) {
+			if(arg == "dead"){
+				removeBot((Bot) o);
+			}
+		}
+		
+	};
+	
+	
 	public BotControler(Level level, PersonnageControler personnageControler, TirControler tirControler, HeroControler heroControler) {
 		super(level);
 	
@@ -48,6 +60,7 @@ public class BotControler extends AbstractControler {
 				}
 			}
 		});
+		
 	}
 	
 	public void add(Bot ennemi, Bloc bloc) {
@@ -55,6 +68,8 @@ public class BotControler extends AbstractControler {
 		
 		ennemi.setTirManager(tirControler.getTirInterface());
 		personnageControler.add(ennemi);
+		
+		ennemi.addObserver(this.deadObserver);
 	}
 	
 	public void add(Bot ennemi, BotBehaviour behaviour) {
@@ -63,5 +78,11 @@ public class BotControler extends AbstractControler {
 		
 		ennemi.setTirManager(tirControler.getTirInterface());
 		personnageControler.add(ennemi);
+		
+		ennemi.addObserver(this.deadObserver);
+	}
+	
+	public void removeBot(Bot b){
+		bots.remove(b);
 	}
 }

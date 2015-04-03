@@ -1,8 +1,5 @@
 package eu.labrush.rescue.core.graphic;
 
-import java.awt.Rectangle;
-import java.awt.event.ComponentEvent;
-
 import javax.swing.JFrame;
 
 import eu.labrush.rescue.utils.Listener;
