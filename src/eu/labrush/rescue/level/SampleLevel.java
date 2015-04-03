@@ -31,7 +31,7 @@ public class SampleLevel extends Level {
 		super(graphics, physics);
 		
 		Personnage hero = new Personnage(15, 15);
-		hero.addArme(new Arme("Resistance", 10, 200));
+		hero.addArme(new Arme("Transistor", 10, 200));
 		
 		heroControler.setPersonnage(hero);
 		personnageControler.add(hero);

@@ -22,12 +22,8 @@ public class Personnage extends AbstractObject {
 	}
 
 	/**
-	 * @return si le personnage est mort
+	 * notifie les observeurs (les controlleurs) si le personnage est mort
 	 */
-	public boolean isDead() {
-		return this.life <= 0;
-	}
-	
 	public void checkIfDead(){
 		if(this.life <= 0){
 			setChanged();
