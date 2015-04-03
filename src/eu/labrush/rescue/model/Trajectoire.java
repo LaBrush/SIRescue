@@ -13,12 +13,6 @@ package eu.labrush.rescue.model;
 public class Trajectoire extends AbstractModel {
 
 	Vecteur acceleration, vitesse, position;
-	boolean gravity = false;
-
-	public Trajectoire(Vecteur a, Vecteur v, Vecteur p, boolean gravity) {
-		this(a, v, p);
-		setGravity(gravity);
-	}
 
 	public Trajectoire(Vecteur a, Vecteur v, Vecteur p) {
 		this.setAcceleration(a);
@@ -144,20 +138,4 @@ public class Trajectoire extends AbstractModel {
 	public Vecteur getPosition() {
 		return position;
 	}
-
-	/**
-	 * @return the gravity
-	 */
-	public boolean hasGravity() {
-		return gravity;
-	}
-
-	/**
-	 * @param gravity
-	 *            the gravity to set
-	 */
-	public void setGravity(boolean gravity) {
-		this.gravity = gravity;
-	}
-
 }

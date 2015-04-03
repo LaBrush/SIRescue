@@ -25,6 +25,8 @@ public abstract class AbstractPhysicBehaviour {
 	protected Trajectoire trajectoire;
 	protected LibertyDegree moves;
 	protected Dimension dim;
+	
+	protected double gravity = 0 ;
 
 	AbstractPhysicBehaviour() {
 	}
@@ -122,6 +124,10 @@ public abstract class AbstractPhysicBehaviour {
 	 */
 	public void setDimension(Dimension dim) {
 		this.dim = dim;
+	}
+
+	public void setGravity(double g) {
+		this.gravity = g ;
 	}
 
 }

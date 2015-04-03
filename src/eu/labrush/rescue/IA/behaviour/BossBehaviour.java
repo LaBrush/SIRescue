@@ -21,13 +21,12 @@ public class BossBehaviour implements BotBehaviour {
 
 	@Override
 	public void update(Personnage hero) {
-		Bloc lePlusProche = (Bloc) this.blocs.toArray()[0];
+		/*Bloc lePlusProche = (Bloc) this.blocs.toArray()[0];
 		for(Bloc bloc: this.blocs){
-			if(){
+			if(false){
 				lePlusProche = bloc ;
 			}
-		}
-		
+		}*/
 		
 	}
 

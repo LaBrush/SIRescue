@@ -3,7 +3,6 @@ package eu.labrush.rescue.view;
 import java.util.Observable;
 
 import eu.labrush.rescue.core.graphic.DrawRequest;
-import eu.labrush.rescue.model.arme.Resistance;
 import eu.labrush.rescue.model.arme.Tir;
 
 /**

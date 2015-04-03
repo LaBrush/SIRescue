@@ -16,8 +16,6 @@ import eu.labrush.rescue.model.arme.Arme;
  * Gère tous les controlleurs, vues et modèles d'un niveau
  * 
  * TODO: ajouter un destructeur pour enlever les listener des coeurs graphique et physique
- * 
- * TODO: créer un loader XML pour les niveaux
  *
  * @author adrienbocquet
  */
@@ -49,11 +47,8 @@ public class SampleLevel extends Level {
 		botControler.add(aerien, new FlyBotBehaviour());
 		
 		
-<<<<<<< HEAD
 		botControler.add(new Bot(260,175), new BossBehaviour(blocControler.getBlocs()));
-=======
 		botControler.add(new Bot(260,50), new ToucherBotBehaviour(blocControler.getBloc(2)));
->>>>>>> origin/master
 		botControler.add(new Bot(320,215), new ToucherBotBehaviour(blocControler.getBloc(3)));	
 	}
 

@@ -30,7 +30,7 @@ public class FlyBotBehaviour implements BotBehaviour {
 	@Override
 	public void setBot(Bot bot) {
 		this.b = bot;
-		this.b.getTrajectoire().setGravity(false);
+		b.getPhysicBehaviour().setGravity(0);
 
 		extremiteG = 100;
 		extremiteD = 400;

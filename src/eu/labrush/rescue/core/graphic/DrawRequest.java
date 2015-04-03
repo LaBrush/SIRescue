@@ -136,6 +136,7 @@ public class DrawRequest {
 	public void fillRect(int x, int y, int width, int height, Color c) {
 		this.g.setColor(c);
 		this.g.fillRect(x, this.getHeight() - y, width, height);
+		this.g.setColor(Color.BLACK);
 	}
 	
 	public int getHeight() {

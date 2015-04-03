@@ -26,9 +26,11 @@ public class ClassicPhysicBehaviour extends AbstractPhysicBehaviour {
 	 */
 	public ClassicPhysicBehaviour(Trajectoire t, Dimension dim) {
 		super(t, dim);
+		this.setGravity(-.0015);
 	}
 
 	public ClassicPhysicBehaviour() {
+		this.setGravity(-.0015);
 	}
 
 	@Override
@@ -64,10 +66,10 @@ public class ClassicPhysicBehaviour extends AbstractPhysicBehaviour {
 			trajectoire.getVitesse().setY(-this.moves.bottom / delta_t);
 			trajectoire.getAcceleration().setY(0);
 		}
-		else if (this.moves.bottom > 0 && trajectoire.hasGravity()) { // Si on est en l'air, on
-																		// rajoute la
+		else if (this.moves.bottom > 0) { // Si on est en l'air, on
+											// rajoute la
 			// gravité
-			trajectoire.getAcceleration().setY(PhysicCore.GRAVITY);
+			trajectoire.getAcceleration().setY(this.gravity);
 		}
 
 		// Enfin on met à jour la trajectoire

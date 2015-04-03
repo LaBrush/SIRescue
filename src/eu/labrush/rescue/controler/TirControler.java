@@ -107,7 +107,6 @@ public class TirControler extends AbstractControler {
 		if (personnage.getCurrentArme() != null)
 			tir = personnage.getCurrentArme().shoot(position, angle);
 
-		// Resistance tir = new Resistance(position, 10, angle);
 		if (tir != null) {
 			TirView v = new TirView(tir);
 			this.tirs.put(tir, v);
