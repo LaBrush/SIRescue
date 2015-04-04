@@ -1,6 +1,7 @@
 package eu.labrush.rescue.level;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import eu.labrush.rescue.IA.behaviour.BossBehaviour;
 import eu.labrush.rescue.IA.behaviour.FlyBotBehaviour;
@@ -29,30 +30,34 @@ public class SampleLevel extends Level {
 	 */
 	public SampleLevel(GraphicCore graphics, PhysicCore physics) {
 		super(graphics, physics);
-		
+
 		Personnage hero = new Personnage(15, 15);
 		hero.addArme(new Arme("Transistor", 34, 200, Color.GRAY));
 		hero.addArme(new Arme("Resistance", 10, 200, Color.BLUE));
-		
+
 		heroControler.setPersonnage(hero);
 		personnageControler.add(hero);
-		
+
+		ArrayList<Bloc> blocs = new ArrayList<Bloc>();
+		blocs.add(new Bloc(60, 100, 80, 20));
+		blocs.add(new Bloc(200, 140, 80, 20));
+		blocs.add(new Bloc(300, 180, 80, 20));
+		blocs.add(new Bloc(430, 80, 20, 20));
+
 		this.addBorders();
-		blocControler.add(new Bloc(60, 100, 80, 20, 1));
-		blocControler.add(new Bloc(200, 140, 80, 20, 2));
-		blocControler.add(new Bloc(300, 180, 80, 20, 3));
-		blocControler.add(new Bloc(430, 80, 20, 20));
-		
+		for (Bloc b : blocs) {
+			blocControler.add(b);
+		}
+
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
-		
-		Bot aerien = new Bot(300,300);
+
+		Bot aerien = new Bot(300, 300);
 		aerien.addArme(new Arme("Resistance", 10, 750, Color.BLUE));
 		botControler.add(aerien, new FlyBotBehaviour());
-		
-		
-		botControler.add(new Bot(260,175), new BossBehaviour(blocControler.getBlocs()));
-		botControler.add(new Bot(260,50), new ToucherBotBehaviour(blocControler.getBloc(2)));
-		botControler.add(new Bot(320,215), new ToucherBotBehaviour(blocControler.getBloc(3)));	
+
+		botControler.add(new Bot(260, 175), new BossBehaviour(blocControler.getBlocs()));
+		botControler.add(new Bot(260, 50), new ToucherBotBehaviour(blocs.get(1)));
+		botControler.add(new Bot(320, 215), new ToucherBotBehaviour(blocs.get(2)));
 	}
 
 	/**
@@ -62,10 +67,10 @@ public class SampleLevel extends Level {
 
 		int width = this.graphics.getPan().getWidth(), height = this.graphics.getPan().getHeight();
 
-		blocControler.add(new Bloc(0, height+1, width, 10)); // mur en haut
+		blocControler.add(new Bloc(0, height + 1, width, 10)); // mur en haut
 		blocControler.add(new Bloc(-1, 0, 0, height + 100)); // mur à gauche
 		blocControler.add(new Bloc(width, 0, 10, height + 100)); // mur à droite
-		blocControler.add(new Bloc(-1, 0, width+1, 10)); // mur en bas
+		blocControler.add(new Bloc(-1, 0, width + 1, 10)); // mur en bas
 	}
 
 	/**

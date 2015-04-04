@@ -19,14 +19,14 @@ import eu.labrush.rescue.view.HeroInfoView;
 public final class HeroControler extends AbstractControler {
 
 	TirControler tirControler;
-	PersonnageControler personnageControler ;
-	
-	HeroInfoView heroView ;
-	
+	PersonnageControler personnageControler;
+
+	HeroInfoView heroView;
+
 	private Personnage model;
 	boolean moving;
 
-	private double vx, vy ;
+	private double vx, vy;
 
 	KeyboardListener keyboard = GraphicCore.getKeyboard();
 	Listener<KeyEvent> listener = new Listener<KeyEvent>() {
@@ -90,8 +90,8 @@ public final class HeroControler extends AbstractControler {
 		super(level);
 
 		this.tirControler = tirContoler;
-		this.personnageControler = personnageControler ;
-		
+		this.personnageControler = personnageControler;
+
 		this.graphics.addObserver(new Listener<DrawRequest>() {
 			@Override
 			public void update(DrawRequest req) {
@@ -105,26 +105,26 @@ public final class HeroControler extends AbstractControler {
 	 */
 	public void setPersonnage(Personnage hero) {
 		hero.setVitesseNominale(new Vecteur(.3, .9));
-		
+
 		personnageControler.removePersonnage(hero);
 		keyboard.delObserver(listener);
-		
+
 		this.model = hero;
-		
+
 		heroView = new HeroInfoView(hero);
-		
+
 		if (this.model != null) {
 			keyboard.addObserver(listener);
 		}
 
-		this.vx = model.getVitesseNominale().getX() ;
+		this.vx = model.getVitesseNominale().getX();
 		this.vy = model.getVitesseNominale().getY();
-		
+
 		personnageControler.add(model);
 		throwUpdate();
 	}
-	
-	public Personnage getPersonnage(){
-		return model ;
+
+	public Personnage getPersonnage() {
+		return model;
 	}
 }

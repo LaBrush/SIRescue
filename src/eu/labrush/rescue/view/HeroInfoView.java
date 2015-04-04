@@ -29,7 +29,6 @@ public class HeroInfoView extends AbstractView {
 		Personnage p = (Personnage)model;
 		
 		life = p.getLife();
-		
 		String s = p.getCurrentArme().getTirClass();
 		label = s.substring(s.lastIndexOf(".")+1) ;
 		

@@ -54,16 +54,4 @@ public class BlocControler extends AbstractControler {
 	public HashSet<Bloc> getBlocs() {
 		return blocs;
 	}
-	
-	public Bloc getBloc(int id){
-		for(Bloc b: this.blocs){
-			if(b.getId() == id){
-				return b ;
-			}
-		}
-		
-		return null ;
-	}
-
-
 }

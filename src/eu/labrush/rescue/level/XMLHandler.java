@@ -1,6 +1,8 @@
 package eu.labrush.rescue.level;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.util.HashMap;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -12,11 +14,14 @@ import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Bot;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
+import eu.labrush.rescue.model.arme.Arme;
 
 public class XMLHandler extends DefaultHandler {
 
 	private AbstractObject current;
 	private int id;
+	
+	private HashMap<Integer, Bloc> blocs = new HashMap<Integer, Bloc>();
 
 	Level level;
 
@@ -48,7 +53,14 @@ public class XMLHandler extends DefaultHandler {
 			case "dimensions":
 				setDimension(attrs);
 				break;
+			case "arme":
+				setArme(attrs);
+				break ;
 		}
+	}
+
+	private void setArme(Attributes attrs) {
+		 ((Personnage)current).addArme(new Arme("Resistance", 20, 300, Color.BLUE));		
 	}
 
 	private void setDimension(Attributes attrs) {
@@ -71,18 +83,19 @@ public class XMLHandler extends DefaultHandler {
 		switch (qName) {
 			case "bloc":
 				if(id > 0){
-					((Bloc) current).setId(id);
+					blocs.put(id, (Bloc) current);
 				}
 				level.blocControler.add((Bloc) current);
 				current = null; // on place l'élément courant à null afin d'éviter des modifications
 								// après que la balise soit fermée
 				break;
 			case "hero":
-				level.heroControler.setPersonnage((Personnage) current);
+				Personnage p = (Personnage) current;
+				level.heroControler.setPersonnage(p);
 				current = null;
 				break;
 			case "bot":
-				Bloc bloc = level.blocControler.getBloc(id);
+				Bloc bloc = blocs.get(id);
 				Bot bot = (Bot) current ;
 				
 				if(bloc == null){ throw new SAXException("a bloc is poiting on a non existant bloc") ; }
