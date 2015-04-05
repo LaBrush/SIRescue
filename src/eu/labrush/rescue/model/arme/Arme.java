@@ -1,23 +1,22 @@
 package eu.labrush.rescue.model.arme;
 
-import java.awt.Color;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 import eu.labrush.rescue.model.AbstractModel;
+import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
 
-public class Arme extends AbstractModel {
+public class Arme extends AbstractModel implements Cloneable {
 
 	private int cartouchesLeft = 0;
-	private int degats;
+	private int damage;
 
 	private int reloadTime; // temps de rechargement
 	private long lastShootTime = 0; // Date UNIX du dernier tir
 
 	private String tirClass ;
-
-	Color c ;
+	private Personnage owner ;
 	
 	/**
 	 * 
@@ -26,21 +25,11 @@ public class Arme extends AbstractModel {
 	 * @param degats
 	 * @param reloadTime
 	 */
-	public Arme(String tirClass, int degats, int reloadTime, Color c) {
+	public Arme(String tirClass, int damage, int reloadTime) {
 		super();
 		this.tirClass = "eu.labrush.rescue.model.arme." + tirClass ;
-		this.degats = degats;
+		this.damage = damage;
 		this.reloadTime = reloadTime;
-		this.c = c; 
-	}
-
-	/**
-	 * TODO: tmp
-	 * 
-	 * @return the c
-	 */
-	public Color getC() {
-		return c;
 	}
 
 	public Tir shoot(Vecteur position, int angle) {
@@ -55,13 +44,13 @@ public class Arme extends AbstractModel {
 			Class<?> cl = Class.forName(tirClass);
 
 			// On crée les paramètres du constructeur
-			Class<?>[] types = new Class[] { Vecteur.class, int.class, int.class };
+			Class<?>[] types = new Class[] { Vecteur.class, int.class, int.class, Personnage.class };
 			
 			// On récupère le constructeur avec les deux paramètres
 			Constructor<?> ct = cl.getConstructor(types);
 
 			// On instancie l'objet avec le constructeur surchargé !
-			tir = (Tir) ct.newInstance(new Object[] { position, angle, degats});
+			tir = (Tir) ct.newInstance(new Object[] { position, angle, damage, owner});
 
 		} catch (SecurityException e) {
 			e.printStackTrace();
@@ -81,6 +70,21 @@ public class Arme extends AbstractModel {
 
 		lastShootTime = System.currentTimeMillis();
 		return tir;
+	}
+	
+	public Arme clone() {
+		Object o = null;
+		try {
+			// On récupère l'instance à renvoyer par l'appel de la 
+			// méthode super.clone()
+			o = super.clone();
+		} catch(CloneNotSupportedException cnse) {
+			// Ne devrait jamais arriver car nous implémentons 
+			// l'interface Cloneable
+			cnse.printStackTrace(System.err);
+		}
+		// on renvoie le clone
+		return (Arme)o;
 	}
 
 	/**
@@ -114,10 +118,10 @@ public class Arme extends AbstractModel {
 	}
 
 	/**
-	 * @return the degats
+	 * @return the damage inflicted by the weapon
 	 */
-	public int getDegats() {
-		return degats;
+	public int getDamage() {
+		return damage;
 	}
 
 	/**
@@ -128,11 +132,25 @@ public class Arme extends AbstractModel {
 	}
 	
 	/**
-	 * @param degats
+	 * @param damage
 	 *            the degats to set
 	 */
-	public void setDegats(int degats) {
-		this.degats = degats;
+	public void setDamage(int damage) {
+		this.damage = damage;
 		throwUpdate();
+	}
+
+	/**
+	 * @return the owner
+	 */
+	public Personnage getOwner() {
+		return owner;
+	}
+
+	/**
+	 * @param owner the owner to set
+	 */
+	public void setOwner(Personnage owner) {
+		this.owner = owner;
 	}
 }

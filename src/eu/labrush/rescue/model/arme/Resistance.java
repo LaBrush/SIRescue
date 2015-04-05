@@ -5,6 +5,7 @@ import java.util.Observable;
 
 import eu.labrush.rescue.core.physics.TirPhysicBehaviour;
 import eu.labrush.rescue.model.AbstractObject;
+import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
 
 public class Resistance extends Tir {
@@ -13,8 +14,8 @@ public class Resistance extends Tir {
 	// droite du rectangle
 	public Vecteur hg, hd, bg, bd;
 
-	public Resistance(Vecteur position, int angle, int degat) {	
-		super(position, angle, degat);
+	public Resistance(Vecteur position, int angle, int degat, Personnage owner) {	
+		super(position, angle, degat, owner);
 		
 		this.dim = new Dimension(5, 5);
 		

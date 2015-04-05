@@ -1,6 +1,5 @@
 package eu.labrush.rescue.view;
 
-import java.awt.Color;
 import java.util.Observable;
 
 import eu.labrush.rescue.core.graphic.DrawRequest;
@@ -12,8 +11,6 @@ import eu.labrush.rescue.model.Personnage;
  */
 public class ArmeView extends AbstractView {
 
-	Color c ;
-	
 	/**
 	 * @param model
 	 * @param owner
@@ -23,11 +20,9 @@ public class ArmeView extends AbstractView {
 
 		this.width = 20;
 		this.height = 10;
-		
+
 		owner.addObserver(binder);
 		this.bindModel(owner);
-		
-		c = owner.getCurrentArme().getC();
 	}
 
 	/*
@@ -51,7 +46,7 @@ public class ArmeView extends AbstractView {
 	 */
 	@Override
 	public void draw(DrawRequest req) {
-		req.rect(this.x, this.y, this.width, this.height, c);
+		req.rect(this.x, this.y, this.width, this.height);
 	}
 
 }

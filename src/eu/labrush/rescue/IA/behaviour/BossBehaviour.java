@@ -14,9 +14,13 @@ import eu.labrush.rescue.model.Personnage;
 public class BossBehaviour implements BotBehaviour {
 
 	HashSet<Bloc> blocs ;
-	
+
+	/**
+	 * @param blocs
+	 */
 	public BossBehaviour(HashSet<Bloc> blocs) {
-		this.blocs = blocs ;
+		super();
+		this.blocs = blocs;
 	}
 
 	@Override
@@ -28,6 +32,13 @@ public class BossBehaviour implements BotBehaviour {
 			}
 		}*/
 		
+	}
+	
+	/**
+	 * @param blocs the blocs used by the fight algorithm
+	 */
+	public void setBlocs(HashSet<Bloc> blocs) {
+		this.blocs = blocs;
 	}
 
 	@Override

@@ -81,12 +81,16 @@ public class TirControler extends AbstractControler {
 					for (AbstractObject o : obstacles) {
 						if (tir.cross(o)) {
 							if (o instanceof Personnage) {
-								Personnage p = (Personnage) o;
-								p.prendreDegats(tir.getDegat());
-								p.checkIfDead();
+								if (tir.getOwner() != o) {
+									Personnage p = (Personnage) o;
+									p.prendreDegats(tir.getDamage());
+									p.checkIfDead();
+									deleteTir(tir);
+								}
 							}
-
-							deleteTir(tir);
+							else {
+								deleteTir(tir);
+							}
 						}
 					}
 

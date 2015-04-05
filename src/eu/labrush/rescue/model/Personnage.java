@@ -129,6 +129,7 @@ public class Personnage extends AbstractObject {
 	 * @return l'arme passée en argument
 	 */
 	public void addArme(Arme e) {
+		e.setOwner(this);
 		armes.add(e);
 		setCurrentArme(e);
 	}

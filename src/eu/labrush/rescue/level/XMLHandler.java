@@ -1,14 +1,17 @@
 package eu.labrush.rescue.level;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import eu.labrush.rescue.IA.behaviour.BossBehaviour;
+import eu.labrush.rescue.IA.behaviour.BotBehaviour;
+import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
 import eu.labrush.rescue.model.AbstractObject;
 import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Bot;
@@ -20,8 +23,13 @@ public class XMLHandler extends DefaultHandler {
 
 	private AbstractObject current;
 	private int id;
-	
+
 	private HashMap<Integer, Bloc> blocs = new HashMap<Integer, Bloc>();
+	private HashMap<String, Arme> armes = new HashMap<String, Arme>();
+	private HashMap<String, String[]> botTypes = new HashMap<String, String[]>();
+
+	private String current_data;
+	private BotBehaviour behaviour;
 
 	Level level;
 
@@ -37,7 +45,7 @@ public class XMLHandler extends DefaultHandler {
 		switch (qName) {
 			case "bloc":
 				current = new Bloc();
-				String attr =  attrs.getValue("id");
+				String attr = attrs.getValue("id");
 				id = (attr == null ? 0 : Integer.parseInt(attr));
 				break;
 			case "hero":
@@ -46,21 +54,36 @@ public class XMLHandler extends DefaultHandler {
 			case "bot":
 				current = new Bot(0, 0);
 				break;
-
 			case "position":
 				setPosition(attrs);
 				break;
 			case "dimensions":
 				setDimension(attrs);
 				break;
+
 			case "arme":
-				setArme(attrs);
-				break ;
+				addArme(attrs);
+				break;
+			case "botType":
+				addBot(attrs);
 		}
 	}
 
-	private void setArme(Attributes attrs) {
-		 ((Personnage)current).addArme(new Arme("Resistance", 20, 300, Color.BLUE));		
+	private void addArme(Attributes attrs) {
+		// si on ajoute une arme (noeud armes)
+		if (attrs.getValue("name") != null && attrs.getValue("damage") != null && attrs.getValue("reload") != null) {
+			Arme arme = new Arme(attrs.getValue("tir"), Integer.parseInt(attrs.getValue("damage")), Integer.parseInt(attrs.getValue("reload")));
+			armes.put(attrs.getValue("name"), arme);
+		}
+	}
+
+	private void addBot(Attributes attrs) {
+		String[] attributes = new String[2];
+
+		attributes[0] = attrs.getValue("arme");
+		attributes[1] = attrs.getValue("comportement");
+
+		botTypes.put(attrs.getValue("name"), attributes);
 	}
 
 	private void setDimension(Attributes attrs) {
@@ -81,8 +104,9 @@ public class XMLHandler extends DefaultHandler {
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 
 		switch (qName) {
+		// definition des éléments
 			case "bloc":
-				if(id > 0){
+				if (id > 0) {
 					blocs.put(id, (Bloc) current);
 				}
 				level.blocControler.add((Bloc) current);
@@ -95,17 +119,53 @@ public class XMLHandler extends DefaultHandler {
 				current = null;
 				break;
 			case "bot":
-				Bloc bloc = blocs.get(id);
-				Bot bot = (Bot) current ;
-				
-				if(bloc == null){ throw new SAXException("a bloc is poiting on a non existant bloc") ; }
-				
-				bot.getTrajectoire().setPosition(new Vecteur(bloc.getX(), bloc.getY()+bloc.getHeight()));
-				
-				level.botControler.add(bot, bloc);
+				Bot bot = (Bot) current;
+
+				level.botControler.add(bot, behaviour);
 				current = null;
 				break;
+
+			// Definition de leurs attributs
+			case "arme":
+				Arme arme = armes.get(current_data);
+				if (arme != null) {
+					((Personnage) current).addArme(arme);
+				}
+				break;
+
+			case "type":
+				((Bot) current).addArme(armes.get(botTypes.get(current_data)[0]).clone());
+
+				try {
+					behaviour = (BotBehaviour) Class.forName("eu.labrush.rescue.IA.behaviour." + (botTypes.get(current_data)[1])).newInstance();
+
+					if (behaviour.equals("BossBehaviour")) {
+						((BossBehaviour) behaviour).setBlocs((HashSet<Bloc>) blocs.values());
+					}
+				} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+
+				if (behaviour == null) {
+					throw new SAXException("Try to instanciate a non existant bot behaviour");
+				}
+				break;
+
+			case "bloc_id":
+				Bloc bloc = blocs.get(Integer.parseInt(current_data));
+				if (bloc == null) {
+					throw new SAXException("a bloc is poiting on a non existant bloc (bloc id:" + current_data + ")");
+				}
+
+				current.getTrajectoire().setPosition(new Vecteur(bloc.getX(), bloc.getY() + bloc.getHeight()));
+
+				((ToucherBotBehaviour) behaviour).setBloc(bloc);
+				break;
 		}
+	}
+
+	public void characters(char[] data, int start, int end) {
+		current_data = new String(data, start, end);
 	}
 
 	public void notationDecl(String name, String publicId, String systemId) {

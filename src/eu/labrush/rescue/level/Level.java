@@ -60,4 +60,8 @@ public class Level {
 		return physics;
 	}
 
+	public BlocControler getBlocControler() {
+		return this.blocControler;
+	}
+
 }

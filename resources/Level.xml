@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <level xs:noNamespaceSchemaLocation="Level.xsd"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+
+	<armes>
+		<arme name="Resistance" tir="Resistance" damage="20" reload="300" />
+		<arme name="Transistor" tir="Resistance" damage="40" reload="500" />
+	</armes>
+
+	<botTypes>
+		<botType name="bino" arme="Resistance" comportement="ToucherBotBehaviour" />
+		<botType name="soso" arme="Transistor" comportement="FlyBotBehaviour" />
+	</botTypes>
+
 	<hero>
 		<position x="15" y="20" />
 		<arme>Resistance</arme>
@@ -8,39 +19,37 @@
 
 	<blocs>
 		<bloc>
-			<position x="0" y="370" />
+			<position x="0" y="380" />
 			<dimensions width="600" height="10" />
 		</bloc>
 		<bloc>
-			<position x="590" y="0" />
+			<position x="600" y="0" />
 			<dimensions width="10" height="400" />
 		</bloc>
 		<bloc>
-			<position x="0" y="0" />
-			<dimensions width="600" height="10" />
+			<position x="-5" y="0" />
+			<dimensions width="610" height="10" />
 		</bloc>
 		<bloc>
-			<position x="0" y="0" />
+			<position x="-11" y="0" />
 			<dimensions width="10" height="400" />
 		</bloc>
 		<bloc id="1">
-			<position x="50" y="100" />
-			<dimensions width="250" height="50" />
+			<position x="50" y="80" />
+			<dimensions width="250" height="40" />
 		</bloc>
 	</blocs>
 
 	<bots>
 		<bot>
-			<position x="150" y="20" />
-			<arme>Resistance</arme>
-			<comportement>ToucherBotBehaviour</comportement>
-			<type>Soso</type>
+			<position x="150" y="125" />
+			<type>bino</type>
 			<bloc_id>1</bloc_id>
 		</bot>
+		<bot>
+			<position x="150" y="220" />
+			<type>soso</type>
+		</bot>
 	</bots>
-
-	<armes>
-		<!-- <arme> <position x="200" y="300" /> <type>resistance</type> </arme> -->
-	</armes>
 
 </level>

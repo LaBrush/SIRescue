@@ -4,11 +4,54 @@
 	<xs:element name="level">
 		<xs:complexType>
 			<xs:sequence minOccurs="1" maxOccurs="1">
+				<xs:element name="armes">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="arme" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string"></xs:attribute>
+									<xs:attribute name="tir">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="Resistance" />
+												<xs:enumeration value="Transistor" />
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="damage" type="xs:integer"></xs:attribute>
+									<xs:attribute name="reload" type="xs:integer"></xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<xs:element name="botTypes">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="botType" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string"></xs:attribute>
+									<xs:attribute name="arme" type="xs:string"></xs:attribute>
+									<xs:attribute name="comportement">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="FlyBotBehaviour" />
+												<xs:enumeration value="ToucherBotBehaviour" />
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
 				<xs:element name="hero">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="position" type="position"></xs:element>
-							<xs:element name="arme" type="arme"></xs:element>
+							<xs:element name="arme" type="xs:string"></xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -18,7 +61,7 @@
 							<xs:element name="bloc" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="position" type="position"></xs:element>
+										<xs:element name="position" type="position"  minOccurs="0"></xs:element>
 										<xs:element name="dimensions">
 											<xs:complexType>
 												<xs:attribute name="width" type="xs:int" use="required"></xs:attribute>
@@ -35,35 +78,12 @@
 				<xs:element name="bots">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="bot">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="position" type="position"></xs:element>
-										<xs:element name="arme" type="arme"></xs:element>
-										<xs:element name="comportement">
-											<xs:simpleType>
-												<xs:restriction base="xs:string">
-													<xs:enumeration value="FlyBotBehaviour" />
-													<xs:enumeration value="ToucherBotBehaviour" />
-												</xs:restriction>
-											</xs:simpleType>
-										</xs:element>
-										<xs:element name="type" type="xs:string"></xs:element>
-										<xs:element name="bloc_id" type="xs:integer"></xs:element>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="armes">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="arme" minOccurs="0">
+							<xs:element name="bot" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="position" type="position"></xs:element>
 										<xs:element name="type" type="xs:string"></xs:element>
+										<xs:element name="bloc_id" type="xs:integer" minOccurs="0"></xs:element>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
@@ -79,9 +99,4 @@
 		<xs:attribute name="y" type="xs:int" use="required"></xs:attribute>
 	</xs:complexType>
 
-	<xs:simpleType name="arme">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="Resistance" />
-		</xs:restriction>
-	</xs:simpleType>
 </xs:schema>

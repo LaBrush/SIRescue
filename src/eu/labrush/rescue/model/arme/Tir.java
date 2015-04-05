@@ -1,37 +1,37 @@
 package eu.labrush.rescue.model.arme;
 
 import eu.labrush.rescue.model.AbstractObject;
+import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
 
 public abstract class Tir extends AbstractObject {
 
-	int degat = 0;
+	int damage = 0;
 	int angle;
 	double vitesse = .1;
 	
 	abstract public boolean cross(AbstractObject o);
+	private Personnage owner ;
 	
-	public Tir(Vecteur position, int angle, int degat){
+	public Tir(Vecteur position, int angle, int damage, Personnage owner){
 		super();
-		this.degat = degat;
+		this.damage = damage;
 		this.angle = angle;
-	}
-
-	
-
-	/**
-	 * @return the degat
-	 */
-	public int getDegat() {
-		return degat;
+		this.owner = owner ;
 	}
 
 	/**
-	 * @param degat
-	 *            the degat to set
+	 * @return the damage
 	 */
-	public void setDegat(int degat) {
-		this.degat = degat;
+	public int getDamage() {
+		return damage;
+	}
+
+	/**
+	 * @param damage the damage to set
+	 */
+	public void setDamage(int damage) {
+		this.damage = damage;
 	}
 
 	/**
@@ -47,5 +47,12 @@ public abstract class Tir extends AbstractObject {
 	 */
 	public void setAngle(int angle) {
 		this.angle = angle;
+	}
+
+	/**
+	 * @return the owner
+	 */
+	public Personnage getOwner() {
+		return owner;
 	}
 }

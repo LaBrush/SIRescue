@@ -20,18 +20,39 @@ public class ToucherBotBehaviour implements BotBehaviour {
 	
 	double  vitesse;
 	boolean attack ;
-	
 
 	public ToucherBotBehaviour(Bot bot, Bloc bloc) {
 		setBot(bot);
-		this.bloc = bloc ;
+		setBloc(bloc);
+	}
+
+	public ToucherBotBehaviour(Bloc bloc) {
+		super();
+		this.bloc = bloc;
 	}
 
 	
-	public ToucherBotBehaviour(Bloc bloc) {
-		this.bloc = bloc ;
+	public ToucherBotBehaviour() {
+		super();
 	}
-	
+
+
+	/**
+	 * @return the bloc
+	 */
+	public Bloc getBloc() {
+		return bloc;
+	}
+
+
+	/**
+	 * @param bloc the bloc to set
+	 */
+	public void setBloc(Bloc bloc) {
+		this.bloc = bloc;
+	}
+
+
 	@Override
 	public void setBot(Bot bot) {
 		this.bot = bot;		

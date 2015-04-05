@@ -4,12 +4,13 @@ import java.awt.Dimension;
 
 import eu.labrush.rescue.core.physics.TirPhysicBehaviour;
 import eu.labrush.rescue.model.AbstractObject;
+import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
 
 public class Transistor extends Tir {
 
-	public Transistor(Vecteur position, int angle, int degat) {
-		super(position, angle, degat);
+	public Transistor(Vecteur position, int angle, int degat, Personnage owner) {	
+		super(position, angle, degat, owner);
 
 		this.dim = new Dimension(5, 5);
 

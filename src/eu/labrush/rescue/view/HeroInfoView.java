@@ -12,45 +12,45 @@ import eu.labrush.rescue.model.Personnage;
  */
 public class HeroInfoView extends AbstractView {
 
-	int maxLife, life ;
-	String label ;
-	Color c ;
-	
+	int maxLife, life;
+	String label;
+
 	public HeroInfoView(Observable model) {
 		super(model);
-		maxLife = ((Personnage)model).getMaxLife();
+		maxLife = ((Personnage) model).getMaxLife();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see eu.labrush.rescue.view.AbstractView#bindModel(java.util.Observable)
 	 */
 	@Override
 	protected void bindModel(Observable model) {
-		Personnage p = (Personnage)model;
-		
+		Personnage p = (Personnage) model;
+
 		life = p.getLife();
 		String s = p.getCurrentArme().getTirClass();
-		label = s.substring(s.lastIndexOf(".")+1) ;
-		
-		c = p.getCurrentArme().getC();
+		label = s.substring(s.lastIndexOf(".") + 1);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see eu.labrush.rescue.view.AbstractView#draw(eu.labrush.rescue.core.graphic.DrawRequest)
 	 */
 	@Override
 	public void draw(DrawRequest req) {
 		int width = 200 * life / maxLife;
-		
-		int r = 255 * (maxLife - life) / maxLife ;
+
+		int r = 255 * (maxLife - life) / maxLife;
 		int v = 255 * life / maxLife;
-		
-		r = r >= 0 || r <= 255 ? r : 0 ;
-		v = v >= 0 || v <= 255 ? v : 0 ;
-		
-		req.fillRect(10, req.getHeight()-10, width, 20, new Color(r, v, 0));
-		req.drawString("Arme:", 11, req.getHeight()-45);
-		req.drawString(label, 53, req.getHeight()-45, c);
+
+		r = r >= 0 || r <= 255 ? r : 0;
+		v = v >= 0 || v <= 255 ? v : 0;
+
+		req.fillRect(10, req.getHeight() - 10, width, 20, new Color(r, v, 0));
+		req.drawString("Arme: " + label, 11, req.getHeight() - 45);
 	}
 
 }
