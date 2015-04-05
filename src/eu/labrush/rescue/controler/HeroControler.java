@@ -21,7 +21,10 @@ public final class HeroControler extends AbstractControler {
 	TirControler tirControler;
 	PersonnageControler personnageControler;
 
-	HeroInfoView heroView;
+	private HeroInfoView heroView;
+
+	private Thread shootThread;
+	private boolean shooting = false;
 
 	private Personnage model;
 	boolean moving;
@@ -54,24 +57,35 @@ public final class HeroControler extends AbstractControler {
 
 				switch (req.getKeyChar()) {
 					case 'd':
-						tirControler.shoot(model, 0);
+						startShoot(0);
 						break;
 					case 'e':
-						tirControler.shoot(model, 45);
+						startShoot(45);
 						break;
 					case 'z':
-						tirControler.shoot(model, 90);
+						startShoot(90);
 						break;
 					case 'a':
-						tirControler.shoot(model, 135);
+						startShoot(135);
 						break;
 					case 'q':
-						tirControler.shoot(model, 180);
+						startShoot(180);
 						break;
 				}
 			}
 
 			else if (req.getID() == KeyEvent.KEY_RELEASED) {
+
+				switch (req.getKeyChar()) {
+					case 'd':
+					case 'e':
+					case 'z':
+					case 'a':
+					case 'q':
+						shooting = false;
+						break;
+				}
+				;
 
 				switch (req.getKeyCode()) {
 					case KeyEvent.VK_LEFT:
@@ -85,6 +99,26 @@ public final class HeroControler extends AbstractControler {
 		}
 
 	};
+
+	private void startShoot(int angle) {
+		shootThread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				shooting = true;
+				while (shooting) {
+					tirControler.shoot(model, angle);
+
+					try {
+						Thread.sleep((int) model.getCurrentArme().getReloadTime() / 2);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+
+		shootThread.start();
+	}
 
 	public HeroControler(Level level, TirControler tirContoler, PersonnageControler personnageControler) {
 		super(level);
