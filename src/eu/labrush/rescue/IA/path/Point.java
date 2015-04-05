@@ -4,10 +4,6 @@ public class Point implements Cloneable {
 
 	public int x, y;
 
-	/**
-	 * @param x
-	 * @param y
-	 */
 	public Point(int x, int y) {
 		super();
 		this.x = x;

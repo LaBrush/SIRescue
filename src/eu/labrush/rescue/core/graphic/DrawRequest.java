@@ -30,11 +30,6 @@ public class DrawRequest {
 	private int height = 0;
 	private int width = 0;
 
-	/**
-	 * @param g
-	 * @param width
-	 * @param height
-	 */
 	public DrawRequest(Graphics2D g, int width, int height) {
 		this.g = g;
 		this.width = width;
@@ -43,38 +38,14 @@ public class DrawRequest {
 		this.g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 	}
 
-	/**
-	 * 
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 */
 	public void rect(int x, int y, int width, int height) {
 		this.g.drawRect(x, this.height - y - height, width, height);
 	}
 
-	/**
-	 * 
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 * @param color
-	 */
 	public void rect(int x, int y, int width, int height, Color c) {
 		this.rect(x, y, width, height, 1, c);
 	}
 
-	/**
-	 * 
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 * @param border
-	 * @param c
-	 */
 	public void rect(int x, int y, int width, int height, int border, Color c) {
 		this.g.setColor(c);
 		this.g.setStroke(new BasicStroke(border));
@@ -82,13 +53,6 @@ public class DrawRequest {
 		this.g.setColor(Color.BLACK);
 	}
 
-	/**
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 * @param angle
-	 */
 	public void rect(int x, int y, int width, int height, int angle) {
 
 		// on ajoute un décalage sur x et y en fonction de l'angle de rotation
@@ -104,13 +68,6 @@ public class DrawRequest {
 
 	}
 
-	/**
-	 * 
-	 * @param img
-	 * @param x
-	 * @param y
-	 * @param angle
-	 */
 	public void image(BufferedImage img, int x, int y, int angle) {
 
 		// on ajoute un décalage sur x et y en fonction de l'angle de rotation
@@ -128,14 +85,7 @@ public class DrawRequest {
 		image(img, x, y, 0);
 	}
 
-	/**
-	 * 
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 * @param c
-	 */
+
 	public void fillRect(int x, int y, int width, int height, Color c) {
 		this.g.setColor(c);
 		this.g.fillRect(x, this.getHeight() - y, width, height);

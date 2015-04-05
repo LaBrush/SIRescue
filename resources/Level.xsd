@@ -55,18 +55,15 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="blocs">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="bloc" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="position" type="position"  minOccurs="0"></xs:element>
-										<xs:element name="dimensions">
-											<xs:complexType>
-												<xs:attribute name="width" type="xs:int" use="required"></xs:attribute>
-												<xs:attribute name="height" type="xs:int" use="required"></xs:attribute>
-											</xs:complexType>
+										<xs:element name="position" type="position"></xs:element>
+										<xs:element name="dimensions" type="dimensions">
 										</xs:element>
 									</xs:sequence>
 									<xs:attribute name="id" type="xs:integer"></xs:attribute>
@@ -75,6 +72,24 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
+				<xs:element name="items">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="position" type="position"></xs:element>
+										<xs:element name="dimensions" type="dimensions"></xs:element>
+									</xs:sequence>
+									<xs:attribute name="content" type="xs:string"></xs:attribute>
+									<xs:attribute name="type" type="xs:string"></xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
 				<xs:element name="bots">
 					<xs:complexType>
 						<xs:sequence>
@@ -83,7 +98,8 @@
 									<xs:sequence>
 										<xs:element name="position" type="position"></xs:element>
 										<xs:element name="type" type="xs:string"></xs:element>
-										<xs:element name="bloc_id" type="xs:integer" minOccurs="0"></xs:element>
+										<xs:element name="bloc_id" type="xs:integer"
+											minOccurs="0"></xs:element>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
@@ -97,6 +113,11 @@
 	<xs:complexType name="position">
 		<xs:attribute name="x" type="xs:int" use="required"></xs:attribute>
 		<xs:attribute name="y" type="xs:int" use="required"></xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="dimensions">
+		<xs:attribute name="width" type="xs:int" use="required"></xs:attribute>
+		<xs:attribute name="height" type="xs:int" use="required"></xs:attribute>
 	</xs:complexType>
 
 </xs:schema>

@@ -21,13 +21,6 @@ public abstract class AbstractObject extends AbstractModel {
 
 	protected boolean movable = true;
 
-	/**
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 * @param behaviour
-	 */
 	public AbstractObject(double x, double y, int width, int height, AbstractPhysicBehaviour behaviour) {
 		super();
 		this.setTrajectoire(new Trajectoire(x, y));
@@ -38,12 +31,6 @@ public abstract class AbstractObject extends AbstractModel {
 		this.behaviour.setDimension(this.dim);
 	}
 
-	/**
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 */
 	public AbstractObject(double x, double y, int width, int height) {
 		this(x, y, width, height, new ClassicPhysicBehaviour());
 	}
@@ -84,10 +71,6 @@ public abstract class AbstractObject extends AbstractModel {
 		return trajectoire;
 	}
 
-	/**
-	 * @param trajectoire
-	 *            the trajectoire to set
-	 */
 	public void setTrajectoire(Trajectoire t) {
 		if (this.trajectoire != null) {
 			this.trajectoire.deleteObserver(this);

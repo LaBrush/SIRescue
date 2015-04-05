@@ -20,10 +20,6 @@ import eu.labrush.rescue.model.Vecteur;
  */
 public class ClassicPhysicBehaviour extends AbstractPhysicBehaviour {
 
-	/**
-	 * @param t
-	 * @param dim
-	 */
 	public ClassicPhysicBehaviour(Trajectoire t, Dimension dim) {
 		super(t, dim);
 		this.setGravity(-.0015);

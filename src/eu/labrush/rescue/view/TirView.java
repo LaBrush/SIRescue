@@ -13,9 +13,6 @@ public class TirView extends AbstractView {
 
 	int angle;
 
-	/**
-	 * @param model
-	 */
 	public TirView(Observable model) {
 		super(model);
 	}

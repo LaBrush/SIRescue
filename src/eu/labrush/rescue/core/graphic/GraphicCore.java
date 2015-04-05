@@ -48,7 +48,10 @@ final public class GraphicCore extends JFrame {
 		private final static GraphicCore instance = new GraphicCore();
 	}
 
-	/** Point d'accès pour l'instance unique du singleton */
+	/** Point d'accès pour l'instance unique du singleton 
+	 * 
+	 * @return The graphic core instance
+	 * */
 	public static GraphicCore getInstance() {
 		return GraphicCoreHolder.instance;
 	}

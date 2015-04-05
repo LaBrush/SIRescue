@@ -12,10 +12,6 @@ public class Vecteur extends AbstractModel implements Cloneable {
 	private double x;
 	private double y;
 
-	/**
-	 * @param x
-	 * @param y
-	 */
 	public Vecteur(double x, double y) {
 		super();
 		this.x = x;
@@ -46,8 +42,9 @@ public class Vecteur extends AbstractModel implements Cloneable {
 	 * argument
 	 * 
 	 * @param norme
+	 * 		la norme du vecteur
 	 * @param angle
-	 *            (en degrès)
+	 *      (en degrès)
 	 */
 	public void setPolar(double norme, int angle) {
 		this.x = Math.cos(Math.toRadians(angle)) * norme;

@@ -13,8 +13,10 @@ import eu.labrush.rescue.IA.behaviour.BossBehaviour;
 import eu.labrush.rescue.IA.behaviour.BotBehaviour;
 import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
 import eu.labrush.rescue.model.AbstractObject;
+import eu.labrush.rescue.model.ArmeItem;
 import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Bot;
+import eu.labrush.rescue.model.Item;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
 import eu.labrush.rescue.model.arme.Arme;
@@ -54,6 +56,14 @@ public class XMLHandler extends DefaultHandler {
 			case "bot":
 				current = new Bot(0, 0);
 				break;
+			case "item":
+				switch (attrs.getValue("content")) {
+					case "arme":
+						current = new ArmeItem(0, 0, armes.get(attrs.getValue("type")).clone());
+						break;
+				}
+				break;
+
 			case "position":
 				setPosition(attrs);
 				break;
@@ -122,6 +132,10 @@ public class XMLHandler extends DefaultHandler {
 				Bot bot = (Bot) current;
 
 				level.botControler.add(bot, behaviour);
+				current = null;
+				break;
+			case "item":
+				level.itemControler.add((Item) current);
 				current = null;
 				break;
 

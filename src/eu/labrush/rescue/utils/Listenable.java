@@ -2,7 +2,7 @@ package eu.labrush.rescue.utils;
 
 /**
  * Interface générique d'EventListener utilisant la génétricité
- * Cette interface est à utliser conjointement avec Listener<T>
+ * Cette interface est à utliser conjointement avec Listener
  *
  * @author adrienbocquet
  */

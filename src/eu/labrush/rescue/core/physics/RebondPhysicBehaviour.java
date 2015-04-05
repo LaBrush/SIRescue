@@ -16,10 +16,6 @@ public class RebondPhysicBehaviour extends AbstractPhysicBehaviour {
 
 	private double speed = .3 ;
 
-	/**
-	 * @param t
-	 * @param dim
-	 */
 	public RebondPhysicBehaviour(Trajectoire t, Dimension dim) {
 		super(t, dim);
 		this.trajectoire.setVitesse(new Vecteur(speed, speed));

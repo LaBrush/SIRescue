@@ -16,10 +16,7 @@ public class BlocControler extends AbstractControler {
 
 	HashSet<Bloc> blocs = new HashSet<Bloc>();
 	HashSet<BlocView> views = new HashSet<BlocView>();
-	
-	/**
-	 * @param level
-	 */
+
 	public BlocControler(Level level) {
 		super(level);
 		
@@ -38,7 +35,7 @@ public class BlocControler extends AbstractControler {
 	/**
 	 * Ajoute un modèle de type bloc à l'objet et la vue qui lui est associée
 	 * 
-	 * @param bloc
+	 * @param bloc le bloc à ajouter
 	 */
 	public void add(Bloc bloc) {
 		BlocView v = new BlocView(bloc);

@@ -45,11 +45,6 @@ public class TirControler extends AbstractControler {
 		}
 	};
 
-	/**
-	 * @param level
-	 * @param blocControler
-	 * @param personnageControler
-	 */
 	public TirControler(Level level, BlocControler blocControler, PersonnageControler personnageControler) {
 		super(level);
 		this.blocControler = blocControler;

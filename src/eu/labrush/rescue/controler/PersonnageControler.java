@@ -32,9 +32,6 @@ public class PersonnageControler extends AbstractControler {
 		}
 	};
 	
-	/**
-	 * @param level
-	 */
 	public PersonnageControler(Level level, BlocControler blocControler) {
 		super(level);
 
@@ -59,10 +56,6 @@ public class PersonnageControler extends AbstractControler {
 		});
 	}
 
-
-	/**
-	 * @param personnage
-	 */
 	public void add(Personnage personnage) {
 		PersonnageView v = new PersonnageView(personnage);
 		personnage.addObserver(this.deadObserver);

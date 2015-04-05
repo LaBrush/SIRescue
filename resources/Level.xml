@@ -4,12 +4,12 @@
 
 	<armes>
 		<arme name="Resistance" tir="Resistance" damage="20" reload="300" />
-		<arme name="Transistor" tir="Resistance" damage="40" reload="500" />
+		<arme name="Transistor" tir="Transistor" damage="40" reload="500" />
 	</armes>
 
 	<botTypes>
 		<botType name="bino" arme="Resistance" comportement="ToucherBotBehaviour" />
-		<botType name="soso" arme="Transistor" comportement="FlyBotBehaviour" />
+		<botType name="soso" arme="Resistance" comportement="FlyBotBehaviour" />
 	</botTypes>
 
 	<hero>
@@ -39,6 +39,13 @@
 			<dimensions width="250" height="40" />
 		</bloc>
 	</blocs>
+
+	<items>
+		<item content="arme" type="Transistor">
+			<position x="50" y="12" />
+			<dimensions width="20" height="20" />
+		</item>
+	</items>
 
 	<bots>
 		<bot>

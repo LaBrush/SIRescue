@@ -49,6 +49,7 @@ public class Personnage extends AbstractObject {
 	 * Retranche à la vie du personnage les dégats infligés
 	 * 
 	 * @param degats
+	 * 		Les degats infligés
 	 */
 	public void prendreDegats(int degats) {
 		this.life -= degats;
@@ -115,22 +116,21 @@ public class Personnage extends AbstractObject {
 		return this.armes.get(currentArme) ;
 	}
 
-	/**
-	 * @param currentArme
-	 *            the currentArme to set
-	 */
 	public void setCurrentArme(Arme arme) {
 		this.currentArme = this.armes.indexOf(arme);
+		
+		if(currentArme < 0){
+			addArme(arme);
+			setCurrentArme(arme);
+		}
 	}
 
-	/**
-	 * @param e
-	 *            l'arme à ajouter
-	 * @return l'arme passée en argument
-	 */
-	public void addArme(Arme e) {
-		e.setOwner(this);
-		armes.add(e);
-		setCurrentArme(e);
+	public void addArme(Arme arme) {
+		arme.setOwner(this);
+		armes.add(arme);
+		
+		if(currentArme < 0){
+			setCurrentArme(arme);
+		}
 	}
 }

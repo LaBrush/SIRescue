@@ -22,8 +22,10 @@ public class Arme extends AbstractModel implements Cloneable {
 	 * 
 	 * @param tirClass
 	 * 		La classe dont l'instance du Tir va hériter (pattern factory)
-	 * @param degats
+	 * @param damage 
+	 * 		Les dommages inflgés pour le tir
 	 * @param reloadTime
+	 * 		L'intervalle entre deux tirs
 	 */
 	public Arme(String tirClass, int damage, int reloadTime) {
 		super();
@@ -109,7 +111,7 @@ public class Arme extends AbstractModel implements Cloneable {
 	}
 
 	/**
-	 * @param cartouches
+	 * @param nb
 	 *            le nombre de cartouches restantes
 	 */
 	public void setCartouchesLeft(int nb) {

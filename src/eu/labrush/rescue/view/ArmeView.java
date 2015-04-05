@@ -11,10 +11,6 @@ import eu.labrush.rescue.model.Personnage;
  */
 public class ArmeView extends AbstractView {
 
-	/**
-	 * @param model
-	 * @param owner
-	 */
 	public ArmeView(Observable model, Personnage owner) {
 		super(model);
 

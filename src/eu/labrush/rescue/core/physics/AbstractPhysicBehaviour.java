@@ -39,10 +39,10 @@ public abstract class AbstractPhysicBehaviour {
 	public abstract void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, int delta_t);
 
 	/**
-	 * Calcul les degrès de liberté du solide par rapport à un bloc donné
+	 * @param bloc le bloc par rapport auquel on se situe
+	 * @param next_pos le prochaine posisition de l'objet
 	 * 
-	 * @param bloc
-	 * @param next_pos
+	 * Calcul les degrès de liberté du solide par rapport à un bloc donné
 	 */
 	protected final void calcMargin(AbstractObject bloc, Vecteur next_pos) {
 
@@ -119,9 +119,6 @@ public abstract class AbstractPhysicBehaviour {
 		this.trajectoire = trajectoire;
 	}
 
-	/**
-	 * @param dim
-	 */
 	public void setDimension(Dimension dim) {
 		this.dim = dim;
 	}

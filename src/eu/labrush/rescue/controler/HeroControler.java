@@ -100,18 +100,15 @@ public final class HeroControler extends AbstractControler {
 		});
 	}
 
-	/**
-	 * @param hero
-	 */
-	public void setPersonnage(Personnage hero) {
-		hero.setVitesseNominale(new Vecteur(.3, .9));
+	public void setPersonnage(Personnage personnage) {
+		personnage.setVitesseNominale(new Vecteur(.3, .9));
 
-		personnageControler.removePersonnage(hero);
+		personnageControler.removePersonnage(personnage);
 		keyboard.delObserver(listener);
 
-		this.model = hero;
+		this.model = personnage;
 
-		heroView = new HeroInfoView(hero);
+		heroView = new HeroInfoView(personnage);
 
 		if (this.model != null) {
 			keyboard.addObserver(listener);

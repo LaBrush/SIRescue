@@ -15,9 +15,6 @@ public class BossBehaviour implements BotBehaviour {
 
 	HashSet<Bloc> blocs ;
 
-	/**
-	 * @param blocs
-	 */
 	public BossBehaviour(HashSet<Bloc> blocs) {
 		super();
 		this.blocs = blocs;

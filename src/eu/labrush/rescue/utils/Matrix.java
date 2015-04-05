@@ -59,10 +59,9 @@ public class Matrix implements Cloneable {
 	}
 
 	/**
-	 * 
-	 * @param the
-	 *            matrix to multiply with
-	 * @return the product of both matrix
+	 * @param m1 the first matrix
+	 * @param m2 the second matrix
+	 * @return the product of two matrix
 	 */
 	public static Matrix multiply(Matrix m1, Matrix m2) {
 		if (m1.getHeight() != m2.getWidth()) {
