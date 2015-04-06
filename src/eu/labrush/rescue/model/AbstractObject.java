@@ -19,8 +19,6 @@ public abstract class AbstractObject extends AbstractModel {
 	protected AbstractPhysicBehaviour behaviour;
 	protected Dimension dim;
 
-	protected boolean movable = true;
-
 	public AbstractObject(double x, double y, int width, int height, AbstractPhysicBehaviour behaviour) {
 		super();
 		this.setTrajectoire(new Trajectoire(x, y));
@@ -80,22 +78,6 @@ public abstract class AbstractObject extends AbstractModel {
 		this.trajectoire.addObserver(this);
 
 		setChanged();
-	}
-
-	/**
-	 * @return the movable
-	 */
-	public boolean isMovable() {
-		return movable;
-	}
-
-	/**
-	 * @param movable
-	 *            the movable to set
-	 */
-	public void setMovable(boolean movable) {
-		this.movable = movable;
-		throwUpdate();
 	}
 
 	/**

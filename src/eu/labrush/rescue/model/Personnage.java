@@ -53,6 +53,7 @@ public class Personnage extends AbstractObject {
 	 */
 	public void prendreDegats(int degats) {
 		this.life -= degats;
+		checkIfDead();
 		throwUpdate();
 	}
 

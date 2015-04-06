@@ -58,7 +58,6 @@ public class ToucherBotBehaviour implements BotBehaviour {
 		this.bot = bot;		
 		attack = false;		
 		vitesse = 0.02;
-		
 	}
 	
 	public void update(Personnage hero) {

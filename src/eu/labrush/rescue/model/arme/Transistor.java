@@ -27,15 +27,6 @@ public class Transistor extends Tir {
 
 	@Override
 	public boolean cross(AbstractObject o) {
-
-		Vecteur position = this.getTrajectoire().getPosition();
-		int width = (int) this.dim.getWidth(), height = (int) this.dim.getHeight();
-
-		return pointIn(o, position) || pointIn(o, new Vecteur(width, height).add(position)) || pointIn(o, new Vecteur(0, height).add(position)) || pointIn(o, new Vecteur(width, 0).add(position));
+		return !(o.getX() + o.getWidth() < this.getX() || o.getY() + o.getHeight() < this.getY() || o.getX() > this.getX() + this.getWidth() || o.getY() > this.getY() + this.getHeight());
 	}
-
-	private boolean pointIn(AbstractObject o, Vecteur p) {
-		return o.getX() <= p.getX() && o.getX() + o.getWidth() >= p.getX() && o.getY() <= p.getY() && o.getY() + o.getHeight() >= p.getY();
-	}
-
 }

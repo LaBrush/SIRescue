@@ -4,10 +4,12 @@ import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.level.Level;
+import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.utils.Listener;
 import eu.labrush.rescue.view.PersonnageView;
@@ -18,7 +20,7 @@ import eu.labrush.rescue.view.PersonnageView;
  */
 public class PersonnageControler extends AbstractControler {
 
-	HashMap<Personnage, PersonnageView> personnages = new HashMap<Personnage, PersonnageView>();
+	ConcurrentHashMap<Personnage, PersonnageView> personnages = new ConcurrentHashMap<Personnage, PersonnageView>(new HashMap<Personnage, PersonnageView>());
 
 	BlocControler blocControler;
 
@@ -51,6 +53,12 @@ public class PersonnageControler extends AbstractControler {
 			public void update(PhysicCore req) {
 				for (Personnage p : personnages.keySet()) {
 					p.getPhysicBehaviour().updateTrajectoire(blocControler.getBlocs(), req.getDelta());
+					
+					for(Bloc b: blocControler.getBlocs()){
+						if(b.touch(p) && b.isHurting()){
+							p.prendreDegats(1000);
+						}
+					}
 				}
 			}
 		});

@@ -9,8 +9,8 @@
 						<xs:sequence>
 							<xs:element name="arme" maxOccurs="unbounded">
 								<xs:complexType>
-									<xs:attribute name="name" type="xs:string"></xs:attribute>
-									<xs:attribute name="tir">
+									<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+									<xs:attribute name="tir" use="required">
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:enumeration value="Resistance" />
@@ -18,8 +18,8 @@
 											</xs:restriction>
 										</xs:simpleType>
 									</xs:attribute>
-									<xs:attribute name="damage" type="xs:integer"></xs:attribute>
-									<xs:attribute name="reload" type="xs:integer"></xs:attribute>
+									<xs:attribute name="damage" type="xs:integer" use="required"></xs:attribute>
+									<xs:attribute name="reload" type="xs:integer" use="required"></xs:attribute>
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>
@@ -31,8 +31,8 @@
 						<xs:sequence>
 							<xs:element name="botType" maxOccurs="unbounded">
 								<xs:complexType>
-									<xs:attribute name="name" type="xs:string"></xs:attribute>
-									<xs:attribute name="arme" type="xs:string"></xs:attribute>
+									<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+									<xs:attribute name="arme" type="xs:string" use="required"></xs:attribute>
 									<xs:attribute name="comportement">
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
@@ -67,6 +67,7 @@
 										</xs:element>
 									</xs:sequence>
 									<xs:attribute name="id" type="xs:integer"></xs:attribute>
+									<xs:attribute name="hurting" type="xs:boolean"></xs:attribute>
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>

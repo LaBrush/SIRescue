@@ -40,7 +40,8 @@ public class SampleLevel extends Level {
 		blocs.add(new Bloc(60, 100, 80, 20));
 		blocs.add(new Bloc(200, 140, 80, 20));
 		blocs.add(new Bloc(300, 180, 80, 20));
-		blocs.add(new Bloc(430, 80, 20, 20));
+		blocs.add(new Bloc(480, 80, 20, 20));
+		blocs.add(new Bloc(400, 80, 40, 20, true));
 
 		this.addBorders();
 		for (Bloc b : blocs) {

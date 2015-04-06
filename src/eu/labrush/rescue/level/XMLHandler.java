@@ -47,8 +47,11 @@ public class XMLHandler extends DefaultHandler {
 		switch (qName) {
 			case "bloc":
 				current = new Bloc();
+				
 				String attr = attrs.getValue("id");
 				id = (attr == null ? 0 : Integer.parseInt(attr));
+				
+				((Bloc) current).setHurting(Boolean.parseBoolean(attrs.getValue("hurting"))) ;
 				break;
 			case "hero":
 				current = new Personnage(0, 0);

@@ -27,10 +27,8 @@ public class BlocControler extends AbstractControler {
 					v.draw(req);
 				}
 			}
-
 		});
 	}
-	
 
 	/**
 	 * Ajoute un modèle de type bloc à l'objet et la vue qui lui est associée

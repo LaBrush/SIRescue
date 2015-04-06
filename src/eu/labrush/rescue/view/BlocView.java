@@ -15,6 +15,8 @@ import eu.labrush.rescue.model.Bloc;
  */
 public class BlocView extends AbstractView {
 
+	boolean hurting ;
+	
 	public BlocView(Observable model) {
 		super(model);
 	}
@@ -26,12 +28,13 @@ public class BlocView extends AbstractView {
 	 */
 	@Override
 	protected void bindModel(Observable model) {
-		Bloc p = (Bloc) model;
+		Bloc b = (Bloc) model;
 
-		this.x = (int) p.getTrajectoire().getPosition().getX();
-		this.y = (int) p.getTrajectoire().getPosition().getY();
-		this.width = (int) p.getWidth();
-		this.height = (int) p.getHeight();
+		this.x = (int) b.getTrajectoire().getPosition().getX();
+		this.y = (int) b.getTrajectoire().getPosition().getY();
+		this.width = (int) b.getWidth();
+		this.height = (int) b.getHeight();
+		this.hurting = b.isHurting();
 	}
 
 	/*
@@ -41,7 +44,7 @@ public class BlocView extends AbstractView {
 	 */
 	@Override
 	public void draw(DrawRequest req) {
-		req.rect(this.x, this.y, this.width, this.height, Color.RED);
+		req.rect(this.x, this.y, this.width, this.height, hurting ? Color.RED : Color.BLUE);
 	}
 
 }
