@@ -97,8 +97,10 @@ public class TirControler extends AbstractControler {
 	public void shoot(Personnage personnage, int angle) {
 		Vecteur position = new Vecteur();
 
-		position.setX(30 * Math.cos(angle) + personnage.getX());
-		position.setY(30 * Math.sin(angle % 90) + personnage.getY() + personnage.getHeight() / 2);
+		double rad = Math.toRadians(angle) ;
+		
+		position.setX(30 * Math.cos(rad) + personnage.getX()+personnage.getWidth()/2);
+		position.setY(30 * Math.sin(rad) + personnage.getY() + personnage.getHeight()/2);
 
 		Tir tir = null;
 
