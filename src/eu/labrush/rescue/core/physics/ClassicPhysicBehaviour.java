@@ -15,26 +15,34 @@ import eu.labrush.rescue.model.Vecteur;
  * @author adrienbocquet
  *
  *         Décrit la trajectoire d'un objet de facon linéaire ou parabolique (en fonction de sa
- *         réactioin à la gravité)
+ *         réaction à la gravité)
  *
  */
 public class ClassicPhysicBehaviour extends AbstractPhysicBehaviour {
 
 	public ClassicPhysicBehaviour(Trajectoire t, Dimension dim) {
 		super(t, dim);
-		this.setGravity(-.0015);
+		this.setGravity(PhysicCore.GRAVITY);
+		this.moves = new LibertyDegree() ;
 	}
 
 	public ClassicPhysicBehaviour() {
-		this.setGravity(-.0015);
+		this.setGravity(PhysicCore.GRAVITY);
+		this.moves = new LibertyDegree() ;
 	}
 
 	@Override
-	public void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, int delta_t) {
-
-		this.moves = new LibertyDegree();
+	public void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, double delta_t) {
+		
+		if (this.moves.bottom > 0) { 
+			// Si on est en l'air, on rajoute la gravité
+			trajectoire.getAcceleration().setY(this.gravity);
+		}
+		
 		Vecteur deplacement = trajectoire.distanceParcourue(delta_t);
-
+		
+		this.moves = new LibertyDegree();	
+		
 		// On calcul la distance de chaque coté à chaque obstacle potentiel
 		for (AbstractObject obstacle : obstacles) {
 			if (obstacle instanceof Bloc) {
@@ -42,6 +50,7 @@ public class ClassicPhysicBehaviour extends AbstractPhysicBehaviour {
 			}
 		}
 
+		
 		// La distance parcourue pendant la durée delta_t est supérieure à la distance, on adapte la
 		// vitesse
 
@@ -61,11 +70,6 @@ public class ClassicPhysicBehaviour extends AbstractPhysicBehaviour {
 		else if (deplacement.getY() < 0 && -deplacement.getY() >= this.moves.bottom) {
 			trajectoire.getVitesse().setY(-this.moves.bottom / delta_t);
 			trajectoire.getAcceleration().setY(0);
-		}
-		else if (this.moves.bottom > 0) { // Si on est en l'air, on
-											// rajoute la
-			// gravité
-			trajectoire.getAcceleration().setY(this.gravity);
 		}
 
 		// Enfin on met à jour la trajectoire

@@ -76,12 +76,12 @@ public class FlyBotBehaviour implements BotBehaviour {
 			
 			if (botX <= extremiteG) {
 
-				v.setX(0.06);
+				v.setX(60);
 
 			}
 			else if (botX >= extremiteD) {
 
-				v.setX(-0.06);
+				v.setX(-60);
 			}
 
 		}

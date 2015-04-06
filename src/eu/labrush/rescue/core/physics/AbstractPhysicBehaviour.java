@@ -36,7 +36,7 @@ public abstract class AbstractPhysicBehaviour {
 		this.dim = dim;
 	}
 
-	public abstract void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, int delta_t);
+	public abstract void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, double delta_t);
 
 	/**
 	 * @param bloc le bloc par rapport auquel on se situe

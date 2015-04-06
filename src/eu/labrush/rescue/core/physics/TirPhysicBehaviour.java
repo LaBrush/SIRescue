@@ -24,7 +24,7 @@ public class TirPhysicBehaviour extends AbstractPhysicBehaviour {
 	 * int)
 	 */
 	@Override
-	public void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, int delta_t) {
+	public void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, double delta_t) {
 		trajectoire.update(delta_t);
 	}
 	

@@ -9,6 +9,10 @@ public class Point implements Cloneable {
 		this.x = x;
 		this.y = y;
 	}
+	
+	public Point(double x, double y) {
+		this((int)x, (int)y);
+	}
 
 	public Point[] getVoisins() {
 		Point[] voisins = new Point[8];

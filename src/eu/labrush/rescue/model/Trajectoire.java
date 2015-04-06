@@ -35,18 +35,18 @@ public class Trajectoire extends AbstractModel {
 	 *            la durée (en ms) séparant deux mises à jour de la position
 	 * 
 	 */
-	public void update(int delta_t) {
+	public void update(double delta_t) {
 		// Si la vitesse et l'acceleration sont nulles, il n'est pas la peine de recalculer la
 		// position
 		if (this.getAcceleration().norme() != 0 || this.getVitesse().norme() != 0) {
-
+			
 			/*
 			 * On chercher à obternir la valeur de la vitesse en fonction de l'accélération On
 			 * applique la relation v = a . ∆t puisque v est la dérivée de l'accélération par
 			 * rapport au temps
 			 * http://www.kartable.fr/terminale-s/physique/1109/cours/cinematique-vecteurs
 			 * -et-mouvements,TS05029
-			 */
+			 */			
 			setVitesse((new Vecteur()).add(vitesse).add(acceleration.k(delta_t)));
 
 			// Idem pour la position
@@ -64,10 +64,9 @@ public class Trajectoire extends AbstractModel {
 	 */
 	public Vecteur distanceParcourue(double delta_t) {
 		Vecteur p = new Vecteur();
-
 		if (this.getAcceleration().norme() != 0 || this.getVitesse().norme() != 0) {
 			Vecteur v = this.getVitesse().add(acceleration.k(delta_t));
-			p = p.add(this.getAcceleration().k(1 / 2 * Math.pow(delta_t, 2))).add(v.k(delta_t));
+			p.add(this.getAcceleration().k(1 / 2 * Math.pow(delta_t, 2))).add(v.k(delta_t));
 		}
 
 		return p;

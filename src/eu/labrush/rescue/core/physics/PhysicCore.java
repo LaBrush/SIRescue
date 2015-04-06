@@ -11,17 +11,15 @@ import eu.labrush.rescue.utils.Listener;
 /**
  * @author adrienbocquet
  *
- *         Le coeur physique permet de réaliser le lien entre le modèle physique et les objets et
- *         assure la conversion des unités (m/s en pixels/cycles) afin de permettre aux animations
- *         d'être humainement comprehensibles.
+ *         Le coeur physique permet de réaliser le lien entre le modèle physique et les objets
  *
  */
 final public class PhysicCore implements Listenable<PhysicCore> {
 
 	int framerate;
-	int delta_t; // Le temps écoulé entre deux cycles
+	int delta_t; // Le temps écoulé entre deux cycles (en ms)
 
-	public static double GRAVITY = -.0015;
+	public static double GRAVITY = -1500;
 
 	private ArrayList<Listener<PhysicCore>> observers = new ArrayList<Listener<PhysicCore>>();
 	private boolean running = false;
@@ -57,8 +55,11 @@ final public class PhysicCore implements Listenable<PhysicCore> {
 		}
 	}
 
-	public int getDelta() {
-		return this.delta_t;
+	/**
+	 * @return le temps écoulé entre deux cycles (en SECONDES)
+	 */
+	public double getDelta() {
+		return 1 / (double) framerate;
 	}
 
 	@Override

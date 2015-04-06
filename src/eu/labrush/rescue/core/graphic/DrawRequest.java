@@ -102,6 +102,10 @@ public class DrawRequest {
 		this.g.setColor(Color.BLACK);
 	}
 
+	public void line(double x1, double y1, double x2, double y2) {
+		this.g.drawLine((int)x1, this.height-(int)y1, (int)x2, this.height-(int)y2);
+	}
+
 	public int getHeight() {
 		return height;
 	}
@@ -117,5 +121,4 @@ public class DrawRequest {
 	public void setWidth(int width) {
 		this.width = width;
 	}
-
 }

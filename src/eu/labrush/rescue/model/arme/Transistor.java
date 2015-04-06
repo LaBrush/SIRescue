@@ -14,13 +14,13 @@ public class Transistor extends Tir {
 
 		this.dim = new Dimension(5, 5);
 
-		this.vitesse = .6 ;
+		this.vitesse = 200 ;
 		
 		this.getTrajectoire().setPosition(position);
 		this.getTrajectoire().getVitesse().setPolar(this.vitesse, angle);
 
 		this.behaviour = new TirPhysicBehaviour(this.getTrajectoire(), this.dim);
-		this.behaviour.setGravity(-.002);
+		this.behaviour.setGravity(-300);
 		
 		update(null, null);
 	}

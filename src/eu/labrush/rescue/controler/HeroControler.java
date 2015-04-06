@@ -135,7 +135,7 @@ public final class HeroControler extends AbstractControler {
 	}
 
 	public void setPersonnage(Personnage personnage) {
-		personnage.setVitesseNominale(new Vecteur(.3, .9));
+		personnage.setVitesseNominale(new Vecteur(300, 900));
 
 		personnageControler.removePersonnage(personnage);
 		keyboard.delObserver(listener);

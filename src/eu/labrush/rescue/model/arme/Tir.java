@@ -8,7 +8,7 @@ public abstract class Tir extends AbstractObject {
 
 	int damage = 0;
 	int angle;
-	double vitesse = .1;
+	double vitesse = 100;
 	
 	abstract public boolean cross(AbstractObject o);
 	private Personnage owner ;

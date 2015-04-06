@@ -1,11 +1,11 @@
 package eu.labrush.rescue.IA.path;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashSet;
 
-import eu.labrush.rescue.model.AbstractObject;
+import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.model.Bloc;
+import eu.labrush.rescue.model.Vecteur;
 
 /**
  * @author adrienbocquet
@@ -13,6 +13,10 @@ import eu.labrush.rescue.model.Bloc;
 @SuppressWarnings("unused")
 public class AStar {
 
+	private Vecteur speed ;
+	private double gravity ;
+	private int maxJump ;
+	
 	private Point[][] points;
 	private HashSet<Bloc> obstacles;
 
@@ -24,6 +28,12 @@ public class AStar {
 	private int maille;
 
 	public AStar(HashSet<Bloc> obstacles, int width, int height, int maille) {
+		this.speed = new Vecteur(.3, .9);
+		this.gravity = PhysicCore.GRAVITY;
+		
+		/*int maxJump = (int) (-.5* Math.pow(speed.getY(),2) / gravity);
+		System.out.println(maxJump);*/
+		
 		this.maille = maille;
 		this.obstacles = obstacles;
 
@@ -64,11 +74,11 @@ public class AStar {
 		ArrayList<Point> trajet = new ArrayList<Point>();
 		trajet.add(arrivee);
 		Point node = arrivee;
-		
+
 		int i = closed_list.size() - 2;
 
 		while (i >= 0) {
-			
+
 			current_col = closed_list.get(i);
 			Point best = null;
 			int lim = 1;
@@ -76,27 +86,20 @@ public class AStar {
 			while (best == null) {
 				for (Point p : current_col) {
 					// Si le point est voisin du noeud considéré
-					if (distance(p, node)<= lim) {
+					if (distance(p, node) <= lim) {
 						best = p;
 						break;
 					}
 				}
 				lim++;
 			}
-			
+
 			trajet.add(best);
-			node = best ;
+			node = best;
 			i--;
 		}
 
-		ArrayList<Point> tmp = new ArrayList<Point>();
-		for (ArrayList<Point> a : closed_list) {
-			tmp.addAll(a);
-		}
-
 		return trajet;
-		//return tmp ;
-
 	}
 
 	private ArrayList<Point> voisins(Point parent) {
@@ -119,6 +122,23 @@ public class AStar {
 			}
 		}
 		return false;
+	}
+
+	//Teste si un point est à moins d'une unité d'un bloc
+	private boolean closeTo(Bloc b, Point p){
+		int xb = (int)(b.getX()/maille), yb = (int)(b.getY()/maille);
+		int wb = (int)b.getWidth(), hb = (int)b.getHeight();
+		int xp = p.x, yp = p.y;
+		
+		return (inRange(xp, xb, xb+1) && inRange(yp, yb, yb+hb)) //a gauche
+			|| (inRange(xp, xb+wb, xb+wb+1) && inRange(yp, yb, yb+hb)) // a droite
+			|| (inRange(yp, yb, yb+1) && inRange(xp, xb, xb+wb)) // en bas 
+			|| (inRange(yp, yb+hb, yb+hb+1) && inRange(xp, xb, xb+wb)) // en haut
+		;
+	}
+
+	private boolean inRange(int val, int sub, int sup) {
+		return val <= sup && val >= sub;
 	}
 
 	private int distance(Point p1, Point p2) {
