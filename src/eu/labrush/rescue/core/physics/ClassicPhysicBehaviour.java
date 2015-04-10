@@ -1,6 +1,3 @@
-/**
- * 
- */
 package eu.labrush.rescue.core.physics;
 
 import java.awt.Dimension;
@@ -33,7 +30,6 @@ public class ClassicPhysicBehaviour extends AbstractPhysicBehaviour {
 
 	@Override
 	public void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, double delta_t) {
-		
 		if (this.moves.bottom > 0) { 
 			// Si on est en l'air, on rajoute la gravité
 			trajectoire.getAcceleration().setY(this.gravity);
@@ -49,7 +45,6 @@ public class ClassicPhysicBehaviour extends AbstractPhysicBehaviour {
 				this.calcMargin(obstacle, deplacement);
 			}
 		}
-
 		
 		// La distance parcourue pendant la durée delta_t est supérieure à la distance, on adapte la
 		// vitesse

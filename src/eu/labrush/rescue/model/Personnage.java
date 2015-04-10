@@ -11,11 +11,11 @@ import eu.labrush.rescue.model.arme.Arme;
 public class Personnage extends AbstractObject {
 
 	protected int life = 100, maxLife = 100;
-	ArrayList<Arme> armes = new ArrayList<Arme>();
+	private ArrayList<Arme> armes = new ArrayList<Arme>();
 
-	int currentArme = -1 ;
-	Vecteur vitesse_nominale = new Vecteur(5, 5);
-
+	private int currentArme = -1 ;
+	private Vecteur vitesse_nominale = new Vecteur(5, 5);
+	
 	public Personnage(double x, double y) {
 		super(x, y, 20, 20);
 	}
@@ -107,6 +107,7 @@ public class Personnage extends AbstractObject {
 	 */
 	public void setArmes(ArrayList<Arme> armes) {
 		this.armes = armes;
+		throwUpdate();
 	}
 
 	/**
@@ -124,6 +125,8 @@ public class Personnage extends AbstractObject {
 			addArme(arme);
 			setCurrentArme(arme);
 		}
+		
+		throwUpdate();
 	}
 
 	public void addArme(Arme arme) {
@@ -133,5 +136,8 @@ public class Personnage extends AbstractObject {
 		if(currentArme < 0){
 			setCurrentArme(arme);
 		}
+		
+		throwUpdate();
 	}
+
 }

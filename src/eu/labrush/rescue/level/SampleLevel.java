@@ -72,15 +72,34 @@ public class SampleLevel extends Level {
 		itemControler.add(new ArmeItem(220, 161, new Arme("Transistor", 34, 200)));
 
 		// TEST ASTAR
-		/*star = new AStar(getBlocControler().getBlocs(), graphics.getWidth(), graphics.getHeight(), 10);
-		trajet = star.findPath(new Point(1, 1), new Point(44, 30));
+		star = new AStar(10, getBlocControler().getBlocs());
+		try {
+			trajet = star.findPath(new Point(2, 2), new Point(30, 24));
+			
+			graphics.addObserver(new Listener<DrawRequest>() {
+				@Override
+				public void update(DrawRequest req) {
+					for (Point p : trajet) {
+						req.rect(p.x * 10, p.y * 10, 1, 1);
+					}
+				}
+			});
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		Personnage p = heroControler.getPersonnage();
 		
 		Thread thread = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				while(true){
-					trajet = star.findPath(new Point((int) ((p.getX()+p.getWidth()/2) / 10), (int) (p.getY() / 10)), new Point(35, 3));
+					try {
+						trajet = star.findPath(new Point((int) ((p.getX()+p.getWidth()/2) / 10), (int) ((p.getY()+ p.getHeight()/2)/10)), new Point(35, 24));
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
 					try {
 						Thread.sleep(100);
 					} catch (InterruptedException e) {
@@ -91,18 +110,6 @@ public class SampleLevel extends Level {
 		});
 		
 		thread.start();
-
-		graphics.addObserver(new Listener<DrawRequest>() {
-			@Override
-			public void update(DrawRequest req) {
-				for (Point p : trajet) {
-					int teinte = 250/(p.cineticReserve+1) ;
-					teinte = teinte < 0 ? 0 : teinte ;
-					Color c = new Color(teinte, 0, 0);
-					req.rect(p.x * 10, p.y * 10, 1, 1, c);
-				}
-			}
-		});*/
 	}
 
 	/**
