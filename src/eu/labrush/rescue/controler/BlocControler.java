@@ -19,11 +19,11 @@ public class BlocControler extends AbstractControler {
 
 	public BlocControler(Level level) {
 		super(level);
-		
+
 		this.graphics.addObserver(new Listener<DrawRequest>() {
 			@Override
 			public void update(DrawRequest req) {
-				for(BlocView v: views){
+				for (BlocView v : views) {
 					v.draw(req);
 				}
 			}
@@ -33,7 +33,8 @@ public class BlocControler extends AbstractControler {
 	/**
 	 * Ajoute un modèle de type bloc à l'objet et la vue qui lui est associée
 	 * 
-	 * @param bloc le bloc à ajouter
+	 * @param bloc
+	 *            le bloc à ajouter
 	 */
 	public void add(Bloc bloc) {
 		BlocView v = new BlocView(bloc);
@@ -41,7 +42,6 @@ public class BlocControler extends AbstractControler {
 		this.blocs.add(bloc);
 		this.views.add(v);
 	}
-
 
 	/**
 	 * @return the blocs

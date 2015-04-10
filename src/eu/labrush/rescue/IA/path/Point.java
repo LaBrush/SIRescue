@@ -3,6 +3,7 @@ package eu.labrush.rescue.IA.path;
 public class Point implements Cloneable {
 
 	public int x, y;
+	public int cineticReserve = 0 ;
 
 	public Point(int x, int y) {
 		super();
@@ -14,6 +15,11 @@ public class Point implements Cloneable {
 		this((int)x, (int)y);
 	}
 
+	public Point(int x, int y, int cineticReserve) {
+		this(x,y);
+		this.cineticReserve = cineticReserve ;
+	}
+
 	public Point[] getVoisins() {
 		Point[] voisins = new Point[8];
 		int c = 0 ;
@@ -23,10 +29,15 @@ public class Point implements Cloneable {
 
 				// si le point considéré est hors de la grille ou qu'il s'agit du point lui-même, on
 				// saute
-				if (i < 0 || j < 0 || (i == x && j == y))
+				if (i < 0 || j < 0 || (i == x && j == y) || this.cineticReserve == 0)
 					continue;
 				
-				voisins[c] = new Point(i, j);
+				voisins[c] = new Point(i, j, this.cineticReserve);
+				
+				if(j > this.y){
+					voisins[c].cineticReserve--  ;
+				}
+				
 				c++;
 			}
 		}

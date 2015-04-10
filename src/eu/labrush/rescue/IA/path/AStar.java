@@ -28,11 +28,11 @@ public class AStar {
 	private int maille;
 
 	public AStar(HashSet<Bloc> obstacles, int width, int height, int maille) {
-		this.speed = new Vecteur(.3, .9);
+		this.speed = new Vecteur(300, 900);
 		this.gravity = PhysicCore.GRAVITY;
-		
-		/*int maxJump = (int) (-.5* Math.pow(speed.getY(),2) / gravity);
-		System.out.println(maxJump);*/
+
+		//TODO: Pourquoi devoir diviser par 1/4 au lieu 1/2 ???
+		int maxJump = (int) (-.25* Math.pow(speed.getY(),2) / gravity / maille);
 		
 		this.maille = maille;
 		this.obstacles = obstacles;
@@ -42,12 +42,19 @@ public class AStar {
 		for (int i = 0; i <= width; i += maille) {
 			for (int j = 0; j <= height; j += maille) {
 				points[i][j] = new Point(i, j);
+				for(Bloc b: this.obstacles){
+					if(onBloc(b, points[i][j]) == true){
+						points[i][j].cineticReserve = maxJump ;
+					}
+				}
 			}
 		}
 	}
 
 	public ArrayList<Point> findPath(Point depart, Point arrivee) {
 
+		depart.cineticReserve = 5 ;
+		
 		this.depart = depart;
 		this.arrivee = arrivee;
 
@@ -59,6 +66,8 @@ public class AStar {
 
 		ArrayList<Point> next_col = new ArrayList<Point>();
 
+		boolean impossible = false ;
+		
 		do {
 			next_col = new ArrayList<Point>();
 			closed_list.add(next_col);
@@ -124,17 +133,13 @@ public class AStar {
 		return false;
 	}
 
-	//Teste si un point est à moins d'une unité d'un bloc
-	private boolean closeTo(Bloc b, Point p){
+	//Teste si un point est à moins d'une unité au dessus d'un bloc
+	private boolean onBloc(Bloc b, Point p){
 		int xb = (int)(b.getX()/maille), yb = (int)(b.getY()/maille);
 		int wb = (int)b.getWidth(), hb = (int)b.getHeight();
 		int xp = p.x, yp = p.y;
 		
-		return (inRange(xp, xb, xb+1) && inRange(yp, yb, yb+hb)) //a gauche
-			|| (inRange(xp, xb+wb, xb+wb+1) && inRange(yp, yb, yb+hb)) // a droite
-			|| (inRange(yp, yb, yb+1) && inRange(xp, xb, xb+wb)) // en bas 
-			|| (inRange(yp, yb+hb, yb+hb+1) && inRange(xp, xb, xb+wb)) // en haut
-		;
+		return (inRange(yp, yb+hb, yb+hb+1) && inRange(xp, xb, xb+wb)) ;
 	}
 
 	private boolean inRange(int val, int sub, int sup) {

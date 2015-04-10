@@ -20,20 +20,21 @@ import eu.labrush.rescue.view.PersonnageView;
  */
 public class PersonnageControler extends AbstractControler {
 
-	ConcurrentHashMap<Personnage, PersonnageView> personnages = new ConcurrentHashMap<Personnage, PersonnageView>(new HashMap<Personnage, PersonnageView>());
+	ConcurrentHashMap<Personnage, PersonnageView> personnages = new ConcurrentHashMap<Personnage, PersonnageView>(
+			new HashMap<Personnage, PersonnageView>());
 
 	BlocControler blocControler;
 
-	Observer deadObserver = new Observer(){
+	Observer deadObserver = new Observer() {
 
 		@Override
 		public void update(Observable o, Object arg) {
-			if("dead".equals(arg)){
+			if ("dead".equals(arg)) {
 				removePersonnage((Personnage) o);
 			}
 		}
 	};
-	
+
 	public PersonnageControler(Level level, BlocControler blocControler) {
 		super(level);
 
@@ -53,9 +54,9 @@ public class PersonnageControler extends AbstractControler {
 			public void update(PhysicCore req) {
 				for (Personnage p : personnages.keySet()) {
 					p.getPhysicBehaviour().updateTrajectoire(blocControler.getBlocs(), req.getDelta());
-					
-					for(Bloc b: blocControler.getBlocs()){
-						if(b.touch(p) && b.isHurting()){
+
+					for (Bloc b : blocControler.getBlocs()) {
+						if (b.touch(p) && b.isHurting()) {
 							p.prendreDegats(1000);
 						}
 					}
@@ -67,7 +68,7 @@ public class PersonnageControler extends AbstractControler {
 	public void add(Personnage personnage) {
 		PersonnageView v = new PersonnageView(personnage);
 		personnage.addObserver(this.deadObserver);
-		
+
 		this.personnages.put(personnage, v);
 	}
 
@@ -77,8 +78,8 @@ public class PersonnageControler extends AbstractControler {
 	public Set<Personnage> getPersonnages() {
 		return personnages.keySet();
 	}
-	
-	public void removePersonnage(Personnage p){
+
+	public void removePersonnage(Personnage p) {
 		personnages.remove(p);
 	}
 
