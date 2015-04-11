@@ -39,7 +39,7 @@ public class SampleLevel extends Level {
 		super(graphics, physics);
 
 		Personnage hero = new Personnage(15, 15);
-		hero.addArme(new Arme("Resistance", 10, 200));
+		hero.addArme(new Arme("Resistance", 10, 200, 400));
 
 		heroControler.setPersonnage(hero);
 
@@ -58,14 +58,14 @@ public class SampleLevel extends Level {
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
 
 		Bot aerien = new Bot(300, 300);
-		aerien.addArme(new Arme("Resistance", 10, 750));
+		aerien.addArme(new Arme("Resistance", 10, 750, -1));
 		botControler.add(aerien, new FlyBotBehaviour());
 
 		botControler.add(new Bot(260, 175), new BossBehaviour(blocControler.getBlocs()));
 		botControler.add(new Bot(260, 50), new ToucherBotBehaviour(blocs.get(1)));
 		botControler.add(new Bot(320, 215), new ToucherBotBehaviour(blocs.get(2)));
 
-		itemControler.add(new ArmeItem(220, 161, new Arme("Transistor", 34, 200)));
+		itemControler.add(new ArmeItem(220, 161, new Arme("Transistor", 34, 200, 20)));
 
 		// TEST ASTAR
 		/*star = new AStar(10, getBlocControler().getBlocs());

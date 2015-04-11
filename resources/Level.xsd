@@ -51,7 +51,12 @@
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="position" type="position"></xs:element>
-							<xs:element name="arme" type="xs:string"></xs:element>
+							<xs:element name="arme">
+								<xs:complexType>
+									<xs:attribute name="cartouches" type="xs:integer"></xs:attribute>
+									<xs:attribute name="type" type="xs:string" use="required"></xs:attribute>
+								</xs:complexType>
+							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -85,6 +90,7 @@
 									</xs:sequence>
 									<xs:attribute name="content" type="xs:string"></xs:attribute>
 									<xs:attribute name="type" type="xs:string"></xs:attribute>
+									<xs:attribute name="cartouches" type="xs:integer"></xs:attribute>
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>

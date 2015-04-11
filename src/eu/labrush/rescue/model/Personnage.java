@@ -89,24 +89,9 @@ public class Personnage extends AbstractObject {
 		throwUpdate();
 	}
 
-	/**
-	 * @return the armes
-	 */
-	public ArrayList<Arme> getArmes() {
-		return armes;
-	}
 
 	public void nextArme(){
 		currentArme = currentArme < armes.size() - 1 ? currentArme+1 : 0   ;
-		throwUpdate();
-	}
-	
-	/**
-	 * @param armes
-	 *            the armes to set
-	 */
-	public void setArmes(ArrayList<Arme> armes) {
-		this.armes = armes;
 		throwUpdate();
 	}
 
@@ -130,11 +115,26 @@ public class Personnage extends AbstractObject {
 	}
 
 	public void addArme(Arme arme) {
+		arme.addObserver(this);
+		
 		arme.setOwner(this);
 		armes.add(arme);
 		
 		if(currentArme < 0){
 			setCurrentArme(arme);
+		}
+		
+		throwUpdate();
+	}
+	
+	public void removeArme(Arme arme){
+		arme.deleteObserver(this);
+		this.armes.remove(arme);
+		
+		if(this.armes.size() == 0){
+			this.currentArme = -1 ;
+		} else {
+			this.currentArme = 0 ;
 		}
 		
 		throwUpdate();

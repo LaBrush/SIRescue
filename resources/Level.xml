@@ -14,7 +14,7 @@
 
 	<hero>
 		<position x="15" y="20" />
-		<arme>Resistance</arme>
+		<arme cartouches="300" type="Resistance"/>
 	</hero>
 
 	<blocs>
@@ -46,7 +46,7 @@
 	</blocs>
 
 	<items>
-		<item content="arme" type="Transistor">
+		<item content="arme" type="Transistor" cartouches="20">
 			<position x="50" y="12" />
 			<dimensions width="20" height="20" />
 		</item>

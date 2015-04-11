@@ -12,7 +12,7 @@ import eu.labrush.rescue.model.Personnage;
  */
 public class HeroInfoView extends AbstractView {
 
-	int maxLife, life;
+	int maxLife, life, cartouchesLeft ;
 	String label;
 
 	public HeroInfoView(Observable model) {
@@ -30,6 +30,8 @@ public class HeroInfoView extends AbstractView {
 		Personnage p = (Personnage) model;
 
 		life = p.getLife();
+		cartouchesLeft = p.getCurrentArme().getCartouchesLeft();
+		
 		String s = p.getCurrentArme().getTirClass();
 		label = s.substring(s.lastIndexOf(".") + 1);
 	}
@@ -50,7 +52,7 @@ public class HeroInfoView extends AbstractView {
 		v = v > 0 && v <= 255 ? v : 0;
 
 		req.fillRect(10, req.getHeight() - 10, width, 20, new Color(r, v, 0));
-		req.drawString("Arme: " + label, 11, req.getHeight() - 45);
+		req.drawString("Arme: " + label + " (" + cartouchesLeft + ")", 11, req.getHeight() - 45);
 	}
 
 }

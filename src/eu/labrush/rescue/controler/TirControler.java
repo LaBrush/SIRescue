@@ -9,6 +9,7 @@ import eu.labrush.rescue.level.Level;
 import eu.labrush.rescue.model.AbstractObject;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
+import eu.labrush.rescue.model.arme.Arme;
 import eu.labrush.rescue.model.arme.Tir;
 import eu.labrush.rescue.utils.Listener;
 import eu.labrush.rescue.view.TirView;
@@ -104,10 +105,15 @@ public class TirControler extends AbstractControler {
 
 		Tir tir = null;
 
-		if (personnage.getCurrentArme() != null)
-			tir = personnage.getCurrentArme().shoot(position, angle);
+		Arme currentArme = personnage.getCurrentArme() ;
+		if (currentArme != null)
+			tir = currentArme.shoot(position, angle);
 
 		if (tir != null) {
+			if(currentArme.getCartouchesLeft() == 0){
+				personnage.removeArme(currentArme);
+			}
+			
 			TirView v = new TirView(tir);
 			this.tirs.put(tir, v);
 		}

@@ -47,11 +47,11 @@ public class XMLHandler extends DefaultHandler {
 		switch (qName) {
 			case "bloc":
 				current = new Bloc();
-				
+
 				String attr = attrs.getValue("id");
 				id = (attr == null ? 0 : Integer.parseInt(attr));
-				
-				((Bloc) current).setHurting(Boolean.parseBoolean(attrs.getValue("hurting"))) ;
+
+				((Bloc) current).setHurting(Boolean.parseBoolean(attrs.getValue("hurting")));
 				break;
 			case "hero":
 				current = new Personnage(0, 0);
@@ -62,7 +62,9 @@ public class XMLHandler extends DefaultHandler {
 			case "item":
 				switch (attrs.getValue("content")) {
 					case "arme":
-						current = new ArmeItem(0, 0, armes.get(attrs.getValue("type")).clone());
+						Arme arme = armes.get(attrs.getValue("type")).clone();
+						arme.setCartouchesLeft(Integer.parseInt(attrs.getValue("cartouches")));
+						current = new ArmeItem(0, 0, arme);
 						break;
 				}
 				break;
@@ -87,6 +89,19 @@ public class XMLHandler extends DefaultHandler {
 		if (attrs.getValue("name") != null && attrs.getValue("damage") != null && attrs.getValue("reload") != null) {
 			Arme arme = new Arme(attrs.getValue("tir"), Integer.parseInt(attrs.getValue("damage")), Integer.parseInt(attrs.getValue("reload")));
 			armes.put(attrs.getValue("name"), arme);
+		}
+		else if (attrs.getValue("type") != null) {
+			Arme arme = armes.get(attrs.getValue("type"));
+			
+			if (arme != null) {
+				((Personnage) current).addArme(arme);
+				
+				String cartouches = attrs.getValue("cartouches");
+				// Current_data correspond alors au nombre de cartouches dans l'arme
+				if (cartouches != null) {
+					arme.setCartouchesLeft(Integer.parseInt(cartouches));
+				}
+			}
 		}
 	}
 
@@ -143,13 +158,6 @@ public class XMLHandler extends DefaultHandler {
 				break;
 
 			// Definition de leurs attributs
-			case "arme":
-				Arme arme = armes.get(current_data);
-				if (arme != null) {
-					((Personnage) current).addArme(arme);
-				}
-				break;
-
 			case "type":
 				((Bot) current).addArme(armes.get(botTypes.get(current_data)[0]).clone());
 
