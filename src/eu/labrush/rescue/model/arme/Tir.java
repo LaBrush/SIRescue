@@ -10,6 +10,8 @@ public abstract class Tir extends AbstractObject {
 	int angle;
 	double vitesse = 100;
 	
+	boolean activated = false ;
+	
 	abstract public boolean cross(AbstractObject o);
 	private Personnage owner ;
 	
@@ -19,7 +21,8 @@ public abstract class Tir extends AbstractObject {
 		this.angle = angle;
 		this.owner = owner ;
 	}
-
+	
+	abstract public void use();
 	/**
 	 * @return the damage
 	 */
@@ -54,5 +57,19 @@ public abstract class Tir extends AbstractObject {
 	 */
 	public Personnage getOwner() {
 		return owner;
+	}
+
+	/**
+	 * @return the activated
+	 */
+	public boolean isActivated() {
+		return activated;
+	}
+
+	/**
+	 * @param activated the activated to set
+	 */
+	public void setActivated(boolean activated) {
+		this.activated = activated;
 	}
 }

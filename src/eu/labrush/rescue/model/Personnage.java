@@ -13,9 +13,9 @@ public class Personnage extends AbstractObject {
 	protected int life = 100, maxLife = 100;
 	private ArrayList<Arme> armes = new ArrayList<Arme>();
 
-	private int currentArme = -1 ;
+	private int currentArme = -1;
 	private Vecteur vitesse_nominale = new Vecteur(5, 5);
-	
+
 	public Personnage(double x, double y) {
 		super(x, y, 20, 20);
 	}
@@ -23,8 +23,8 @@ public class Personnage extends AbstractObject {
 	/**
 	 * notifie les observeurs (les controlleurs) si le personnage est mort
 	 */
-	public void checkIfDead(){
-		if(this.life <= 0){
+	public void checkIfDead() {
+		if (this.life <= 0) {
 			setChanged();
 			this.notifyObservers("dead");
 		}
@@ -49,7 +49,7 @@ public class Personnage extends AbstractObject {
 	 * Retranche à la vie du personnage les dégats infligés
 	 * 
 	 * @param degats
-	 * 		Les degats infligés
+	 *            Les degats infligés
 	 */
 	public void prendreDegats(int degats) {
 		this.life -= degats;
@@ -89,9 +89,8 @@ public class Personnage extends AbstractObject {
 		throwUpdate();
 	}
 
-
-	public void nextArme(){
-		currentArme = currentArme < armes.size() - 1 ? currentArme+1 : 0   ;
+	public void nextArme() {
+		currentArme = currentArme < armes.size() - 1 ? currentArme + 1 : 0;
 		throwUpdate();
 	}
 
@@ -99,44 +98,57 @@ public class Personnage extends AbstractObject {
 	 * @return the currentArme
 	 */
 	public Arme getCurrentArme() {
-		if(currentArme < 0){return null;}
-		return this.armes.get(currentArme) ;
+		if (currentArme < 0) {
+			return null;
+		}
+		return this.armes.get(currentArme);
 	}
 
 	public void setCurrentArme(Arme arme) {
 		this.currentArme = this.armes.indexOf(arme);
-		
-		if(currentArme < 0){
+
+		if (currentArme < 0) {
 			addArme(arme);
 			setCurrentArme(arme);
 		}
-		
+
 		throwUpdate();
 	}
 
 	public void addArme(Arme arme) {
-		arme.addObserver(this);
-		
-		arme.setOwner(this);
-		armes.add(arme);
-		
-		if(currentArme < 0){
+
+		boolean owned = false;
+		for (Arme a : this.armes) {
+			if (a.getTirClass().equals(arme.getTirClass()) && a.getCartouchesLeft() > 0) {
+				a.addCartouches(arme.getCartouchesLeft());
+				owned = true;
+				break;
+			}
+		}
+		if (!owned) {
+			arme.addObserver(this);
+			arme.setOwner(this);
+			armes.add(arme);
+		}
+
+		if (currentArme < 0) {
 			setCurrentArme(arme);
 		}
-		
+
 		throwUpdate();
 	}
-	
-	public void removeArme(Arme arme){
+
+	public void removeArme(Arme arme) {
 		arme.deleteObserver(this);
 		this.armes.remove(arme);
-		
-		if(this.armes.size() == 0){
-			this.currentArme = -1 ;
-		} else {
-			this.currentArme = 0 ;
+
+		if (this.armes.size() == 0) {
+			this.currentArme = -1;
 		}
-		
+		else {
+			this.currentArme = 0;
+		}
+
 		throwUpdate();
 	}
 

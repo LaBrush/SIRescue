@@ -174,4 +174,8 @@ public class Arme extends AbstractModel implements Cloneable {
 	public void setOwner(Personnage owner) {
 		this.owner = owner;
 	}
+
+	public void addCartouches(int nb) {
+		this.cartouchesLeft += nb ;
+	}
 }

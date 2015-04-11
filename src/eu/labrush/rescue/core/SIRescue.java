@@ -2,12 +2,13 @@ package eu.labrush.rescue.core;
 
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
-import eu.labrush.rescue.level.Level;
-import eu.labrush.rescue.level.LevelLoader;
+import eu.labrush.rescue.level.SampleLevel;
 
 /**
+ * @author solineducousso
+ * @author nicolasballas
+ * @author daveanhnguyenkhac
  * @author adrienbocquet
- *
  */
 public class SIRescue {
 
@@ -16,12 +17,12 @@ public class SIRescue {
 		PhysicCore physics = new PhysicCore(GraphicCore.FRAMERATE * 2);
 		
 		
-		/*@SuppressWarnings("unused")
-		SampleLevel level = new SampleLevel(graphics, physics);*/
+		@SuppressWarnings("unused")
+		SampleLevel level = new SampleLevel(graphics, physics);
 		
-		Level level = new Level(graphics, physics);
+		/*Level level = new Level(graphics, physics);
 		LevelLoader loader = new LevelLoader();
-		loader.load(level, "level.xml");
+		loader.load(level, "level.xml");*/
 		
 		graphics.start();
 		physics.start();

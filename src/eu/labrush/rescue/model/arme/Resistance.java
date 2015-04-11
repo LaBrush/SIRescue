@@ -53,4 +53,10 @@ public class Resistance extends Tir {
 	private boolean pointIn(AbstractObject o, Vecteur p){
 		return o.getX() <= p.getX() && o.getX()+o.getWidth() >= p.getX() && o.getY() <= p.getY() && o.getY()+o.getHeight() >= p.getY() ;
 	}
+
+	@Override
+	public void use() {
+		setChanged();
+		notifyObservers("done");
+	}
 }

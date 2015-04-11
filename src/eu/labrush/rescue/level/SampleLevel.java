@@ -40,6 +40,7 @@ public class SampleLevel extends Level {
 
 		Personnage hero = new Personnage(15, 15);
 		hero.addArme(new Arme("Resistance", 10, 200, 400));
+		hero.addArme(new Arme("Transistor", 20, 300, 30));
 
 		heroControler.setPersonnage(hero);
 

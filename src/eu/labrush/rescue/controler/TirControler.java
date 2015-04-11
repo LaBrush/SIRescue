@@ -1,6 +1,8 @@
 package eu.labrush.rescue.controler;
 
 import java.util.HashSet;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.concurrent.ConcurrentHashMap;
 
 import eu.labrush.rescue.core.graphic.DrawRequest;
@@ -46,6 +48,14 @@ public class TirControler extends AbstractControler {
 		}
 	};
 
+	private Observer usedTirObserver = new Observer() {
+		@Override
+		public void update(Observable o, Object arg) {
+			if ("done".equals(arg))
+				deleteTir((Tir) o);
+		}
+	};
+
 	public TirControler(Level level, BlocControler blocControler, PersonnageControler personnageControler) {
 		super(level);
 		this.blocControler = blocControler;
@@ -73,19 +83,17 @@ public class TirControler extends AbstractControler {
 					tir.getPhysicBehaviour().updateTrajectoire(obstacles, req.getDelta());
 
 					// Puis on regarde s'ils entre en collision avec d'autres objets
-
 					for (AbstractObject o : obstacles) {
 						if (tir.cross(o)) {
-							if (o instanceof Personnage) {
-								if (tir.getOwner() != o) {
-									Personnage p = (Personnage) o;
-									p.prendreDegats(tir.getDamage());
-									deleteTir(tir);
-								}
+							if (o instanceof Personnage && tir.getOwner() != o) {
+								Personnage p = (Personnage) o;
+								p.prendreDegats(tir.getDamage());
 							}
-							else {
-								deleteTir(tir);
-							}
+							tir.use();
+						}
+						else if(tir.isActivated())
+						{
+							tir.use();
 						}
 					}
 
@@ -98,24 +106,26 @@ public class TirControler extends AbstractControler {
 	public void shoot(Personnage personnage, int angle) {
 		Vecteur position = new Vecteur();
 
-		double rad = Math.toRadians(angle) ;
-		
-		position.setX(30 * Math.cos(rad) + personnage.getX()+personnage.getWidth()/2);
-		position.setY(30 * Math.sin(rad) + personnage.getY() + personnage.getHeight()/2);
+		double rad = Math.toRadians(angle);
+
+		position.setX(30 * Math.cos(rad) + personnage.getX() + personnage.getWidth() / 2);
+		position.setY(30 * Math.sin(rad) + personnage.getY() + personnage.getHeight() / 2);
 
 		Tir tir = null;
 
-		Arme currentArme = personnage.getCurrentArme() ;
+		Arme currentArme = personnage.getCurrentArme();
 		if (currentArme != null)
 			tir = currentArme.shoot(position, angle);
 
 		if (tir != null) {
-			if(currentArme.getCartouchesLeft() == 0){
+			if (currentArme.getCartouchesLeft() == 0) {
 				personnage.removeArme(currentArme);
 			}
-			
+
 			TirView v = new TirView(tir);
 			this.tirs.put(tir, v);
+
+			tir.addObserver(usedTirObserver);
 		}
 	}
 
