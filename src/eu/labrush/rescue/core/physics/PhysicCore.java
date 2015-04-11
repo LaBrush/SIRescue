@@ -19,7 +19,7 @@ final public class PhysicCore implements Listenable<PhysicCore> {
 	int framerate;
 	int delta_t; // Le temps écoulé entre deux cycles (en ms)
 
-	public static double GRAVITY = -1500;
+	public static double GRAVITY = -3000;
 
 	private ArrayList<Listener<PhysicCore>> observers = new ArrayList<Listener<PhysicCore>>();
 	private boolean running = false;

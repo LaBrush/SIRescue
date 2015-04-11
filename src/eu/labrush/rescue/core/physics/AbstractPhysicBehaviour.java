@@ -25,8 +25,8 @@ public abstract class AbstractPhysicBehaviour {
 	protected Trajectoire trajectoire;
 	protected LibertyDegree moves;
 	protected Dimension dim;
-	
-	protected double gravity = 0 ;
+
+	protected double gravity = 0;
 
 	AbstractPhysicBehaviour() {
 	}
@@ -39,8 +39,10 @@ public abstract class AbstractPhysicBehaviour {
 	public abstract void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, double delta_t);
 
 	/**
-	 * @param bloc le bloc par rapport auquel on se situe
-	 * @param next_pos le prochaine posisition de l'objet
+	 * @param bloc
+	 *            le bloc par rapport auquel on se situe
+	 * @param next_pos
+	 *            le prochaine posisition de l'objet
 	 * 
 	 * Calcul les degrès de liberté du solide par rapport à un bloc donné
 	 */
@@ -124,7 +126,7 @@ public abstract class AbstractPhysicBehaviour {
 	}
 
 	public void setGravity(double g) {
-		this.gravity = g ;
+		this.gravity = g;
 	}
 
 }

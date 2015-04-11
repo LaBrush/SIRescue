@@ -1,6 +1,5 @@
 package eu.labrush.rescue.level;
 
-import java.awt.Color;
 import java.util.ArrayList;
 
 import eu.labrush.rescue.IA.behaviour.BossBehaviour;
@@ -9,7 +8,6 @@ import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
 import eu.labrush.rescue.IA.path.AStar;
 import eu.labrush.rescue.IA.path.Point;
 import eu.labrush.rescue.controler.BotControler;
-import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.model.ArmeItem;
@@ -17,7 +15,6 @@ import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Bot;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.arme.Arme;
-import eu.labrush.rescue.utils.Listener;
 
 /**
  *
@@ -43,7 +40,6 @@ public class SampleLevel extends Level {
 
 		Personnage hero = new Personnage(15, 15);
 		hero.addArme(new Arme("Resistance", 10, 200));
-		hero.addArme(new Arme("Transistor", 10, 200));
 
 		heroControler.setPersonnage(hero);
 
@@ -72,23 +68,8 @@ public class SampleLevel extends Level {
 		itemControler.add(new ArmeItem(220, 161, new Arme("Transistor", 34, 200)));
 
 		// TEST ASTAR
-		star = new AStar(10, getBlocControler().getBlocs());
-		try {
-			trajet = star.findPath(new Point(2, 2), new Point(30, 24));
-			
-			graphics.addObserver(new Listener<DrawRequest>() {
-				@Override
-				public void update(DrawRequest req) {
-					for (Point p : trajet) {
-						req.rect(p.x * 10, p.y * 10, 1, 1);
-					}
-				}
-			});
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
+		/*star = new AStar(10, getBlocControler().getBlocs());
+
 		Personnage p = heroControler.getPersonnage();
 		
 		Thread thread = new Thread(new Runnable() {
@@ -109,7 +90,7 @@ public class SampleLevel extends Level {
 			}
 		});
 		
-		thread.start();
+		thread.start();*/
 	}
 
 	/**
