@@ -8,6 +8,7 @@ import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
 import eu.labrush.rescue.IA.path.AStar;
 import eu.labrush.rescue.IA.path.Point;
 import eu.labrush.rescue.controler.BotControler;
+import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.model.ArmeItem;
@@ -15,6 +16,7 @@ import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Bot;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.arme.Arme;
+import eu.labrush.rescue.utils.Listener;
 
 /**
  *
@@ -91,7 +93,16 @@ public class SampleLevel extends Level {
 			}
 		});
 		
-		thread.start();*/
+		thread.start();
+		
+		graphics.addObserver(new Listener<DrawRequest>() {
+			@Override
+			public void update(DrawRequest req) {
+				for (Point p : trajet) {
+					req.rect(p.x * 10, p.y * 10, 1, 1);
+				}
+			}
+		});*/
 	}
 
 	/**
