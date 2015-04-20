@@ -14,7 +14,7 @@ public abstract class Tir extends AbstractObject {
 	boolean activated = false ;
 	
 	abstract public boolean cross(AbstractObject o);
-	private Personnage owner ;
+	protected Personnage owner ;
 	
 	public Tir(Vecteur position, int angle, int damage, int recul, Personnage owner){
 		super();

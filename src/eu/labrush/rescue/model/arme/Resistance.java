@@ -10,7 +10,7 @@ import eu.labrush.rescue.model.Vecteur;
 
 public class Resistance extends Tir {
 
-	// ces trois vecteurs représentent les points en haut, gauche et droite, et en bas gauche et
+	// ces quatre vecteurs représentent les points en haut, gauche et droite, et en bas gauche et
 	// droite du rectangle
 	public Vecteur hg, hd, bg, bd;
 
@@ -29,12 +29,12 @@ public class Resistance extends Tir {
 
 	//on met à jour coordonées des points à tout changment de position
 	public void update(Observable obs, Object obj) {
-		
+	
 		double angle = Math.toRadians(this.angle);
 		
 		bg = this.getTrajectoire().getPosition().clone();
 		bd = new Vecteur(this.getWidth() * Math.cos(angle), this.getWidth() * Math.sin(angle));
-		hg = new Vecteur(this.getHeight() * Math.cos(angle + Math.PI/2), this.getWidth() * Math.sin(angle + Math.PI/2));		
+		hg = new Vecteur(this.getHeight() * Math.cos(angle + Math.PI / 2), this.getHeight() * Math.sin(angle + Math.PI / 2));	
 		hd = new Vecteur().add(bd).add(hg);
 		
 		bd.add(bg);

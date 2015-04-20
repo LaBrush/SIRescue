@@ -63,7 +63,7 @@ public class Arme extends AbstractModel implements Cloneable {
 			// On récupère le constructeur avec les deux paramètres
 			Constructor<?> ct = cl.getConstructor(types);
 
-			// On instancie l'objet avec le constructeur surchargé !
+			// On instancie l'objet avec le constructeur surchargé
 			tir = (Tir) ct.newInstance(new Object[] { position, angle, damage, recul, owner });
 
 		} catch (SecurityException e) {

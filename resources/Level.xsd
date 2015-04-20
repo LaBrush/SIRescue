@@ -15,6 +15,7 @@
 											<xs:restriction base="xs:string">
 												<xs:enumeration value="Resistance" />
 												<xs:enumeration value="Transistor" />
+												<xs:enumeration value="Echarpe" />
 											</xs:restriction>
 										</xs:simpleType>
 									</xs:attribute>

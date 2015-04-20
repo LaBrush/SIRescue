@@ -83,6 +83,11 @@ public class Personnage extends AbstractObject {
 	 */
 	public void setLife(int life) {
 		this.life = life;
+		
+		if(life > maxLife){
+			maxLife = life;
+		}
+		
 		throwUpdate();
 	}
 

@@ -32,6 +32,8 @@ public class TirView extends AbstractView {
 		x = (int) (t.getTrajectoire().getPosition().getX());
 		y = (int) (t.getTrajectoire().getPosition().getY());
 
+		angle = (int) t.getAngle();
+
 	}
 
 	/*
@@ -41,7 +43,7 @@ public class TirView extends AbstractView {
 	 */
 	@Override
 	public void draw(DrawRequest req) {
-		req.rect(this.x, this.y, this.width, this.height, this.angle);
+		req.rect(x, y, width, height, angle);
 	}
 
 }
