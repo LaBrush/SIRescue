@@ -87,7 +87,7 @@ public class XMLHandler extends DefaultHandler {
 	private void addArme(Attributes attrs) {
 		// si on ajoute une arme (noeud armes)
 		if (attrs.getValue("name") != null && attrs.getValue("damage") != null && attrs.getValue("reload") != null) {
-			Arme arme = new Arme(attrs.getValue("tir"), Integer.parseInt(attrs.getValue("damage")), Integer.parseInt(attrs.getValue("reload")));
+			Arme arme = new Arme(attrs.getValue("tir"), Integer.parseInt(attrs.getValue("damage")), Integer.parseInt(attrs.getValue("reload")), Integer.parseInt(attrs.getValue("recul")));
 			armes.put(attrs.getValue("name"), arme);
 		}
 		else if (attrs.getValue("type") != null) {

@@ -11,6 +11,7 @@ import eu.labrush.rescue.model.Personnage;
  * @author ducousso
  *
  */
+@SuppressWarnings("unused")
 public class BossBehaviour implements BotBehaviour {
 
 	HashSet<Bloc> blocs ;

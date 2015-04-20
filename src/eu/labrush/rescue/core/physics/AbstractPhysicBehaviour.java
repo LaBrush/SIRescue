@@ -36,7 +36,7 @@ public abstract class AbstractPhysicBehaviour {
 		this.dim = dim;
 	}
 
-	public abstract void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, double delta_t);
+	public abstract void updateTrajectoire(double delta_t, HashSet<? extends AbstractObject> obstacles);
 
 	/**
 	 * @param bloc
@@ -113,10 +113,6 @@ public abstract class AbstractPhysicBehaviour {
 		return inf < value && value < sup;
 	}
 
-	/**
-	 * @param trajectoire
-	 *            the trajectoire to set
-	 */
 	public void setTrajectoire(Trajectoire trajectoire) {
 		this.trajectoire = trajectoire;
 	}
@@ -127,6 +123,10 @@ public abstract class AbstractPhysicBehaviour {
 
 	public void setGravity(double g) {
 		this.gravity = g;
+	}
+
+	public double getGravity() {
+		return gravity;
 	}
 
 }

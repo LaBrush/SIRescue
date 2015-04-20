@@ -13,8 +13,8 @@ public class Transistor extends Tir {
 	private int tempsExplosion = 500 ;
 	private long usedAt = 0 ;
 	
-	public Transistor(Vecteur position, int angle, int degat, Personnage owner) {	
-		super(position, angle, degat, owner);
+	public Transistor(Vecteur position, int angle, int degat, int recul, Personnage owner) {	
+		super(position, angle, degat, recul, owner);
 
 		this.dim = new Dimension(5, 5);
 

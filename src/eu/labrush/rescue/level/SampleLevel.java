@@ -8,7 +8,6 @@ import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
 import eu.labrush.rescue.IA.path.AStar;
 import eu.labrush.rescue.IA.path.Point;
 import eu.labrush.rescue.controler.BotControler;
-import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.model.ArmeItem;
@@ -16,7 +15,6 @@ import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Bot;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.arme.Arme;
-import eu.labrush.rescue.utils.Listener;
 
 /**
  *
@@ -41,8 +39,8 @@ public class SampleLevel extends Level {
 		super(graphics, physics);
 
 		Personnage hero = new Personnage(15, 15);
-		hero.addArme(new Arme("Resistance", 10, 200, 400));
-		hero.addArme(new Arme("Transistor", 20, 300, 30));
+		hero.addArme(new Arme("Resistance", 10, 200, 30, 400));
+		hero.addArme(new Arme("Transistor", 20, 300, 30, 30));
 
 		heroControler.setPersonnage(hero);
 
@@ -61,14 +59,14 @@ public class SampleLevel extends Level {
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
 
 		Bot aerien = new Bot(300, 300);
-		aerien.addArme(new Arme("Resistance", 10, 750, -1));
+		aerien.addArme(new Arme("Resistance", 10, 750, 30, -1));
 		botControler.add(aerien, new FlyBotBehaviour());
 
-		botControler.add(new Bot(260, 175), new BossBehaviour(blocControler.getBlocs()));
+		botControler.add(new Bot(260, 160), new BossBehaviour(blocControler.getBlocs()));
 		botControler.add(new Bot(260, 50), new ToucherBotBehaviour(blocs.get(1)));
 		botControler.add(new Bot(320, 215), new ToucherBotBehaviour(blocs.get(2)));
 
-		itemControler.add(new ArmeItem(220, 161, new Arme("Transistor", 34, 200, 20)));
+		itemControler.add(new ArmeItem(220, 161, new Arme("Transistor", 34, 200, 30, 20)));
 
 		// TEST ASTAR
 		/*star = new AStar(10, getBlocControler().getBlocs());

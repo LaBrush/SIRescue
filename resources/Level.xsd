@@ -19,6 +19,7 @@
 										</xs:simpleType>
 									</xs:attribute>
 									<xs:attribute name="damage" type="xs:integer" use="required"></xs:attribute>
+									<xs:attribute name="recul" type="xs:integer" use="required"></xs:attribute>
 									<xs:attribute name="reload" type="xs:integer" use="required"></xs:attribute>
 								</xs:complexType>
 							</xs:element>

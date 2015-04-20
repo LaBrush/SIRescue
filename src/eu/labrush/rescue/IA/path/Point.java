@@ -1,9 +1,10 @@
 package eu.labrush.rescue.IA.path;
 
+
 public class Point implements Cloneable {
 
 	public int x, y;
-
+	
 	public Point(int x, int y) {
 		super();
 		this.x = x;

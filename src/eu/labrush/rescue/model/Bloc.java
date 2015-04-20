@@ -40,4 +40,12 @@ public class Bloc extends AbstractObject {
 	public boolean touch(AbstractObject o){
 		return !(o.getX() + o.getWidth() < this.getX() || o.getY() + o.getHeight() < this.getY() || o.getX() > this.getX() + this.getWidth() || o.getY() > this.getY() + this.getHeight());
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Bloc [getWidth()=" + getWidth() + ", getHeight()=" + getHeight() + ", getX()=" + getX() + ", getY()=" + getY() + "]";
+	}
 }

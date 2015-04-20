@@ -14,8 +14,8 @@ public class Resistance extends Tir {
 	// droite du rectangle
 	public Vecteur hg, hd, bg, bd;
 
-	public Resistance(Vecteur position, int angle, int degat, Personnage owner) {	
-		super(position, angle, degat, owner);
+	public Resistance(Vecteur position, int angle, int degat, int recul, Personnage owner) {	
+		super(position, angle, degat, recul, owner);
 		
 		this.dim = new Dimension(5, 5);
 		

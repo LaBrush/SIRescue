@@ -7,7 +7,8 @@ import eu.labrush.rescue.model.Vecteur;
 public abstract class Tir extends AbstractObject {
 
 	int damage = 0;
-	int angle;
+	int angle ;
+	int recul = 0 ;
 	double vitesse = 100;
 	
 	boolean activated = false ;
@@ -15,10 +16,11 @@ public abstract class Tir extends AbstractObject {
 	abstract public boolean cross(AbstractObject o);
 	private Personnage owner ;
 	
-	public Tir(Vecteur position, int angle, int damage, Personnage owner){
+	public Tir(Vecteur position, int angle, int damage, int recul, Personnage owner){
 		super();
 		this.damage = damage;
 		this.angle = angle;
+		this.recul = recul ;
 		this.owner = owner ;
 	}
 	
@@ -71,5 +73,19 @@ public abstract class Tir extends AbstractObject {
 	 */
 	public void setActivated(boolean activated) {
 		this.activated = activated;
+	}
+
+	/**
+	 * @return the recul
+	 */
+	public int getRecul() {
+		return recul;
+	}
+
+	/**
+	 * @param recul the recul to set
+	 */
+	public void setRecul(int recul) {
+		this.recul = recul;
 	}
 }

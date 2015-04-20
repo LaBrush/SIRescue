@@ -29,7 +29,7 @@ public class ClassicPhysicBehaviour extends AbstractPhysicBehaviour {
 	}
 
 	@Override
-	public void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, double delta_t) {
+	public void updateTrajectoire(double delta_t, HashSet<? extends AbstractObject> obstacles) {
 		if (this.moves.bottom > 0) { 
 			// Si on est en l'air, on rajoute la gravité
 			trajectoire.getAcceleration().setY(this.gravity);

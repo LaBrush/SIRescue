@@ -11,6 +11,7 @@ public class Arme extends AbstractModel implements Cloneable {
 
 	private int cartouchesLeft;
 	private int damage;
+	private int recul = 0;
 
 	private int reloadTime; // temps de rechargement
 	private long lastShootTime = 0; // Date UNIX du dernier tir
@@ -30,20 +31,17 @@ public class Arme extends AbstractModel implements Cloneable {
 	 *            Le nombre de cartoucges restantes (un nombre négatif de cartouches revient à en
 	 *            avoir une infinité)
 	 */
-	public Arme(String tirClass, int damage, int reloadTime, int cartouchesLeft) {
+	public Arme(String tirClass, int damage, int reloadTime, int recul, int cartouchesLeft) {
 		super();
 		this.tirClass = "eu.labrush.rescue.model.arme." + tirClass;
 		this.damage = damage;
 		this.reloadTime = reloadTime;
+		this.recul = recul;
 		this.cartouchesLeft = cartouchesLeft;
 	}
 
-	public Arme(String tirClass, int damage, int reloadTime) {
-		super();
-		this.tirClass = "eu.labrush.rescue.model.arme." + tirClass;
-		this.damage = damage;
-		this.reloadTime = reloadTime;
-		this.cartouchesLeft = -1;
+	public Arme(String tirClass, int damage, int reloadTime, int recul) {
+		this(tirClass, damage, reloadTime, recul, -1);
 	}
 
 	public Tir shoot(Vecteur position, int angle) {
@@ -58,13 +56,13 @@ public class Arme extends AbstractModel implements Cloneable {
 			Class<?> cl = Class.forName(tirClass);
 
 			// On crée les paramètres du constructeur
-			Class<?>[] types = new Class[] { Vecteur.class, int.class, int.class, Personnage.class };
+			Class<?>[] types = new Class[] { Vecteur.class, int.class, int.class, int.class, Personnage.class };
 
 			// On récupère le constructeur avec les deux paramètres
 			Constructor<?> ct = cl.getConstructor(types);
 
 			// On instancie l'objet avec le constructeur surchargé !
-			tir = (Tir) ct.newInstance(new Object[] { position, angle, damage, owner });
+			tir = (Tir) ct.newInstance(new Object[] { position, angle, damage, recul, owner });
 
 		} catch (SecurityException e) {
 			e.printStackTrace();

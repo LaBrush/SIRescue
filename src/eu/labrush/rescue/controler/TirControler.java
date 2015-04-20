@@ -80,14 +80,20 @@ public class TirControler extends AbstractControler {
 
 				for (Tir tir : tirs.keySet()) {
 					// On met à jour la position des tirs
-					tir.getPhysicBehaviour().updateTrajectoire(obstacles, req.getDelta());
+					tir.getPhysicBehaviour().updateTrajectoire(req.getDelta(), obstacles);
 
 					// Puis on regarde s'ils entre en collision avec d'autres objets
 					for (AbstractObject o : obstacles) {
-						if (tir.cross(o)) {
-							if (o instanceof Personnage && tir.getOwner() != o) {
+						if (tir.cross(o) && tir.getOwner() != o) {
+							if (o instanceof Personnage) {
 								Personnage p = (Personnage) o;
-								p.prendreDegats(tir.getDamage());
+								
+								int recul = 100 ;
+								if(p.getX()+p.getWidth()/2 < tir.getX()+tir.getWidth()/2){
+									recul *= -1 ;
+								}
+								
+								p.prendreDegats(tir.getDamage(), recul);
 							}
 							tir.use();
 						}

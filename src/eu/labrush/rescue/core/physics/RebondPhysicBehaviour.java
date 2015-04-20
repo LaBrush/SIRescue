@@ -31,7 +31,7 @@ public class RebondPhysicBehaviour extends AbstractPhysicBehaviour {
 	 * int)
 	 */
 	@Override
-	public void updateTrajectoire(HashSet<? extends AbstractObject> obstacles, double delta_t) {
+	public void updateTrajectoire(double delta_t, HashSet<? extends AbstractObject> obstacles) {
 		
 		this.moves = new LibertyDegree();
 		Vecteur deplacement = trajectoire.distanceParcourue(delta_t);

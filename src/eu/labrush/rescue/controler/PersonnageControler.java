@@ -1,6 +1,7 @@
 package eu.labrush.rescue.controler;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
@@ -37,7 +38,6 @@ public class PersonnageControler extends AbstractControler {
 
 	public PersonnageControler(Level level, BlocControler blocControler) {
 		super(level);
-
 		this.blocControler = blocControler;
 
 		this.graphics.addObserver(new Listener<DrawRequest>() {
@@ -50,11 +50,13 @@ public class PersonnageControler extends AbstractControler {
 		});
 
 		this.physics.addObserver(new Listener<PhysicCore>() {
+			@SuppressWarnings("unchecked")
 			@Override
 			public void update(PhysicCore req) {
 				for (Personnage p : personnages.keySet()) {
-					p.getPhysicBehaviour().updateTrajectoire(blocControler.getBlocs(), req.getDelta());
 
+					p.getPhysicBehaviour().updateTrajectoire(req.getDelta(), blocControler.getBlocs());
+					
 					for (Bloc b : blocControler.getBlocs()) {
 						if (b.touch(p) && b.isHurting()) {
 							p.prendreDegats(1000);

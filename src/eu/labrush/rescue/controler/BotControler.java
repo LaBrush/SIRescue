@@ -20,7 +20,6 @@ import eu.labrush.rescue.utils.Listener;
 public class BotControler extends AbstractControler {
 
 	HashMap<Bot, BotBehaviour> bots = new HashMap<Bot, BotBehaviour>();
-	ToucherBotBehaviour generalBehaviour ;
 	
 	Personnage hero ;
 	PersonnageControler personnageControler ;

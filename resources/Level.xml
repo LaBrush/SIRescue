@@ -3,8 +3,8 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
 
 	<armes>
-		<arme name="Resistance" tir="Resistance" damage="20" reload="300" />
-		<arme name="Transistor" tir="Transistor" damage="40" reload="500" />
+		<arme name="Resistance" tir="Resistance" damage="20" recul="20" reload="300" />
+		<arme name="Transistor" tir="Transistor" damage="40" recul="50" reload="500" />
 	</armes>
 
 	<botTypes>

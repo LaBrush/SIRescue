@@ -3,6 +3,7 @@ package eu.labrush.rescue.model;
 import java.util.ArrayList;
 
 import eu.labrush.rescue.model.arme.Arme;
+import eu.labrush.rescue.utils.Tuple;
 
 /**
  * @author adrienbocquet
@@ -11,6 +12,7 @@ import eu.labrush.rescue.model.arme.Arme;
 public class Personnage extends AbstractObject {
 
 	protected int life = 100, maxLife = 100;
+	protected boolean isHurted = false;
 	private ArrayList<Arme> armes = new ArrayList<Arme>();
 
 	private int currentArme = -1;
@@ -50,11 +52,22 @@ public class Personnage extends AbstractObject {
 	 * 
 	 * @param degats
 	 *            Les degats infligés
+	 * 
+	 * @param recul
+	 *            La distance dont le personnage recul suite à l'impact
 	 */
-	public void prendreDegats(int degats) {
+	public void prendreDegats(int degats, int recul) {
 		this.life -= degats;
 		checkIfDead();
-		throwUpdate();
+
+		this.isHurted = true;
+		
+		setChanged();
+		notifyObservers(new Tuple<String, Integer>("hurted", recul));
+	}
+
+	public void prendreDegats(int degats) {
+		prendreDegats(degats, 0);
 	}
 
 	/**
@@ -150,6 +163,14 @@ public class Personnage extends AbstractObject {
 		}
 
 		throwUpdate();
+	}
+
+	public boolean isHurted() {
+		return isHurted;
+	}
+
+	public void setHurted(boolean isHurted) {
+		this.isHurted = isHurted;
 	}
 
 }
