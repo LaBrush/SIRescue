@@ -27,6 +27,8 @@ public class Arme extends AbstractModel implements Cloneable {
 	 *            Les dommages inflgés pour le tir
 	 * @param reloadTime
 	 *            L'intervalle entre deux tirs
+	 * @param recul
+	 * 			  La vitesse de recul qu'induit l'impact sur un personnage
 	 * @param cartouchesLeft
 	 *            Le nombre de cartoucges restantes (un nombre négatif de cartouches revient à en
 	 *            avoir une infinité)
