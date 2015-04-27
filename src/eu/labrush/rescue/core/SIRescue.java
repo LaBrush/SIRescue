@@ -20,9 +20,9 @@ public class SIRescue {
 		@SuppressWarnings("unused")
 		SampleLevel level = new SampleLevel(graphics, physics);
 		
-		/*Level level = new Level(graphics, physics);
-		LevelLoader loader = new LevelLoader();
-		loader.load(level, "level.xml");*/
+		/*LevelManager manager = new LevelManager(graphics, physics);
+		manager.load("game.xml");
+		manager.nextLevel();*/
 		
 		graphics.start();
 		physics.start();

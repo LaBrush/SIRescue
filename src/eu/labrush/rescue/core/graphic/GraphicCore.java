@@ -82,16 +82,25 @@ final public class GraphicCore extends JFrame {
 		}
 	}
 
+	
 	public void addObserver(Listener<DrawRequest> obs) {
 		this.getPan().addObserver(obs);
 	}
 
+	public void clearObservers(){
+		this.getPan().clearObservers();
+	}
+	
 	public Panel getPan() {
 		return pan;
 	}
 
 	public static KeyboardListener getKeyboard() {
 		return keyboard;
+	}
+
+	public void stop() {
+		this.running = false ;
 	}
 
 }

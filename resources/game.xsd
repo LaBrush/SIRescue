@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="game">
+		<xs:complexType>
+			<xs:sequence minOccurs="1" maxOccurs="1">
+				<xs:element name="armes">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="arme" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+									<xs:attribute name="tir" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="Resistance" />
+												<xs:enumeration value="Transistor" />
+												<xs:enumeration value="Echarpe" />
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="damage" type="xs:integer" use="required"></xs:attribute>
+									<xs:attribute name="recul" type="xs:integer" use="required"></xs:attribute>
+									<xs:attribute name="reload" type="xs:integer" use="required"></xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<xs:element name="botTypes">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="botType" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+									<xs:attribute name="arme" type="xs:string" use="required"></xs:attribute>
+									<xs:attribute name="comportement">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="FlyBotBehaviour" />
+												<xs:enumeration value="ToucherBotBehaviour" />
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<xs:element name="levels">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="level" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="src" type="xs:string" use="required"></xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

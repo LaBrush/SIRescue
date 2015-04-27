@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<game xs:noNamespaceSchemaLocation="game.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+
+	<armes>
+		<arme name="Resistance" tir="Resistance" damage="20" recul="20" reload="300" />
+		<arme name="Transistor" tir="Transistor" damage="40" recul="50" reload="500" />
+	</armes>
+
+	<botTypes>
+		<botType name="bino" arme="Resistance" comportement="ToucherBotBehaviour" />
+		<botType name="soso" arme="Resistance" comportement="FlyBotBehaviour" />
+	</botTypes>
+
+	<levels>
+		<level src="level1.xml" />
+	</levels>
+
+</game>

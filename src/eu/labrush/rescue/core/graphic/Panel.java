@@ -50,6 +50,10 @@ public class Panel extends JPanel implements Listenable<DrawRequest> {
 		this.observers.remove(obs);
 
 	}
+	
+	public void clearObservers(){
+		this.observers.clear();
+	}
 
 	@Override
 	public void notifyObservers() {

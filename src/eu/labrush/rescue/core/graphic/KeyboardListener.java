@@ -42,6 +42,7 @@ public class KeyboardListener extends JPanel implements Listenable<KeyEvent>,
 		this.observers.remove(obs);
 	}
 
+
 	@Override
 	public void notifyObservers() {
 		for (Listener<KeyEvent> obs : this.observers) {

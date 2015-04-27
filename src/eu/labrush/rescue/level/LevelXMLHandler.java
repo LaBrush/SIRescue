@@ -21,24 +21,30 @@ import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
 import eu.labrush.rescue.model.arme.Arme;
 
-public class XMLHandler extends DefaultHandler {
+/**
+ * @author adrienbocquet
+ *
+ */
+public class LevelXMLHandler extends DefaultHandler {
 
+	Level level;
+	
 	private AbstractObject current;
 	private int id;
 
 	private HashMap<Integer, Bloc> blocs = new HashMap<Integer, Bloc>();
-	private HashMap<String, Arme> armes = new HashMap<String, Arme>();
-	private HashMap<String, String[]> botTypes = new HashMap<String, String[]>();
+	private HashMap<String, Arme> armes;
+	private HashMap<String, String[]> botTypes;
 
 	private String current_data;
 	private BotBehaviour behaviour;
 
-	Level level;
-
-	XMLHandler(Level level) {
+	public LevelXMLHandler(Level level, HashMap<String, Arme> armes, HashMap<String, String[]> botTypes) {
 		this.level = level;
+		this.armes = armes ;
+		this.botTypes = botTypes ;
 	}
-
+	
 	/**
 	 * Redéfinition de la méthode pour intercepter les événements
 	 */
@@ -209,4 +215,5 @@ public class XMLHandler extends DefaultHandler {
 
 	public void warning(SAXParseException e) throws SAXException {
 	}
+
 }

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package eu.labrush.rescue.core.physics;
 
 import java.util.ArrayList;
@@ -18,6 +15,7 @@ final public class PhysicCore implements Listenable<PhysicCore> {
 
 	int framerate;
 	int delta_t; // Le temps écoulé entre deux cycles (en ms)
+	double delta_t_ms; // Le temps écoulé entre deux cycles (en s)
 
 	public static double GRAVITY = -3000;
 
@@ -31,6 +29,7 @@ final public class PhysicCore implements Listenable<PhysicCore> {
 
 		this.framerate = framerate;
 		this.delta_t = 1000 / framerate;
+		this.delta_t_ms = 1 / (double)framerate;
 	}
 
 	public void start() {
@@ -38,6 +37,10 @@ final public class PhysicCore implements Listenable<PhysicCore> {
 			new Thread(new Play()).start();
 			running = true;
 		}
+	}
+	
+	public void stop() {
+		this.running = false ;
 	}
 
 	class Play implements Runnable {
@@ -59,7 +62,7 @@ final public class PhysicCore implements Listenable<PhysicCore> {
 	 * @return le temps écoulé entre deux cycles (en SECONDES)
 	 */
 	public double getDelta() {
-		return 1 / (double) framerate;
+		return delta_t_ms;
 	}
 
 	@Override
@@ -72,6 +75,10 @@ final public class PhysicCore implements Listenable<PhysicCore> {
 		this.observers.remove(obs);
 	}
 
+	public void clearObservers(){
+		this.observers.clear();
+	}
+	
 	@Override
 	public void notifyObservers() {
 		for (Listener<PhysicCore> obs : this.observers) {
