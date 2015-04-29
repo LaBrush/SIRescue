@@ -17,7 +17,8 @@ final public class GraphicCore extends JFrame {
 	private static KeyboardListener keyboard = new KeyboardListener();
 
 	private boolean running = false;
-
+	private Thread t = new Thread();
+	
 	private GraphicCore() {
 		this.setTitle("Segui Rescue");
 		this.setSize(600, 400);
@@ -32,9 +33,9 @@ final public class GraphicCore extends JFrame {
 		setFocusable(false);
 		pan.add(keyboard);
 		keyboard.requestFocus();
-		keyboard.setFocusTraversalKeysEnabled(false); //touche tabulation
+		keyboard.setFocusTraversalKeysEnabled(false); // touche tabulation
 	}
-	
+
 	/**
 	 * Holder
 	 * 
@@ -48,7 +49,8 @@ final public class GraphicCore extends JFrame {
 		private final static GraphicCore instance = new GraphicCore();
 	}
 
-	/** Point d'accès pour l'instance unique du singleton 
+	/**
+	 * Point d'accès pour l'instance unique du singleton
 	 * 
 	 * @return The graphic core instance
 	 * */
@@ -58,39 +60,35 @@ final public class GraphicCore extends JFrame {
 
 	public void start() {
 		if (!running) {
-			new Thread(new Play()).start();
+			t = new Thread(new Play());
+			t.start();
 			running = true;
 		}
 	}
 
 	class Play implements Runnable {
 		public void run() {
-			go();
-		}
-	}
+			while (running) {
+				// On redessine notre Panneau
+				pan.repaint();
 
-	private void go() {
-		while (running) {
-			// On redessine notre Panneau
-			pan.repaint();
-
-			try {
-				Thread.sleep(1000 / FRAMERATE);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+				try {
+					Thread.sleep(1000 / FRAMERATE);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
 
-	
 	public void addObserver(Listener<DrawRequest> obs) {
 		this.getPan().addObserver(obs);
 	}
 
-	public void clearObservers(){
+	public synchronized void clearObservers() {
 		this.getPan().clearObservers();
 	}
-	
+
 	public Panel getPan() {
 		return pan;
 	}
@@ -100,7 +98,7 @@ final public class GraphicCore extends JFrame {
 	}
 
 	public void stop() {
-		this.running = false ;
+		this.running = false;
 	}
 
 }

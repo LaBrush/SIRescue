@@ -1,5 +1,6 @@
 package eu.labrush.rescue.level;
 
+import eu.labrush.rescue.controler.AchievementControler;
 import eu.labrush.rescue.controler.BlocControler;
 import eu.labrush.rescue.controler.BotControler;
 import eu.labrush.rescue.controler.HeroControler;
@@ -30,10 +31,13 @@ public class Level {
 	TirControler tirControler;
 	BotControler botControler;
 	ItemControler itemControler;
+	AchievementControler achievementControler;
 
 	/**
-	 * @param graphics le coeur graphique
-	 * @param physics le coeur physique
+	 * @param graphics
+	 *            le coeur graphique
+	 * @param physics
+	 *            le coeur physique
 	 */
 	public Level(GraphicCore graphics, PhysicCore physics) {
 		super();
@@ -46,8 +50,10 @@ public class Level {
 		tirControler = new TirControler(this, blocControler, personnageControler);
 		heroControler = new HeroControler(this, tirControler, personnageControler);
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
-		
+
 		itemControler = new ItemControler(this, heroControler);
+
+		achievementControler = new AchievementControler(this, heroControler, blocControler);
 	}
 
 	/**
@@ -64,8 +70,11 @@ public class Level {
 		return physics;
 	}
 
-	public BlocControler getBlocControler() {
-		return this.blocControler;
+	/**
+	 * @return the achievementControler
+	 */
+	public AchievementControler getAchievementControler() {
+		return achievementControler;
 	}
 
 }

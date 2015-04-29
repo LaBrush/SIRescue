@@ -15,7 +15,8 @@ import eu.labrush.rescue.model.Bloc;
  */
 public class BlocView extends AbstractView {
 
-	boolean hurting ;
+	private boolean hurting ;
+	private boolean ender ;
 	
 	public BlocView(Observable model) {
 		super(model);
@@ -35,6 +36,7 @@ public class BlocView extends AbstractView {
 		this.width = (int) b.getWidth();
 		this.height = (int) b.getHeight();
 		this.hurting = b.isHurting();
+		this.ender = b.isEnder();
 	}
 
 	/*
@@ -44,7 +46,17 @@ public class BlocView extends AbstractView {
 	 */
 	@Override
 	public void draw(DrawRequest req) {
-		req.rect(this.x, this.y, this.width, this.height, hurting ? Color.RED : Color.BLUE);
+		Color c ;
+		
+		if(hurting){
+			c = Color.RED ;
+		} else if (ender){
+			c = Color.YELLOW ;
+		} else {
+			c = Color.BLUE ;
+		}
+		
+		req.rect(this.x, this.y, this.width, this.height, c);
 	}
 
 }

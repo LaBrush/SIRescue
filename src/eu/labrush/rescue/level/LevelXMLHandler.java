@@ -58,6 +58,7 @@ public class LevelXMLHandler extends DefaultHandler {
 				id = (attr == null ? 0 : Integer.parseInt(attr));
 
 				((Bloc) current).setHurting(Boolean.parseBoolean(attrs.getValue("hurting")));
+				((Bloc) current).setEnder(Boolean.parseBoolean(attrs.getValue("ender")));
 				break;
 			case "hero":
 				current = new Personnage(0, 0);
@@ -100,7 +101,7 @@ public class LevelXMLHandler extends DefaultHandler {
 			Arme arme = armes.get(attrs.getValue("type"));
 			
 			if (arme != null) {
-				((Personnage) current).addArme(arme);
+				((Personnage) current).addArme(arme.clone());
 				
 				String cartouches = attrs.getValue("cartouches");
 				// Current_data correspond alors au nombre de cartouches dans l'arme

@@ -33,7 +33,6 @@ public class TirView extends AbstractView {
 		y = (int) (t.getTrajectoire().getPosition().getY());
 
 		angle = (int) t.getAngle();
-
 	}
 
 	/*

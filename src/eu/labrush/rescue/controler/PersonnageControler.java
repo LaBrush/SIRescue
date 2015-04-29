@@ -1,7 +1,6 @@
 package eu.labrush.rescue.controler;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
@@ -50,7 +49,6 @@ public class PersonnageControler extends AbstractControler {
 		});
 
 		this.physics.addObserver(new Listener<PhysicCore>() {
-			@SuppressWarnings("unchecked")
 			@Override
 			public void update(PhysicCore req) {
 				for (Personnage p : personnages.keySet()) {

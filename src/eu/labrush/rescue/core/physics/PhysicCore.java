@@ -1,6 +1,6 @@
 package eu.labrush.rescue.core.physics;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 import eu.labrush.rescue.utils.Listenable;
 import eu.labrush.rescue.utils.Listener;
@@ -19,7 +19,7 @@ final public class PhysicCore implements Listenable<PhysicCore> {
 
 	public static double GRAVITY = -3000;
 
-	private ArrayList<Listener<PhysicCore>> observers = new ArrayList<Listener<PhysicCore>>();
+	private Vector<Listener<PhysicCore>> observers = new Vector<Listener<PhysicCore>>();
 	private boolean running = false;
 
 	public PhysicCore(int framerate) throws IllegalArgumentException {
@@ -29,7 +29,7 @@ final public class PhysicCore implements Listenable<PhysicCore> {
 
 		this.framerate = framerate;
 		this.delta_t = 1000 / framerate;
-		this.delta_t_ms = 1 / (double)framerate;
+		this.delta_t_ms = 1 / (double) framerate;
 	}
 
 	public void start() {
@@ -38,9 +38,9 @@ final public class PhysicCore implements Listenable<PhysicCore> {
 			running = true;
 		}
 	}
-	
+
 	public void stop() {
-		this.running = false ;
+		this.running = false;
 	}
 
 	class Play implements Runnable {
@@ -66,21 +66,21 @@ final public class PhysicCore implements Listenable<PhysicCore> {
 	}
 
 	@Override
-	public void addObserver(Listener<PhysicCore> obs) {
+	public synchronized void addObserver(Listener<PhysicCore> obs) {
 		this.observers.add(obs);
 	}
 
 	@Override
-	public void delObserver(Listener<PhysicCore> obs) {
+	public synchronized void delObserver(Listener<PhysicCore> obs) {
 		this.observers.remove(obs);
 	}
 
-	public void clearObservers(){
-		this.observers.clear();
+	public synchronized void clearObservers() {
+			this.observers.clear();
 	}
-	
+
 	@Override
-	public void notifyObservers() {
+	public synchronized void notifyObservers() {
 		for (Listener<PhysicCore> obs : this.observers) {
 			obs.update(this);
 		}

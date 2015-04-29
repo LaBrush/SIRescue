@@ -23,37 +23,37 @@
 			<position x="-11" y="0" />
 			<dimensions width="10" height="400" />
 		</bloc>
-		<bloc id="1">
+
+		<bloc>
 			<position x="50" y="100" />
-			<dimensions width="250" height="30" />
+			<dimensions width="40" height="10" />
+		</bloc>
+		<bloc>
+			<position x="150" y="200" />
+			<dimensions width="40" height="10" />
+		</bloc>
+		<bloc>
+			<position x="250" y="300" />
+			<dimensions width="40" height="10" />
 		</bloc>
 
-		<bloc hurting="true">
-			<position x="300" y="100" />
-			<dimensions width="40" height="30" />
-		</bloc>
-		
 		<bloc ender="true">
 			<position x="500" y="0" />
 			<dimensions width="40" height="10" />
 		</bloc>
+
 	</blocs>
 
-	<items>
-		<item content="arme" type="Transistor" cartouches="20">
-			<position x="50" y="12" />
-			<dimensions width="20" height="20" />
-		</item>
-	</items>
+	<items></items>
 
 	<bots>
-		<bot>
-			<position x="170" y="125" />
-			<type>bino</type>
-			<bloc_id>1</bloc_id>
-		</bot>
+
 		<bot>
 			<position x="150" y="220" />
+			<type>soso</type>
+		</bot>
+		<bot>
+			<position x="100" y="180" />
 			<type>soso</type>
 		</bot>
 	</bots>

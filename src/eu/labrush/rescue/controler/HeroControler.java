@@ -27,7 +27,6 @@ public final class HeroControler extends AbstractControler {
 	private boolean shooting = false;
 
 	private Personnage model;
-	boolean moving;
 
 	private double vx, vy;
 
@@ -95,7 +94,6 @@ public final class HeroControler extends AbstractControler {
 				}
 			}
 
-			moving = !(t.getVitesse().norme() == 0 && t.getAcceleration().norme() == 0);
 		}
 
 	};
@@ -146,12 +144,13 @@ public final class HeroControler extends AbstractControler {
 
 		if (this.model != null) {
 			keyboard.addObserver(listener);
+
+			this.vx = model.getVitesseNominale().getX();
+			this.vy = model.getVitesseNominale().getY();
+
+			personnageControler.add(model);
 		}
 
-		this.vx = model.getVitesseNominale().getX();
-		this.vy = model.getVitesseNominale().getY();
-
-		personnageControler.add(model);
 		throwUpdate();
 	}
 

@@ -5,9 +5,12 @@ package eu.labrush.rescue.core.graphic;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -85,7 +88,6 @@ public class DrawRequest {
 		image(img, x, y, 0);
 	}
 
-
 	public void fillRect(int x, int y, int width, int height, Color c) {
 		this.g.setColor(c);
 		this.g.fillRect(x, this.getHeight() - y, width, height);
@@ -95,15 +97,28 @@ public class DrawRequest {
 	public void drawString(String s, int x, int y) {
 		this.g.drawString(s, x, this.height - y);
 	}
-	
+
 	public void drawString(String s, int x, int y, Color c) {
+		drawString(s, x, y, c, 10, false);
+	}
+
+	public void drawString(String s, int x, int y, Color c, int fontSize, boolean centered) {
+		
+		this.g.setFont(new Font("Arial", Font.PLAIN, fontSize));
+		
+		if (centered) {
+			FontMetrics fm = this.g.getFontMetrics();
+			Rectangle2D r = fm.getStringBounds(s, this.g);
+			x = (this.getWidth() - (int) r.getWidth()) / 2;
+		}
+
 		this.g.setColor(c);
 		this.g.drawString(s, x, this.height - y);
 		this.g.setColor(Color.BLACK);
 	}
 
 	public void line(double x1, double y1, double x2, double y2) {
-		this.g.drawLine((int)x1, this.height-(int)y1, (int)x2, this.height-(int)y2);
+		this.g.drawLine((int) x1, this.height - (int) y1, (int) x2, this.height - (int) y2);
 	}
 
 	public int getHeight() {
