@@ -86,8 +86,6 @@ public class LevelXMLHandler extends DefaultHandler {
 			case "arme":
 				addArme(attrs);
 				break;
-			case "botType":
-				addBot(attrs);
 		}
 	}
 
@@ -110,15 +108,6 @@ public class LevelXMLHandler extends DefaultHandler {
 				}
 			}
 		}
-	}
-
-	private void addBot(Attributes attrs) {
-		String[] attributes = new String[2];
-
-		attributes[0] = attrs.getValue("arme");
-		attributes[1] = attrs.getValue("comportement");
-
-		botTypes.put(attrs.getValue("name"), attributes);
 	}
 
 	private void setDimension(Attributes attrs) {
@@ -167,6 +156,7 @@ public class LevelXMLHandler extends DefaultHandler {
 			// Definition de leurs attributs
 			case "type":
 				((Bot) current).addArme(armes.get(botTypes.get(current_data)[0]).clone());
+				((Bot) current).setLife(Integer.parseInt(botTypes.get(current_data)[2]));
 
 				try {
 					behaviour = (BotBehaviour) Class.forName("eu.labrush.rescue.IA.behaviour." + (botTypes.get(current_data)[1])).newInstance();
@@ -182,7 +172,12 @@ public class LevelXMLHandler extends DefaultHandler {
 					throw new SAXException("Try to instanciate a non existant bot behaviour");
 				}
 				break;
-
+				
+			case "life":
+				((Personnage)current).setMaxLife(Integer.parseInt(current_data));
+				((Personnage)current).setLife(Integer.parseInt(current_data));
+				break;
+				
 			case "bloc_id":
 				Bloc bloc = blocs.get(Integer.parseInt(current_data));
 				if (bloc == null) {

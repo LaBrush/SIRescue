@@ -48,10 +48,11 @@ public class MainXMLHandler extends DefaultHandler {
 	}
 
 	private void addBot(Attributes attrs) {
-		String[] attributes = new String[2];
+		String[] attributes = new String[3];
 
 		attributes[0] = attrs.getValue("arme");
 		attributes[1] = attrs.getValue("comportement");
+		attributes[2] = attrs.getValue("life");
 
 		botTypes.put(attrs.getValue("name"), attributes);
 	}

@@ -8,6 +8,7 @@
 				<xs:element name="hero">
 					<xs:complexType>
 						<xs:sequence>
+							<xs:element name="life" type="xs:string"></xs:element>
 							<xs:element name="position" type="position"></xs:element>
 							<xs:element name="arme">
 								<xs:complexType>

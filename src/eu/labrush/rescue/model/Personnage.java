@@ -11,7 +11,7 @@ import eu.labrush.rescue.utils.Tuple;
  */
 public class Personnage extends AbstractObject {
 
-	protected int life = 100, maxLife = 100;
+	protected int life = 1, maxLife = 1;
 	protected boolean isHurted = false;
 	private ArrayList<Arme> armes = new ArrayList<Arme>();
 

@@ -60,8 +60,8 @@ public class PersonnageView extends AbstractView {
 			int r = 255 * (maxLife - life) / maxLife ;
 			int v = 255 * life / maxLife;
 			
-			r = r >= 0 || r <= 255 ? r : 0 ;
-			v = v >= 0 || v <= 255 ? v : 0 ;
+			r = r >= 0 && r <= 255 ? r : 0 ;
+			v = v >= 0 && v <= 255 ? v : 0 ;
 			
 			req.fillRect(this.x, this.y + this.height + 5, width, 2, new Color(r, v, 0));
 		}

@@ -8,8 +8,8 @@
 	</armes>
 
 	<botTypes>
-		<botType name="bino" arme="Resistance" comportement="ToucherBotBehaviour" />
-		<botType name="soso" arme="Resistance" comportement="FlyBotBehaviour" />
+		<botType name="bino" arme="Resistance" comportement="ToucherBotBehaviour" life="1000"/>
+		<botType name="soso" arme="Resistance" comportement="FlyBotBehaviour" life="50"/>
 	</botTypes>
 
 	<levels>

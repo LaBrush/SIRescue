@@ -35,6 +35,7 @@
 								<xs:complexType>
 									<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
 									<xs:attribute name="arme" type="xs:string" use="required"></xs:attribute>
+									<xs:attribute name="life" type="xs:integer" use="required"></xs:attribute>
 									<xs:attribute name="comportement">
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
