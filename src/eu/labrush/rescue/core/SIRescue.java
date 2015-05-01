@@ -24,6 +24,6 @@ public class SIRescue {
 
 		LevelManager manager = new LevelManager(graphics, physics);
 		manager.load("game.xml");
-		manager.nextLevel();
+		manager.loadLevel();
 	}
 }

@@ -61,14 +61,19 @@ public class LevelManager {
 		}
 	}
 
-	public synchronized void nextLevel() {		
+	public synchronized void loadLevel() {
+		currentLevel = null ;
+		
 		graphics.stop();
 		physics.stop();
 
 		graphics.clearObservers();
 		physics.clearObservers();
+		
 		GraphicCore.getKeyboard().clearObservers();
 
+		System.out.println(levels);
+		
 		if (levels.size() == 0) {
 
 			graphics.addObserver(new Listener<DrawRequest>() {
@@ -95,16 +100,19 @@ public class LevelManager {
 					@Override
 					public void update(Observable o, Object arg) {
 						if ("done".equals(arg)) {
+							levels.remove(0);
+						}
+
+						if ("done".equals(arg) || "restart".equals(arg)) {
 							o.deleteObserver(this);
-							nextLevel();
+							loadLevel();
 						}
 					}
 				});
 
-				levels.remove(0);
 				graphics.start();
 				physics.start();
-
+				
 			} catch (ParserConfigurationException e) {
 				e.printStackTrace();
 			} catch (SAXException e) {

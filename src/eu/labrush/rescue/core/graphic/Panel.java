@@ -40,23 +40,23 @@ public class Panel extends JPanel implements Listenable<DrawRequest> {
 	}
 	
 	@Override
-	public void addObserver(Listener<DrawRequest> obs) {
+	public synchronized void addObserver(Listener<DrawRequest> obs) {
 		this.observers.add(obs);
 
 	}
 
 	@Override
-	public void delObserver(Listener<DrawRequest> obs) {
+	public synchronized void delObserver(Listener<DrawRequest> obs) {
 		this.observers.remove(obs);
 
 	}
 	
-	public void clearObservers(){
+	public synchronized void clearObservers(){
 		this.observers.clear();
 	}
 
 	@Override
-	public void notifyObservers() {
+	public synchronized void notifyObservers() {		
 		for (Listener<DrawRequest> obs : this.observers) {
 			obs.update(new DrawRequest(this.g, this.getWidth(), this.getHeight()));
 		}

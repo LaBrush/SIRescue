@@ -124,31 +124,32 @@ public final class HeroControler extends AbstractControler {
 		this.tirControler = tirContoler;
 		this.personnageControler = personnageControler;
 
-		this.graphics.addObserver(new Listener<DrawRequest>() {
-			@Override
-			public void update(DrawRequest req) {
-				heroView.draw(req);
-			}
-		});
 	}
 
 	public void setPersonnage(Personnage personnage) {
-		personnage.setVitesseNominale(new Vecteur(300, 900));
+		if (personnage != null) {
+			personnage.setVitesseNominale(new Vecteur(300, 900));
 
-		personnageControler.removePersonnage(personnage);
-		keyboard.delObserver(listener);
+			personnageControler.removePersonnage(personnage);
+			keyboard.delObserver(listener);
 
-		this.model = personnage;
+			this.model = personnage;
 
-		heroView = new HeroInfoView(personnage);
-
-		if (this.model != null) {
 			keyboard.addObserver(listener);
 
 			this.vx = model.getVitesseNominale().getX();
 			this.vy = model.getVitesseNominale().getY();
 
 			personnageControler.add(model);
+			heroView = new HeroInfoView(personnage);
+
+			this.graphics.addObserver(new Listener<DrawRequest>() {
+				@Override
+				public void update(DrawRequest req) {
+					heroView.draw(req);
+				}
+			});
+			
 		}
 
 		throwUpdate();

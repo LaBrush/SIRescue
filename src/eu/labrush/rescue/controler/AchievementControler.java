@@ -15,7 +15,7 @@ public class AchievementControler extends AbstractControler {
 
 	BlocControler blocControler;
 	HeroControler heroControler;
-	
+
 	Personnage hero;
 
 	Observer heroListener = new Observer() {
@@ -23,8 +23,19 @@ public class AchievementControler extends AbstractControler {
 		public void update(Observable o, Object arg) {
 			Personnage h = (Personnage) o;
 
+			h.addObserver(new Observer() {
+				@Override
+				public void update(Observable o, Object arg) {
+					if ("dead".equals(arg)) {
+						setChanged();
+						notifyObservers("restart");
+						deleteObservers();
+					}
+				}
+			});
+
 			for (Bloc b : blocControler.getBlocs()) {
-				
+
 				if (b.isEnder() && h.getX() >= b.getX() && h.getX() < b.getX() + b.getWidth() && h.getY() == b.getY() + b.getHeight()) {
 					setChanged();
 					notifyObservers("done");

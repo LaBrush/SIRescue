@@ -26,23 +26,16 @@ public class Personnage extends AbstractObject {
 	 * notifie les observeurs (les controlleurs) si le personnage est mort
 	 */
 	public void checkIfDead() {
-		if (this.life <= 0) {
+		if (life <= 0) {
 			setChanged();
 			this.notifyObservers("dead");
 		}
 	}
 
-	/**
-	 * @return the vitesse_nominale
-	 */
 	public Vecteur getVitesseNominale() {
 		return vitesse_nominale;
 	}
 
-	/**
-	 * @param vitesse_nominale
-	 *            the vitesse_nominale to set
-	 */
 	public void setVitesseNominale(Vecteur vitesse_nominale) {
 		this.vitesse_nominale = vitesse_nominale;
 	}
@@ -70,17 +63,10 @@ public class Personnage extends AbstractObject {
 		prendreDegats(degats, 0);
 	}
 
-	/**
-	 * @return the life
-	 */
 	public int getLife() {
 		return life;
 	}
 
-	/**
-	 * @param life
-	 *            the life to set
-	 */
 	public void setLife(int life) {
 		this.life = life;
 		
@@ -177,5 +163,5 @@ public class Personnage extends AbstractObject {
 	public void setHurted(boolean isHurted) {
 		this.isHurted = isHurted;
 	}
-
+	
 }
