@@ -2,6 +2,7 @@
 <level xs:noNamespaceSchemaLocation="level.xsd"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
 	<hero>
+		<life>1000</life>
 		<position x="15" y="20" />
 		<arme cartouches="300" type="Resistance" />
 	</hero>

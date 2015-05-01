@@ -21,7 +21,7 @@ final public class GraphicCore extends JFrame {
 	
 	private GraphicCore() {
 		this.setTitle("Segui Rescue");
-		this.setSize(600, 400);
+		this.setSize(1080, 720);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setContentPane(this.pan);
