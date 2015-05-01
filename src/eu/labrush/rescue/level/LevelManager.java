@@ -71,8 +71,6 @@ public class LevelManager {
 		physics.clearObservers();
 		
 		GraphicCore.getKeyboard().clearObservers();
-
-		System.out.println(levels);
 		
 		if (levels.size() == 0) {
 

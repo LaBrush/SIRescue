@@ -16,9 +16,8 @@ final public class GraphicCore extends JFrame {
 	private Panel pan = new Panel();
 	private static KeyboardListener keyboard = new KeyboardListener();
 
-	private boolean running = false;
-	private Thread t = new Thread();
-	
+	private Thread t = null;
+
 	private GraphicCore() {
 		this.setTitle("Segui Rescue");
 		this.setSize(1080, 720);
@@ -59,23 +58,30 @@ final public class GraphicCore extends JFrame {
 	}
 
 	public void start() {
-		if (!running) {
+		if (t == null) {
 			t = new Thread(new Play());
 			t.start();
-			running = true;
+		}
+	}
+	
+	public void stop() {
+		if (t != null) {
+			t.interrupt();
+			t = null ;
 		}
 	}
 
 	class Play implements Runnable {
 		public void run() {
-			while (running) {
+			while (true) {
 				// On redessine notre Panneau
 				pan.repaint();
 
 				try {
 					Thread.sleep(1000 / FRAMERATE);
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					Thread.currentThread().interrupt();
+					break;
 				}
 			}
 		}
@@ -96,9 +102,4 @@ final public class GraphicCore extends JFrame {
 	public static KeyboardListener getKeyboard() {
 		return keyboard;
 	}
-
-	public void stop() {
-		this.running = false;
-	}
-
 }
