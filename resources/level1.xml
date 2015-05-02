@@ -6,8 +6,8 @@
 		<position x="15" y="20" />
 		<arme cartouches="300" type="Resistance" />
 	</hero>
-	<!--contours -->
 	<blocs>
+	    <!--contours -->
 		<bloc>
 			<position x="0" y="720" />
 			<dimensions width="1080" height="10" />
@@ -26,8 +26,12 @@
 			<dimensions width="80" height="10" />
 		</bloc>
 		<bloc hurting="true">
-			<position x="80" y="0" />
-			<dimensions width="900" height="10" />
+			<position x="79" y="0" />
+			<dimensions width="20" height="10" />
+		</bloc>
+		<bloc hurting="true">
+			<position x="136" y="0" />
+			<dimensions width="845" height="10" />
 		</bloc>
 		<bloc>
 			<position x="980" y="0" />
@@ -48,80 +52,76 @@
 		</bloc>
 		<!--plateformes:F -->
 		<bloc>
-			<position x="100" y="12" />
-			<dimensions width="35" height="18" />
+			<position x="100" y="1" />
+			<dimensions width="35" height="16" />
 		</bloc>
 		<bloc>
-			<position x="100" y="35" />
+			<position x="100" y="30" />
 			<dimensions width="35" height="20" />
 		</bloc>
 		<bloc>
-			<position x="100" y="60" />
+			<position x="100" y="65" />
 			<dimensions width="75" height="20" />
 		</bloc>
 		<bloc>
-			<position x="100" y="85" />
+			<position x="100" y="100" />
 			<dimensions width="35" height="20" />
 		</bloc>
 		<bloc>
-			<position x="100" y="110" />
+			<position x="100" y="135" />
 			<dimensions width="115" height="20" />
 		</bloc>
-		<!--plateformes:E -->
-		<bloc>
-			<position x="315" y="85" />
-			<dimensions width="115" height="20" />
-		</bloc>
+  	    <!--plateformes:E -->
 		<bloc>
 			<position x="315" y="120" />
-			<dimensions width="35" height="20" />
+			<dimensions width="115" height="20" />
 		</bloc>
 		<bloc>
 			<position x="315" y="155" />
-			<dimensions width="75" height="20" />
-		</bloc>
-		<bloc>
-			<position x="315" y="190" />
 			<dimensions width="35" height="20" />
 		</bloc>
 		<bloc>
+			<position x="315" y="190" />
+			<dimensions width="75" height="20" />
+		</bloc>
+		<bloc>
 			<position x="315" y="225" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="315" y="260" />
 			<dimensions width="115" height="20" />
+		</bloc>
+		<bloc hurting="true">
+			<position x="265" y="225" />
+			<dimensions width="49" height="20" />
 		</bloc>
 		<bloc hurting="true">
 			<position x="265" y="190" />
 			<dimensions width="49" height="20" />
 		</bloc>
-		<bloc hurting="true">
-			<position x="265" y="155" />
-			<dimensions width="49" height="20" />
-		</bloc>
 		<!--plateformes:S -->
 		<bloc>
-			<position x="530" y="190" />
+			<position x="530" y="225" />
 			<dimensions width="115" height="20" />
 		</bloc>
 		<bloc>
-			<position x="610" y="225" />
+			<position x="610" y="260" />
 			<dimensions width="35" height="20" />
-		</bloc>
-		<bloc>
-			<position x="530" y="260" />
-			<dimensions width="115" height="20" />
 		</bloc>
 		<bloc>
 			<position x="530" y="295" />
-			<dimensions width="35" height="20" />
+			<dimensions width="115" height="20" />
 		</bloc>
 		<bloc>
 			<position x="530" y="330" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="530" y="365" />
 			<dimensions width="115" height="20" />
 		</bloc>
 		<!--plateformes:T -->
-		<bloc>
-			<position x="785" y="295" />
-			<dimensions width="35" height="20" />
-		</bloc>
 		<bloc>
 			<position x="785" y="330" />
 			<dimensions width="35" height="20" />
@@ -135,7 +135,11 @@
 			<dimensions width="35" height="20" />
 		</bloc>
 		<bloc>
-			<position x="745" y="435" />
+			<position x="785" y="435" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="745" y="470" />
 			<dimensions width="115" height="20" />
 		</bloc>
 		<!--plateformes:O -->
@@ -179,7 +183,7 @@
 
 
 		<bloc>
-			<position x="760" y="130" />
+			<position x="770" y="130" />
 			<dimensions width="115" height="20" />
 		</bloc>
 		<bloc hurting="true">
@@ -190,9 +194,13 @@
 			<position x="100" y="330" />
 			<dimensions width="115" height="30" />
 		</bloc>
-		<bloc ender="true">
-			<position x="1065" y="10" />
+		<!-- <bloc ender="true">
+			<position x="1030" y="10" />
 			<dimensions width="15" height="60" />
+		</bloc>-->
+		<bloc ender="true">
+			<position x="30" y="10" />
+			<dimensions width="20" height="20" />
 		</bloc>
 	</blocs>
 
