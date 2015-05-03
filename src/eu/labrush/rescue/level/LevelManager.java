@@ -13,6 +13,7 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.xml.sax.SAXException;
 
+import eu.labrush.rescue.core.audio.AudioCore;
 import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
@@ -29,6 +30,7 @@ public class LevelManager {
 
 	private GraphicCore graphics;
 	private PhysicCore physics;
+	private AudioCore audio;
 
 	private ArrayList<String> levels;
 	private Level currentLevel;
@@ -36,9 +38,10 @@ public class LevelManager {
 	HashMap<String, Arme> armes;
 	HashMap<String, String[]> botTypes;
 
-	public LevelManager(GraphicCore graphics, PhysicCore physics) {
+	public LevelManager(GraphicCore graphics, PhysicCore physics, AudioCore audio) {
 		this.graphics = graphics;
 		this.physics = physics;
+		this.audio = audio;
 	}
 
 	public void load(String source) {
@@ -46,7 +49,7 @@ public class LevelManager {
 			MainXMLHandler loader = new MainXMLHandler();
 
 			SAXParser parser = factory.newSAXParser();
-			parser.parse("resources/" + source, loader);
+			parser.parse("resources/config/" + source, loader);
 
 			this.levels = loader.levels;
 			this.armes = loader.armes;
@@ -87,7 +90,7 @@ public class LevelManager {
 		}
 		else {
 			try {
-				currentLevel = new Level(graphics, physics);
+				currentLevel = new Level(graphics, physics, audio);
 
 				LevelXMLHandler loader = new LevelXMLHandler(currentLevel, armes, botTypes);
 

@@ -8,6 +8,7 @@ import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
 import eu.labrush.rescue.IA.path.AStar;
 import eu.labrush.rescue.IA.path.Point;
 import eu.labrush.rescue.controler.BotControler;
+import eu.labrush.rescue.core.audio.AudioCore;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.model.ArmeItem;
@@ -35,8 +36,8 @@ public class SampleLevel extends Level {
 	 * @param physics
 	 *            le coeur physique
 	 */
-	public SampleLevel(GraphicCore graphics, PhysicCore physics) {
-		super(graphics, physics);
+	public SampleLevel(GraphicCore graphics, PhysicCore physics, AudioCore audio) {
+		super(graphics, physics, audio);
 
 		Personnage hero = new Personnage(15, 15);
 		hero.addArme(new Arme("Echarpe", 10, 200, 30, -1));
