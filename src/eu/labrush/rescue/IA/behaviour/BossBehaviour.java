@@ -35,7 +35,7 @@ public class BossBehaviour implements BotBehaviour {
 		Bloc ouOnEst = (Bloc) this.blocs.toArray()[0];
 		Bloc lePlusProche = (Bloc) this.blocs.toArray()[0];
 		
-		for(Bloc bloc: this.blocs){
+		for(Bloc bloc: this.blocs){ // Trouver sur quel bloc on est
 			
 			blocX = xProche(bloc);
 			blocY = yProche(bloc);
@@ -48,7 +48,7 @@ public class BossBehaviour implements BotBehaviour {
 		ouOnEstX = xProche(ouOnEst);
 		ouOnEstY = yProche(ouOnEst);		
 		
-		for(Bloc bloc: this.blocs){
+		for(Bloc bloc: this.blocs){ // Trouver le bloc le plus proche
 			
 			blocX = xProche(bloc);
 			blocY = yProche(bloc);
@@ -62,31 +62,35 @@ public class BossBehaviour implements BotBehaviour {
 		lePlusProcheX = xProche(lePlusProche);
 		lePlusProcheY = yProche(lePlusProche);
 		
-		if (botY == ouOnEstY) {
-			
-		
-		if (botY <= (ouOnEstY + 100) && privateTimer == 0){
-			
-			b.getTrajectoire().getVitesse().setX(0);
-			b.getTrajectoire().getVitesse().setY(-1);
+		if(b.getTrajectoire().getVitesse().getY() == 0 && b.getTrajectoire().getAcceleration().getY() == 0){
+			b.getTrajectoire().getVitesse().setY(1000);
 		}
-		else if(botY >= (ouOnEstY + 100) && privateTimer == 0){
+		
+		/*if (privateTimer ==0){
+		if (botY <= (ouOnEstY + 30)){ //montée du petit saut
+			
+			b.getTrajectoire().getVitesse().setX(0);			
+			b.getTrajectoire().getVitesse().setY(100);
+		}
+		else if(botY >= (ouOnEstY + 30)){ //incrément privatetimer
 			privateTimer = 1;
-		}
-		
-		if (botY >= (ouOnEstY + 15) && privateTimer == 1){
-			
-			b.getTrajectoire().getVitesse().setX(0);
-			b.getTrajectoire().getVitesse().setY(1);
-		}
-		else if(botY <= (ouOnEstY + 15) && privateTimer == 0){
-			privateTimer = 1;
-		}
-		
-		if (privateTimer != 0 && privateTimer != 1){
 			b.getTrajectoire().getVitesse().setY(0);
 		}
 		}
+		
+		if(privateTimer==1){
+		if (botY >= (ouOnEstY + 15)){ // descente du petit saut
+			
+			b.getTrajectoire().getVitesse().setX(0);
+			b.getTrajectoire().getVitesse().setY(0);
+			
+		}
+		/*else if(botY <= (ouOnEstY + 15) && privateTimer == 1){// incrément private timer
+			privateTimer = 2;
+		}
+		}*/
+		
+		
 		
 	}
 	
@@ -100,7 +104,7 @@ public class BossBehaviour implements BotBehaviour {
 
 	@Override
 	public void setBot(Bot bot) {
-		this.b = bot ;	
+		this.b = bot ;
 	} 
 	
 	private double xProche (Bloc bloc){

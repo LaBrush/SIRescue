@@ -3,7 +3,8 @@ package eu.labrush.rescue.core;
 import eu.labrush.rescue.core.audio.AudioCore;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
-import eu.labrush.rescue.level.LevelManager;
+import eu.labrush.rescue.level.Level;
+import eu.labrush.rescue.level.SampleLevel;
 
 /**
  * @author solineducousso
@@ -26,10 +27,16 @@ public class SIRescue {
 		 * graphics.start(); physics.start();
 		 */
 
-		LevelManager manager = new LevelManager(graphics, physics, audio);
+		/*LevelManager manager = new LevelManager(graphics, physics, audio);
 		manager.load("game.xml");
 		manager.loadLevel();
-
+		*/
+		
+		Level level = new SampleLevel(graphics, physics, audio);
+		
+		graphics.start();
+		physics.start();
+		
 		//audio.play(new Bloc());
 
 	}
