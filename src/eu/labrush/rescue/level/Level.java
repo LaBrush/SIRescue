@@ -1,13 +1,13 @@
 package eu.labrush.rescue.level;
 
 import eu.labrush.rescue.controler.AchievementControler;
+import eu.labrush.rescue.controler.AudioControler;
 import eu.labrush.rescue.controler.BlocControler;
 import eu.labrush.rescue.controler.BotControler;
 import eu.labrush.rescue.controler.HeroControler;
 import eu.labrush.rescue.controler.ItemControler;
 import eu.labrush.rescue.controler.PersonnageControler;
 import eu.labrush.rescue.controler.TirControler;
-import eu.labrush.rescue.core.audio.AudioCore;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 
@@ -23,7 +23,7 @@ import eu.labrush.rescue.core.physics.PhysicCore;
  */
 public class Level {
 
-	AudioCore audio;
+	AudioControler audio;
 	GraphicCore graphics;
 	PhysicCore physics;
 
@@ -33,6 +33,7 @@ public class Level {
 	TirControler tirControler;
 	BotControler botControler;
 	ItemControler itemControler;
+	AudioControler audioControler ;
 	AchievementControler achievementControler;
 
 	/**
@@ -40,13 +41,11 @@ public class Level {
 	 *            le coeur graphique
 	 * @param physics
 	 *            le coeur physique
-	 * @param audio 
 	 */
-	public Level(GraphicCore graphics, PhysicCore physics, AudioCore audio) {
+	public Level(GraphicCore graphics, PhysicCore physics) {
 		super();
 		this.graphics = graphics;
 		this.physics = physics;
-		this.audio = audio;
 
 		blocControler = new BlocControler(this);
 
@@ -56,6 +55,7 @@ public class Level {
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
 
 		itemControler = new ItemControler(this, heroControler);
+		audioControler = new AudioControler();
 
 		achievementControler = new AchievementControler(this, heroControler, blocControler);
 	}

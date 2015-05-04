@@ -1,4 +1,4 @@
-package eu.labrush.rescue.core.audio;
+package eu.labrush.rescue.controler;
 
 import java.io.File;
 import java.util.HashMap;
@@ -12,12 +12,12 @@ import javax.sound.sampled.Clip;
  *
  */
 @SuppressWarnings("rawtypes")
-public class AudioCore {
+public class AudioControler {
 
 	private HashMap<Class, String> resources = new HashMap<Class, String>();
 	private HashMap<Class, Clip> playing = new HashMap<Class, Clip>();
 	
-	public AudioCore() {
+	public AudioControler() {
 
 	}
 

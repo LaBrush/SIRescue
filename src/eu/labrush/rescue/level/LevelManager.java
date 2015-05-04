@@ -13,7 +13,6 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.xml.sax.SAXException;
 
-import eu.labrush.rescue.core.audio.AudioCore;
 import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
@@ -30,7 +29,6 @@ public class LevelManager {
 
 	private GraphicCore graphics;
 	private PhysicCore physics;
-	private AudioCore audio;
 
 	private ArrayList<String> levels;
 	private Level currentLevel;
@@ -38,10 +36,9 @@ public class LevelManager {
 	HashMap<String, Arme> armes;
 	HashMap<String, String[]> botTypes;
 
-	public LevelManager(GraphicCore graphics, PhysicCore physics, AudioCore audio) {
+	public LevelManager(GraphicCore graphics, PhysicCore physics) {
 		this.graphics = graphics;
 		this.physics = physics;
-		this.audio = audio;
 	}
 
 	public void load(String source) {
@@ -81,8 +78,8 @@ public class LevelManager {
 				@Override
 				public void update(DrawRequest req) {
 					req.fillRect(0, req.getHeight(), req.getWidth(), req.getHeight(), Color.BLACK);
-					req.drawString("Vous avez fini SI Rescue !", 20, 250, Color.WHITE, 30, true);
-					req.drawString("C'est négligeable", 20, 200, Color.WHITE, 20, true);
+					req.drawString("Vous avez fini SI Rescue !", 20, 350, Color.WHITE, 30, true);
+					req.drawString("C'est négligeable", 20, 300, Color.WHITE, 20, true);
 				}
 			});
 
@@ -90,7 +87,7 @@ public class LevelManager {
 		}
 		else {
 			try {
-				currentLevel = new Level(graphics, physics, audio);
+				currentLevel = new Level(graphics, physics);
 
 				LevelXMLHandler loader = new LevelXMLHandler(currentLevel, armes, botTypes);
 

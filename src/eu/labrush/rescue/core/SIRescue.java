@@ -1,6 +1,5 @@
 package eu.labrush.rescue.core;
 
-import eu.labrush.rescue.core.audio.AudioCore;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.level.LevelManager;
@@ -15,7 +14,6 @@ public class SIRescue {
 
 	public static void main(String[] args) {
 
-		AudioCore audio = new AudioCore();
 		GraphicCore graphics = GraphicCore.getInstance();
 		PhysicCore physics = new PhysicCore(GraphicCore.FRAMERATE * 2);
 
@@ -26,7 +24,7 @@ public class SIRescue {
 		 * graphics.start(); physics.start();
 		 */
 
-		LevelManager manager = new LevelManager(graphics, physics, audio);
+		LevelManager manager = new LevelManager(graphics, physics);
 		manager.load("game.xml");
 		manager.loadLevel();
 
