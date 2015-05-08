@@ -28,7 +28,7 @@ import eu.labrush.rescue.model.arme.Arme;
 public class LevelXMLHandler extends DefaultHandler {
 
 	Level level;
-	
+
 	private AbstractObject current;
 	private int id;
 
@@ -41,10 +41,10 @@ public class LevelXMLHandler extends DefaultHandler {
 
 	public LevelXMLHandler(Level level, HashMap<String, Arme> armes, HashMap<String, String[]> botTypes) {
 		this.level = level;
-		this.armes = armes ;
-		this.botTypes = botTypes ;
+		this.armes = armes;
+		this.botTypes = botTypes;
 	}
-	
+
 	/**
 	 * Redéfinition de la méthode pour intercepter les événements
 	 */
@@ -58,7 +58,6 @@ public class LevelXMLHandler extends DefaultHandler {
 				id = (attr == null ? 0 : Integer.parseInt(attr));
 
 				((Bloc) current).setHurting(Boolean.parseBoolean(attrs.getValue("hurting")));
-				((Bloc) current).setEnder(Boolean.parseBoolean(attrs.getValue("ender")));
 				break;
 			case "hero":
 				current = new Personnage(0, 0);
@@ -67,14 +66,24 @@ public class LevelXMLHandler extends DefaultHandler {
 				current = new Bot(0, 0);
 				break;
 			case "item":
-				switch (attrs.getValue("content")) {
+				String val = attrs.getValue("content");
+
+				if (val == null) {
+					val = "";
+				}
+
+				switch (val) {
 					case "arme":
 						Arme arme = armes.get(attrs.getValue("type")).clone();
 						arme.setCartouchesLeft(Integer.parseInt(attrs.getValue("cartouches")));
 						current = new ArmeItem(0, 0, arme);
 						break;
+					default:
+						current = new Item(0, 0, 0, 0);
+						break;
 				}
-				break;
+				
+				break ;
 
 			case "position":
 				setPosition(attrs);
@@ -92,15 +101,16 @@ public class LevelXMLHandler extends DefaultHandler {
 	private void addArme(Attributes attrs) {
 		// si on ajoute une arme (noeud armes)
 		if (attrs.getValue("name") != null && attrs.getValue("damage") != null && attrs.getValue("reload") != null) {
-			Arme arme = new Arme(attrs.getValue("tir"), Integer.parseInt(attrs.getValue("damage")), Integer.parseInt(attrs.getValue("reload")), Integer.parseInt(attrs.getValue("recul")));
+			Arme arme = new Arme(attrs.getValue("tir"), Integer.parseInt(attrs.getValue("damage")), Integer.parseInt(attrs.getValue("reload")),
+					Integer.parseInt(attrs.getValue("recul")));
 			armes.put(attrs.getValue("name"), arme);
 		}
 		else if (attrs.getValue("type") != null) {
 			Arme arme = armes.get(attrs.getValue("type"));
-			
+
 			if (arme != null) {
 				((Personnage) current).addArme(arme.clone());
-				
+
 				String cartouches = attrs.getValue("cartouches");
 				// Current_data correspond alors au nombre de cartouches dans l'arme
 				if (cartouches != null) {
@@ -118,7 +128,7 @@ public class LevelXMLHandler extends DefaultHandler {
 
 	private void setPosition(Attributes attrs) {
 		Vecteur pos = new Vecteur();
-
+		
 		pos.setX(Integer.parseInt(attrs.getValue(0)));
 		pos.setY(Integer.parseInt(attrs.getValue(1)));
 
@@ -172,12 +182,12 @@ public class LevelXMLHandler extends DefaultHandler {
 					throw new SAXException("Try to instanciate a non existant bot behaviour");
 				}
 				break;
-				
+
 			case "life":
-				((Personnage)current).setMaxLife(Integer.parseInt(current_data));
-				((Personnage)current).setLife(Integer.parseInt(current_data));
+				((Personnage) current).setMaxLife(Integer.parseInt(current_data));
+				((Personnage) current).setLife(Integer.parseInt(current_data));
 				break;
-				
+
 			case "bloc_id":
 				Bloc bloc = blocs.get(Integer.parseInt(current_data));
 				if (bloc == null) {

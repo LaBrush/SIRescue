@@ -67,12 +67,12 @@ public class BossBehaviour implements BotBehaviour {
 		}
 		
 		/*if (privateTimer ==0){
-		if (botY <= (ouOnEstY + 30)){ //montée du petit saut
+		if (botY <= (ouOnEstY + 30)){ //montï¿½e du petit saut
 			
 			b.getTrajectoire().getVitesse().setX(0);			
 			b.getTrajectoire().getVitesse().setY(100);
 		}
-		else if(botY >= (ouOnEstY + 30)){ //incrément privatetimer
+		else if(botY >= (ouOnEstY + 30)){ //incrï¿½ment privatetimer
 			privateTimer = 1;
 			b.getTrajectoire().getVitesse().setY(0);
 		}
@@ -85,7 +85,7 @@ public class BossBehaviour implements BotBehaviour {
 			b.getTrajectoire().getVitesse().setY(0);
 			
 		}
-		/*else if(botY <= (ouOnEstY + 15) && privateTimer == 1){// incrément private timer
+		/*else if(botY <= (ouOnEstY + 15) && privateTimer == 1){// incrï¿½ment private timer
 			privateTimer = 2;
 		}
 		}*/

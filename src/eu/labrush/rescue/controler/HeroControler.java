@@ -40,7 +40,7 @@ public final class HeroControler extends AbstractControler {
 			if (req.getID() == KeyEvent.KEY_PRESSED) {
 				switch (req.getKeyCode()) {
 					case KeyEvent.VK_UP:
-						if (t.getVitesse().getY() == 0)
+						if (t.getVitesse().getY() == 0 && t.getAcceleration().getY() == 0)
 							t.getVitesse().setY(vy);
 						break;
 					case KeyEvent.VK_LEFT:

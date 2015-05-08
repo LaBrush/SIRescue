@@ -8,8 +8,11 @@ import eu.labrush.rescue.model.arme.Arme;
  */
 public class ArmeItem extends Item {
 
+	Arme arme ;
+	
 	public ArmeItem(int x, int y, Arme contenu) {
-		super(x, y, 20, 20, contenu);
+		super(x, y, 20, 20);
+		this.arme = contenu ;
 	}
 
 	/* (non-Javadoc)
@@ -17,7 +20,7 @@ public class ArmeItem extends Item {
 	 */
 	@Override
 	public void deliver(Personnage p) {
-		p.addArme((Arme) contenu);
+		p.addArme(arme);
 	}
 
 }

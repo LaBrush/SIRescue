@@ -115,19 +115,20 @@ public class AStar {
 
 	private double heuristic_cost_estimate(Point point, Point goal) {
 
-		int minHeightDelta = Integer.MAX_VALUE;
+		double minHeightDelta = 100_000_000 ;
 
 		for (Bloc b : obstacles) {
 			if (b.isHurting()) {
 				continue;
 			}
-
+			
 			if ((point.x * maille >= b.getX()) && (point.x * maille <= b.getX() + b.getWidth()) && (point.y * maille >= b.getY())
 					&& (point.y * maille - b.getY() < minHeightDelta)) {
 				minHeightDelta = (int) (point.y * maille - b.getY());
 			}
 		}
-		return dist_between(point, goal) + 30 * minHeightDelta + (minHeightDelta > maxJump ? 0 : 2500);
+		
+		return dist_between(point, goal) + 30 * minHeightDelta + (minHeightDelta > maxJump ? 1000 : 0);
 	}
 
 	private ArrayList<Point> reconstruct_path(HashMap<Point, Point> came_from, Point current) {

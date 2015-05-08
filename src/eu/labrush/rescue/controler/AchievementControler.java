@@ -4,7 +4,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import eu.labrush.rescue.level.Level;
-import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Personnage;
 
 /**
@@ -13,7 +12,7 @@ import eu.labrush.rescue.model.Personnage;
  */
 public class AchievementControler extends AbstractControler {
 
-	BlocControler blocControler;
+	ItemControler itemControler;
 	HeroControler heroControler;
 
 	Personnage hero;
@@ -34,20 +33,25 @@ public class AchievementControler extends AbstractControler {
 				}
 			});
 
-			for (Bloc b : blocControler.getBlocs()) {
-
-				if (b.isEnder() && h.getX() >= b.getX() && h.getX() < b.getX() + b.getWidth() && h.getY() == b.getY() + b.getHeight()) {
-					setChanged();
-					notifyObservers("done");
-					deleteObservers();
-				}
-			}
 		}
 	};
+	
+	Observer itemListener = new Observer(){
 
-	public AchievementControler(Level level, HeroControler heroControler, BlocControler blocControler) {
+		@Override
+		public void update(Observable o, Object arg) {
+			if(((ItemControler)o).getItems().size() == 0){
+				setChanged();
+				notifyObservers("done");
+				deleteObservers();
+			}
+		}
+		
+	};
+
+	public AchievementControler(Level level, HeroControler heroControler, ItemControler itemControler) {
 		super(level);
-		this.blocControler = blocControler;
+		this.itemControler = itemControler;
 
 		heroControler.addObserver(new Observer() {
 			@Override
@@ -59,6 +63,8 @@ public class AchievementControler extends AbstractControler {
 					((HeroControler) o).getPersonnage().addObserver(heroListener);
 			}
 		});
+		
+		itemControler.addObserver(itemListener);
 
 	}
 

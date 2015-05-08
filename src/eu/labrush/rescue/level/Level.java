@@ -54,10 +54,10 @@ public class Level {
 		heroControler = new HeroControler(this, tirControler, personnageControler);
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
 
-		itemControler = new ItemControler(this, heroControler);
+		itemControler = new ItemControler(this, heroControler, blocControler);
 		audioControler = new AudioControler();
 
-		achievementControler = new AchievementControler(this, heroControler, blocControler);
+		achievementControler = new AchievementControler(this, heroControler, itemControler);
 	}
 
 	/**

@@ -38,14 +38,14 @@
 			<dimensions width="40" height="10" />
 		</bloc>
 
-		<bloc ender="true">
-			<position x="500" y="0" />
-			<dimensions width="40" height="10" />
-		</bloc>
-
 	</blocs>
 
-	<items></items>
+	<items>
+		<item>
+			<position x="500" y="0" />
+			<dimensions width="40" height="10" />
+		</item>
+	</items>
 
 	<bots>
 

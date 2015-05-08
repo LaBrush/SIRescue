@@ -3,18 +3,22 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
 
 	<armes>
-		<arme name="Resistance" tir="Resistance" damage="20" recul="20" reload="300" />
-		<arme name="Transistor" tir="Transistor" damage="40" recul="50" reload="500" />
+		<arme name="Resistance" tir="Resistance" damage="20" recul="20"
+			reload="300" />
+		<arme name="Transistor" tir="Transistor" damage="40" recul="50"
+			reload="500" />
 	</armes>
 
 	<botTypes>
-		<botType name="bino" arme="Resistance" comportement="ToucherBotBehaviour" life="1000"/>
-		<botType name="soso" arme="Resistance" comportement="FlyBotBehaviour" life="50"/>
+		<botType name="bino" arme="Resistance" comportement="ToucherBotBehaviour"
+			life="1000" />
+		<botType name="soso" arme="Resistance" comportement="FlyBotBehaviour"
+			life="50" />
 	</botTypes>
 
 	<levels>
-		<!-- <level src="level1.xml" />
-		<level src="level2.xml" />-->
+		<level src="level1.xml" />
+		<level src="level2.xml" />
 		<level src="level3.xml" />
 	</levels>
 

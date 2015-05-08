@@ -1,5 +1,7 @@
 package eu.labrush.rescue.IA.path;
 
+import eu.labrush.rescue.model.AbstractObject;
+
 
 public class Point implements Cloneable {
 
@@ -11,6 +13,10 @@ public class Point implements Cloneable {
 		this.y = y;
 	}
 	
+	public Point(AbstractObject o){
+		this((o.getX()+o.getWidth()/2)/10, (o.getY()+o.getHeight()/2)/10);
+	}
+	
 	public Point(double x, double y) {
 		this((int)x, (int)y);
 	}
@@ -18,7 +24,7 @@ public class Point implements Cloneable {
 	public Point(int x, int y, int cineticReserve) {
 		this(x,y);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 

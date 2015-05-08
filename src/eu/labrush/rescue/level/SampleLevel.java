@@ -3,16 +3,13 @@ package eu.labrush.rescue.level;
 import java.util.ArrayList;
 
 import eu.labrush.rescue.IA.behaviour.BossBehaviour;
-import eu.labrush.rescue.IA.behaviour.FlyBotBehaviour;
-import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
-import eu.labrush.rescue.IA.path.AStar;
-import eu.labrush.rescue.IA.path.Point;
 import eu.labrush.rescue.controler.BotControler;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.model.ArmeItem;
 import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Bot;
+import eu.labrush.rescue.model.Item;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.arme.Arme;
 
@@ -25,9 +22,6 @@ import eu.labrush.rescue.model.arme.Arme;
  * @author adrienbocquet
  */
 public class SampleLevel extends Level {
-
-	ArrayList<Point> trajet;
-	AStar star;
 
 	/**
 	 * @param graphics
@@ -68,40 +62,7 @@ public class SampleLevel extends Level {
 		//botControler.add(new Bot(320, 215), new ToucherBotBehaviour(blocs.get(2)));
 
 		itemControler.add(new ArmeItem(220, 161, new Arme("Transistor", 34, 200, 30, 20)));
-
-		// TEST ASTAR
-		/*star = new AStar(10, getBlocControler().getBlocs());
-
-		Personnage p = heroControler.getPersonnage();
-		
-		Thread thread = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while(true){
-					try {
-						trajet = star.findPath(new Point((int) ((p.getX()+p.getWidth()/2) / 10), (int) ((p.getY()+ p.getHeight()/2)/10)), new Point(35, 24));
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		});
-		
-		thread.start();
-		
-		graphics.addObserver(new Listener<DrawRequest>() {
-			@Override
-			public void update(DrawRequest req) {
-				for (Point p : trajet) {
-					req.rect(p.x * 10, p.y * 10, 1, 1);
-				}
-			}
-		});*/
+		itemControler.add(new Item(400, 20, 30, 30));
 	}
 
 	/**

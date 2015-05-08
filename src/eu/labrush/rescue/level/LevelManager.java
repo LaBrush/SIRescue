@@ -72,6 +72,8 @@ public class LevelManager {
 		
 		GraphicCore.getKeyboard().clearObservers();
 		
+		System.gc();
+		
 		if (levels.size() == 0) {
 
 			graphics.addObserver(new Listener<DrawRequest>() {
@@ -97,6 +99,7 @@ public class LevelManager {
 				currentLevel.getAchievementControler().addObserver(new Observer() {
 					@Override
 					public void update(Observable o, Object arg) {
+
 						if ("done".equals(arg)) {
 							levels.remove(0);
 						}

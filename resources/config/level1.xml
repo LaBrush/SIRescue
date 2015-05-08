@@ -7,7 +7,7 @@
 		<arme cartouches="300" type="Resistance" />
 	</hero>
 	<blocs>
-	    <!--contours -->
+		<!--contours -->
 		<bloc>
 			<position x="0" y="720" />
 			<dimensions width="1080" height="10" />
@@ -71,7 +71,7 @@
 			<position x="100" y="135" />
 			<dimensions width="115" height="20" />
 		</bloc>
-  	    <!--plateformes:E -->
+		<!--plateformes:E -->
 		<bloc>
 			<position x="315" y="120" />
 			<dimensions width="115" height="20" />
@@ -179,7 +179,7 @@
 			<position x="960" y="210" />
 			<dimensions width="115" height="49" />
 		</bloc>
-		
+
 
 
 		<bloc>
@@ -194,20 +194,17 @@
 			<position x="100" y="330" />
 			<dimensions width="115" height="30" />
 		</bloc>
-		<!-- <bloc ender="true">
-			<position x="1030" y="10" />
-			<dimensions width="15" height="60" />
-		</bloc>-->
-		<bloc ender="true">
-			<position x="30" y="10" />
-			<dimensions width="20" height="20" />
-		</bloc>
 	</blocs>
 
 	<items>
 		<item content="arme" type="Transistor" cartouches="20">
 			<position x="690" y="610" />
 			<dimensions width="20" height="20" />
+		</item>
+
+		<item>
+			<position x="1030" y="10" />
+			<dimensions width="15" height="60" />
 		</item>
 	</items>
 
