@@ -96,6 +96,8 @@ public class LevelManager {
 				SAXParser parser = factory.newSAXParser();
 				parser.parse(levels.get(0), loader);
 
+				loadSounds(currentLevel);
+				
 				currentLevel.getAchievementControler().addObserver(new Observer() {
 					@Override
 					public void update(Observable o, Object arg) {
@@ -121,6 +123,19 @@ public class LevelManager {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+	
+	public synchronized void loadSounds(Level level) {
+		SoundXMLHandler loader = new SoundXMLHandler(level);
+
+		SAXParser parser;
+		try {
+			parser = factory.newSAXParser();
+			parser.parse("resources/config/sounds.xml", loader);
+			
+		} catch (IOException | ParserConfigurationException | SAXException e) {
+			e.printStackTrace();
 		}
 	}
 }

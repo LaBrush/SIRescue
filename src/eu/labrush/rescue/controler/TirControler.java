@@ -41,6 +41,7 @@ public class TirControler extends AbstractControler {
 
 	BlocControler blocControler;
 	PersonnageControler personnageControler;
+	AudioControler audioControler;
 
 	private TirInterface tirInterface = new TirInterface() {
 		public void commandShoot(Personnage p, int angle) {
@@ -56,10 +57,11 @@ public class TirControler extends AbstractControler {
 		}
 	};
 
-	public TirControler(Level level, BlocControler blocControler, PersonnageControler personnageControler) {
+	public TirControler(Level level, BlocControler blocControler, PersonnageControler personnageControler, AudioControler audioControler) {
 		super(level);
 		this.blocControler = blocControler;
 		this.personnageControler = personnageControler;
+		this.audioControler = audioControler;
 
 		this.graphics.addObserver(new Listener<DrawRequest>() {
 			@Override
@@ -95,6 +97,10 @@ public class TirControler extends AbstractControler {
 								
 								p.prendreDegats(tir.getDamage(), recul);
 							}
+							
+							if(!tir.isActivated())
+							audioControler.play(tir, "use");
+							
 							tir.use();
 						}
 						else if(tir.isActivated())

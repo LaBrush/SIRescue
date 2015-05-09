@@ -55,7 +55,7 @@ public class Transistor extends Tir {
 			double radius = 5 + 30 * (double)((System.currentTimeMillis() - usedAt) / (double)tempsExplosion) ;
 			this.dim.setSize(radius, radius);
 			
-			this.getTrajectoire().setPosition(new Vecteur(explosion_pos.getX() - radius/2, explosion_pos.getY() + radius/2));
+			this.getTrajectoire().setPosition(new Vecteur(explosion_pos.getX() - radius/2, explosion_pos.getY() - radius/2));
 			
 			this.throwUpdate();
 		}

@@ -44,6 +44,7 @@ public class TirView extends AbstractObjectView {
 	 */
 	@Override
 	public void draw(DrawRequest req) {
+		
 		if(this.image == null){
 			req.rect(x, y, width, height, angle);
 		} else {

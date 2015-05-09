@@ -21,7 +21,16 @@ public class SoundXMLHandler extends DefaultHandler {
 
 	public void startElement(String namespaceURI, String lName, String qName, Attributes attrs) throws SAXException {
 		if(qName == "sound"){
-			audioControler.add(attrs.getValue(1), attrs.getValue(0), attrs.getValue(2));
+			@SuppressWarnings("rawtypes")
+			Class c = null ;
+			
+			try {
+				c = Class.forName(attrs.getValue("name"));
+				audioControler.add(c, attrs.getValue("case"), attrs.getValue("src"));
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			
 		}
 	}
 	

@@ -75,8 +75,8 @@ public class DrawRequest {
 
 		// on ajoute un décalage sur x et y en fonction de l'angle de rotation
 		// afin d'obtenir une rotation par raport au coins inférieur gauche
-		y = (int) (this.height - y - img.getHeight() * Math.cos(Math.toRadians(angle)));
-		x = (int) (x - img.getHeight() * Math.sin(Math.toRadians(angle)));
+		y = (int) (this.height - y - height * Math.cos(Math.toRadians(angle)));
+		x = (int) (x - height * Math.sin(Math.toRadians(angle)));
 
 		AffineTransform trans = new AffineTransform();
 				

@@ -47,15 +47,15 @@ public class Level {
 		this.graphics = graphics;
 		this.physics = physics;
 
+		audioControler = new AudioControler();
+		
 		blocControler = new BlocControler(this);
-
 		personnageControler = new PersonnageControler(this, blocControler);
-		tirControler = new TirControler(this, blocControler, personnageControler);
+		tirControler = new TirControler(this, blocControler, personnageControler, audioControler);
 		heroControler = new HeroControler(this, tirControler, personnageControler);
 		botControler = new BotControler(this, personnageControler, tirControler, heroControler);
 
 		itemControler = new ItemControler(this, heroControler, blocControler);
-		audioControler = new AudioControler();
 
 		achievementControler = new AchievementControler(this, heroControler, itemControler);
 	}

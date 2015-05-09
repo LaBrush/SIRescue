@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sounds xs:noNamespaceSchemaLocation="sounds.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+	
+	<sound src="resources/audio/explosions_transistors.wav" case="use" name="eu.labrush.rescue.model.arme.Transistor" />
+	
+</sounds>

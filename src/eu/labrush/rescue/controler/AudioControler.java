@@ -11,33 +11,37 @@ import javax.sound.sampled.Clip;
  * @author adrienbocquet
  *
  */
-@SuppressWarnings("rawtypes")
 public class AudioControler {
 
-	private HashMap<Class, String> resources = new HashMap<Class, String>();
-	private HashMap<Class, Clip> playing = new HashMap<Class, Clip>();
+	@SuppressWarnings("rawtypes")
+	private HashMap<Class, HashMap<String, String>> resources = new HashMap<Class, HashMap<String, String>>();
 	
-	public AudioControler() {
-
-	}
-
-	public void play(Object o) {
+	@SuppressWarnings("resource")
+	public void play(Object o, String use) {
 		try {
+			
+			if(resources.get(o.getClass()) == null || resources.get(o.getClass()).get(use) == null){
+				return ;
+			}
+			
 			Clip clip = AudioSystem.getClip();
-			AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(resources.get(o.getClass())));
+			AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(resources.get(o.getClass()).get(use)));
 			clip.open(inputStream);
 			clip.start();
-			
-			playing.put(o.getClass(), clip);
-			
+						
 			inputStream.close();
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
+			e.printStackTrace();
 		}
 
 	}
 	
-	public void add(Object o, String file){
-		resources.put(o.getClass(), file);
+	@SuppressWarnings("rawtypes")
+	public void add(Class o, String use, String file){
+		if(!resources.containsKey(o.getClass())){
+			resources.put(o, new HashMap<String, String>());
+		}
+		
+		resources.get(o).put(use, file);
 	}
 }

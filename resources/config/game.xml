@@ -6,7 +6,7 @@
 		<arme name="Resistance" tir="Resistance" damage="20" recul="20"
 			reload="300" />
 		<arme name="Transistor" tir="Transistor" damage="40" recul="50"
-			reload="500" />
+			reload="100" />
 	</armes>
 
 	<botTypes>
