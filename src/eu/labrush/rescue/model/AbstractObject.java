@@ -19,6 +19,8 @@ public abstract class AbstractObject extends AbstractModel {
 	protected AbstractPhysicBehaviour behaviour;
 	protected Dimension dim;
 
+	private String image = "" ;
+	
 	public AbstractObject(double x, double y, int width, int height, AbstractPhysicBehaviour behaviour) {
 		super();
 		this.setTrajectoire(new Trajectoire(x, y));
@@ -94,6 +96,22 @@ public abstract class AbstractObject extends AbstractModel {
 	public void setPhysicBehaviour(AbstractPhysicBehaviour behaviour) {
 		this.behaviour = behaviour;
 		throwUpdate();
+	}
+
+	/**
+	 * @return the image
+	 */
+	public String getImage() {
+		return image;
+	}
+
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(String image) {
+		this.image = image;
+		setChanged();
+		notifyObservers("image");
 	}
 
 }

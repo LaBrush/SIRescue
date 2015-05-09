@@ -3,17 +3,18 @@ package eu.labrush.rescue.view;
 import java.util.Observable;
 
 import eu.labrush.rescue.core.graphic.DrawRequest;
+import eu.labrush.rescue.model.AbstractObject;
 import eu.labrush.rescue.model.arme.Tir;
 
 /**
  * @author adrienbocquet
  *
  */
-public class TirView extends AbstractView {
+public class TirView extends AbstractObjectView {
 
 	int angle;
 
-	public TirView(Observable model) {
+	public TirView(AbstractObject model) {
 		super(model);
 	}
 
@@ -33,6 +34,7 @@ public class TirView extends AbstractView {
 		y = (int) (t.getTrajectoire().getPosition().getY());
 
 		angle = (int) t.getAngle();
+		
 	}
 
 	/*
@@ -42,7 +44,11 @@ public class TirView extends AbstractView {
 	 */
 	@Override
 	public void draw(DrawRequest req) {
-		req.rect(x, y, width, height, angle);
+		if(this.image == null){
+			req.rect(x, y, width, height, angle);
+		} else {
+			req.image(image, x, y, width, height, angle);
+		}
 	}
 
 }

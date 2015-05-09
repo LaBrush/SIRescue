@@ -233,7 +233,7 @@
 
 	<items>
 		<item>
-			<position x="500" y="0" />
+			<position x="500" y="30" />
 			<dimensions width="40" height="10" />
 		</item>
 	</items>

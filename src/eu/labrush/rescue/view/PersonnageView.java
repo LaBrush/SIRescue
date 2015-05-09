@@ -27,6 +27,8 @@ public class PersonnageView extends AbstractView {
 		
 		life = model.getLife() ;
 		maxLife = model.getMaxLife();
+		
+		
 	}
 
 	@Override

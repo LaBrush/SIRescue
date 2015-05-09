@@ -71,6 +71,21 @@ public class DrawRequest {
 
 	}
 
+	public void image(BufferedImage img, int x, int y, int width, int height, int angle) {
+
+		// on ajoute un décalage sur x et y en fonction de l'angle de rotation
+		// afin d'obtenir une rotation par raport au coins inférieur gauche
+		y = (int) (this.height - y - img.getHeight() * Math.cos(Math.toRadians(angle)));
+		x = (int) (x - img.getHeight() * Math.sin(Math.toRadians(angle)));
+
+		AffineTransform trans = new AffineTransform();
+				
+		trans.translate(x, y);
+		trans.rotate(Math.toRadians(-angle));
+		trans.scale((double)width/img.getWidth(), (double)height/img.getHeight());
+		this.g.drawImage(img, trans, null);
+	}
+	
 	public void image(BufferedImage img, int x, int y, int angle) {
 
 		// on ajoute un décalage sur x et y en fonction de l'angle de rotation
@@ -87,7 +102,7 @@ public class DrawRequest {
 	public void image(BufferedImage img, int x, int y) {
 		image(img, x, y, 0);
 	}
-
+	
 	public void fillRect(int x, int y, int width, int height, Color c) {
 		this.g.setColor(c);
 		this.g.fillRect(x, this.getHeight() - y, width, height);
