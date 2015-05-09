@@ -19,9 +19,6 @@ public abstract class AbstractObjectView extends AbstractView {
 
 	protected BufferedImage image = null;
 
-	/**
-	 * @param model
-	 */
 	public AbstractObjectView(AbstractObject model) {
 		model.addObserver(binder);
 		this.bindModel(model);

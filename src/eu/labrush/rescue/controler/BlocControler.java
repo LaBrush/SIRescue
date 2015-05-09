@@ -35,8 +35,6 @@ public class BlocControler extends AbstractControler {
 	 * 
 	 * @param bloc
 	 *            le bloc à ajouter
-	 * @param endBLoc
-	 * 			  indique si ce bloc permet de terminer le niveau
 	 */
 	public void add(Bloc bloc) {
 		BlocView v = new BlocView(bloc);
