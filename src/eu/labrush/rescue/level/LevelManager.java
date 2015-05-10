@@ -80,7 +80,7 @@ public class LevelManager {
 				@Override
 				public void update(DrawRequest req) {
 					req.fillRect(0, req.getHeight(), req.getWidth(), req.getHeight(), Color.BLACK);
-					req.drawString("Vous avez fini SI Rescue !", 20, 350, Color.WHITE, 30, true);
+					req.drawString("Vous avez fini SIRescue !", 20, 350, Color.WHITE, 30, true);
 					req.drawString("C'est négligeable", 20, 300, Color.WHITE, 20, true);
 				}
 			});

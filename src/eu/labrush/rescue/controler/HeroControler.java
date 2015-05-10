@@ -1,6 +1,7 @@
 package eu.labrush.rescue.controler;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.util.Observable;
 import java.util.Observer;
@@ -184,8 +185,13 @@ public final class HeroControler extends AbstractControler {
 			this.vx = model.getVitesseNominale().getX();
 			this.vy = model.getVitesseNominale().getY();
 
-			personnageControler.add(model);
 			heroView = new HeroInfoView(personnage);
+			model.addObserver(reculObserver);
+			
+			model.setImage("hero.png");
+			model.setDimension(new Dimension(15, 50));
+			
+			personnageControler.add(model);
 
 			this.graphics.addObserver(new Listener<DrawRequest>() {
 				@Override
@@ -193,8 +199,6 @@ public final class HeroControler extends AbstractControler {
 					heroView.draw(req);
 				}
 			});
-
-			personnage.addObserver(reculObserver);
 
 		}
 
