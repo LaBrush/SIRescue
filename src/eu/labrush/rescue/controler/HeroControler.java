@@ -1,5 +1,6 @@
 package eu.labrush.rescue.controler;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.Observable;
 import java.util.Observer;
@@ -28,20 +29,22 @@ public final class HeroControler extends AbstractControler {
 
 	private Thread shootThread;
 	private boolean shooting = false;
+	
+	private boolean paused = false;
 
 	private Personnage model;
 
 	private double vx, vy;
-	
+
 	KeyboardListener keyboard = GraphicCore.getKeyboard();
 	Listener<KeyEvent> listener = new Listener<KeyEvent>() {
 
 		@Override
 		public void update(KeyEvent req) {
-			if(model.isHurted()){
-				return ;
+			if (model.isHurted()) {
+				return;
 			}
-			
+
 			Trajectoire t = model.getTrajectoire();
 
 			if (req.getID() == KeyEvent.KEY_PRESSED) {
@@ -77,6 +80,9 @@ public final class HeroControler extends AbstractControler {
 					case 'q':
 						startShoot(180);
 						break;
+					case 'p':
+						pause();
+						break;
 				}
 			}
 
@@ -102,18 +108,35 @@ public final class HeroControler extends AbstractControler {
 			}
 
 		}
-
 	};
 	
-	private Observer reculObserver = new Observer(){
+	private Listener<DrawRequest> pauseDisplay = new Listener<DrawRequest>(){
+		@Override
+		public void update(DrawRequest req) {
+			req.drawString("Pause", 100, 250, Color.BLACK, 300, true);
+		}
+	};
+	
+	private void pause() {
+		if (paused) {
+			level.getPhysics().start();
+			level.getGraphics().getPan().delObserver(pauseDisplay);
+		} else {
+			level.getPhysics().stop();
+			level.getGraphics().addObserver(pauseDisplay);
+		}
+		paused = !paused;
+	};
+	
+	private Observer reculObserver = new Observer() {
 		public void update(Observable o, Object arg) {
 			if (arg instanceof Tuple) {
 				Tuple<?, ?> arg1 = (Tuple<?, ?>) arg;
-				if (arg1.first.equals("hurted") && (int)arg1.second != 0) {
+				if (arg1.first.equals("hurted") && (int) arg1.second != 0) {
 					model.getTrajectoire().getVitesse().setX((int) arg1.second);
 					model.getTrajectoire().getVitesse().setY(Math.abs((int) arg1.second));
-					
-					shooting = false ;
+
+					shooting = false;
 				}
 			}
 		}
@@ -170,9 +193,9 @@ public final class HeroControler extends AbstractControler {
 					heroView.draw(req);
 				}
 			});
-			
+
 			personnage.addObserver(reculObserver);
-			
+
 		}
 
 		throwUpdate();
