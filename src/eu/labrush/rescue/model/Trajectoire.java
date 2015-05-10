@@ -1,7 +1,5 @@
-/**
- * 
- */
 package eu.labrush.rescue.model;
+
 
 /**
  * @author adrienbocquet
@@ -27,7 +25,7 @@ public class Trajectoire extends AbstractModel {
 	public Trajectoire() {
 		this(0, 0);
 	}
-
+	
 	/**
 	 * Met à jour la position et la vitesse du composant en fonction du temps
 	 * 
@@ -71,10 +69,6 @@ public class Trajectoire extends AbstractModel {
 		return p;
 	}
 
-	/**
-	 * @param acceleration
-	 *            the acceleration to set
-	 */
 	public void setAcceleration(Vecteur acceleration) {
 		if (this.acceleration != null) {
 			this.acceleration.deleteObserver(this);
@@ -86,10 +80,6 @@ public class Trajectoire extends AbstractModel {
 		throwUpdate();
 	}
 
-	/**
-	 * @param vitesse
-	 *            the vitesse to set
-	 */
 	public void setVitesse(Vecteur vitesse) {
 		if (this.vitesse != null) {
 			this.vitesse.deleteObserver(this);
@@ -101,10 +91,6 @@ public class Trajectoire extends AbstractModel {
 		throwUpdate();
 	}
 
-	/**
-	 * @param position
-	 *            the position to set
-	 */
 	public void setPosition(Vecteur position) {
 		if (this.position != null) {
 			this.position.deleteObserver(this);

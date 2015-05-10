@@ -3,7 +3,7 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
 	<hero>
 		<life>200</life>
-		<position x="15" y="20" />
+		<position x="150" y="20" />
 		<arme cartouches="300" type="Resistance" />
 	</hero>
 
@@ -16,7 +16,7 @@
 			<position x="600" y="0" />
 			<dimensions width="10" height="400" />
 		</bloc>
-		<bloc>
+		<bloc id="1">
 			<position x="-5" y="0" />
 			<dimensions width="610" height="10" />
 		</bloc>
@@ -51,7 +51,8 @@
 
 		<bot>
 			<position x="150" y="220" />
-			<type>soso</type>
+			<type>bino</type>
+			<bloc_id>1</bloc_id>
 		</bot>
 		<bot>
 			<position x="100" y="180" />

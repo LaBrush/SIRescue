@@ -89,6 +89,9 @@ public class Vecteur extends AbstractModel implements Cloneable {
 	public Vecteur add(Vecteur other) {
 		this.x += other.x ;
 		this.y += other.y ;
+		
+		throwUpdate();
+		
 		return this ;
 	}
 

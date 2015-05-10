@@ -90,7 +90,11 @@ public class TirControler extends AbstractControler {
 							if (o instanceof Personnage) {
 								Personnage p = (Personnage) o;
 								
-								int recul = 100 ;
+								if(p.isHurted()){
+									return ;
+								}
+								
+								int recul = tir.getRecul() ;
 								if(p.getX()+p.getWidth()/2 < tir.getX()+tir.getWidth()/2){
 									recul *= -1 ;
 								}

@@ -57,7 +57,7 @@ public class Level {
 
 		itemControler = new ItemControler(this, heroControler, blocControler);
 
-		achievementControler = new AchievementControler(this, heroControler, itemControler);
+		achievementControler = new AchievementControler(this, heroControler, itemControler, personnageControler);
 	}
 
 	/**

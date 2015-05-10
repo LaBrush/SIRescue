@@ -11,6 +11,7 @@ import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.level.Level;
 import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Personnage;
+import eu.labrush.rescue.model.Vecteur;
 import eu.labrush.rescue.utils.Listener;
 import eu.labrush.rescue.view.PersonnageView;
 
@@ -60,6 +61,11 @@ public class PersonnageControler extends AbstractControler {
 							p.prendreDegats(1000);
 						}
 					}
+					
+					if(p.getTrajectoire().getAcceleration().getY() == 0 && p.getTrajectoire().getVitesse().getY() == 0 && p.isHurted()){
+						p.setHurted(false);
+						p.getTrajectoire().setVitesse(new Vecteur());
+					}
 				}
 			}
 		});
@@ -70,6 +76,7 @@ public class PersonnageControler extends AbstractControler {
 		personnage.addObserver(this.deadObserver);
 
 		this.personnages.put(personnage, v);
+		throwUpdate();
 	}
 
 	/**
@@ -81,6 +88,7 @@ public class PersonnageControler extends AbstractControler {
 
 	public void removePersonnage(Personnage p) {
 		personnages.remove(p);
+		throwUpdate();
 	}
 
 }

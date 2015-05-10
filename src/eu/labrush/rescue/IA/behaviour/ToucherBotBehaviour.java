@@ -23,7 +23,7 @@ public class ToucherBotBehaviour implements BotBehaviour, Observer {
 	private Bloc bloc;
 
 	double vitesse;
-	boolean attack;
+	boolean attack, hasShield = false;
 
 	public ToucherBotBehaviour(Bot bot, Bloc bloc) {
 		setBot(bot);
@@ -45,9 +45,9 @@ public class ToucherBotBehaviour implements BotBehaviour, Observer {
 	public void update(Observable o, Object arg) {
 		if (arg instanceof Tuple) {
 			Tuple<?, ?> arg1 = (Tuple<?, ?>) arg;
-			if (arg1.first.equals("hurted")) {
+			if (arg1.first.equals("hurted") && (int)arg1.second != 0) {
 				bot.getTrajectoire().getVitesse().setX((int) arg1.second);
-				bot.getTrajectoire().getVitesse().setY(300);
+				bot.getTrajectoire().getVitesse().setY(Math.abs((int) arg1.second));
 			}
 		}
 	}
@@ -57,8 +57,9 @@ public class ToucherBotBehaviour implements BotBehaviour, Observer {
 	 */
 	public void update(Personnage hero) {
 
-		if (bot.getTrajectoire().getVitesse().getY() == 0) {
-			bot.setHurted(false);
+		if (!hasShield) {
+			bot.shoot(0);
+			hasShield = true;
 		}
 
 		if (!bot.isHurted()) {

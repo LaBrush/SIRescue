@@ -181,6 +181,11 @@ public class LevelXMLHandler extends DefaultHandler {
 				if (behaviour == null) {
 					throw new SAXException("Try to instanciate a non existant bot behaviour");
 				}
+				
+				if(behaviour.getClass().getName().equals("eu.labrush.rescue.IA.behaviour.Bouclier") && !((Bot) current).getCurrentArme().getTirClass().equals("Bouclier")){
+					throw new SAXException("A ToucherBotBehaviour must have a Bouclier");
+				}
+				
 				break;
 
 			case "life":

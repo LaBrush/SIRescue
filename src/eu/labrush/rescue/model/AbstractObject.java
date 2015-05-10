@@ -79,7 +79,7 @@ public abstract class AbstractObject extends AbstractModel {
 		this.trajectoire = t;
 		this.trajectoire.addObserver(this);
 
-		setChanged();
+		throwUpdate();
 	}
 
 	/**

@@ -3,14 +3,16 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
 
 	<armes>
-		<arme name="Resistance" tir="Resistance" damage="20" recul="20"
+		<arme name="Bouclier" tir="Bouclier" damage="20" recul="300"
+			reload="3" />
+		<arme name="Resistance" tir="Resistance" damage="20" recul="0"
 			reload="300" />
-		<arme name="Transistor" tir="Transistor" damage="40" recul="50"
+		<arme name="Transistor" tir="Transistor" damage="40" recul="400"
 			reload="500" />
 	</armes>
 
 	<botTypes>
-		<botType name="bino" arme="Resistance" comportement="ToucherBotBehaviour"
+		<botType name="bino" arme="Bouclier" comportement="ToucherBotBehaviour"
 			life="1000" />
 		<botType name="soso" arme="Resistance" comportement="FlyBotBehaviour"
 			life="50" />

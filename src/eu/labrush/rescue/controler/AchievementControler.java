@@ -14,7 +14,8 @@ public class AchievementControler extends AbstractControler {
 
 	ItemControler itemControler;
 	HeroControler heroControler;
-
+	PersonnageControler personnageControler;
+	
 	Personnage hero;
 
 	Observer heroListener = new Observer() {
@@ -36,11 +37,11 @@ public class AchievementControler extends AbstractControler {
 		}
 	};
 	
-	Observer itemListener = new Observer(){
+	Observer endListener = new Observer(){
 
 		@Override
 		public void update(Observable o, Object arg) {
-			if(((ItemControler)o).getItems().size() == 0){
+			if(itemControler.getItems().size() == 0 && personnageControler.getPersonnages().size() == 1){//plus d'item et seulement le héro
 				setChanged();
 				notifyObservers("done");
 				deleteObservers();
@@ -49,9 +50,10 @@ public class AchievementControler extends AbstractControler {
 		
 	};
 
-	public AchievementControler(Level level, HeroControler heroControler, ItemControler itemControler) {
+	public AchievementControler(Level level, HeroControler heroControler, ItemControler itemControler, PersonnageControler personnageControler) {
 		super(level);
 		this.itemControler = itemControler;
+		this.personnageControler = personnageControler;
 
 		heroControler.addObserver(new Observer() {
 			@Override
@@ -64,7 +66,8 @@ public class AchievementControler extends AbstractControler {
 			}
 		});
 		
-		itemControler.addObserver(itemListener);
+		itemControler.addObserver(endListener);
+		personnageControler.addObserver(endListener);
 
 	}
 

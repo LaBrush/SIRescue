@@ -1,6 +1,8 @@
 package eu.labrush.rescue.controler;
 
 import java.awt.event.KeyEvent;
+import java.util.Observable;
+import java.util.Observer;
 
 import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.graphic.GraphicCore;
@@ -10,6 +12,7 @@ import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Trajectoire;
 import eu.labrush.rescue.model.Vecteur;
 import eu.labrush.rescue.utils.Listener;
+import eu.labrush.rescue.utils.Tuple;
 import eu.labrush.rescue.view.HeroInfoView;
 
 /**
@@ -29,12 +32,16 @@ public final class HeroControler extends AbstractControler {
 	private Personnage model;
 
 	private double vx, vy;
-
+	
 	KeyboardListener keyboard = GraphicCore.getKeyboard();
 	Listener<KeyEvent> listener = new Listener<KeyEvent>() {
 
 		@Override
 		public void update(KeyEvent req) {
+			if(model.isHurted()){
+				return ;
+			}
+			
 			Trajectoire t = model.getTrajectoire();
 
 			if (req.getID() == KeyEvent.KEY_PRESSED) {
@@ -97,6 +104,20 @@ public final class HeroControler extends AbstractControler {
 		}
 
 	};
+	
+	private Observer reculObserver = new Observer(){
+		public void update(Observable o, Object arg) {
+			if (arg instanceof Tuple) {
+				Tuple<?, ?> arg1 = (Tuple<?, ?>) arg;
+				if (arg1.first.equals("hurted") && (int)arg1.second != 0) {
+					model.getTrajectoire().getVitesse().setX((int) arg1.second);
+					model.getTrajectoire().getVitesse().setY(Math.abs((int) arg1.second));
+					
+					shooting = false ;
+				}
+			}
+		}
+	};
 
 	private void startShoot(int angle) {
 		shootThread = new Thread(new Runnable() {
@@ -149,6 +170,8 @@ public final class HeroControler extends AbstractControler {
 					heroView.draw(req);
 				}
 			});
+			
+			personnage.addObserver(reculObserver);
 			
 		}
 
