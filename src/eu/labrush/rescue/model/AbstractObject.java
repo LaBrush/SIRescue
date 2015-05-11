@@ -60,10 +60,6 @@ public abstract class AbstractObject extends AbstractModel {
 		return dim;
 	}
 	
-	public void setDimension(Dimension dim) {
-		this.dim = dim ;
-	}
-
 	/**
 	 * @return the trajectoire
 	 */

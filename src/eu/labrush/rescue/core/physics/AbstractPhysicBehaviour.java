@@ -47,7 +47,7 @@ public abstract class AbstractPhysicBehaviour {
 	 * Calcul les degrès de liberté du solide par rapport à un bloc donné
 	 */
 	protected final void calcMargin(AbstractObject bloc, Vecteur next_pos) {
-
+		
 		double th = dim.getHeight();
 		double tw = dim.getWidth();
 
@@ -127,6 +127,13 @@ public abstract class AbstractPhysicBehaviour {
 
 	public double getGravity() {
 		return gravity;
+	}
+
+	/**
+	 * @return the moves
+	 */
+	public LibertyDegree getMoves() {
+		return moves;
 	}
 
 }

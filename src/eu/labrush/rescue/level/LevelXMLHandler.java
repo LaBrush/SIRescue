@@ -1,6 +1,5 @@
 package eu.labrush.rescue.level;
 
-import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -121,9 +120,7 @@ public class LevelXMLHandler extends DefaultHandler {
 	}
 
 	private void setDimension(Attributes attrs) {
-		Dimension dim = new Dimension();
-		dim.setSize(Integer.parseInt(attrs.getValue(0)), Integer.parseInt(attrs.getValue(1)));
-		current.setDimension(dim);
+		current.getDimension().setSize(Integer.parseInt(attrs.getValue(0)), Integer.parseInt(attrs.getValue(1)));
 	}
 
 	private void setPosition(Attributes attrs) {

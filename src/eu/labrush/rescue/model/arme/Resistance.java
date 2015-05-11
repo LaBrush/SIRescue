@@ -3,7 +3,7 @@ package eu.labrush.rescue.model.arme;
 import java.awt.Dimension;
 import java.util.Observable;
 
-import eu.labrush.rescue.core.physics.TirPhysicBehaviour;
+import eu.labrush.rescue.core.physics.ClassicPhysicBehaviour;
 import eu.labrush.rescue.model.AbstractObject;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
@@ -22,7 +22,8 @@ public class Resistance extends Tir {
 		this.getTrajectoire().setPosition(position);
 		this.getTrajectoire().getVitesse().setPolar(this.vitesse, angle);
 
-		this.behaviour = new TirPhysicBehaviour(this.getTrajectoire(), this.dim);
+		this.behaviour = new ClassicPhysicBehaviour(this.getTrajectoire(), this.dim);
+		this.behaviour.setGravity(0);
 		
 		update(null, null);
 	}

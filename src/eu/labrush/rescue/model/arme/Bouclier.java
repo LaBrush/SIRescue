@@ -20,7 +20,7 @@ public class Bouclier extends Tir {
 	public Bouclier(Vecteur position, int angle, int damage, int recul, Personnage owner) {
 		super(position, angle, damage, recul, owner);
 		
-		this.setDimension(owner.getDimension());
+		this.dim = owner.getDimension();
 		this.behaviour = new InertPhysicBehaviour(this.getTrajectoire(), owner);
 		
 		setActivated(true);
