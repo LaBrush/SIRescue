@@ -13,6 +13,10 @@ import eu.labrush.rescue.model.Vecteur;
  */
 public abstract class AbstractPhysicBehaviour {
 
+	
+	/**
+	 * Contient les distances dans les quatres directions au plus proche bloc
+	 */
 	public class LibertyDegree {
 		public double top = Double.POSITIVE_INFINITY, bottom = Double.POSITIVE_INFINITY, left = Double.POSITIVE_INFINITY,
 				right = Double.POSITIVE_INFINITY;
