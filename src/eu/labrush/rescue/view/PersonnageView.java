@@ -51,6 +51,8 @@ public class PersonnageView extends AbstractObjectView {
 	@Override
 	public void draw(DrawRequest req) {
 		
+		req.rect(this.x, this.y, this.width, this.height);
+		
 		if (image == null) {
 			req.rect(this.x, this.y, this.width, this.height);
 		} else {

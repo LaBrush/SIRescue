@@ -44,31 +44,31 @@
 		</bloc>
 		<bloc hurting="true">
 			<position x="0" y="610" />
-			<dimensions width="670" height="49" />
+			<dimensions width="710" height="49" />
 		</bloc>
 		<bloc hurting="true">
-			<position x="730" y="610" />
+			<position x="770" y="610" />
 			<dimensions width="350" height="49" />
 		</bloc>
 		<!--plateformes:F -->
 		<bloc>
 			<position x="100" y="1" />
-			<dimensions width="35" height="16" />
+			<dimensions width="35" height="10" />
 		</bloc>
 		<bloc>
-			<position x="100" y="30" />
+			<position x="100" y="20" />
 			<dimensions width="35" height="20" />
 		</bloc>
 		<bloc>
-			<position x="100" y="65" />
+			<position x="100" y="55" />
 			<dimensions width="75" height="20" />
 		</bloc>
 		<bloc>
-			<position x="100" y="100" />
+			<position x="100" y="90" />
 			<dimensions width="35" height="20" />
 		</bloc>
 		<bloc>
-			<position x="100" y="135" />
+			<position x="100" y="125" />
 			<dimensions width="115" height="20" />
 		</bloc>
 		<!--plateformes:E -->
@@ -93,12 +93,12 @@
 			<dimensions width="115" height="20" />
 		</bloc>
 		<bloc hurting="true">
-			<position x="265" y="225" />
-			<dimensions width="49" height="20" />
+			<position x="275" y="225" />
+			<dimensions width="39" height="20" />
 		</bloc>
 		<bloc hurting="true">
-			<position x="265" y="190" />
-			<dimensions width="49" height="20" />
+			<position x="275" y="190" />
+			<dimensions width="39" height="20" />
 		</bloc>
 		<!--plateformes:S -->
 		<bloc>
@@ -198,7 +198,7 @@
 
 	<items>
 		<item content="arme" type="Transistor" cartouches="20">
-			<position x="690" y="610" />
+			<position x="730" y="610" />
 			<dimensions width="20" height="20" />
 		</item>
 
