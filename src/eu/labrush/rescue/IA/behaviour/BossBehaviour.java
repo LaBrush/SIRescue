@@ -16,7 +16,7 @@ public class BossBehaviour implements BotBehaviour {
 
 	HashSet<Bloc> blocs ;
 	private Bot b;
-	double botX, botY ;
+	double botX, botY, heroX, heroY, vX, vY ;
 
 	public BossBehaviour(HashSet<Bloc> blocs) {
 		super();
@@ -28,6 +28,11 @@ public class BossBehaviour implements BotBehaviour {
 		
 		 botX = b.getX();
 		 botY = b.getY();
+		 heroX = hero.getX();
+		 heroY = hero.getY();
+		 vX = b.getTrajectoire().getVitesse().getX();
+		 vY = b.getTrajectoire().getVitesse().getY();
+		
 		 
 		 double blocX, blocY, ouOnEstX, ouOnEstY, lePlusProcheX, lePlusProcheY;
 		 int privateTimer = 0;
@@ -62,17 +67,55 @@ public class BossBehaviour implements BotBehaviour {
 		lePlusProcheX = xProche(lePlusProche);
 		lePlusProcheY = yProche(lePlusProche);
 		
-		if(b.getTrajectoire().getVitesse().getY() == 0 && b.getTrajectoire().getAcceleration().getY() == 0){
-			b.getTrajectoire().getVitesse().setY(1000);
+		if (((Math.pow(heroX - botX, 2) < 1000000) && (Math.pow(heroY - botY, 2) < 1000000))){
+			double angle, alpha;			
+			alpha = Math.atan((botX - heroX) / (botY - heroY));
+			angle = alpha;
+			b.shoot((int) angle);
 		}
 		
+		if (privateTimer == 0){
+			double pY;
+			
+			if(b.getTrajectoire().getVitesse().getY() == 0 && b.getTrajectoire().getAcceleration().getY() == 0){
+				b.getTrajectoire().getVitesse().setY(600);
+				pY = botY;
+			
+			if (pY>botY){
+					privateTimer =1;
+			}
+			}
+		}
+		
+		if (privateTimer == 1){
+			if (heroX < botX && botX >= ouOnEst.getX()){
+				b.getTrajectoire().getVitesse().setX(-5);
+				
+				if(heroX < botX && botX <= ouOnEst.getX()+1){
+					privateTimer = 2;
+				}
+			}
+			else if (heroX > botX && botX <= (ouOnEst.getX()+ouOnEst.getWidth())){
+				b.getTrajectoire().getVitesse().setX(5);
+				
+				if(heroX > botX && botX >= (ouOnEst.getX()+ouOnEst.getWidth()-1)){
+					privateTimer = 2;
+				}
+			}			
+		}
+		
+		if (privateTimer == 2){
+			
+		}
+			
+		
 		/*if (privateTimer ==0){
-		if (botY <= (ouOnEstY + 30)){ //mont�e du petit saut
+		if (botY <= (ouOnEstY + 30)){ //monté du petit saut
 			
 			b.getTrajectoire().getVitesse().setX(0);			
 			b.getTrajectoire().getVitesse().setY(100);
 		}
-		else if(botY >= (ouOnEstY + 30)){ //incr�ment privatetimer
+		else if(botY >= (ouOnEstY + 30)){ //incrément privatetimer
 			privateTimer = 1;
 			b.getTrajectoire().getVitesse().setY(0);
 		}
@@ -85,7 +128,7 @@ public class BossBehaviour implements BotBehaviour {
 			b.getTrajectoire().getVitesse().setY(0);
 			
 		}
-		/*else if(botY <= (ouOnEstY + 15) && privateTimer == 1){// incr�ment private timer
+		/*else if(botY <= (ouOnEstY + 15) && privateTimer == 1){// incrément private timer
 			privateTimer = 2;
 		}
 		}*/

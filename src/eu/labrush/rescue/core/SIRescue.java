@@ -2,7 +2,8 @@ package eu.labrush.rescue.core;
 
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
-import eu.labrush.rescue.level.LevelManager;
+import eu.labrush.rescue.level.Level;
+import eu.labrush.rescue.level.SampleLevel;
 
 /**
  * @author solineducousso
@@ -18,13 +19,13 @@ public class SIRescue {
 		PhysicCore physics = new PhysicCore(GraphicCore.FRAMERATE * 2);
 
 
-		LevelManager manager = new LevelManager(graphics, physics);
+		/*LevelManager manager = new LevelManager(graphics, physics);
 		manager.load("game.xml");
-		manager.loadLevel();
+		manager.loadLevel();*/
 		
-		/*Level level = new SampleLevel(graphics, physics);
+		Level level = new SampleLevel(graphics, physics);
 		
 		graphics.start();
-		physics.start();*/
+		physics.start();
 	}
 }
