@@ -213,7 +213,11 @@
 			<position x="710" y="130" />
 			<dimensions width="72" height="14" />
 		</bloc>
-
+      <!-- plateforme:N -->
+      <bloc>
+			<position x="832" y="130" />
+			<dimensions width="24" height="14" />
+		</bloc>
 
 
 
