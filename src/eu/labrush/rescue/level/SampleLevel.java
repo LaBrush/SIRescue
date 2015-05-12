@@ -3,6 +3,7 @@ package eu.labrush.rescue.level;
 import java.util.ArrayList;
 
 import eu.labrush.rescue.IA.behaviour.BossBehaviour;
+import eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour;
 import eu.labrush.rescue.controler.BotControler;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
@@ -58,7 +59,7 @@ public class SampleLevel extends Level {
 		//botControler.add(aerien, new FlyBotBehaviour());
 
 		botControler.add(new Bot(260, 160), new BossBehaviour(blocControler.getBlocs()));
-		//botControler.add(new Bot(260, 50), new ToucherBotBehaviour(blocs.get(1)));
+		botControler.add(new Bot(260, 50), new ToucherBotBehaviour(blocs.get(1)));
 		//botControler.add(new Bot(320, 215), new ToucherBotBehaviour(blocs.get(2)));
 
 		itemControler.add(new ArmeItem(220, 161, new Arme("Transistor", 34, 200, 30, 20)));

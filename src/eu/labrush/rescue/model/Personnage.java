@@ -53,8 +53,9 @@ public class Personnage extends AbstractObject {
 		this.life -= degats;
 		checkIfDead();
 
-		this.isHurted = true;
-		
+		if (recul != 0)
+			this.isHurted = true;
+
 		setChanged();
 		notifyObservers(new Tuple<String, Integer>("hurted", recul));
 	}
@@ -69,11 +70,11 @@ public class Personnage extends AbstractObject {
 
 	public void setLife(int life) {
 		this.life = life;
-		
-		if(life > maxLife){
+
+		if (life > maxLife) {
 			maxLife = life;
 		}
-		
+
 		throwUpdate();
 	}
 
@@ -163,5 +164,5 @@ public class Personnage extends AbstractObject {
 	public void setHurted(boolean isHurted) {
 		this.isHurted = isHurted;
 	}
-	
+
 }

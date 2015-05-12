@@ -17,7 +17,6 @@ public class SIRescue {
 		GraphicCore graphics = GraphicCore.getInstance();
 		PhysicCore physics = new PhysicCore(GraphicCore.FRAMERATE * 2);
 
-
 		LevelManager manager = new LevelManager(graphics, physics);
 		manager.load("game.xml");
 		manager.loadLevel();

@@ -98,7 +98,6 @@ public final class HeroControler extends AbstractControler {
 						shooting = false;
 						break;
 				}
-				;
 
 				switch (req.getKeyCode()) {
 					case KeyEvent.VK_LEFT:

@@ -64,7 +64,6 @@ public class PersonnageControler extends AbstractControler {
 					
 					if(p.getTrajectoire().getAcceleration().getY() == 0 && p.getTrajectoire().getVitesse().getY() == 0 && p.isHurted()){
 						p.setHurted(false);
-						p.getTrajectoire().setVitesse(new Vecteur());
 					}
 				}
 			}

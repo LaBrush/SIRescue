@@ -81,6 +81,7 @@ public class TirControler extends AbstractControler {
 				obstacles.addAll(blocControler.getBlocs());
 
 				for (Tir tir : tirs.keySet()) {
+										
 					// On met à jour la position des tirs
 					tir.getPhysicBehaviour().updateTrajectoire(req.getDelta(), obstacles);
 
