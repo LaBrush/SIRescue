@@ -4,4 +4,11 @@
 	
 	<sound src="resources/audio/explosions_transistors.wav" case="use" name="eu.labrush.rescue.model.arme.Transistor" />
 	
+	<sound src="resources/audio/tir_tansistor.wav" case="tir" name="eu.labrush.rescue.model.arme.Transistor" />
+	<sound src="resources/audio/tir_resistance.wav" case="tir" name="eu.labrush.rescue.model.arme.Resistance" />
+	<sound src="resources/audio/bruit_echarpe.wav" case="tir" name="eu.labrush.rescue.model.arme.Echarpe" />
+
+	<sound src="resources/audio/touche.wav" case="hurted" name="eu.labrush.rescue.model.Personnage" />
+	
+	
 </sounds>

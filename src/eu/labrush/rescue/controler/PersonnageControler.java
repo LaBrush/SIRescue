@@ -11,7 +11,6 @@ import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.level.Level;
 import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Personnage;
-import eu.labrush.rescue.model.Vecteur;
 import eu.labrush.rescue.utils.Listener;
 import eu.labrush.rescue.view.PersonnageView;
 

@@ -3,7 +3,7 @@
   <xs:element name="sounds">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="sound">
+        <xs:element name="sound" maxOccurs="unbounded" minOccurs="0">
           <xs:complexType>
             <xs:simpleContent>
               <xs:extension base="xs:string">

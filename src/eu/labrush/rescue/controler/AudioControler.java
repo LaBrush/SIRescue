@@ -38,7 +38,7 @@ public class AudioControler {
 	
 	@SuppressWarnings("rawtypes")
 	public void add(Class o, String use, String file){
-		if(!resources.containsKey(o.getClass())){
+		if(!resources.containsKey(o)){
 			resources.put(o, new HashMap<String, String>());
 		}
 		

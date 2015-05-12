@@ -101,6 +101,7 @@ public class TirControler extends AbstractControler {
 								}
 								
 								p.prendreDegats(tir.getDamage(), recul);
+								audioControler.play(p, "hurted");
 							}
 							
 							if(!tir.isActivated())
@@ -143,6 +144,7 @@ public class TirControler extends AbstractControler {
 			this.tirs.put(tir, v);
 
 			tir.addObserver(usedTirObserver);
+			audioControler.play(tir, "tir");
 		}
 	}
 

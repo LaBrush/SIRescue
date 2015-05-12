@@ -1,7 +1,6 @@
 package eu.labrush.rescue.controler;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.util.Observable;
 import java.util.Observer;
