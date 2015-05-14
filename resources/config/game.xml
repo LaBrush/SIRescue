@@ -13,13 +13,13 @@
 
 	<botTypes>
 		<botType name="bino" arme="Bouclier" comportement="ToucherBotBehaviour"
-			life="1000" />
+			life="10" />
 		<botType name="soso" arme="Resistance" comportement="FlyBotBehaviour"
 			life="50" />
 	</botTypes>
 
 	<levels>
-		<!-- <level src="level1.xml" /> -->
+		<level src="level1.xml" />
 		<level src="level2.xml" />
 		<level src="level3.xml" />
 	</levels>

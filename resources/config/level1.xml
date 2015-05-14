@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <level xs:noNamespaceSchemaLocation="level.xsd"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+	
 	<hero>
 		<life>100</life>
 		<position x="15" y="20" />

@@ -1,11 +1,12 @@
 package eu.labrush.rescue.level;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
-
-import eu.labrush.rescue.controler.AudioControler;
 
 /**
  * @author adrienbocquet
@@ -13,27 +14,39 @@ import eu.labrush.rescue.controler.AudioControler;
  */
 public class SoundXMLHandler extends DefaultHandler {
 
-	AudioControler audioControler ;
+	@SuppressWarnings("rawtypes")
+	HashMap<Class, HashMap<String, String>> resources = new HashMap<Class, HashMap<String, String>>();
+	ArrayList<String> levels = new ArrayList<String>();
 	
-	public SoundXMLHandler(Level level) {
-		this.audioControler = level.audioControler ;
+	public SoundXMLHandler() {
 	}
 
 	public void startElement(String namespaceURI, String lName, String qName, Attributes attrs) throws SAXException {
-		if(qName == "sound"){
-			@SuppressWarnings("rawtypes")
-			Class c = null ;
+		switch (qName) {
+			case "sound":
+				@SuppressWarnings("rawtypes")
+				Class c = null;
+
+				try {
+					c = Class.forName(attrs.getValue("name"));
+					if (!resources.containsKey(c)) {
+						resources.put(c, new HashMap<String, String>());
+					}
+
+					resources.get(c).put(attrs.getValue("case"), attrs.getValue("src"));
+					
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+				break;
 			
-			try {
-				c = Class.forName(attrs.getValue("name"));
-				audioControler.add(c, attrs.getValue("case"), attrs.getValue("src"));
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			
+			case "level":
+				levels.add(attrs.getValue("src"));
+				break; 
+
 		}
 	}
-	
+
 	public void characters(char[] data, int start, int end) {
 	}
 

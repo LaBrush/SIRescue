@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <level xs:noNamespaceSchemaLocation="level.xsd"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+	
+	<music src="resources/audio/musique_lvl2.wav"/>
+	
 	<hero>
 		<life>1000</life>
 		<position x="15" y="20" />

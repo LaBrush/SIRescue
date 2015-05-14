@@ -52,7 +52,7 @@ public class LevelXMLHandler extends DefaultHandler {
 	 */
 	public void startElement(String namespaceURI, String lName, String qName, Attributes attrs) throws SAXException {
 
-		switch (qName) {
+		switch (qName) {			
 			case "bloc":
 				current = new Bloc();
 
@@ -93,7 +93,6 @@ public class LevelXMLHandler extends DefaultHandler {
 			case "dimensions":
 				setDimension(attrs);
 				break;
-
 			case "arme":
 				addArme(attrs);
 				break;

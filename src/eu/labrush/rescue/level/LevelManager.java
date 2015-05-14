@@ -7,12 +7,14 @@ import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.sound.sampled.Clip;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.xml.sax.SAXException;
 
+import eu.labrush.rescue.controler.AudioControler;
 import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
@@ -35,10 +37,15 @@ public class LevelManager {
 
 	HashMap<String, Arme> armes;
 	HashMap<String, String[]> botTypes;
+	
+	SoundXMLHandler soundsHandler ;
+	Clip level_theme ;
 
 	public LevelManager(GraphicCore graphics, PhysicCore physics) {
 		this.graphics = graphics;
 		this.physics = physics;
+		
+		loadSounds();
 	}
 
 	public void load(String source) {
@@ -62,6 +69,11 @@ public class LevelManager {
 	}
 
 	public synchronized void loadLevel() {
+		if(currentLevel != null){
+			currentLevel.heroControler.stop();
+			level_theme.stop();
+		}
+		
 		currentLevel = null ;
 		
 		graphics.stop();
@@ -75,7 +87,9 @@ public class LevelManager {
 		System.gc();
 		
 		if (levels.size() == 0) {
-
+		
+			(new AudioControler()).play(soundsHandler.levels.get(0));
+			
 			graphics.addObserver(new Listener<DrawRequest>() {
 				@Override
 				public void update(DrawRequest req) {
@@ -96,14 +110,14 @@ public class LevelManager {
 				SAXParser parser = factory.newSAXParser();
 				parser.parse(levels.get(0), loader);
 
-				loadSounds(currentLevel);
-				
+				currentLevel.audioControler.setResources(soundsHandler.resources) ;
 				currentLevel.getAchievementControler().addObserver(new Observer() {
 					@Override
 					public void update(Observable o, Object arg) {
 
 						if ("done".equals(arg)) {
 							levels.remove(0);
+							soundsHandler.levels.remove(0);
 						}
 
 						if ("done".equals(arg) || "restart".equals(arg)) {
@@ -113,6 +127,7 @@ public class LevelManager {
 					}
 				});
 
+				level_theme = currentLevel.audioControler.play(soundsHandler.levels.get(0));
 				graphics.start();
 				physics.start();
 				
@@ -126,13 +141,13 @@ public class LevelManager {
 		}
 	}
 	
-	public synchronized void loadSounds(Level level) {
-		SoundXMLHandler loader = new SoundXMLHandler(level);
+	public synchronized void loadSounds() {
+		soundsHandler = new SoundXMLHandler();
 
 		SAXParser parser;
 		try {
 			parser = factory.newSAXParser();
-			parser.parse("resources/config/sounds.xml", loader);
+			parser.parse("resources/config/sounds.xml", soundsHandler);
 			
 		} catch (IOException | ParserConfigurationException | SAXException e) {
 			e.printStackTrace();

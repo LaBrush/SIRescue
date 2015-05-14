@@ -29,7 +29,7 @@ public final class HeroControler extends AbstractControler {
 
 	private Thread shootThread;
 	private boolean shooting = false;
-	
+
 	private boolean paused = false;
 
 	private Personnage model;
@@ -108,25 +108,26 @@ public final class HeroControler extends AbstractControler {
 
 		}
 	};
-	
-	private Listener<DrawRequest> pauseDisplay = new Listener<DrawRequest>(){
+
+	private Listener<DrawRequest> pauseDisplay = new Listener<DrawRequest>() {
 		@Override
 		public void update(DrawRequest req) {
 			req.drawString("Pause", 100, 250, Color.BLACK, 300, true);
 		}
 	};
-	
+
 	private void pause() {
 		if (paused) {
 			level.getPhysics().start();
 			level.getGraphics().getPan().delObserver(pauseDisplay);
-		} else {
+		}
+		else {
 			level.getPhysics().stop();
 			level.getGraphics().addObserver(pauseDisplay);
 		}
 		paused = !paused;
 	};
-	
+
 	private Observer reculObserver = new Observer() {
 		public void update(Observable o, Object arg) {
 			if (arg instanceof Tuple) {
@@ -152,7 +153,8 @@ public final class HeroControler extends AbstractControler {
 					try {
 						Thread.sleep((int) model.getCurrentArme().getReloadTime() / 2);
 					} catch (InterruptedException e) {
-						e.printStackTrace();
+						Thread.currentThread().interrupt();
+						break;
 					}
 				}
 			}
@@ -185,10 +187,10 @@ public final class HeroControler extends AbstractControler {
 
 			heroView = new HeroInfoView(personnage);
 			model.addObserver(reculObserver);
-			
+
 			model.setImage("hero.png");
-			model.getDimension().setSize(15,50);
-			
+			model.getDimension().setSize(15, 50);
+
 			personnageControler.add(model);
 
 			this.graphics.addObserver(new Listener<DrawRequest>() {
@@ -205,5 +207,12 @@ public final class HeroControler extends AbstractControler {
 
 	public Personnage getPersonnage() {
 		return model;
+	}
+
+	public void stop() {
+		if (shooting) {
+			shooting = false;
+			shootThread.interrupt();
+		}
 	}
 }
