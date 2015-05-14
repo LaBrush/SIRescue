@@ -4,7 +4,7 @@
 	<hero>
 		<life>100</life>
 		<position x="15" y="20" />
-		<arme cartouches="300" type="Transistor" />
+		<arme cartouches="300" type="Resistance" />
 	</hero>
 	<blocs>
 		<!--contours -->

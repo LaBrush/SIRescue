@@ -18,7 +18,6 @@ public class Transistor extends Tir {
 	public Transistor(Vecteur position, int angle, int degat, int recul, Personnage owner) {	
 		super(position, angle, degat, recul, owner);
 		this.angle = 0 ;
-		
 		this.dim = new Dimension(17, 35);
 
 		this.vitesse = 200 ;

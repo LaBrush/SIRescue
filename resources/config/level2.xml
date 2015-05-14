@@ -264,11 +264,6 @@
 		</bloc>
 
 
-
-
-
-
-
 		<bloc id="1">
 			<position x="466" y="394" />
 			<dimensions width="72" height="14" />
@@ -290,13 +285,6 @@
 	<bots>
 		<bot>
 			<position x="170" y="125" />
-			<type>bino</type>
-			<bloc_id>1</bloc_id>
-		</bot>
-
-		<bot>
-
-			<position x="200" y="125" />
 			<type>bino</type>
 			<bloc_id>1</bloc_id>
 		</bot>

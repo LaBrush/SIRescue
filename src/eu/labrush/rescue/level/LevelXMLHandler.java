@@ -1,5 +1,6 @@
 package eu.labrush.rescue.level;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -35,6 +36,8 @@ public class LevelXMLHandler extends DefaultHandler {
 	private HashMap<String, Arme> armes;
 	private HashMap<String, String[]> botTypes;
 
+	private ArrayList<Integer> usedBlocId = new ArrayList<Integer>();
+	
 	private String current_data;
 	private BotBehaviour behaviour;
 
@@ -191,9 +194,16 @@ public class LevelXMLHandler extends DefaultHandler {
 				break;
 
 			case "bloc_id":
-				Bloc bloc = blocs.get(Integer.parseInt(current_data));
+				int id = Integer.parseInt(current_data);
+				Bloc bloc = blocs.get(id);
 				if (bloc == null) {
 					throw new SAXException("a bloc is poiting on a non existant bloc (bloc id:" + current_data + ")");
+				}
+				
+				if(usedBlocId.contains(id)){
+					throw new SAXException("Cannot set two bots on the same bloc (bloc " + id + ")");
+				} else {
+					usedBlocId.add(id);
 				}
 
 				current.getTrajectoire().setPosition(new Vecteur(bloc.getX(), bloc.getY() + bloc.getHeight()));
