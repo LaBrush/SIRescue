@@ -20,6 +20,7 @@ import eu.labrush.rescue.model.Item;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
 import eu.labrush.rescue.model.arme.Arme;
+import eu.labrush.rescue.utils.Tuple;
 
 /**
  * @author adrienbocquet
@@ -34,14 +35,14 @@ public class LevelXMLHandler extends DefaultHandler {
 
 	private HashMap<Integer, Bloc> blocs = new HashMap<Integer, Bloc>();
 	private HashMap<String, Arme> armes;
-	private HashMap<String, String[]> botTypes;
+	private HashMap<String, Tuple<Bot, BotBehaviour>> botTypes;
 
 	private ArrayList<Integer> usedBlocId = new ArrayList<Integer>();
-	
+
 	private String current_data;
 	private BotBehaviour behaviour;
 
-	public LevelXMLHandler(Level level, HashMap<String, Arme> armes, HashMap<String, String[]> botTypes) {
+	public LevelXMLHandler(Level level, HashMap<String, Arme> armes, HashMap<String, Tuple<Bot, BotBehaviour>> botTypes) {
 		this.level = level;
 		this.armes = armes;
 		this.botTypes = botTypes;
@@ -52,7 +53,7 @@ public class LevelXMLHandler extends DefaultHandler {
 	 */
 	public void startElement(String namespaceURI, String lName, String qName, Attributes attrs) throws SAXException {
 
-		switch (qName) {			
+		switch (qName) {
 			case "bloc":
 				current = new Bloc();
 
@@ -63,9 +64,10 @@ public class LevelXMLHandler extends DefaultHandler {
 				break;
 			case "hero":
 				current = new Personnage(0, 0);
+				((Personnage) current).addArme(armes.get("Echarpe"));
 				break;
 			case "bot":
-				current = new Bot(0, 0);
+				// see @setType
 				break;
 			case "item":
 				String val = attrs.getValue("content");
@@ -84,8 +86,8 @@ public class LevelXMLHandler extends DefaultHandler {
 						current = new Item(0, 0, 0, 0);
 						break;
 				}
-				
-				break ;
+
+				break;
 
 			case "position":
 				setPosition(attrs);
@@ -100,25 +102,18 @@ public class LevelXMLHandler extends DefaultHandler {
 	}
 
 	private void addArme(Attributes attrs) {
-		// si on ajoute une arme (noeud armes)
-		if (attrs.getValue("name") != null && attrs.getValue("damage") != null && attrs.getValue("reload") != null) {
-			Arme arme = new Arme(attrs.getValue("tir"), Integer.parseInt(attrs.getValue("damage")), Integer.parseInt(attrs.getValue("reload")),
-					Integer.parseInt(attrs.getValue("recul")));
-			armes.put(attrs.getValue("name"), arme);
-		}
-		else if (attrs.getValue("type") != null) {
-			Arme arme = armes.get(attrs.getValue("type"));
+		Arme arme = armes.get(attrs.getValue("type")).clone();
 
-			if (arme != null) {
-				((Personnage) current).addArme(arme.clone());
+		if (arme != null) {
+			((Personnage) current).setCurrentArme(arme);
 
-				String cartouches = attrs.getValue("cartouches");
-				// Current_data correspond alors au nombre de cartouches dans l'arme
-				if (cartouches != null) {
-					arme.setCartouchesLeft(Integer.parseInt(cartouches));
-				}
+			String cartouches = attrs.getValue("cartouches");
+			// Current_data correspond alors au nombre de cartouches dans l'arme
+			if (cartouches != null) {
+				arme.setCartouchesLeft(Integer.parseInt(cartouches));
 			}
 		}
+
 	}
 
 	private void setDimension(Attributes attrs) {
@@ -127,7 +122,7 @@ public class LevelXMLHandler extends DefaultHandler {
 
 	private void setPosition(Attributes attrs) {
 		Vecteur pos = new Vecteur();
-		
+
 		pos.setX(Integer.parseInt(attrs.getValue(0)));
 		pos.setY(Integer.parseInt(attrs.getValue(1)));
 
@@ -152,9 +147,7 @@ public class LevelXMLHandler extends DefaultHandler {
 				current = null;
 				break;
 			case "bot":
-				Bot bot = (Bot) current;
-
-				level.botControler.add(bot, behaviour);
+				level.botControler.add((Bot) current, behaviour);
 				current = null;
 				break;
 			case "item":
@@ -164,27 +157,28 @@ public class LevelXMLHandler extends DefaultHandler {
 
 			// Definition de leurs attributs
 			case "type":
-				((Bot) current).addArme(armes.get(botTypes.get(current_data)[0]).clone());
-				((Bot) current).setLife(Integer.parseInt(botTypes.get(current_data)[2]));
-
+				current = botTypes.get(current_data).first.clone();
+				
 				try {
-					behaviour = (BotBehaviour) Class.forName("eu.labrush.rescue.IA.behaviour." + (botTypes.get(current_data)[1])).newInstance();
-
-					if (behaviour.equals("BossBehaviour")) {
-						((BossBehaviour) behaviour).setBlocs((HashSet<Bloc>) blocs.values());
-					}
-				} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+					behaviour = botTypes.get(current_data).second.getClass().newInstance();
+				} catch (InstantiationException | IllegalAccessException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
+				}
+								
+				if (behaviour.getClass().getName().equals("eu.labrush.rescue.IA.behaviour.BossBehaviour")) {
+					((BossBehaviour) behaviour).setBlocs((HashSet<Bloc>) blocs.values());
 				}
 
 				if (behaviour == null) {
 					throw new SAXException("Try to instanciate a non existant bot behaviour");
 				}
-				
-				if(behaviour.getClass().getName().equals("eu.labrush.rescue.IA.behaviour.Bouclier") && !((Bot) current).getCurrentArme().getTirClass().equals("Bouclier")){
+
+				if (behaviour.getClass().getName().equals("eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour")
+						&& !((Bot) current).getCurrentArme().getTirClass().equals("eu.labrush.rescue.model.arme.Bouclier")) {
 					throw new SAXException("A ToucherBotBehaviour must have a Bouclier");
 				}
-				
+
 				break;
 
 			case "life":
@@ -198,10 +192,11 @@ public class LevelXMLHandler extends DefaultHandler {
 				if (bloc == null) {
 					throw new SAXException("a bloc is poiting on a non existant bloc (bloc id:" + current_data + ")");
 				}
-				
-				if(usedBlocId.contains(id)){
+
+				if (usedBlocId.contains(id)) {
 					throw new SAXException("Cannot set two bots on the same bloc (bloc " + id + ")");
-				} else {
+				}
+				else {
 					usedBlocId.add(id);
 				}
 

@@ -8,7 +8,7 @@ package eu.labrush.rescue.model;
  *         met à jour leur valeurs en fonction du temps
  *
  */
-public class Trajectoire extends AbstractModel {
+public class Trajectoire extends AbstractModel implements Cloneable {
 
 	Vecteur acceleration, vitesse, position;
 
@@ -67,6 +67,10 @@ public class Trajectoire extends AbstractModel {
 			p.add(this.getAcceleration().k(1 / 2 * Math.pow(delta_t, 2))).add(v.k(delta_t));
 		}
 		return p;
+	}
+	
+	public Trajectoire clone() {		
+		return new Trajectoire(this.getAcceleration().clone(), this.getVitesse().clone(), this.getPosition().clone());
 	}
 
 	public void setAcceleration(Vecteur acceleration) {

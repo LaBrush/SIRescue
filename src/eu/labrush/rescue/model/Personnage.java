@@ -13,7 +13,7 @@ public class Personnage extends AbstractObject {
 
 	protected int life = 1, maxLife = 1;
 	protected boolean isHurted = false;
-	private ArrayList<Arme> armes = new ArrayList<Arme>();
+	protected ArrayList<Arme> armes = new ArrayList<Arme>();
 
 	private int currentArme = -1;
 	private Vecteur vitesse_nominale = new Vecteur(5, 5);
@@ -63,7 +63,7 @@ public class Personnage extends AbstractObject {
 	public void prendreDegats(int degats) {
 		prendreDegats(degats, 0);
 	}
-
+	
 	public int getLife() {
 		return life;
 	}
@@ -163,6 +163,13 @@ public class Personnage extends AbstractObject {
 
 	public void setHurted(boolean isHurted) {
 		this.isHurted = isHurted;
+	}
+
+	/**
+	 * @return the armes
+	 */
+	protected ArrayList<Arme> getArmes() {
+		return armes;
 	}
 
 }

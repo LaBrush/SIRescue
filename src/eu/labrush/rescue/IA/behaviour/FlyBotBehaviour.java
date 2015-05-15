@@ -31,7 +31,6 @@ public class FlyBotBehaviour implements BotBehaviour {
 	public void setBot(Bot bot) {
 		this.b = bot;
 		b.getPhysicBehaviour().setGravity(0);
-
 		extremiteG = 100;
 		extremiteD = 400;
 	}
@@ -45,7 +44,7 @@ public class FlyBotBehaviour implements BotBehaviour {
 		double botY = b.getY();
 
 		Vecteur v = b.getTrajectoire().getVitesse();
-
+		
 		if (v.getX() == 0) {
 
 			v.setX(0.04);
@@ -87,4 +86,5 @@ public class FlyBotBehaviour implements BotBehaviour {
 		}
 
 	}
+
 }

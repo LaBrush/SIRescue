@@ -2,8 +2,6 @@
 <level xs:noNamespaceSchemaLocation="level.xsd"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
 	
-	<music src="resources/audio/musique_lvl3.wav"/>
-	
 	<hero>
 		<life>200</life>
 		<position x="150" y="20" />
@@ -11,6 +9,10 @@
 	</hero>
 
 	<blocs>
+		<bloc>
+			<position x="0" y="0" />
+			<dimensions width="10" height="600" />
+		</bloc>
 		<bloc>
 			<position x="0" y="380" />
 			<dimensions width="600" height="10" />
@@ -20,7 +22,7 @@
 			<dimensions width="10" height="400" />
 		</bloc>
 		<bloc id="1">
-			<position x="-5" y="0" />
+			<position x="5" y="0" />
 			<dimensions width="610" height="10" />
 		</bloc>
 		<bloc>
@@ -53,13 +55,13 @@
 	<bots>
 
 		<bot>
-			<position x="150" y="220" />
 			<type>bino</type>
+			<position x="250" y="220" />
 			<bloc_id>1</bloc_id>
 		</bot>
 		<bot>
-			<position x="100" y="180" />
 			<type>soso</type>
+			<position x="100" y="180" />
 		</bot>
 	</bots>
 </level>

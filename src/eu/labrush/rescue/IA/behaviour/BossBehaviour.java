@@ -12,7 +12,7 @@ import eu.labrush.rescue.model.Personnage;
  *
  */
 @SuppressWarnings("unused")
-public class BossBehaviour implements BotBehaviour {
+public class BossBehaviour implements BotBehaviour, Cloneable{
 
 	HashSet<Bloc> blocs ;
 	private Bot b;
@@ -171,5 +171,5 @@ public class BossBehaviour implements BotBehaviour {
 		
 		return blocY;
 	}
-
+	
 }

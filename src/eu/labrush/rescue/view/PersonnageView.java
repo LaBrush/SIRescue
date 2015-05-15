@@ -18,12 +18,13 @@ public class PersonnageView extends AbstractObjectView {
 	Arme arme;
 
 	int life, maxLife;
+	int sens = 1 ;
 	boolean bot = false;
 
 	public PersonnageView(Personnage model) {
 		super(model);
-		width = (int) model.getWidth();
 		height = (int) model.getHeight();
+		width = (int) model.getWidth();
 
 		life = model.getLife();
 		maxLife = model.getMaxLife();
@@ -40,6 +41,11 @@ public class PersonnageView extends AbstractObjectView {
 		life = p.getLife();
 		bot = model instanceof Bot;
 
+		int vx = (int)p.getTrajectoire().getVitesse().getX();
+		if(vx != 0){
+			sens = vx > 0 ? 1 : -1 ;
+		}
+		
 		Arme previous = arme;
 
 		arme = p.getCurrentArme();
@@ -51,12 +57,10 @@ public class PersonnageView extends AbstractObjectView {
 	@Override
 	public void draw(DrawRequest req) {
 		
-		req.rect(this.x, this.y, this.width, this.height);
-		
 		if (image == null) {
-			req.rect(this.x, this.y, this.width, this.height);
+			req.rect(x, y, width, height);
 		} else {
-			req.image(image, x, y, width, height, 0);
+			req.image(image, x, y, width * sens, height, 0);
 		}
 
 		if (armeView != null)
@@ -64,7 +68,7 @@ public class PersonnageView extends AbstractObjectView {
 
 		if (bot) {
 			int width = this.width * life / maxLife;
-
+			
 			int r = 255 * (maxLife - life) / maxLife;
 			int v = 255 * life / maxLife;
 

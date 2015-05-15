@@ -14,12 +14,15 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.xml.sax.SAXException;
 
+import eu.labrush.rescue.IA.behaviour.BotBehaviour;
 import eu.labrush.rescue.controler.AudioControler;
 import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
+import eu.labrush.rescue.model.Bot;
 import eu.labrush.rescue.model.arme.Arme;
 import eu.labrush.rescue.utils.Listener;
+import eu.labrush.rescue.utils.Tuple;
 
 /**
  * @author adrienbocquet
@@ -36,7 +39,7 @@ public class LevelManager {
 	private Level currentLevel;
 
 	HashMap<String, Arme> armes;
-	HashMap<String, String[]> botTypes;
+	HashMap<String, Tuple<Bot, BotBehaviour>> botTypes;
 	
 	SoundXMLHandler soundsHandler ;
 	Clip level_theme ;

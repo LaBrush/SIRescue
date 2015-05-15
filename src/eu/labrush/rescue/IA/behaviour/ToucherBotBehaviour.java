@@ -129,4 +129,5 @@ public class ToucherBotBehaviour implements BotBehaviour, Observer {
 	public void setBloc(Bloc bloc) {
 		this.bloc = bloc;
 	}
+
 }

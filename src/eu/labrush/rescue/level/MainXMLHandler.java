@@ -8,12 +8,15 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import eu.labrush.rescue.IA.behaviour.BotBehaviour;
+import eu.labrush.rescue.model.Bot;
 import eu.labrush.rescue.model.arme.Arme;
+import eu.labrush.rescue.utils.Tuple;
 
 public class MainXMLHandler extends DefaultHandler {
 
 	HashMap<String, Arme> armes = new HashMap<String, Arme>();
-	HashMap<String, String[]> botTypes = new HashMap<String, String[]>();
+	HashMap<String, Tuple<Bot, BotBehaviour>> botTypes = new HashMap<String, Tuple<Bot, BotBehaviour>>();
 	ArrayList<String> levels = new ArrayList<String>();
 
 	/**
@@ -47,14 +50,26 @@ public class MainXMLHandler extends DefaultHandler {
 		}
 	}
 
-	private void addBot(Attributes attrs) {
-		String[] attributes = new String[3];
+	private void addBot(Attributes attrs) throws SAXException {
+		Bot bot = new Bot(0, 0);
 
-		attributes[0] = attrs.getValue("arme");
-		attributes[1] = attrs.getValue("comportement");
-		attributes[2] = attrs.getValue("life");
+		bot.addArme(armes.get(attrs.getValue("arme")).clone());
 
-		botTypes.put(attrs.getValue("name"), attributes);
+		bot.setLife(Integer.parseInt(attrs.getValue("life")));
+		bot.getDimension().setSize(Integer.parseInt(attrs.getValue("width")), Integer.parseInt(attrs.getValue("height")));
+		
+		bot.setImage(attrs.getValue("image") != null ? attrs.getValue("image") : "");
+		
+		BotBehaviour behaviour = null ;
+		
+		try {
+			behaviour = (BotBehaviour) Class.forName("eu.labrush.rescue.IA.behaviour." + attrs.getValue("comportement")).newInstance();
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new SAXException("Erreur durant la creation d'un comoprtement ennemi");
+		}
+
+		botTypes.put(attrs.getValue("name"), new Tuple<Bot, BotBehaviour>(bot, behaviour));
 	}
 
 	public void characters(char[] data, int start, int end) {

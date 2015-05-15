@@ -287,14 +287,14 @@
 
 	<bots>
 		<bot>
-			<position x="170" y="125" />
 			<type>bino</type>
+			<position x="170" y="125" />
 			<bloc_id>1</bloc_id>
 		</bot>
 
 		<bot>
-			<position x="150" y="220" />
 			<type>soso</type>
+			<position x="150" y="220" />
 		</bot>
 
 	</bots>

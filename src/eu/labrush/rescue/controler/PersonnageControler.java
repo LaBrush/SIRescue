@@ -52,7 +52,7 @@ public class PersonnageControler extends AbstractControler {
 			@Override
 			public void update(PhysicCore req) {
 				for (Personnage p : personnages.keySet()) {
-
+					
 					p.getPhysicBehaviour().updateTrajectoire(req.getDelta(), blocControler.getBlocs());
 					
 					for (Bloc b : blocControler.getBlocs()) {
@@ -64,7 +64,7 @@ public class PersonnageControler extends AbstractControler {
 					if(p.getTrajectoire().getAcceleration().getY() == 0 && p.getTrajectoire().getVitesse().getY() == 0 && p.isHurted()){
 						p.setHurted(false);
 					}
-				}
+				}				
 			}
 		});
 	}

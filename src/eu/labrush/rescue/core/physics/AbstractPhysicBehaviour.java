@@ -11,9 +11,8 @@ import eu.labrush.rescue.model.Vecteur;
  * @author adrienbocquet
  *
  */
-public abstract class AbstractPhysicBehaviour {
+public abstract class AbstractPhysicBehaviour implements Cloneable {
 
-	
 	/**
 	 * Contient les distances dans les quatres directions au plus proche bloc
 	 */
@@ -48,10 +47,10 @@ public abstract class AbstractPhysicBehaviour {
 	 * @param next_pos
 	 *            le prochaine posisition de l'objet
 	 * 
-	 * Calcul les degrès de liberté du solide par rapport à un bloc donné
+	 *            Calcul les degrès de liberté du solide par rapport à un bloc donné
 	 */
 	protected final void calcMargin(AbstractObject bloc, Vecteur next_pos) {
-		
+
 		double th = dim.getHeight();
 		double tw = dim.getWidth();
 
@@ -138,6 +137,16 @@ public abstract class AbstractPhysicBehaviour {
 	 */
 	public LibertyDegree getMoves() {
 		return moves;
+	}
+
+	public Object clone() {
+		Object o = null;
+		try {
+			o = super.clone();
+		} catch (CloneNotSupportedException cnse) {
+			cnse.printStackTrace(System.err);
+		}
+		return o;
 	}
 
 }

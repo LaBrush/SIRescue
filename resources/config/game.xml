@@ -9,13 +9,15 @@
 			reload="300" />
 		<arme name="Transistor" tir="Transistor" damage="40" recul="400"
 			reload="50" />
+		<arme name="Echarpe" tir="Echarpe" damage="5" recul="200"
+			reload="50" />
 	</armes>
 
 	<botTypes>
 		<botType name="bino" arme="Bouclier" comportement="ToucherBotBehaviour"
-			life="10" />
+			life="150" width="20" height="30" image="hero.png" />
 		<botType name="soso" arme="Resistance" comportement="FlyBotBehaviour"
-			life="50" />
+			life="50" width="30" height="20" />
 	</botTypes>
 
 	<levels>

@@ -24,7 +24,8 @@ public class AudioControler {
 		play(resources.get(o.getClass()).get(use));
 	}
 
-	public Clip play(String src) {		
+	public Clip play(String src) {
+		
 		try {
 			// on demande les ressources du systeme
 			Clip clip = AudioSystem.getClip();
@@ -33,7 +34,7 @@ public class AudioControler {
 			AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(src));
 			clip.open(inputStream);
 			clip.start(); // on commence la lecture
-
+			
 			// On attend que le clip soit lu et on le referme
 			new Thread(new Runnable() {
 				public void run() {
@@ -66,9 +67,7 @@ public class AudioControler {
 		resources.get(o).put(use, file);
 	}
 
-	/**
-	 * @param resources the resources to set
-	 */
+	@SuppressWarnings("rawtypes")
 	public void setResources(HashMap<Class, HashMap<String, String>> resources) {
 		this.resources = resources;
 	}

@@ -22,5 +22,4 @@ public class DumbBotBehaviour implements BotBehaviour {
 	@Override
 	public void setBot(Bot bot) {
 	}
-
 }

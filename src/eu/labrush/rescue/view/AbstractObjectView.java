@@ -61,6 +61,7 @@ public abstract class AbstractObjectView extends AbstractView {
 		try {
 			image = ImageIO.read(new File("resources/images/" + src));
 		} catch (IOException e) {
+			System.err.println("Can't open " + "resources/images/" + src);
 			e.printStackTrace();
 		}
 	}

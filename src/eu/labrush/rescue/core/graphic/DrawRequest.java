@@ -80,7 +80,7 @@ public class DrawRequest {
 
 		AffineTransform trans = new AffineTransform();
 				
-		trans.translate(x, y);
+		trans.translate(x - (width < 0 ? width : 0), y);
 		trans.rotate(Math.toRadians(-angle));
 		trans.scale((double)width/img.getWidth(), (double)height/img.getHeight());
 		this.g.drawImage(img, trans, null);
@@ -97,10 +97,6 @@ public class DrawRequest {
 		trans.translate(x, y);
 		trans.rotate(Math.toRadians(-angle));
 		this.g.drawImage(img, trans, null);
-	}
-
-	public void image(BufferedImage img, int x, int y) {
-		image(img, x, y, 0);
 	}
 	
 	public void fillRect(int x, int y, int width, int height, Color c) {
