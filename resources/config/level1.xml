@@ -199,7 +199,7 @@
 
 	<items>
 		<item content="arme" type="Transistor" cartouches="20">
-			<position x="730" y="610" />
+			<position x="530" y="410" />
 			<dimensions width="20" height="20" />
 		</item>
 

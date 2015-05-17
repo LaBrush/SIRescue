@@ -1,0 +1,14 @@
+Avec objet, un modèle d'objet physique, ayant une vitesse, et une position
+
+marge := infini
+
+POUR CHAQUE bloc
+|	
+|	SI object EST en face du bloc ET distance au bloc EST INFERIEURE à marge
+|	|	ALORS
+|	|	marge := distance au bloc
+|
+
+SI objet.vitesse x ∆t SUPERIEUR à marge
+|	ALORS
+|	objet.vitesse = marge / ∆t

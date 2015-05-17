@@ -40,6 +40,7 @@ public class Bot extends Personnage {
 		Bot b = new Bot(this.getX(), this.getY());
 		
 		b.setLife(this.getLife());
+		b.setImage(this.getImage());
 		
 		b.getDimension().setSize(this.getWidth(), this.getHeight());;
 		b.getTrajectoire().setPosition(this.getTrajectoire().getPosition().clone());

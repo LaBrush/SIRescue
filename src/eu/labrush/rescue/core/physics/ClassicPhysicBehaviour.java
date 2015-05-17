@@ -45,7 +45,6 @@ public class ClassicPhysicBehaviour extends AbstractPhysicBehaviour {
 				this.calcMargin(obstacle, deplacement);
 			}
 		}
-
 		
 		// La distance parcourue pendant la durée delta_t est supérieure à la distance, on adapte la
 		// vitesse

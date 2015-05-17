@@ -10,7 +10,7 @@
 		<arme name="Transistor" tir="Transistor" damage="40" recul="400"
 			reload="50" />
 		<arme name="Echarpe" tir="Echarpe" damage="5" recul="200"
-			reload="50" />
+			reload="500" />
 	</armes>
 
 	<botTypes>
