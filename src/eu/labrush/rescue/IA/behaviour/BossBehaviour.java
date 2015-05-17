@@ -16,7 +16,7 @@ public class BossBehaviour implements BotBehaviour, Cloneable{
 
 	HashSet<Bloc> blocs ;
 	private Bot b;
-	double botX, botY, heroX, heroY, vX, vY ;
+	double botX, botY, heroX, heroY, vX, vY, newBlocX, newBlocY, pBlocX, pBlocY ;
 
 	public BossBehaviour(HashSet<Bloc> blocs) {
 		super();
@@ -67,73 +67,62 @@ public class BossBehaviour implements BotBehaviour, Cloneable{
 		lePlusProcheX = xProche(lePlusProche);
 		lePlusProcheY = yProche(lePlusProche);
 		
-		if (((Math.pow(heroX - botX, 2) < 1000000) && (Math.pow(heroY - botY, 2) < 1000000))){
+		if (((Math.pow(heroX - botX, 2) < 1000000) && (Math.pow(heroY - botY, 2) < 1000000))){ //tire
 			double angle, alpha;			
-			alpha = Math.atan((botX - heroX) / (botY - heroY));
+			alpha = Math.atan((botX - heroX - hero.getTrajectoire().getVitesse().getX()) / (botY - heroY - hero.getTrajectoire().getVitesse().getY()));
 			angle = alpha;
 			b.shoot((int) angle);
 		}
 		
-		if (privateTimer == 0){
+		if (privateTimer == 0){ // petit saut initial
 			double pY;
 			
 			if(b.getTrajectoire().getVitesse().getY() == 0 && b.getTrajectoire().getAcceleration().getY() == 0){
 				b.getTrajectoire().getVitesse().setY(600);
-				pY = botY;
+				
 			
-			if (pY>botY){
-					privateTimer =1;
+			if (botY >= ouOnEstY + 600){
+				b.getTrajectoire().getVitesse().setY(0);
+				privateTimer =1;
 			}
 			}
 		}
 		
-		if (privateTimer == 1){
+		if (privateTimer == 1){ //se déplace sur la plateforme
 			if (heroX < botX && botX >= ouOnEst.getX()){
-				b.getTrajectoire().getVitesse().setX(-5);
-				
-				if(heroX < botX && botX <= ouOnEst.getX()+1){
-					privateTimer = 2;
-				}
+				b.getTrajectoire().getVitesse().setX(-5);				
 			}
+			
 			else if (heroX > botX && botX <= (ouOnEst.getX()+ouOnEst.getWidth())){
-				b.getTrajectoire().getVitesse().setX(5);
+				b.getTrajectoire().getVitesse().setX(5);				
+			}
+			
+			else {
+				privateTimer = 2;
 				
-				if(heroX > botX && botX >= (ouOnEst.getX()+ouOnEst.getWidth()-1)){
-					privateTimer = 2;
+				Bloc newBloc = lePlusProche;
+				newBlocX = lePlusProcheX;
+				newBlocY = lePlusProcheY;
+				Bloc pBloc = ouOnEst;
+				pBlocX = ouOnEstX;
+				pBlocY = ouOnEstY;
+			}
+		}
+		
+		if (privateTimer == 2){ //saute d'une plateforme à une autre
+			double deltaX = lePlusProcheX-botX;
+			double deltaY = lePlusProcheY-botY;			
+				
+				if (newBlocX != ouOnEstX && newBlocY != ouOnEstY + 15){
+					b.getTrajectoire().getVitesse().setX(deltaX);
+					b.getTrajectoire().getVitesse().setY(deltaY);
 				}
-			}			
-		}
-		
-		if (privateTimer == 2){
-			
-		}
-			
-		
-		/*if (privateTimer ==0){
-		if (botY <= (ouOnEstY + 30)){ //monté du petit saut
-			
-			b.getTrajectoire().getVitesse().setX(0);			
-			b.getTrajectoire().getVitesse().setY(100);
-		}
-		else if(botY >= (ouOnEstY + 30)){ //incrément privatetimer
-			privateTimer = 1;
-			b.getTrajectoire().getVitesse().setY(0);
-		}
-		}
-		
-		if(privateTimer==1){
-		if (botY >= (ouOnEstY + 15)){ // descente du petit saut
-			
-			b.getTrajectoire().getVitesse().setX(0);
-			b.getTrajectoire().getVitesse().setY(0);
-			
-		}
-		/*else if(botY <= (ouOnEstY + 15) && privateTimer == 1){// incrément private timer
-			privateTimer = 2;
-		}
-		}*/
-		
-		
+				
+				else {
+					privateTimer = 1;
+				}
+								
+		}		
 		
 	}
 	
