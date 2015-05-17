@@ -166,9 +166,10 @@ public class LevelXMLHandler extends DefaultHandler {
 					e.printStackTrace();
 				}
 								
-				if (behaviour.getClass().getName().equals("eu.labrush.rescue.IA.behaviour.BossBehaviour")) {
-					((BossBehaviour) behaviour).setBlocs((HashSet<Bloc>) blocs.values());
+				if (behaviour instanceof BossBehaviour) {
+					((BossBehaviour) behaviour).setBlocs(blocs.values());
 				}
+
 
 				if (behaviour == null) {
 					throw new SAXException("Try to instanciate a non existant bot behaviour");

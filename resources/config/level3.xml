@@ -63,5 +63,9 @@
 			<type>soso</type>
 			<position x="100" y="180" />
 		</bot>
+		<bot>
+			<type>dudu</type>
+			<position x="250" y="180" />
+		</bot>
 	</bots>
 </level>

@@ -8,9 +8,8 @@
 		<arme name="Resistance" tir="Resistance" damage="20" recul="0"
 			reload="300" />
 		<arme name="Transistor" tir="Transistor" damage="40" recul="400"
-			reload="50" />
-		<arme name="Echarpe" tir="Echarpe" damage="5" recul="200"
 			reload="500" />
+		<arme name="Echarpe" tir="Echarpe" damage="5" recul="200" reload="500" />
 	</armes>
 
 	<botTypes>
@@ -18,11 +17,13 @@
 			life="150" width="20" height="30" image="hero.png" />
 		<botType name="soso" arme="Resistance" comportement="FlyBotBehaviour"
 			life="50" width="30" height="20" />
+		<botType name="dudu" arme="Transistor" comportement="BossBehaviour"
+			life="250" width="30" height="20" />
 	</botTypes>
 
 	<levels>
-		<level src="level1.xml" />
-		<level src="level2.xml" />
+		<!-- <level src="level1.xml" />
+		<level src="level2.xml" />-->
 		<level src="level3.xml" />
 	</levels>
 

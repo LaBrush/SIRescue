@@ -46,6 +46,7 @@
 											<xs:restriction base="xs:string">
 												<xs:enumeration value="FlyBotBehaviour" />
 												<xs:enumeration value="ToucherBotBehaviour" />
+												<xs:enumeration value="BossBehaviour" />
 											</xs:restriction>
 										</xs:simpleType>
 									</xs:attribute>

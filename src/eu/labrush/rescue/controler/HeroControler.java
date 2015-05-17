@@ -64,7 +64,7 @@ public final class HeroControler extends AbstractControler {
 						break;
 				}
 
-				switch (req.getKeyChar()) {
+				switch (Character.toLowerCase(req.getKeyChar())) {
 					case 'd':
 						startShoot(0);
 						break;
@@ -88,7 +88,7 @@ public final class HeroControler extends AbstractControler {
 
 			else if (req.getID() == KeyEvent.KEY_RELEASED) {
 
-				switch (req.getKeyChar()) {
+				switch (Character.toLowerCase(req.getKeyChar())) {
 					case 'd':
 					case 'e':
 					case 'z':

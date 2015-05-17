@@ -1,5 +1,6 @@
 package eu.labrush.rescue.IA.behaviour;
 
+import java.util.Collection;
 import java.util.HashSet;
 
 import eu.labrush.rescue.model.Bloc;
@@ -14,10 +15,14 @@ import eu.labrush.rescue.model.Personnage;
 @SuppressWarnings("unused")
 public class BossBehaviour implements BotBehaviour, Cloneable{
 
-	HashSet<Bloc> blocs ;
+	Collection<Bloc> blocs ;
 	private Bot b;
 	double botX, botY, heroX, heroY, vX, vY, newBlocX, newBlocY, pBlocX, pBlocY ;
 
+	public BossBehaviour() {
+		super();
+	}
+	
 	public BossBehaviour(HashSet<Bloc> blocs) {
 		super();
 		this.blocs = blocs;
@@ -127,11 +132,11 @@ public class BossBehaviour implements BotBehaviour, Cloneable{
 	}
 	
 	/**
-	 * @param blocs the blocs used by the fight algorithm
+	 * @param collection the blocs used by the fight algorithm
 	 */
 	
-	public void setBlocs(HashSet<Bloc> blocs) {
-		this.blocs = blocs;
+	public void setBlocs(Collection<Bloc> collection) {
+		this.blocs = collection;
 	}
 
 	@Override
