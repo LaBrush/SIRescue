@@ -280,8 +280,8 @@
 
 	<items>
 		<item>
-			<position x="500" y="30" />
-			<dimensions width="40" height="10" />
+			<position x="1060" y="11" />
+			<dimensions width="20" height="60" />
 		</item>
 	</items>
 

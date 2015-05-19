@@ -3,7 +3,7 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
 	
 	<hero>
-		<life>100</life>
+		<life>1000</life>
 		<position x="15" y="20" />
 		<arme cartouches="300" type="Resistance" />
 	</hero>
@@ -199,13 +199,13 @@
 
 	<items>
 		<item content="arme" type="Transistor" cartouches="20">
-			<position x="530" y="410" />
+			<position x="730" y="625" />
 			<dimensions width="20" height="20" />
 		</item>
 
 		<item>
-			<position x="1030" y="10" />
-			<dimensions width="15" height="60" />
+			<position x="1060" y="11" />
+			<dimensions width="20" height="60" />
 		</item>
 	</items>
 
