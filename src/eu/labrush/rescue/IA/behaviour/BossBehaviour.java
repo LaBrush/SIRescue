@@ -50,7 +50,7 @@ public class BossBehaviour implements BotBehaviour, Cloneable{
 			blocX = xProche(bloc);
 			blocY = yProche(bloc);
 			
-			if(Math.pow(Math.abs(blocX-botX) + Math.abs(blocY-botY),2) <= Math.pow(Math.abs(xProche(ouOnEst)-botX) + Math.abs(yProche(ouOnEst)-botY) ,2) ){
+			if(Math.sqrt(Math.abs(blocX-botX) + Math.abs(blocY-botY)) <= Math.sqrt(Math.abs(xProche(ouOnEst)-botX) + Math.abs(yProche(ouOnEst)-botY)) ){
 				ouOnEst = bloc ;
 			}
 		}
