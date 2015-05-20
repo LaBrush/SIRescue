@@ -10,19 +10,19 @@ import eu.labrush.rescue.model.Vecteur;
 
 public class Transistor extends Tir {
 
-	private int tempsExplosion = 600 ;
-	private long usedAt = 0 ;
+	protected int tempsExplosion = 600 ;
+	protected long usedAt = 0 ;
 	
 	private Vecteur explosion_pos ;
 	
 	public Transistor(Vecteur position, int angle, int degat, int recul, Personnage owner) {	
-		super(position, angle, degat, recul, owner);
+		super(angle, degat, recul, owner);
 		this.angle = 0 ;
 		this.dim = new Dimension(17, 35);
 
 		this.vitesse = 200 ;
 		
-		this.getTrajectoire().setPosition(position);
+		this.getTrajectoire().setPosition(position.add(new Vecteur(this.getWidth()/2, this.getHeight()/2)));
 		this.getTrajectoire().getVitesse().setPolar(this.vitesse, angle);
 
 		this.behaviour = new TirPhysicBehaviour(this.getTrajectoire(), this.dim);

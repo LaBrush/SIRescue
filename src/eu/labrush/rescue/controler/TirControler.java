@@ -127,7 +127,7 @@ public class TirControler extends AbstractControler {
 		double rad = Math.toRadians(angle);
 
 		position.setX(30 * Math.cos(rad) + personnage.getX() + personnage.getWidth() / 2);
-		position.setY(30 * Math.sin(rad) + personnage.getY() + personnage.getHeight() / 2);
+		position.setY(personnage.getY() + personnage.getHeight() / 2);
 
 		Tir tir = null;
 

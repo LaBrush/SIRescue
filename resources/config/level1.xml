@@ -6,6 +6,7 @@
 		<life>100</life>
 		<position x="15" y="20" />
 		<arme cartouches="300" type="Resistance" />
+		<arme cartouches="-1" type="Echarpe" />
 	</hero>
 	<blocs>
 		<!--contours -->
@@ -199,7 +200,7 @@
 
 	<items>
 		<item content="arme" type="Transistor" cartouches="20">
-			<position x="530" y="410" />
+			<position x="730" y="610" />
 			<dimensions width="20" height="20" />
 		</item>
 

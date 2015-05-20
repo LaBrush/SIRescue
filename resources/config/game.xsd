@@ -17,6 +17,7 @@
 												<xs:enumeration value="Transistor" />
 												<xs:enumeration value="Echarpe" />
 												<xs:enumeration value="Bouclier" />
+												<xs:enumeration value="Noisette" />
 											</xs:restriction>
 										</xs:simpleType>
 									</xs:attribute>

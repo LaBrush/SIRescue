@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<level xs:noNamespaceSchemaLocation="level.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+	
+	<hero>
+		<life>100</life>
+		<position x="15" y="20" />
+		<arme cartouches="300" type="Resistance" />
+		<arme cartouches="300" type="Echarpe" />
+	</hero>
+	<blocs>
+		<!--contours -->
+		<bloc>
+			<position x="0" y="720" />
+			<dimensions width="1080" height="10" />
+		</bloc>
+		<bloc>
+			<position x="1080" y="0" />
+			<dimensions width="10" height="720" />
+		</bloc>
+		<bloc>
+			<position x="-11" y="0" />
+			<dimensions width="10" height="720" />
+		</bloc>
+		<!--sol -->
+		<bloc>
+			<position x="0" y="0" />
+			<dimensions width="80" height="10" />
+		</bloc>
+	</blocs>
+
+	<items>
+		<item content="arme" type="Transistor" cartouches="20">
+			<position x="530" y="410" />
+			<dimensions width="20" height="20" />
+		</item>
+
+		<item>
+			<position x="1030" y="10" />
+			<dimensions width="15" height="60" />
+		</item>
+	</items>
+
+	<bots>
+		<bot>
+			<type>soso</type>
+			<position x="350" y="520" />
+		</bot>
+	</bots>
+</level>

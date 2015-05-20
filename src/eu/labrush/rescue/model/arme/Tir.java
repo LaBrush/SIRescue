@@ -2,7 +2,6 @@ package eu.labrush.rescue.model.arme;
 
 import eu.labrush.rescue.model.AbstractObject;
 import eu.labrush.rescue.model.Personnage;
-import eu.labrush.rescue.model.Vecteur;
 
 public abstract class Tir extends AbstractObject {
 
@@ -16,7 +15,7 @@ public abstract class Tir extends AbstractObject {
 	abstract public boolean cross(AbstractObject o);
 	protected Personnage owner ;
 	
-	public Tir(Vecteur position, int angle, int damage, int recul, Personnage owner){
+	public Tir(int angle, int damage, int recul, Personnage owner){
 		super();
 		this.damage = damage;
 		this.angle = angle;

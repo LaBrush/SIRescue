@@ -35,6 +35,9 @@ public class AudioControler {
 			clip.open(inputStream);
 			clip.start(); // on commence la lecture
 			
+			//Si on veut faire taire
+			clip.stop();
+			
 			// On attend que le clip soit lu et on le referme
 			new Thread(new Runnable() {
 				public void run() {

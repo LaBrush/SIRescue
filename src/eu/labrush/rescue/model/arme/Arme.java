@@ -59,7 +59,7 @@ public class Arme extends AbstractModel implements Cloneable {
 
 			// On crée les paramètres du constructeur
 			Class<?>[] types = new Class[] { Vecteur.class, int.class, int.class, int.class, Personnage.class };
-
+			
 			// On récupère le constructeur avec les deux paramètres
 			Constructor<?> ct = cl.getConstructor(types);
 

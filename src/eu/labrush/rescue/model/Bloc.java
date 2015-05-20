@@ -1,6 +1,7 @@
 package eu.labrush.rescue.model;
 
 
+
 /**
  * @author adrienbocquet
  *

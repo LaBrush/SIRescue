@@ -19,7 +19,7 @@ import eu.labrush.rescue.utils.Tuple;
  */
 public class ToucherBotBehaviour implements BotBehaviour, Observer {
 
-	private Bot bot;
+	private Bot b;
 	private Bloc bloc;
 
 	double vitesse;
@@ -46,8 +46,8 @@ public class ToucherBotBehaviour implements BotBehaviour, Observer {
 		if (arg instanceof Tuple) {
 			Tuple<?, ?> arg1 = (Tuple<?, ?>) arg;
 			if (arg1.first.equals("hurted") && (int)arg1.second != 0) {
-				bot.getTrajectoire().getVitesse().setX((int) arg1.second);
-				bot.getTrajectoire().getVitesse().setY(Math.abs((int) arg1.second));
+				b.getTrajectoire().getVitesse().setX((int) arg1.second);
+				b.getTrajectoire().getVitesse().setY(Math.abs((int) arg1.second));
 			}
 		}
 	}
@@ -58,31 +58,31 @@ public class ToucherBotBehaviour implements BotBehaviour, Observer {
 	public void update(Personnage hero) {
 
 		if (!hasShield) {
-			bot.shoot(0);
+			b.shoot(0);
 			hasShield = true;
 		}
 
-		if (!bot.isHurted()) {
-			Vecteur v = bot.getTrajectoire().getVitesse();
+		if (!b.isHurted()) {
+			Vecteur v = b.getTrajectoire().getVitesse();
 
-			double botX = bot.getX();
-			double botY = bot.getY();
+			double botX = b.getX();
+			double botY = b.getY();
 
 			double heroX = hero.getX();
 			double heroY = hero.getY();
 
-			if ((Math.pow(heroX - botX, 2) + Math.pow(heroY - botY, 2)) > 10000 && attack == false) { // fait des allers retours sur son bloc jusqu'à voir le héro
+			if ((Math.pow(heroX - botX, 2) + Math.pow(heroY - botY, 2)) > 10000 && attack == false) { // fait des allers retours sur son bloc jusqu'ï¿½ voir le hï¿½ro
 				if (v.getX() == 0) {
 					v.setX(vitesse);
 
 				}
-				else if ((botX >= (bloc.getX() + bloc.getWidth() - bot.getWidth()) && v.getX() > 0)
-						|| (bot.getX() <= (bloc.getX()) && v.getX() < 0)) {
+				else if ((botX >= (bloc.getX() + bloc.getWidth() - b.getWidth()) && v.getX() > 0)
+						|| (b.getX() <= (bloc.getX()) && v.getX() < 0)) {
 					v.setX(-vitesse);
 				}
 
 			}
-			else if ((Math.pow(heroX - botX, 2) + Math.pow(heroY - botY, 2)) < 10000 && attack == false) { // débute l'attaque
+			else if ((Math.pow(heroX - botX, 2) + Math.pow(heroY - botY, 2)) < 10000 && attack == false) { // dï¿½bute l'attaque
 				attack = true;
 			}
 			else if ((Math.pow(heroX - botX, 2) + Math.pow(heroY - botY, 2)) < 90000 && attack == true) { // attaque
@@ -91,7 +91,7 @@ public class ToucherBotBehaviour implements BotBehaviour, Observer {
 				if (heroX < botX && botX > bloc.getX()) {
 					v.setX(-vitesse);
 				}				
-				else if (heroX > botX && botX < bloc.getX() + bloc.getWidth() - bot.getWidth()) {
+				else if (heroX > botX && botX < bloc.getX() + bloc.getWidth() - b.getWidth()) {
 					v.setX(vitesse);
 				}
 				else {
@@ -107,7 +107,7 @@ public class ToucherBotBehaviour implements BotBehaviour, Observer {
 
 	@Override
 	public void setBot(Bot bot) {
-		this.bot = bot;
+		this.b = bot;
 		attack = false;
 		vitesse = 20;
 

@@ -33,7 +33,7 @@ public class MainXMLHandler extends DefaultHandler {
 				break;
 			case "level":
 				addLevel(attrs);
-				break ;
+				break;
 		}
 	}
 
@@ -42,12 +42,11 @@ public class MainXMLHandler extends DefaultHandler {
 	}
 
 	private void addArme(Attributes attrs) {
-		// si on ajoute une arme (noeud armes)
-		if (attrs.getValue("name") != null && attrs.getValue("damage") != null && attrs.getValue("reload") != null) {
-			Arme arme = new Arme(attrs.getValue("tir"), Integer.parseInt(attrs.getValue("damage")), Integer.parseInt(attrs.getValue("reload")),
-					Integer.parseInt(attrs.getValue("recul")));
-			armes.put(attrs.getValue("name"), arme);
-		}
+		Arme arme = new Arme(attrs.getValue("tir"), Integer.parseInt(attrs.getValue("damage")), Integer.parseInt(attrs.getValue("reload")),
+				Integer.parseInt(attrs.getValue("recul")));
+		
+		armes.put(attrs.getValue("name"), arme);
+
 	}
 
 	private void addBot(Attributes attrs) throws SAXException {
@@ -57,11 +56,11 @@ public class MainXMLHandler extends DefaultHandler {
 
 		bot.setLife(Integer.parseInt(attrs.getValue("life")));
 		bot.getDimension().setSize(Integer.parseInt(attrs.getValue("width")), Integer.parseInt(attrs.getValue("height")));
-		
+
 		bot.setImage(attrs.getValue("image") != null ? attrs.getValue("image") : "");
-		
-		BotBehaviour behaviour = null ;
-		
+
+		BotBehaviour behaviour = null;
+
 		try {
 			behaviour = (BotBehaviour) Class.forName("eu.labrush.rescue.IA.behaviour." + attrs.getValue("comportement")).newInstance();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {

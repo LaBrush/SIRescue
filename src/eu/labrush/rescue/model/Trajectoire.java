@@ -10,7 +10,7 @@ package eu.labrush.rescue.model;
  */
 public class Trajectoire extends AbstractModel implements Cloneable {
 
-	Vecteur acceleration, vitesse, position;
+	private Vecteur acceleration, vitesse, position;
 
 	public Trajectoire(Vecteur a, Vecteur v, Vecteur p) {
 		this.setAcceleration(a);

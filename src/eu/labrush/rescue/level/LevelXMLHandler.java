@@ -64,7 +64,6 @@ public class LevelXMLHandler extends DefaultHandler {
 				break;
 			case "hero":
 				current = new Personnage(0, 0);
-				((Personnage) current).addArme(armes.get("Echarpe"));
 				break;
 			case "bot":
 				// see @setType

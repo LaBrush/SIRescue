@@ -10,7 +10,7 @@
 						<xs:sequence>
 							<xs:element name="life" type="xs:string"></xs:element>
 							<xs:element name="position" type="position"></xs:element>
-							<xs:element name="arme">
+							<xs:element name="arme" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:attribute name="cartouches" type="xs:integer"></xs:attribute>
 									<xs:attribute name="type" type="xs:string" use="required"></xs:attribute>

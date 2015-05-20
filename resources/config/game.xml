@@ -10,20 +10,21 @@
 		<arme name="Transistor" tir="Transistor" damage="40" recul="400"
 			reload="500" />
 		<arme name="Echarpe" tir="Echarpe" damage="5" recul="200" reload="500" />
+		<arme name="Noisette" tir="Noisette" damage="60" recul="200" reload="500"/>
 	</armes>
 
 	<botTypes>
 		<botType name="bino" arme="Bouclier" comportement="ToucherBotBehaviour"
-			life="150" width="20" height="30" image="hero.png" />
+			life="150" width="20" height="30" image="bino.png" />
 		<botType name="soso" arme="Resistance" comportement="FlyBotBehaviour"
 			life="50" width="30" height="20" />
-		<botType name="dudu" arme="Transistor" comportement="BossBehaviour"
-			life="250" width="30" height="20" />
+		<botType name="dudu" arme="Noisette" comportement="BossBehaviour"
+			life="250" width="30" height="20" image="dudu.png" />
 	</botTypes>
 
 	<levels>
-		<!-- <level src="level1.xml" />
-		<level src="level2.xml" />-->
+		<level src="level1.xml" />
+		<level src="level2.xml" />
 		<level src="level3.xml" />
 	</levels>
 

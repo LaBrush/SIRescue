@@ -20,7 +20,7 @@ public class ArmeItem extends Item {
 	 */
 	@Override
 	public void deliver(Personnage p) {
-		p.addArme(arme);
+		p.setCurrentArme(arme);
 	}
 
 }

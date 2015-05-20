@@ -17,26 +17,33 @@ public class Echarpe extends Tir {
 
 	// ces quatres vecteurs représentent les points en haut, gauche et droite, et en bas gauche et
 	// droite du rectangle
-	public Vecteur hg, hd, bg, bd;
-
+	private Vecteur hg, hd, bg, bd;
+	
 	public Echarpe(Vecteur position, int angle, int damage, int recul, Personnage owner) {
-		super(position, angle, damage, recul, owner);
+		super(angle, damage, recul, owner);
 		owner.getTrajectoire().addObserver(this);
 
-		this.dim = new Dimension(30, 10);
+		this.dim = new Dimension(60, 20);
 		this.update(owner.getTrajectoire(), null);
 
 		this.behaviour = new ClassicPhysicBehaviour(getTrajectoire(), dim);
 		this.behaviour.setGravity(0);
 		
-		//On utilise l'écharpe comme fouet, le tir est donc limité dans le temps
-		Thread t = new Thread(new Runnable(){
+		setImage("echarpe_1.png");
+
+		// On utilise l'écharpe comme fouet, le tir est donc limité dans le temps
+		Thread t = new Thread(new Runnable() {
 			@Override
 			public void run() {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				for (int state = 1; state <= 4; state++) {
+
+					setImage("echarpe_"+state+".png");
+					
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 				use();
 			}
@@ -50,15 +57,15 @@ public class Echarpe extends Tir {
 			double x, y;
 
 			x = v.getX() + owner.getWidth() / 2;
-			y = v.getY() + owner.getHeight() / 2 - this.getHeight() / 2;
+			y = v.getY() + owner.getHeight() / 2;
 
-			x += owner.getWidth() / 2 * Math.cos(Math.toRadians(angle/2));
-			y += getHeight() * Math.sin(Math.toRadians(angle/2));
-			
+			x += owner.getWidth() / 2 * Math.cos(Math.toRadians(angle / 2));
+			y += getHeight() * Math.sin(Math.toRadians(angle / 2));
+
 			this.getTrajectoire().setPosition(new Vecteur(x, y));
 
 			double angle = Math.toRadians(this.angle);
-			
+
 			bg = this.getTrajectoire().getPosition();
 			bd = new Vecteur(this.getWidth() * Math.cos(angle), this.getWidth() * Math.sin(angle));
 			hg = new Vecteur(this.getHeight() * Math.cos(angle + Math.PI / 2), this.getHeight() * Math.sin(angle + Math.PI / 2));

@@ -3,7 +3,7 @@ package eu.labrush.rescue.model.arme;
 import java.util.Observable;
 import java.util.Observer;
 
-import eu.labrush.rescue.core.physics.InertPhysicBehaviour;
+import eu.labrush.rescue.core.physics.FollowPhysicBehaviour;
 import eu.labrush.rescue.model.AbstractObject;
 import eu.labrush.rescue.model.Personnage;
 import eu.labrush.rescue.model.Vecteur;
@@ -18,10 +18,10 @@ import eu.labrush.rescue.model.Vecteur;
 public class Bouclier extends Tir {
 
 	public Bouclier(Vecteur position, int angle, int damage, int recul, Personnage owner) {
-		super(position, angle, damage, recul, owner);
+		super(angle, damage, recul, owner);
 		
 		this.dim = owner.getDimension();
-		this.behaviour = new InertPhysicBehaviour(this.getTrajectoire(), owner);
+		this.behaviour = new FollowPhysicBehaviour(this.getTrajectoire(), owner);
 		
 		setActivated(true);
 		
