@@ -14,13 +14,12 @@ import eu.labrush.rescue.model.Vecteur;
  */
 public class RebondPhysicBehaviour extends AbstractPhysicBehaviour {
 
-	private double speed = .3 ;
+	private double speed = 300 ;
 
 	public RebondPhysicBehaviour(Trajectoire t, Dimension dim) {
 		super(t, dim);
 		this.trajectoire.setVitesse(new Vecteur(speed, speed));
 	}
-
 
 
 	/*
@@ -42,10 +41,10 @@ public class RebondPhysicBehaviour extends AbstractPhysicBehaviour {
 				this.calcMargin(obstacle, deplacement);
 			}
 		}
-
+				
 		// La distance parcourue pendant la durée delta_t est supérieure à la distance, on adapte la
 		// vitesse
-
+		
 		if (deplacement.getX() > 0 && deplacement.getX() >= this.moves.right) {
 			trajectoire.getVitesse().setX(this.moves.right / delta_t);
 			trajectoire.getAcceleration().setX(0);
@@ -57,24 +56,28 @@ public class RebondPhysicBehaviour extends AbstractPhysicBehaviour {
 
 		if (deplacement.getY() > 0 && deplacement.getY() >= this.moves.top) {
 			trajectoire.getVitesse().setY(this.moves.top / delta_t);
-			trajectoire.getAcceleration().setX(0);
+			trajectoire.getAcceleration().setY(0);
 		}
 		else if (deplacement.getY() < 0 && -deplacement.getY() >= this.moves.bottom) {
 			trajectoire.getVitesse().setY(-this.moves.bottom / delta_t);
 			trajectoire.getAcceleration().setY(0);
 		}
-
-		if(this.moves.top == 0 && trajectoire.getVitesse().getY() == 0){
+		else {
+			trajectoire.getAcceleration().setY(-300);
+		}
+		
+		
+		if((int)this.moves.top == 0){
 			trajectoire.getVitesse().setY(-speed);
 		}
-		else if(this.moves.bottom == 0 && trajectoire.getVitesse().getY() == 0){
+		else if((int)this.moves.bottom == 0){
 			trajectoire.getVitesse().setY(speed);
 		}
 		
-		if(this.moves.right == 0 && trajectoire.getVitesse().getX() == 0){
+		if((int)this.moves.right == 0){
 			trajectoire.getVitesse().setX(-speed);
 		}
-		else if(this.moves.left == 0 && trajectoire.getVitesse().getX() == 0){
+		else if((int)this.moves.left == 0){
 			trajectoire.getVitesse().setX(speed);
 		}
 		

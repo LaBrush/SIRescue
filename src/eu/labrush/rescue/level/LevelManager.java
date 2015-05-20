@@ -1,6 +1,5 @@
 package eu.labrush.rescue.level;
 
-import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,13 +14,10 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.SAXException;
 
 import eu.labrush.rescue.IA.behaviour.BotBehaviour;
-import eu.labrush.rescue.controler.AudioControler;
-import eu.labrush.rescue.core.graphic.DrawRequest;
 import eu.labrush.rescue.core.graphic.GraphicCore;
 import eu.labrush.rescue.core.physics.PhysicCore;
 import eu.labrush.rescue.model.Bot;
 import eu.labrush.rescue.model.arme.Arme;
-import eu.labrush.rescue.utils.Listener;
 import eu.labrush.rescue.utils.Tuple;
 
 /**
@@ -91,18 +87,11 @@ public class LevelManager {
 		
 		if (levels.size() == 0) {
 		
-			(new AudioControler()).play(soundsHandler.levels.get(0));
+			currentLevel = new EndLevel(graphics, physics);
+			level_theme = currentLevel.audioControler.play(soundsHandler.levels.get(0));
 			
-			graphics.addObserver(new Listener<DrawRequest>() {
-				@Override
-				public void update(DrawRequest req) {
-					req.fillRect(0, req.getHeight(), req.getWidth(), req.getHeight(), Color.BLACK);
-					req.drawString("Vous avez fini SIRescue !", 20, 350, Color.WHITE, 30, true);
-					req.drawString("C'est négligeable", 20, 300, Color.WHITE, 20, true);
-				}
-			});
-
 			graphics.start();
+			physics.start();
 		}
 		else {
 			try {

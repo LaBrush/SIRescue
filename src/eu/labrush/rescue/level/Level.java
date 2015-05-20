@@ -36,6 +36,10 @@ public class Level {
 	AudioControler audioControler ;
 	AchievementControler achievementControler;
 
+	protected Level(){
+		
+	}
+	
 	/**
 	 * @param graphics
 	 *            le coeur graphique

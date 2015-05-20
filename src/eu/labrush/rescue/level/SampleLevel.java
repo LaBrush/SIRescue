@@ -17,8 +17,6 @@ import eu.labrush.rescue.model.arme.Arme;
 /**
  *
  * Gère tous les controlleurs, vues et modèles d'un niveau
- * 
- * TODO: ajouter un destructeur pour enlever les listener des coeurs graphique et physique
  *
  * @author adrienbocquet
  */
