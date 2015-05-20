@@ -3,13 +3,13 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
 
 	<armes>
-		<arme name="Bouclier" tir="Bouclier" damage="20" recul="300"
+		<arme name="Bouclier" tir="Bouclier" damage="30" recul="300"
 			reload="3" />
 		<arme name="Resistance" tir="Resistance" damage="20" recul="0"
 			reload="300" />
 		<arme name="Transistor" tir="Transistor" damage="40" recul="400"
 			reload="500" />
-		<arme name="Echarpe" tir="Echarpe" damage="5" recul="200" reload="500" />
+		<arme name="Echarpe" tir="Echarpe" damage="10" recul="200" reload="500" />
 		<arme name="Noisette" tir="Noisette" damage="60" recul="200" reload="500"/>
 	</armes>
 
@@ -23,8 +23,8 @@
 	</botTypes>
 
 	<levels>
-		<level src="level1.xml" />
-		<level src="level2.xml" />
+		<!-- <level src="level1.xml" />
+		<level src="level2.xml" />-->
 		<level src="level3.xml" />
 	</levels>
 
