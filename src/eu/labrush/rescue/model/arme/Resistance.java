@@ -17,13 +17,13 @@ public class Resistance extends Tir {
 	public Resistance(Vecteur position, int angle, int degat, int recul, Personnage owner) {	
 		super(position, angle, degat, recul, owner);
 		
-		this.dim = new Dimension(5, 5);
+		this.dim = new Dimension(32, 17);
 		
 		this.getTrajectoire().setPosition(position);
 		this.getTrajectoire().getVitesse().setPolar(this.vitesse, angle);
 
 		this.behaviour = new TirPhysicBehaviour(this.getTrajectoire(), this.dim);
-		
+		setImage("resistance.png");
 		update(null, null);
 	}
 

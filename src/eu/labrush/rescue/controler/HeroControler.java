@@ -189,7 +189,7 @@ public final class HeroControler extends AbstractControler {
 			model.addObserver(reculObserver);
 
 			model.setImage("hero.png");
-			model.getDimension().setSize(15, 50);
+			model.getDimension().setSize(20, 70);
 
 			personnageControler.add(model);
 
