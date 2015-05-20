@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <level xs:noNamespaceSchemaLocation="level.xsd"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
-	
+
 	<hero>
 		<life>200</life>
 		<position x="150" y="20" />
@@ -9,46 +9,165 @@
 	</hero>
 
 	<blocs>
+		<!--contours -->
 		<bloc>
-			<position x="0" y="0" />
-			<dimensions width="10" height="600" />
+			<position x="0" y="720" />
+			<dimensions width="1080" height="10" />
 		</bloc>
 		<bloc>
-			<position x="0" y="380" />
-			<dimensions width="600" height="10" />
-		</bloc>
-		<bloc>
-			<position x="600" y="0" />
-			<dimensions width="10" height="400" />
-		</bloc>
-		<bloc id="1">
-			<position x="5" y="0" />
-			<dimensions width="610" height="10" />
+			<position x="1080" y="0" />
+			<dimensions width="10" height="720" />
 		</bloc>
 		<bloc>
 			<position x="-11" y="0" />
-			<dimensions width="10" height="400" />
+			<dimensions width="10" height="720" />
+		</bloc>
+		<!--sol -->
+		<bloc>
+			<position x="0" y="0" />
+			<dimensions width="1080" height="10" />
 		</bloc>
 
+		<!--plafond -->
 		<bloc>
-			<position x="50" y="100" />
-			<dimensions width="40" height="10" />
+			<position x="0" y="660" />
+			<dimensions width="1080" height="30" />
 		</bloc>
-		<bloc>
-			<position x="150" y="200" />
-			<dimensions width="40" height="10" />
-		</bloc>
-		<bloc>
-			<position x="250" y="300" />
-			<dimensions width="40" height="10" />
+		<bloc hurting="true">
+			<position x="0" y="610" />
+			<dimensions width="1080" height="49" />
 		</bloc>
 
+		<!-- plateforme F -->
+		<bloc>
+			<position x="0" y="10" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="0" y="40" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="0" y="70" />
+			<dimensions width="75" height="20" />
+		</bloc>
+		<bloc>
+			<position x="0" y="100" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="0" y="130" />
+			<dimensions width="115" height="20" />
+		</bloc>
+		<!-- plateforme E -->
+		<bloc>
+			<position x="241" y="130" />
+			<dimensions width="115" height="20" />
+		</bloc>
+		<bloc>
+			<position x="241" y="160" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="241" y="190" />
+			<dimensions width="75" height="20" />
+		</bloc>
+		<bloc>
+			<position x="241" y="220" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="241" y="250" />
+			<dimensions width="115" height="20" />
+		</bloc>
+		<!-- plateforme L -->
+		<bloc>
+			<position x="482" y="130" />
+			<dimensions width="115" height="20" />
+		</bloc>
+		<bloc>
+			<position x="482" y="160" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="482" y="190" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="482" y="220" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="482" y="250" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<!-- plateforme C -->
+			<bloc>
+			<position x="723" y="130" />
+			<dimensions width="115" height="20" />
+		</bloc>
+		<bloc>
+			<position x="723" y="160" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="723" y="190" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="723" y="220" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="723" y="250" />
+			<dimensions width="115" height="20" />
+		</bloc>
+		<!-- plateforme O -->
+		<bloc>
+			<position x="960" y="130" />
+			<dimensions width="115" height="20" />
+		</bloc>
+		<bloc>
+			<position x="960" y="100" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="1040" y="100" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="960" y="70" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="1040" y="70" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="960" y="40" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="1040" y="40" />
+			<dimensions width="35" height="20" />
+		</bloc>
+		<bloc>
+			<position x="960" y="10" />
+			<dimensions width="115" height="20" />
+		</bloc>
+		
+		
+
+		<bloc id="1">
+			<position x="0" y="130" />
+			<dimensions width="115" height="20" />
+		</bloc>
 	</blocs>
 
 	<items>
 		<item>
-			<position x="500" y="15" />
-			<dimensions width="40" height="10" />
+			<position x="540" y="360" />
+			<dimensions width="20" height="20" />
 		</item>
 	</items>
 
@@ -61,11 +180,11 @@
 		</bot>
 		<bot>
 			<type>soso</type>
-			<position x="100" y="180" />
+			<position x="100" y="400" />
 		</bot>
 		<bot>
 			<type>dudu</type>
-			<position x="250" y="180" />
+			<position x="960" y="250" />
 		</bot>
 	</bots>
 </level>

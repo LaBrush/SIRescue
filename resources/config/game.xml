@@ -20,11 +20,13 @@
 			life="50" width="30" height="20" />
 		<botType name="dudu" arme="Noisette" comportement="BossBehaviour"
 			life="250" width="30" height="20" image="dudu.png" />
+		<botType name="dudu" arme="Transistor" comportement="BossBehaviour"
+			life="250" width="60" height="140" image="boss.png"/>
 	</botTypes>
 
 	<levels>
-		<level src="level1.xml" />
-		<level src="level2.xml" />
+		<!--<level src="level1.xml" />
+		<level src="level2.xml" />-->
 		<level src="level3.xml" />
 	</levels>
 

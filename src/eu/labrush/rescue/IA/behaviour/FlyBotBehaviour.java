@@ -31,8 +31,8 @@ public class FlyBotBehaviour implements BotBehaviour {
 	public void setBot(Bot bot) {
 		this.b = bot;
 		b.getPhysicBehaviour().setGravity(0);
-		extremiteG = 100;
-		extremiteD = 400;
+		//extremiteG = 100;
+		//extremiteD = 400;
 	}
 
 	public void update(Personnage hero) {
@@ -44,34 +44,29 @@ public class FlyBotBehaviour implements BotBehaviour {
 		double botY = b.getY();
 
 		Vecteur v = b.getTrajectoire().getVitesse();
+		v.setX(0);
 		
-		if (v.getX() == 0) {
+		if (v.getX() != 0 && attack == false) {
 
-			v.setX(0.04);
+			v.setX(0);
 
 		}
-		else if ((b.getX() <= extremiteG || b.getX() >= extremiteD) && v.getX() != 0) {
-
-			v.setX(-v.getX());
-		}
-
-		if ((Math.pow(heroX - botX, 2) < 10000) && (Math.pow(heroY - botY, 2) < 62500)) {
+		
+		if ((Math.pow(heroX - botX, 2) < 10000) && attack == false) {
 
 			attack = true;
+			
+		}
+		else if ((Math.pow(heroX - botX, 2) < 122500) && attack == true) {
+
+			double angle, alpha;			
+			alpha = Math.atan((botX - heroX) / (botY - heroY));		
+			angle = -Math.toDegrees(alpha)-90;			
+			b.shoot((int) angle);
+			
 			extremiteG = heroX - 50;
 			extremiteD = heroX + 50;
 
-		}
-
-		if (((Math.pow(heroX - botX, 2) < 100000) && (Math.pow(heroY - botY, 2) < 62500)) && attack == true) {
-
-			double angle, alpha;
-			
-			alpha = Math.atan((botX - heroX) / (botY - heroY));			
-
-			angle = -Math.toDegrees(alpha)-90;
-			
-			b.shoot((int) angle);
 			
 			if (botX <= extremiteG) {
 

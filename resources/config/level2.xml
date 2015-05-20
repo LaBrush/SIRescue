@@ -2,7 +2,7 @@
 <level xs:noNamespaceSchemaLocation="level.xsd"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
 	
-	<music src="resources/audio/musique_lvl2.wav"/>
+	<!--  <music src="resources/audio/musique_lvl2.wav"/>-->
 	
 	<hero>
 		<life>1000</life>
@@ -44,12 +44,9 @@
 		</bloc>
 		<bloc hurting="true">
 			<position x="0" y="610" />
-			<dimensions width="670" height="49" />
+			<dimensions width="1080" height="49" />
 		</bloc>
-		<bloc hurting="true">
-			<position x="730" y="610" />
-			<dimensions width="350" height="49" />
-		</bloc>
+		
 		<!-- plateforme:A -->
 		<bloc>
 			<position x="100" y="42" />
@@ -271,17 +268,12 @@
 			<position x="466" y="394" />
 			<dimensions width="72" height="14" />
 		</bloc>
-
-		<bloc hurting="true">
-			<position x="300" y="100" />
-			<dimensions width="40" height="30" />
-		</bloc>
-	</blocs>
+</blocs>
 
 	<items>
 		<item>
-			<position x="500" y="30" />
-			<dimensions width="40" height="10" />
+			<position x="1060" y="11" />
+			<dimensions width="20" height="60" />
 		</item>
 	</items>
 
