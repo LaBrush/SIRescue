@@ -159,8 +159,8 @@
 		
 
 		<bloc id="1">
-			<position x="100" y="600" />
-			<dimensions width="115" height="30" />
+			<position x="0" y="130" />
+			<dimensions width="115" height="20" />
 		</bloc>
 	</blocs>
 
@@ -184,7 +184,7 @@
 		</bot>
 		<bot>
 			<type>dudu</type>
-			<position x="250" y="180" />
+			<position x="960" y="250" />
 		</bot>
 	</bots>
 </level>

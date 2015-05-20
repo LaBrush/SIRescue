@@ -14,16 +14,16 @@
 
 	<botTypes>
 		<botType name="bino" arme="Bouclier" comportement="ToucherBotBehaviour"
-			life="150" width="20" height="30" image="hero.png" />
+			life="150" width="20" height="60" image="bino.png" />
 		<botType name="soso" arme="Resistance" comportement="FlyBotBehaviour"
 			life="50" width="30" height="20" />
 		<botType name="dudu" arme="Transistor" comportement="BossBehaviour"
-			life="250" width="30" height="20" />
+			life="250" width="60" height="140" image="boss.png"/>
 	</botTypes>
 
 	<levels>
-		<level src="level1.xml" />
-		<level src="level2.xml" />
+		<!--<level src="level1.xml" />
+		<level src="level2.xml" />-->
 		<level src="level3.xml" />
 	</levels>
 
