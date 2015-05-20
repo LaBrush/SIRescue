@@ -6,6 +6,7 @@ import java.util.HashSet;
 import eu.labrush.rescue.model.Bloc;
 import eu.labrush.rescue.model.Bot;
 import eu.labrush.rescue.model.Personnage;
+import eu.labrush.rescue.model.Vecteur;
 
 
 /**
@@ -35,9 +36,7 @@ public class BossBehaviour implements BotBehaviour, Cloneable{
 		 botY = b.getY();
 		 heroX = hero.getX();
 		 heroY = hero.getY();
-		 vX = b.getTrajectoire().getVitesse().getX();
-		 vY = b.getTrajectoire().getVitesse().getY();
-		
+		 Vecteur v = b.getTrajectoire().getVitesse();	
 		 
 		 double blocX, blocY, ouOnEstX, ouOnEstY, lePlusProcheX, lePlusProcheY;
 		 int privateTimer = 0;
@@ -80,14 +79,13 @@ public class BossBehaviour implements BotBehaviour, Cloneable{
 		}
 		
 		if (privateTimer == 0){ // petit saut initial
-			double pY;
-			
-			if(b.getTrajectoire().getVitesse().getY() == 0 && b.getTrajectoire().getAcceleration().getY() == 0){
-				b.getTrajectoire().getVitesse().setY(600);
+						
+			if(v.getY() == 0 && b.getTrajectoire().getAcceleration().getY() == 0){
+				v.setY(600);
 				
 			
 			if (botY >= ouOnEstY + 600){
-				b.getTrajectoire().getVitesse().setY(0);
+				v.setY(0);
 				privateTimer =1;
 			}
 			}
@@ -95,11 +93,11 @@ public class BossBehaviour implements BotBehaviour, Cloneable{
 		
 		if (privateTimer == 1){ //se déplace sur la plateforme
 			if (heroX < botX && botX >= ouOnEst.getX()){
-				b.getTrajectoire().getVitesse().setX(-5);				
+				v.setX(-5);				
 			}
 			
 			else if (heroX > botX && botX <= (ouOnEst.getX()+ouOnEst.getWidth())){
-				b.getTrajectoire().getVitesse().setX(5);				
+				v.setX(5);				
 			}
 			
 			else {
@@ -119,8 +117,8 @@ public class BossBehaviour implements BotBehaviour, Cloneable{
 			double deltaY = lePlusProcheY-botY;			
 				
 				if (newBlocX != ouOnEstX && newBlocY != ouOnEstY + 15){
-					b.getTrajectoire().getVitesse().setX(deltaX);
-					b.getTrajectoire().getVitesse().setY(deltaY);
+					v.setX(deltaX);
+					v.setY(deltaY);
 				}
 				
 				else {
