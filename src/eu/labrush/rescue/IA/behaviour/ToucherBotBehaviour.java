@@ -70,15 +70,16 @@ public class ToucherBotBehaviour implements BotBehaviour, Observer {
 
 			double heroX = hero.getX();
 			double heroY = hero.getY();
+			
+			v.setX(vitesse);
 
 			if ((Math.pow(heroX - botX, 2) + Math.pow(heroY - botY, 2)) > 10000 && attack == false) { // fait des allers retours sur son bloc jusqu'à voir le héro
-				if (v.getX() == 0) {
-					v.setX(vitesse);
+				if ((botX >= (bloc.getX() + bloc.getWidth() - bot.getWidth()) && v.getX() > 0 ) {
+					v.setX(-vitesse);
 
 				}
-				else if ((botX >= (bloc.getX() + bloc.getWidth() - bot.getWidth()) && v.getX() > 0)
-						|| (bot.getX() <= (bloc.getX()) && v.getX() < 0)) {
-					v.setX(-vitesse);
+				else if ((botX <= bloc.getX() && v.getX() < 0)) {
+					v.setX(vitesse);
 				}
 
 			}
@@ -88,10 +89,10 @@ public class ToucherBotBehaviour implements BotBehaviour, Observer {
 			else if ((Math.pow(heroX - botX, 2) + Math.pow(heroY - botY, 2)) < 90000 && attack == true) { // attaque
 				vitesse = 50;
 
-				if (heroX < botX && botX > bloc.getX()) {
+				if (heroX <= botX && botX >= bloc.getX()) {
 					v.setX(-vitesse);
 				}				
-				else if (heroX > botX && botX < bloc.getX() + bloc.getWidth() - bot.getWidth()) {
+				else if (heroX > botX && botX <= bloc.getX() + bloc.getWidth() - bot.getWidth()) {
 					v.setX(vitesse);
 				}
 				else {
