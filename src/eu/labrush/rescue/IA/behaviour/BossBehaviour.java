@@ -72,10 +72,10 @@ public class BossBehaviour implements BotBehaviour, Cloneable{
 		lePlusProcheY = yProche(lePlusProche);
 		
 		if (((Math.pow(heroX - botX, 2) < 1000000) && (Math.pow(heroY - botY, 2) < 1000000))){ //tire
-			double angle, alpha;			
-			alpha = Math.atan((botX - heroX - hero.getTrajectoire().getVitesse().getX()) / (botY - heroY - hero.getTrajectoire().getVitesse().getY()));
-			angle = alpha;
-			b.shoot((int) angle + 180);
+			double alpha;			
+			alpha = Math.atan((heroY - botY + hero.getTrajectoire().getVitesse().getY())/(heroX - botX + hero.getTrajectoire().getVitesse().getX()));
+			
+			b.shoot((int) alpha);
 		}
 		
 		if (privateTimer == 0){ // petit saut initial
