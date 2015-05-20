@@ -63,8 +63,8 @@ public class PersonnageView extends AbstractObjectView {
 			req.image(image, x, y, width * sens, height, 0);
 		}
 
-		if (armeView != null)
-			armeView.draw(req);
+		/*if (armeView != null)
+			armeView.draw(req);*/
 
 		if (bot) {
 			int width = this.width * life / maxLife;

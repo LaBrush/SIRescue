@@ -5,7 +5,7 @@
 	<hero>
 		<life>200</life>
 		<position x="150" y="20" />
-		<arme cartouches="300" type="Resistance" />
+		<arme cartouches="-1" type="Echarpe" />
 	</hero>
 
 	<blocs>
@@ -23,7 +23,7 @@
 			<dimensions width="10" height="720" />
 		</bloc>
 		<!--sol -->
-		<bloc>
+		<bloc id="2">
 			<position x="0" y="0" />
 			<dimensions width="1080" height="10" />
 		</bloc>
@@ -76,7 +76,7 @@
 			<position x="241" y="220" />
 			<dimensions width="35" height="20" />
 		</bloc>
-		<bloc>
+		<bloc id="3">
 			<position x="241" y="250" />
 			<dimensions width="115" height="20" />
 		</bloc>
@@ -162,10 +162,14 @@
 			<position x="0" y="130" />
 			<dimensions width="115" height="20" />
 		</bloc>
+		<bloc>
+			<position x="0" y="130" />
+			<dimensions width="115" height="20" />
+		</bloc>
 	</blocs>
 
 	<items>
-		<item>
+		<item content="arme" type="Transistor" cartouches="20">
 			<position x="540" y="360" />
 			<dimensions width="20" height="20" />
 		</item>
@@ -178,9 +182,22 @@
 			<position x="250" y="220" />
 			<bloc_id>1</bloc_id>
 		</bot>
+		
+		<bot>
+			<type>bino</type>
+			<position x="250" y="220" />
+			<bloc_id>2</bloc_id>
+		</bot>
+		
+		<bot>
+			<type>bino</type>
+			<position x="250" y="220" />
+			<bloc_id>3</bloc_id>
+		</bot>
+		
 		<bot>
 			<type>soso</type>
-			<position x="100" y="400" />
+			<position x="200" y="50" />
 		</bot>
 		<bot>
 			<type>dudu</type>

@@ -17,7 +17,7 @@ public class Resistance extends Tir {
 	public Resistance(Vecteur position, int angle, int degat, int recul, Personnage owner) {	
 		super(angle, degat, recul, owner);
 		
-		this.dim = new Dimension(32, 17);
+		this.dim = new Dimension(27, 8);
 		setImage("resistance.png");
 		
 		this.getTrajectoire().setPosition(position.add(new Vecteur(0, - this.getHeight() / 2 * Math.cos(angle))));
