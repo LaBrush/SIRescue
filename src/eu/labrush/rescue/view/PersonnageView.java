@@ -46,12 +46,12 @@ public class PersonnageView extends AbstractObjectView {
 			sens = vx > 0 ? 1 : -1 ;
 		}
 		
-		Arme previous = arme;
+		/*Arme previous = arme;
 
 		arme = p.getCurrentArme();
 		if (arme != null && !arme.equals(previous)) {
 			armeView = new ArmeView(model, p);
-		}
+		}*/
 	}
 
 	@Override

@@ -38,7 +38,7 @@ public class MainXMLHandler extends DefaultHandler {
 	}
 
 	private void addLevel(Attributes attrs) {
-		levels.add("resources/config/" + attrs.getValue("src"));
+		levels.add("./resources/config/" + attrs.getValue("src"));
 	}
 
 	private void addArme(Attributes attrs) {

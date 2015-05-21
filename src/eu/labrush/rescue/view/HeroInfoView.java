@@ -51,8 +51,8 @@ public class HeroInfoView extends AbstractView {
 		r = r > 0 && r <= 255 ? r : 0;
 		v = v > 0 && v <= 255 ? v : 0;
 
-		req.fillRect(10, req.getHeight() - 10, width, 20, new Color(r, v, 0));
-		req.drawString("Arme: " + label + " (" + cartouchesLeft + ")", 11, req.getHeight() - 45);
+		req.fillRect(10, req.getHeight() - 15, width, 20, new Color(r, v, 0));
+		req.drawString("Arme: " + label + " (" + cartouchesLeft + ")", 11, req.getHeight() - 60);
 	}
 
 }

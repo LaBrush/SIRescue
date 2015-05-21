@@ -3,7 +3,7 @@ package eu.labrush.rescue.view;
 import java.util.Observable;
 
 import eu.labrush.rescue.core.graphic.DrawRequest;
-import eu.labrush.rescue.model.AbstractObject;
+import eu.labrush.rescue.model.arme.Bouclier;
 import eu.labrush.rescue.model.arme.Tir;
 
 /**
@@ -13,9 +13,11 @@ import eu.labrush.rescue.model.arme.Tir;
 public class TirView extends AbstractObjectView {
 
 	int angle;
+	boolean isShield = false ;
 
-	public TirView(AbstractObject model) {
+	public TirView(Tir model) {
 		super(model);
+		isShield = model instanceof Bouclier ;
 	}
 
 	/*
@@ -34,7 +36,6 @@ public class TirView extends AbstractObjectView {
 		y = (int) (t.getTrajectoire().getPosition().getY());
 
 		angle = (int) t.getAngle();
-		
 	}
 
 	/*
@@ -44,6 +45,10 @@ public class TirView extends AbstractObjectView {
 	 */
 	@Override
 	public void draw(DrawRequest req) {
+		
+		if(isShield){
+			return ;
+		}
 		
 		if(this.image == null){
 			req.rect(x, y, width, height, angle);

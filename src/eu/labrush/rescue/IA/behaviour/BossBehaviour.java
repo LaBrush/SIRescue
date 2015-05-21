@@ -75,7 +75,7 @@ public class BossBehaviour implements BotBehaviour, Cloneable{
 			double alpha;			
 			alpha = Math.atan((heroY - botY + hero.getTrajectoire().getVitesse().getY())/(heroX - botX + hero.getTrajectoire().getVitesse().getX()));
 			
-			b.shoot((int) alpha);
+			b.shoot((int) alpha + 180);
 		}
 		
 		if (privateTimer == 0){ // petit saut initial

@@ -131,6 +131,10 @@ public class LevelXMLHandler extends DefaultHandler {
 
 		switch (qName) {
 		// definition des éléments
+			case "background":
+				level.blocControler.setBackground("./resources/images/" + current_data);
+				break ;
+		
 			case "bloc":
 				if (id > 0) {
 					blocs.put(id, (Bloc) current);
@@ -173,7 +177,7 @@ public class LevelXMLHandler extends DefaultHandler {
 					throw new SAXException("Try to instanciate a non existant bot behaviour");
 				}
 
-				if (behaviour.getClass().getName().equals("eu.labrush.rescue.IA.behaviour.ToucherBotBehaviour")
+				if (behaviour instanceof ToucherBotBehaviour
 						&& !((Bot) current).getCurrentArme().getTirClass().equals("eu.labrush.rescue.model.arme.Bouclier")) {
 					throw new SAXException("A ToucherBotBehaviour must have a Bouclier");
 				}
@@ -186,6 +190,11 @@ public class LevelXMLHandler extends DefaultHandler {
 				break;
 
 			case "bloc_id":
+				if(!(behaviour instanceof ToucherBotBehaviour))
+				{
+					return ;
+				}
+					
 				int id = Integer.parseInt(current_data);
 				Bloc bloc = blocs.get(id);
 				if (bloc == null) {

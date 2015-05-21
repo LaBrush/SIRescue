@@ -52,7 +52,7 @@ public class LevelManager {
 			MainXMLHandler loader = new MainXMLHandler();
 
 			SAXParser parser = factory.newSAXParser();
-			parser.parse("resources/config/" + source, loader);
+			parser.parse("./resources/config/" + source, loader);
 
 			this.levels = loader.levels;
 			this.armes = loader.armes;

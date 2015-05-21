@@ -59,7 +59,7 @@ public abstract class AbstractObjectView extends AbstractView {
 
 	private void setImage(String src) {
 		try {
-			image = ImageIO.read(new File("resources/images/" + src));
+			image = ImageIO.read(new File("./resources/images/" + src));
 		} catch (IOException e) {
 			System.err.println("Can't open " + "resources/images/" + src);
 			e.printStackTrace();

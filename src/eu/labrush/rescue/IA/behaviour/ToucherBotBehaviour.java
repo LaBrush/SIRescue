@@ -73,7 +73,7 @@ public class ToucherBotBehaviour implements BotBehaviour, Observer {
 			
 			v.setX(vitesse);
 
-			if ((Math.pow(heroX - botX, 2) + Math.pow(heroY - botY, 2)) > 10000 && attack == false) { // fait des allers retours sur son bloc jusqu'� voir le h�ro
+			if ((Math.pow(heroX - botX, 2) + Math.pow(heroY - botY, 2)) > 10000 && attack == false) { // fait des allers retours sur son bloc jusqu'à voir le héro
 				if (v.getX() == 0) {
 					v.setX(vitesse);
 
@@ -84,7 +84,7 @@ public class ToucherBotBehaviour implements BotBehaviour, Observer {
 				}
 
 			}
-			else if ((Math.pow(heroX - botX, 2) + Math.pow(heroY - botY, 2)) < 10000 && attack == false) { // d�bute l'attaque
+			else if ((Math.pow(heroX - botX, 2) + Math.pow(heroY - botY, 2)) < 10000 && attack == false) { // débute l'attaque
 				attack = true;
 			}
 			else if ((Math.pow(heroX - botX, 2) + Math.pow(heroY - botY, 2)) < 90000 && attack == true) { // attaque
